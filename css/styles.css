@@ -297,7 +297,7 @@ button.card-brutal-white:hover, button.card-brutal-lime:hover, button.card-bruta
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(-360deg);
   }
 }
 
