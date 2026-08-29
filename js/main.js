@@ -162,11 +162,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Contact Form UX & Confetti
+  // 5. Contact Form Real Delivery (FormSubmit API) & Confetti UX
   const contactForm = document.getElementById('contact-form');
   const submitBtn = document.getElementById('contact-submit-btn');
 
-  contactForm?.addEventListener('submit', (e) => {
+  contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const nameInput = document.getElementById('contact-name');
@@ -174,7 +174,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const subjectInput = document.getElementById('contact-subject');
     const messageInput = document.getElementById('contact-message');
 
-    if (!nameInput?.value.trim() || !emailInput?.value.trim() || !messageInput?.value.trim()) {
+    const name = nameInput?.value.trim() || '';
+    const email = emailInput?.value.trim() || '';
+    const subject = subjectInput?.value.trim() || 'Nuevo mensaje desde tu sitio web';
+    const message = messageInput?.value.trim() || '';
+
+    if (!name || !email || !message) {
       showToast('Por favor completa los campos requeridos para enviar tu mensaje.', 'warning');
       return;
     }
@@ -187,39 +192,74 @@ document.addEventListener('DOMContentLoaded', () => {
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
-        <span>Enviando mensaje...</span>
+        <span>Enviando mensaje a tu correo...</span>
       `;
     }
 
-    setTimeout(() => {
-      // Trigger celebratory confetti if library is available
-      if (window.confetti) {
-        window.confetti({
-          particleCount: 110,
-          spread: 70,
-          origin: { y: 0.7 },
-          colors: ['#D4F653', '#0E1116', '#FFFFFF', '#60A5FA']
-        });
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/avacaro@outlook.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          subject: subject,
+          message: message,
+          _subject: `📩 [Sitio Web] Nuevo mensaje de ${name}: ${subject}`,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok || data.success === 'true' || data.success === true) {
+        // Trigger celebratory confetti if library is available
+        if (window.confetti) {
+          window.confetti({
+            particleCount: 120,
+            spread: 75,
+            origin: { y: 0.7 },
+            colors: ['#D4F653', '#0E1116', '#FFFFFF', '#60A5FA']
+          });
+        }
+
+        const firstName = name.split(' ')[0];
+        showToast(`¡Gracias ${firstName}! Tu mensaje fue enviado con éxito a mi correo. Te responderé a la brevedad.`, 'success', 'check', 6000);
+
+        contactForm.reset();
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `
+            <span>¡Mensaje Enviado con Éxito!</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          `;
+          setTimeout(() => {
+            submitBtn.innerHTML = `
+              <span>Enviar Mensaje</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            `;
+          }, 3500);
+        }
+      } else {
+        throw new Error(data.message || 'Error al enviar el formulario.');
       }
-
-      showToast(`¡Gracias ${nameInput.value.split(' ')[0]}! Tu mensaje ha sido recibido. Me pondré en contacto contigo a la brevedad.`, 'success', 'check', 5000);
-
-      contactForm.reset();
+    } catch (err) {
+      console.error('Error enviando formulario:', err);
+      showToast('No se pudo procesar el envío automático. Puedes escribirme directamente a avacaro@outlook.com o WhatsApp.', 'error', 'alert-circle', 7000);
 
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = `
-          <span>¡Mensaje Enviado con Éxito!</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span>Reintentar Envío</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         `;
-        setTimeout(() => {
-          submitBtn.innerHTML = `
-            <span>Enviar Mensaje</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-          `;
-        }, 3000);
       }
-    }, 1200);
+    }
   });
 
   // 6. CV Download & Interactive Actions
