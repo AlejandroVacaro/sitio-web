@@ -154,8 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(renderCursor);
 
-    // Hover expansions on interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, input, textarea, .pill-badge, .card-brutal-white, .card-brutal-lime, .card-brutal-dark, [data-interactive]');
+    // Hover expansions on strictly interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [data-copy-text], [role="button"]');
     interactiveElements.forEach((el) => {
       el.addEventListener('mouseenter', () => document.body.classList.add('custom-cursor-hover'));
       el.addEventListener('mouseleave', () => document.body.classList.remove('custom-cursor-hover'));

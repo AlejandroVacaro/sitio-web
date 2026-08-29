@@ -198,18 +198,12 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 1px 1px 0px var(--color-brand-border);
 }
 
-/* Card Neo-Brutalist Styles */
+/* Card Neo-Brutalist Styles (Static by default, no movement unless clickable) */
 .card-brutal-white {
   background-color: #FFFFFF;
   border: 2px solid var(--color-brand-border);
   border-radius: 1.5rem;
   box-shadow: var(--shadow-brutal-md);
-  transition: all var(--transition-normal);
-}
-
-.card-brutal-white:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-brutal-lg);
 }
 
 .card-brutal-lime {
@@ -217,12 +211,6 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid var(--color-brand-border);
   border-radius: 1.5rem;
   box-shadow: var(--shadow-brutal-md);
-  transition: all var(--transition-normal);
-}
-
-.card-brutal-lime:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-brutal-lg);
 }
 
 .card-brutal-dark {
@@ -231,16 +219,17 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 1.5rem;
   box-shadow: 4px 4px 0px #000;
   color: #FFF;
-  transition: all var(--transition-normal);
 }
 
-.card-brutal-dark:hover {
-  border-color: var(--color-brand-primary);
-  transform: translateY(-4px);
-  box-shadow: 4px 4px 0px var(--color-brand-primary);
+/* Clickable cards only */
+a.card-brutal-white:hover, a.card-brutal-lime:hover, a.card-brutal-dark:hover,
+button.card-brutal-white:hover, button.card-brutal-lime:hover, button.card-brutal-dark:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-brutal-lg);
+  cursor: pointer;
 }
 
-/* Badges & Floating Pills */
+/* Badges & Floating Pills (Static, no scaling) */
 .pill-badge {
   display: inline-flex;
   align-items: center;
@@ -253,11 +242,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-brutal-sm);
   background-color: #FFF;
   color: #000;
-  transition: all var(--transition-fast);
-}
-
-.pill-badge:hover {
-  transform: scale(1.05);
 }
 
 .pill-badge-lime {
