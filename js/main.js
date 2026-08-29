@@ -225,9 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. CV Download & Interactive Actions
   const cvButtons = document.querySelectorAll('.action-cv-download');
   cvButtons.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      showToast('📄 Currículum Vitae en preparación. Muy pronto estará disponible para visualización interactiva y descarga en PDF.', 'info', 'file-text', 4500);
+    btn.addEventListener('click', () => {
+      showToast('📄 Descargando Currículum Vitae de Alejandro Vacaro en formato PDF...', 'success', 'file-text', 4000);
     });
   });
 

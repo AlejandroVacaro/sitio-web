@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="30" fill="#0E1116" stroke="#000000" stroke-width="3" />
+  <circle cx="32" cy="32" r="27" fill="#0E1116" stroke="#D4F653" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.4" />
+  <text x="32" y="41" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="25" font-weight="900" fill="#D4F653" text-anchor="middle" letter-spacing="-1">AV</text>
+  <circle cx="48" cy="18" r="4" fill="#D4F653" stroke="#000000" stroke-width="1.5" />
+</svg>

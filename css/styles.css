@@ -529,3 +529,43 @@ h1, h2, h3, h4, h5, h6 {
   background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
 }
+
+/* ---------------- Story Scrollable Reader (Sobre mí) ---------------- */
+.story-scroll-container {
+  max-height: 620px;
+  overflow-y: auto;
+  padding-right: 1.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-brand-primary) #E2E8F0;
+}
+
+.story-scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.story-scroll-container::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-radius: 9999px;
+  border: 1px solid #E2E8F0;
+}
+
+.story-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--color-brand-primary);
+  border-radius: 9999px;
+  border: 1.5px solid #111;
+}
+
+.story-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-primary-hover);
+}
+
+/* ---------------- Experience Timeline Indicator ---------------- */
+.exp-timeline-line {
+  position: absolute;
+  left: 20px;
+  top: 32px;
+  bottom: 0;
+  width: 2px;
+  background: #E2E8F0;
+}
+

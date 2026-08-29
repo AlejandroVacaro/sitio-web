@@ -1,60 +1,51 @@
-# Sitio Web Personal — Alejandro Vacaro
+# Sitio Web Personal — Alejandro Vacaro Castro
 
-> Sitio web personal moderno, interactivo y 100% responsive para **Alejandro Vacaro** (Frontend Developer & Tech Explorer).
+> Sitio web personal y profesional de **Alejandro Vacaro Castro** (Analista Funcional, Business Analysis y Optimización de Procesos).
 
 ![Aesthetic](https://img.shields.io/badge/Aesthetic-Neo--Brutalism%20%26%20Modern%20Agency-D4F653?style=for-the-badge&logoColor=black)
-![Frontend](https://img.shields.io/badge/Frontend-HTML5%20%7C%20CSS3%20%7C%20JS%20ES6+-blue?style=for-the-badge)
+![Role](https://img.shields.io/badge/Rol-Analista%20Funcional-blue?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Activo-success?style=for-the-badge)
 
 ---
 
 ## 🌟 Características Principales
 
-- ⚡ **Diseño Moderno & Neo-Brutalism Suave**: Paleta vibrante con acento verde lima neón (`#D4F653`), sombras offset, bordes limpios y tipografía de alto impacto (`Outfit` & `Plus Jakarta Sans`).
+- ⚙️ **Enfoque en Análisis Funcional & Procesos**: Perfil enfocado en Business Analysis, implementación de BPMS, rediseño de flujos y articulación negocio-tecnología con más de 15 años de trayectoria.
 - 📱 **100% Responsive**: Optimizado para pantallas Ultra-Wide, laptops, tablets y celulares (con menú drawer lateral animado táctil).
-- 🧭 **Barra de Navegación Inteligente**: ScrollSpy activo, transiciones fluidas y botón directo *"¡Hablemos!"*.
-- 📖 **Storytelling Visual ("Conóceme")**: Biografía organizada en 6 capítulos cronológicos con badges e hitos.
-- 📄 **Currículum Vitae**: Sección modular preparada para descarga directa en PDF y visualización de stack técnico.
-- ✉️ **Formulario de Contacto Funcional**: Validación en tiempo real, estados de carga, confeti celebratorio y notificaciones Toast flotantes.
-- 🎯 **Micro-interacciones**: Cursor magnético personalizado en desktop, rotación de badges, efectos hover en todos los elementos interactivos.
+- 🧭 **Barra de Navegación Inteligente**: Enlaces a *Inicio*, *Sobre mí*, *Experiencia*, *Formación* y botón directo *¡Hablemos!* con ScrollSpy.
+- 📖 **Storytelling Continuo ("Sobre mí")**: Biografía fluida con panel de lectura continua y scroll independiente.
+- 💼 **Experiencia Laboral Detallada**: Trayectoria completa (República AFAP, Corporación Médica de Paysandú, Iglesia Católica, BPS).
+- 🎓 **Formación Académica**: Lic. en Administración (UDELAR), Business Analysis (UTN), Analista de Datos Python (Senpai), Full Stack MERN (Coderhouse), Inglés B1 (Bike).
+- 📄 **Descarga de CV en PDF**: Enlace directo al archivo PDF oficial.
+- ✉️ **Canales y Formulario de Contacto**: WhatsApp directo, correo con 1-clic para copiar, enlaces a LinkedIn, TikTok, Instagram y X (Twitter).
+- 🎨 **Favicon AV**: Icono personalizado con la marca visual del sitio.
 
 ---
 
 ## 📂 Estructura del Repositorio
 
 ```text
-├── index.html        # Estructura principal, meta tags y layout semántico
+├── index.html                  # Estructura principal y layout semántico
 ├── css/
-│   └── styles.css    # Variables CSS, sombras neo-brutalistas, animaciones y cursor
+│   └── styles.css              # Variables CSS, sombras neo-brutalistas, animaciones y cursor
 ├── js/
-│   └── main.js       # Motor de interacción, ScrollSpy, menú móvil, confeti y toasts
-├── README.md         # Documentación del proyecto
-└── .gitignore        # Archivos ignorados por control de versiones
+│   └── main.js                 # Motor de interacción, ScrollSpy, menú móvil, confeti y toasts
+├── assets/
+│   ├── favicon.svg             # Favicon vectorial con marca AV
+│   └── Alejandro_Vacaro_CV.pdf # Archivo CV en formato PDF
+├── README.md                   # Documentación del proyecto
+└── .gitignore                  # Archivos ignorados por control de versiones
 ```
 
 ---
 
-## 🚀 Cómo Ejecutar en Local
+## 👤 Autor y Contacto
 
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/AlejandroVacaro/sitio-web.git
-   ```
-2. Entra al directorio:
-   ```bash
-   cd sitio-web
-   ```
-3. Abre `index.html` en tu navegador favorito o inicia un servidor local rápido:
-   ```bash
-   python -m http.server 8000
-   ```
-4. Visita `http://localhost:8000`.
-
----
-
-## 👤 Autor
-
-**Alejandro Vacaro**  
+**Alejandro Vacaro Castro**  
 - 📍 Montevideo, Uruguay 🇺🇾  
+- 📱 WhatsApp: [(+598) 99 22 95 49](https://wa.me/59899229549)  
 - 📧 [avacaro@outlook.com](mailto:avacaro@outlook.com)  
-- 💻 GitHub: [@AlejandroVacaro](https://github.com/AlejandroVacaro)
+- 💼 LinkedIn: [/in/alejandrovacaro](https://www.linkedin.com/in/alejandrovacaro/)  
+- 📹 TikTok: [@ale.vacaro](https://www.tiktok.com/@ale.vacaro)  
+- 📸 Instagram: [@ale.vacaro](https://www.instagram.com/ale.vacaro)  
+- 🐦 X (Twitter): [@AlejandroVacaro](https://x.com/AlejandroVacaro)

@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alejandro Vacaro — Frontend Developer & Tech Explorer</title>
-  <meta name="description" content="Sitio web personal de Alejandro Vacaro. Desarrollador Frontend apasionado por crear experiencias web modernas, funcionales y de alto impacto visual.">
+  <title>Alejandro Vacaro Castro — Analista Funcional & Optimización de Procesos</title>
+  <meta name="description" content="Sitio web personal y profesional de Alejandro Vacaro Castro. Analista Funcional especializado en optimización de procesos, implementación BPMS y articulación negocio-tecnología con más de 15 años de trayectoria.">
   
+  <!-- Favicon AV -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -59,23 +62,23 @@
         <div class="flex flex-col">
           <span class="font-heading font-bold text-lg text-slate-900 leading-tight group-hover:text-black transition-colors flex items-center gap-1.5">
             Alejandro Vacaro
-            <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#D4F653] border border-black animate-pulse" title="Disponible para nuevos proyectos"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#D4F653] border border-black animate-pulse" title="Disponible para proyectos"></span>
           </span>
-          <span class="text-[11px] font-medium text-slate-500 font-accent uppercase tracking-wider">Frontend & Tech</span>
+          <span class="text-[11px] font-medium text-slate-500 font-accent uppercase tracking-wider">Analista Funcional</span>
         </div>
       </a>
 
       <!-- Desktop Navigation Links -->
       <nav class="hidden md:flex items-center gap-1.5 bg-slate-100/80 p-1.5 rounded-full border border-slate-300 shadow-sm" aria-label="Navegación principal">
         <a href="#inicio" class="nav-link active font-medium text-sm px-4 py-2 rounded-full transition-all">Inicio</a>
-        <a href="#conoceme" class="nav-link font-medium text-sm px-4 py-2 rounded-full transition-all">Conóceme</a>
-        <a href="#curriculum" class="nav-link font-medium text-sm px-4 py-2 rounded-full transition-all">Currículum</a>
-        <a href="#contacto" class="nav-link font-medium text-sm px-4 py-2 rounded-full transition-all">Contáctame</a>
+        <a href="#sobre-mi" class="nav-link font-medium text-sm px-4 py-2 rounded-full transition-all">Sobre mí</a>
+        <a href="#experiencia" class="nav-link font-medium text-sm px-4 py-2 rounded-full transition-all">Experiencia</a>
+        <a href="#formacion" class="nav-link font-medium text-sm px-4 py-2 rounded-full transition-all">Formación</a>
       </nav>
 
       <!-- Right Action CTA (Desktop) -->
       <div class="hidden md:flex items-center gap-3">
-        <a href="#contacto" class="btn-brutal-primary text-sm">
+        <a href="#hablemos" class="btn-brutal-primary text-sm">
           <span>¡Hablemos!</span>
           <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
         </a>
@@ -95,7 +98,10 @@
       <div class="flex items-center justify-between pb-6 border-b border-slate-200">
         <div class="flex items-center gap-2">
           <div class="w-9 h-9 rounded-full bg-black text-[#D4F653] font-heading font-black flex items-center justify-center border border-black">AV</div>
-          <span class="font-heading font-bold text-base">Alejandro Vacaro</span>
+          <div>
+            <span class="font-heading font-bold text-base block leading-tight">Alejandro Vacaro</span>
+            <span class="text-xs text-slate-500 font-accent">Analista Funcional</span>
+          </div>
         </div>
         <button id="mobile-drawer-close" class="p-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100" aria-label="Cerrar menú">
           <i data-lucide="x" class="w-5 h-5"></i>
@@ -107,24 +113,24 @@
           <span>Inicio</span>
           <i data-lucide="chevron-right" class="w-5 h-5"></i>
         </a>
-        <a href="#conoceme" class="mobile-nav-link p-3.5 rounded-xl font-heading font-semibold text-lg hover:bg-slate-100 border border-slate-200 transition-colors flex items-center justify-between">
-          <span>Conóceme</span>
+        <a href="#sobre-mi" class="mobile-nav-link p-3.5 rounded-xl font-heading font-semibold text-lg hover:bg-slate-100 border border-slate-200 transition-colors flex items-center justify-between">
+          <span>Sobre mí</span>
           <i data-lucide="chevron-right" class="w-5 h-5"></i>
         </a>
-        <a href="#curriculum" class="mobile-nav-link p-3.5 rounded-xl font-heading font-semibold text-lg hover:bg-slate-100 border border-slate-200 transition-colors flex items-center justify-between">
-          <span>Currículum</span>
+        <a href="#experiencia" class="mobile-nav-link p-3.5 rounded-xl font-heading font-semibold text-lg hover:bg-slate-100 border border-slate-200 transition-colors flex items-center justify-between">
+          <span>Experiencia</span>
           <i data-lucide="chevron-right" class="w-5 h-5"></i>
         </a>
-        <a href="#contacto" class="mobile-nav-link p-3.5 rounded-xl font-heading font-semibold text-lg hover:bg-slate-100 border border-slate-200 transition-colors flex items-center justify-between">
-          <span>Contáctame</span>
+        <a href="#formacion" class="mobile-nav-link p-3.5 rounded-xl font-heading font-semibold text-lg hover:bg-slate-100 border border-slate-200 transition-colors flex items-center justify-between">
+          <span>Formación</span>
           <i data-lucide="chevron-right" class="w-5 h-5"></i>
         </a>
       </nav>
     </div>
 
     <div class="pt-6 border-t border-slate-200">
-      <a href="#contacto" class="btn-brutal-primary w-full justify-center text-center mobile-nav-link">
-        <span>Empecemos a conversar</span>
+      <a href="#hablemos" class="btn-brutal-primary w-full justify-center text-center mobile-nav-link">
+        <span>¡Hablemos!</span>
         <i data-lucide="send" class="w-4 h-4"></i>
       </a>
       <p class="text-xs text-center text-slate-500 mt-4">Montevideo, Uruguay 🇺🇾</p>
@@ -140,7 +146,7 @@
 
     <!-- Big Watermark Outline Text (Behind Hero Content) -->
     <div class="text-center w-full select-none pointer-events-none mb-[-4rem] md:mb-[-6rem] opacity-70">
-      <h2 class="text-stroke-bg">ALEJANDRO VACARO</h2>
+      <h2 class="text-stroke-bg">ANALISTA FUNCIONAL</h2>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -152,57 +158,64 @@
           <!-- Pill Tag / Welcome Pill -->
           <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border-2 border-black shadow-[3px_3px_0px_#000]">
             <span class="w-2.5 h-2.5 rounded-full bg-[#D4F653] border border-black"></span>
-            <span class="font-accent font-semibold text-xs uppercase tracking-wider text-slate-800">Desarrollo Web & Transformación Digital</span>
+            <span class="font-accent font-semibold text-xs uppercase tracking-wider text-slate-800">Business Analysis • BPMS • Optimización de Procesos</span>
           </div>
 
           <!-- Main Hero Headline -->
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-black text-slate-950 tracking-tight leading-[1.08]">
-            Transformando ideas en experiencias <span class="relative inline-block px-2 py-0.5 bg-[#D4F653] text-black border-2 border-black rounded-lg shadow-[3px_3px_0px_#000] rotate-[-1deg]">digitales reales</span>
+            Conectando el negocio con la tecnología para <span class="relative inline-block px-2 py-0.5 bg-[#D4F653] text-black border-2 border-black rounded-lg shadow-[3px_3px_0px_#000] rotate-[-1deg]">potenciar procesos</span>
           </h1>
 
+          <!-- Professional Trajectory Card from CV -->
+          <div class="p-5 rounded-2xl bg-slate-900 text-white border-2 border-black shadow-[4px_4px_0px_#000]">
+            <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
+              Soy un profesional con <strong>más de 15 años de trayectoria</strong>. Tengo experiencia en áreas tecnológicas, operativas, financieras y de atención al cliente. Todo esto, sumado a mi formación multidisciplinaria, me aporta una visión integral que utilizo para potenciar procesos y transformarlos en soluciones tecnológicas prácticas y de impacto real para la empresa.
+            </p>
+          </div>
+
           <!-- User's Requested Welcoming Message -->
-          <div class="card-brutal-white p-6 relative bg-white/95">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-[#D4F653] border-2 border-black flex items-center justify-center flex-shrink-0 shadow-[2px_2px_0px_#000]">
-                <i data-lucide="sparkles" class="w-5 h-5 text-black"></i>
+          <div class="card-brutal-white p-5 relative bg-white/95">
+            <div class="flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-[#D4F653] border-2 border-black flex items-center justify-center flex-shrink-0 shadow-[2px_2px_0px_#000]">
+                <i data-lucide="sparkles" class="w-4 h-4 text-black"></i>
               </div>
               <div>
-                <p class="text-slate-700 text-base md:text-lg leading-relaxed font-medium">
+                <p class="text-slate-700 text-sm md:text-base leading-relaxed font-medium">
                   "¡Hola! Bienvenido a mi sitio web. Me alegra un montón tenerte de visita por aquí, espero que disfrutes conocerme y que te interese ponerte en contacto conmigo para que yo también te pueda conocer a ti."
                 </p>
-                <div class="mt-3 flex items-center gap-2">
-                  <span class="text-xs font-accent font-bold text-slate-900 uppercase tracking-wide">— Alejandro Vacaro</span>
-                  <span class="text-xs text-slate-500">• Paysandú / Montevideo, Uruguay</span>
+                <div class="mt-2.5 flex items-center gap-2">
+                  <span class="text-xs font-accent font-bold text-slate-900 uppercase tracking-wide">— Alejandro Vacaro Castro</span>
+                  <span class="text-xs text-slate-500">• Montevideo, Uruguay</span>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- CTAs -->
-          <div class="flex flex-wrap items-center gap-4 pt-2">
-            <a href="#conoceme" class="btn-brutal-primary text-base">
-              <span>Conoce mi historia</span>
+          <div class="flex flex-wrap items-center gap-4 pt-1">
+            <a href="#sobre-mi" class="btn-brutal-primary text-base">
+              <span>Sobre mí</span>
               <i data-lucide="user" class="w-5 h-5"></i>
             </a>
-            <a href="#contacto" class="btn-brutal-dark text-base">
-              <span>Hablemos</span>
-              <i data-lucide="mail" class="w-5 h-5"></i>
+            <a href="assets/Alejandro_Vacaro_CV.pdf" download="Alejandro_Vacaro_Castro_CV.pdf" class="btn-brutal-dark action-cv-download text-base">
+              <span>Descargar CV (PDF)</span>
+              <i data-lucide="download" class="w-5 h-5"></i>
             </a>
-            <button class="btn-brutal-outline action-cv-download text-base">
-              <span>Ver CV</span>
-              <i data-lucide="file-text" class="w-5 h-5"></i>
-            </button>
+            <a href="#hablemos" class="btn-brutal-outline text-base">
+              <span>¡Hablemos!</span>
+              <i data-lucide="send" class="w-5 h-5"></i>
+            </a>
           </div>
 
           <!-- Quick Stat Badges -->
-          <div class="pt-4 flex flex-wrap items-center gap-3">
+          <div class="pt-2 flex flex-wrap items-center gap-3">
             <div class="pill-badge">
-              <i data-lucide="code-2" class="w-4 h-4 text-emerald-600"></i>
-              <span>Frontend Developer</span>
+              <i data-lucide="workflow" class="w-4 h-4 text-emerald-600"></i>
+              <span>Implementación BPMS</span>
             </div>
             <div class="pill-badge pill-badge-lime">
-              <i data-lucide="zap" class="w-4 h-4 text-black"></i>
-              <span>Transformación Digital</span>
+              <i data-lucide="trending-up" class="w-4 h-4 text-black"></i>
+              <span>+15 Años de Trayectoria</span>
             </div>
             <div class="pill-badge">
               <i data-lucide="heart" class="w-4 h-4 text-rose-500"></i>
@@ -211,7 +224,7 @@
           </div>
         </div>
 
-        <!-- Right Column: Visual Persona Card Composition (Aesthetic matching user's image) -->
+        <!-- Right Column: Visual Persona Card Composition -->
         <div class="lg:col-span-6 relative flex justify-center items-center">
           
           <!-- Outer Container with neo-brutal decorative frame -->
@@ -221,14 +234,14 @@
             <div class="absolute -top-8 -left-6 z-20 hidden sm:flex items-center justify-center w-28 h-28 bg-white border-2 border-black rounded-full shadow-[4px_4px_0px_#000]">
               <svg class="w-full h-full p-2 spin-slow" viewBox="0 0 100 100">
                 <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-                <text font-size="9.5" font-weight="bold" letter-spacing="2">
+                <text font-size="8.5" font-weight="bold" letter-spacing="1.5">
                   <textPath href="#circlePath" fill="#000">
-                    • 5+ AÑOS EVOLUCIÓN • DEV & TECH •
+                    • 15+ AÑOS TRAYECTORIA • ANALISTA FUNCIONAL •
                   </textPath>
                 </text>
               </svg>
               <div class="absolute w-10 h-10 bg-[#D4F653] rounded-full border-2 border-black flex items-center justify-center shadow-[1px_1px_0px_#000]">
-                <i data-lucide="terminal" class="w-5 h-5 text-black"></i>
+                <i data-lucide="git-merge" class="w-5 h-5 text-black"></i>
               </div>
             </div>
 
@@ -236,12 +249,12 @@
             <div class="absolute -top-5 -right-4 z-20 bg-white border-2 border-black px-4 py-2.5 rounded-2xl shadow-[4px_4px_0px_#000] flex items-center gap-3 animate-float-slow">
               <div class="flex -space-x-2">
                 <div class="w-8 h-8 rounded-full bg-yellow-400 border-2 border-black flex items-center justify-center font-bold text-xs">📊</div>
-                <div class="w-8 h-8 rounded-full bg-[#D4F653] border-2 border-black flex items-center justify-center font-bold text-xs">💻</div>
+                <div class="w-8 h-8 rounded-full bg-[#D4F653] border-2 border-black flex items-center justify-center font-bold text-xs">⚙️</div>
                 <div class="w-8 h-8 rounded-full bg-blue-400 border-2 border-black flex items-center justify-center font-bold text-xs">🚀</div>
               </div>
               <div>
-                <p class="font-heading font-black text-sm leading-tight text-slate-900">De Contador</p>
-                <p class="text-[11px] font-accent text-slate-500 font-semibold uppercase">a Desarrollador</p>
+                <p class="font-heading font-black text-sm leading-tight text-slate-900">BPMS & Procesos</p>
+                <p class="text-[11px] font-accent text-slate-500 font-semibold uppercase">Negocio + Tech</p>
               </div>
             </div>
 
@@ -259,24 +272,24 @@
                   
                   <!-- Abstract geometric developer avatar representation -->
                   <div class="absolute inset-0 flex items-center justify-center opacity-15">
-                    <i data-lucide="code" class="w-48 h-48 text-[#D4F653]"></i>
+                    <i data-lucide="layers" class="w-48 h-48 text-[#D4F653]"></i>
                   </div>
                   
-                  <!-- Avatar Icon Graphic -->
+                  <!-- Avatar Icon Graphic with AV logo -->
                   <div class="relative z-10 w-28 h-28 rounded-full bg-[#D4F653] border-4 border-black shadow-[4px_4px_0px_#000] flex items-center justify-center mb-6">
-                    <i data-lucide="user-check" class="w-14 h-14 text-black"></i>
+                    <span class="font-heading font-black text-3xl text-black">AV</span>
                   </div>
 
                   <div class="relative z-10 text-center space-y-1 mb-8">
                     <p class="font-heading font-black text-2xl tracking-wide text-white">Alejandro Vacaro</p>
-                    <p class="text-sm font-accent font-semibold text-[#D4F653] bg-black/60 px-3 py-1 rounded-full border border-black/40 inline-block">
-                      Frontend Dev • Full Stack Mindset
+                    <p class="text-xs font-accent font-semibold text-[#D4F653] bg-black/70 px-3 py-1 rounded-full border border-black/40 inline-block">
+                      Analista Funcional • Business Analysis
                     </p>
                   </div>
 
-                  <!-- Bottom Badge like the reference image ("MARK COLBERT CHIRTS" style) -->
+                  <!-- Bottom Badge like the reference image -->
                   <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-11/12 bg-black text-[#D4F653] border-2 border-white px-4 py-2.5 rounded-xl shadow-[3px_3px_0px_#000] text-center">
-                    <span class="font-heading font-black text-sm tracking-wider uppercase">ALEJANDRO VACARO</span>
+                    <span class="font-heading font-black text-sm tracking-wider uppercase">ALEJANDRO VACARO CASTRO</span>
                   </div>
                 </div>
 
@@ -288,14 +301,14 @@
               <span class="text-xl">🐕</span>
               <div>
                 <p class="font-heading font-bold text-xs text-slate-900">Labrador Dad</p>
-                <p class="text-[10px] text-slate-500 font-medium">Compañero de código</p>
+                <p class="text-[10px] text-slate-500 font-medium">Compañero de vida</p>
               </div>
             </div>
 
             <!-- Floating Bottom-Right Quick Action Badge -->
             <div class="absolute -bottom-5 -right-4 z-20 bg-[#0E1116] border-2 border-black px-4 py-2 rounded-2xl shadow-[4px_4px_0px_#000] flex items-center gap-2 text-white">
-              <i data-lucide="sparkle" class="w-4 h-4 text-[#D4F653]"></i>
-              <span class="font-heading font-bold text-xs text-[#D4F653]">100% Funcional</span>
+              <i data-lucide="check-circle" class="w-4 h-4 text-[#D4F653]"></i>
+              <span class="font-heading font-bold text-xs text-[#D4F653]">República AFAP</span>
             </div>
 
           </div>
@@ -309,54 +322,58 @@
   <div class="marquee-container py-3.5 shadow-md">
     <div class="marquee-content font-heading font-extrabold text-base md:text-lg tracking-wider uppercase">
       <span class="flex items-center gap-3">
-        <span>⚡ DESARROLLO FRONTEND</span>
+        <span>⚙️ ANALISTA FUNCIONAL</span>
         <span class="text-[#D4F653]">•</span>
-        <span>UI / UX DESIGN</span>
+        <span>BUSINESS ANALYSIS</span>
         <span class="text-[#D4F653]">•</span>
-        <span>TRANSFORMACIÓN DIGITAL</span>
+        <span>IMPLEMENTACIÓN BPMS</span>
         <span class="text-[#D4F653]">•</span>
-        <span>RESILIENCIA & PASIÓN</span>
+        <span>OPTIMIZACIÓN DE PROCESOS</span>
         <span class="text-[#D4F653]">•</span>
-        <span>ALEJANDRO VACARO — 2026</span>
+        <span>LIC. EN ADMINISTRACIÓN (UDELAR)</span>
         <span class="text-[#D4F653]">•</span>
-        <span>JAVASCRIPT & WEB APPS</span>
+        <span>ALEJANDRO VACARO CASTRO</span>
+        <span class="text-[#D4F653]">•</span>
+        <span>GESTIÓN PREVISIONAL & FINANCIERA</span>
         <span class="text-[#D4F653]">•</span>
       </span>
     </div>
     <div class="marquee-content font-heading font-extrabold text-base md:text-lg tracking-wider uppercase" aria-hidden="true">
       <span class="flex items-center gap-3">
-        <span>⚡ DESARROLLO FRONTEND</span>
+        <span>⚙️ ANALISTA FUNCIONAL</span>
         <span class="text-[#D4F653]">•</span>
-        <span>UI / UX DESIGN</span>
+        <span>BUSINESS ANALYSIS</span>
         <span class="text-[#D4F653]">•</span>
-        <span>TRANSFORMACIÓN DIGITAL</span>
+        <span>IMPLEMENTACIÓN BPMS</span>
         <span class="text-[#D4F653]">•</span>
-        <span>RESILIENCIA & PASIÓN</span>
+        <span>OPTIMIZACIÓN DE PROCESOS</span>
         <span class="text-[#D4F653]">•</span>
-        <span>ALEJANDRO VACARO — 2026</span>
+        <span>LIC. EN ADMINISTRACIÓN (UDELAR)</span>
         <span class="text-[#D4F653]">•</span>
-        <span>JAVASCRIPT & WEB APPS</span>
+        <span>ALEJANDRO VACARO CASTRO</span>
+        <span class="text-[#D4F653]">•</span>
+        <span>GESTIÓN PREVISIONAL & FINANCIERA</span>
         <span class="text-[#D4F653]">•</span>
       </span>
     </div>
   </div>
 
-  <!-- ================= CONÓCEME (ABOUT ME) STORYTELLING SECTION ================= -->
-  <section id="conoceme" class="py-20 md:py-32 bg-white relative">
+  <!-- ================= SOBRE MÍ (ABOUT ME) STORYTELLING SECTION ================= -->
+  <section id="sobre-mi" class="py-20 md:py-32 bg-white relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4F653] border-2 border-black shadow-[3px_3px_0px_#000]">
           <i data-lucide="book-open" class="w-4 h-4 text-black"></i>
-          <span class="font-accent font-bold text-xs uppercase tracking-wider text-black">Conóceme • Mi Historia</span>
+          <span class="font-accent font-bold text-xs uppercase tracking-wider text-black">Sobre mí • Mi Historia</span>
         </div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-slate-900 tracking-tight">
-          De los números y el altillo al código: <br class="hidden sm:inline">
+          De los números y el altillo al análisis funcional: <br class="hidden sm:inline">
           <span class="text-[#0E1116] underline decoration-[#D4F653] decoration-4 underline-offset-4">Una historia de esfuerzo y reinvención</span>
         </h2>
         <p class="text-slate-600 text-base md:text-lg font-medium">
-          Conoce el camino que me trajo hasta aquí: las raíces en Paysandú, los viajes, las crisis que se transformaron en oportunidades y la pasión definitiva por crear software.
+          Conoce el camino que me trajo hasta aquí: las raíces en Paysandú, los viajes, las crisis que se transformaron en oportunidades y la pasión por conectar el negocio con la tecnología.
         </p>
       </div>
 
@@ -371,10 +388,10 @@
             <div class="relative rounded-2xl overflow-hidden border-2 border-black bg-white shadow-[3px_3px_0px_#000] mb-6 aspect-square flex items-center justify-center">
               <div class="w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 flex flex-col items-center justify-center p-6 text-center text-white relative">
                 <div class="w-20 h-20 rounded-full bg-[#D4F653] border-2 border-black flex items-center justify-center mb-3 shadow-[2px_2px_0px_#000]">
-                  <i data-lucide="user" class="w-10 h-10 text-black"></i>
+                  <span class="font-heading font-black text-2xl text-black">AV</span>
                 </div>
                 <h3 class="font-heading font-bold text-xl text-white">Alejandro Vacaro</h3>
-                <p class="text-xs font-accent text-[#D4F653] mt-1 font-semibold uppercase">Desarrollador & Estudiante</p>
+                <p class="text-xs font-accent text-[#D4F653] mt-1 font-semibold uppercase">Analista Funcional • República AFAP</p>
                 <div class="mt-4 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] text-slate-300">
                   📍 Paysandú (1993) → Montevideo
                 </div>
@@ -385,28 +402,28 @@
             <div class="space-y-3">
               <h4 class="font-heading font-bold text-sm text-slate-900 uppercase tracking-wider flex items-center gap-2">
                 <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
-                Puntos Clave
+                Hitos y Filosofía
               </h4>
               <ul class="text-xs font-medium text-slate-700 space-y-2.5">
                 <li class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-slate-200">
                   <span class="text-[#D4F653] bg-black rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">1</span>
-                  <span><strong>Superación:</strong> Desde reponer supermercados hasta liderar transformación digital.</span>
+                  <span><strong>Superación:</strong> Desde repositor en supermercado hasta liderar implementación BPMS.</span>
                 </li>
                 <li class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-slate-200">
                   <span class="text-[#D4F653] bg-black rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">2</span>
-                  <span><strong>El Salto 2020:</strong> Reinvención de Contador Público a Desarrollador Frontend.</span>
+                  <span><strong>Visión 360°:</strong> Combinación de conocimientos financieros, contables y tecnológicos.</span>
                 </li>
                 <li class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-slate-200">
                   <span class="text-[#D4F653] bg-black rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">3</span>
-                  <span><strong>Constancia:</strong> Retomando la facultad, entrenando y criando a su labrador.</span>
+                  <span><strong>Constancia:</strong> Retomando la facultad en UDELAR, Business Analysis y criando a su labrador.</span>
                 </li>
               </ul>
             </div>
 
             <div class="mt-6 pt-6 border-t border-slate-200">
-              <a href="#contacto" class="btn-brutal-primary w-full justify-center text-sm">
-                <span>¿Hablamos de un proyecto?</span>
-                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              <a href="assets/Alejandro_Vacaro_CV.pdf" download="Alejandro_Vacaro_Castro_CV.pdf" class="btn-brutal-primary w-full justify-center text-sm action-cv-download">
+                <span>Descargar CV en PDF</span>
+                <i data-lucide="download" class="w-4 h-4"></i>
               </a>
             </div>
           </div>
@@ -415,108 +432,74 @@
           <div class="card-brutal-lime p-5">
             <i data-lucide="quote" class="w-8 h-8 text-black opacity-30 mb-2"></i>
             <p class="font-heading font-bold text-slate-950 text-sm italic leading-snug">
-              "Tuve que secuestrar y maniatar a mi 'yo contador' y dejar libre a mi 'yo programador'."
+              "Tuve que secuestrar y maniatar a mi 'yo contador' y dejar libre a mi 'yo analista & solucionador de procesos'."
             </p>
             <p class="text-[11px] font-accent font-semibold text-slate-800 mt-2">— Alejandro Vacaro</p>
           </div>
 
         </div>
 
-        <!-- Right Visual Story Chapters / Timeline -->
-        <div class="lg:col-span-8 space-y-8">
-          
-          <!-- CHAPTER 1 -->
-          <div class="story-card card-brutal-white p-6 sm:p-8 relative bg-white">
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100 mb-5">
-              <div class="flex items-center gap-3">
-                <span class="w-8 h-8 rounded-full bg-[#D4F653] border-2 border-black flex items-center justify-center font-heading font-black text-xs shadow-[2px_2px_0px_#000]">01</span>
-                <h3 class="font-heading font-black text-xl text-slate-900">Raíces en Paysandú y Primeros Desafíos</h3>
+        <!-- Right: Single Continuous Story Reader (with smooth custom scroll) -->
+        <div class="lg:col-span-8">
+          <div class="card-brutal-white p-6 sm:p-10 bg-white">
+            
+            <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-200">
+              <div class="flex items-center gap-2.5">
+                <span class="w-3 h-3 rounded-full bg-[#D4F653] border border-black animate-pulse"></span>
+                <span class="font-heading font-black text-lg sm:text-xl text-slate-900">Mi Trayectoria en Primera Persona</span>
               </div>
-              <span class="pill-badge text-xs font-accent">1993 • Paysandú</span>
+              <span class="text-xs font-accent text-slate-500 font-semibold uppercase bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+                Lectura Continua
+              </span>
             </div>
-            <p class="text-slate-700 leading-relaxed text-base font-normal">
-              Nací en Paysandú en el año 93, en una familia de bajos recursos. Fui el último de tres hermanos. Siempre fui buen estudiante, pero tuve algunos problemas de sociabilidad en mi etapa de estudiante, principalmente por el rechazo que generaba ser diferente, o un "puto", como preferían llamarme. Tuve diversos trabajos: desde repositor en un supermercado y profesor en un gimnasio, hasta administrativo contable y empleado público. Llegué a tener cuatro trabajos a la vez y un burnout for export.
-            </p>
-          </div>
 
-          <!-- CHAPTER 2 -->
-          <div class="story-card card-brutal-white p-6 sm:p-8 relative bg-white">
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100 mb-5">
-              <div class="flex items-center gap-3">
-                <span class="w-8 h-8 rounded-full bg-[#D4F653] border-2 border-black flex items-center justify-center font-heading font-black text-xs shadow-[2px_2px_0px_#000]">02</span>
-                <h3 class="font-heading font-black text-xl text-slate-900">El Sueño de Cruzar el Charco y el Golpe Más Duro</h3>
+            <!-- Scrollable container for fluid, uninterrupted reading -->
+            <div class="story-scroll-container space-y-6 text-slate-700 leading-relaxed text-base">
+              
+              <div class="p-4 rounded-xl bg-[#F8FDCB]/30 border-l-4 border-[#D4F653] text-slate-800 font-medium">
+                <em>"Soy un profesional que aprendió desde muy joven que la perseverancia, el aprendizaje continuo y la adaptabilidad son los pilares para superar cualquier obstáculo."</em>
               </div>
-              <span class="pill-badge text-xs font-accent">22 años • El Viaje Soñado</span>
-            </div>
-            <p class="text-slate-700 leading-relaxed text-base font-normal">
-              Con 22 años, y cansado de ser tan explotado sin sentir que tenía una recompensa justa a cambio, me propuse ahorrar todo lo que pudiese para cumplir mi sueño de subirme a un avión por primera vez y cruzar el charco al viejo continente. Así fue como logré, en el término de un año, poder juntar lo necesario para regalarme aquel viaje soñado. Pero la vida, en un afán de recordarme lo desgraciada que podía llegar a ser, se llevó a mi viejo una semana antes de que despegara aquel avión.
-            </p>
-          </div>
 
-          <!-- CHAPTER 3 -->
-          <div class="story-card card-brutal-white p-6 sm:p-8 relative bg-white">
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100 mb-5">
-              <div class="flex items-center gap-3">
-                <span class="w-8 h-8 rounded-full bg-[#D4F653] border-2 border-black flex items-center justify-center font-heading font-black text-xs shadow-[2px_2px_0px_#000]">03</span>
-                <h3 class="font-heading font-black text-xl text-slate-900">Montevideo, el Altillo y la Facultad</h3>
-              </div>
-              <span class="pill-badge text-xs font-accent">24 años • Montevideo</span>
-            </div>
-            <p class="text-slate-700 leading-relaxed text-base font-normal">
-              Aquel viaje fue muy fuerte para mí. Por lo soñado que fue, por todo lo que me costó y por el dolor inmenso de haber perdido a mi padre apenas días atrás, así surgió en mí un impulso de querer enfrentar mis miedos e irme a otra ciudad a perseguir mi meta de entrar en la universidad. Con 24 años conseguí un trabajo en una administradora de fondos, vendí todo lo que tenía y me mudé a Montevideo. Los primeros meses dormía en un altillo de la casa de un amigo. Comencé la carrera de Contador Público, algo que había querido ser desde muy pequeño, ni idea por qué. Desde siempre me había llamado mucho la atención el mundo de la informática, pero pensaba que no era para mí, supongo que por creer que era algo demasiado difícil.
-            </p>
-          </div>
+              <p>
+                Nací en Paysandú en el año 93, en una familia de bajos recursos. Fui el último de tres hermanos. Siempre fui buen estudiante, pero tuve algunos problemas de sociabilidad en mi etapa de estudiante, principalmente por el rechazo que generaba ser diferente, o un "puto", como preferían llamarme. Tuve diversos trabajos: desde repositor en un supermercado y profesor en un gimnasio, hasta administrativo contable y empleado público. Llegué a tener cuatro trabajos a la vez y un burnout for export. Con 22 años, y cansado de ser tan explotado sin sentir que tenía una recompensa justa a cambio, me propuse ahorrar todo lo que pudiese para cumplir mi sueño de subirme a un avión por primera vez y cruzar el charco al viejo continente. Así fue como logré, en el término de un año, poder juntar lo necesario para regalarme aquel viaje soñado. Pero la vida, en un afán de recordarme lo desgraciada que podía llegar a ser, se llevó a mi viejo una semana antes de que despegara aquel avión.
+              </p>
 
-          <!-- CHAPTER 4 -->
-          <div class="story-card card-brutal-white p-6 sm:p-8 relative bg-white border-2 border-slate-900">
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100 mb-5">
-              <div class="flex items-center gap-3">
-                <span class="w-8 h-8 rounded-full bg-[#D4F653] border-2 border-black flex items-center justify-center font-heading font-black text-xs shadow-[2px_2px_0px_#000]">04</span>
-                <h3 class="font-heading font-black text-xl text-slate-900">2020: La Chispa de la Curiosidad</h3>
-              </div>
-              <span class="pill-badge pill-badge-lime text-xs font-accent">2020 • Punto de Inflexión</span>
-            </div>
-            <p class="text-slate-700 leading-relaxed text-base font-normal">
-              Pero llegó el 2020 y el resto de lo que pasó ese año creo que no hace falta que lo cuente. Para ese entonces ya vivía solo en un apartamento, teletrabajando, intentando rendir materias en una facultad a la que le costó adaptarse a esa realidad, y con mucho tiempo libre y encerrado. Comencé a explorar el Internet como hacía muchos años no lo hacía, con la misma curiosidad que cuando tuve mi primera computadora. Así llegué a un curso online de programación desde cero y decidí anotarme para probar, total... ¿qué podía pasar? ¿Que me terminara interesando más programar que la carrera que estaba cursando? ¡Adiviná!
-            </p>
-          </div>
+              <p>
+                Aquel viaje fue muy fuerte para mí. Por lo soñado que fue, por todo lo que me costó y por el dolor inmenso de haber perdido a mi padre apenas días atrás, así surgió en mí un impulso de querer enfrentar mis miedos e irme a otra ciudad a perseguir mi meta de entrar en la universidad. Con 24 años conseguí un trabajo en una administradora de fondos, vendí todo lo que tenía y me mudé a Montevideo. Los primeros meses dormía en un altillo de la casa de un amigo. Comencé la carrera de Contador Público, algo que había querido ser desde muy pequeño, ni idea por qué. Desde siempre me había llamado mucho la atención el mundo de la informática, pero pensaba que no era para mí, supongo que por creer que era algo demasiado difícil.
+              </p>
 
-          <!-- CHAPTER 5 -->
-          <div class="story-card card-brutal-white p-6 sm:p-8 relative bg-white">
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100 mb-5">
-              <div class="flex items-center gap-3">
-                <span class="w-8 h-8 rounded-full bg-[#D4F653] border-2 border-black flex items-center justify-center font-heading font-black text-xs shadow-[2px_2px_0px_#000]">05</span>
-                <h3 class="font-heading font-black text-xl text-slate-900">Liberar al Programador & Transformación Digital</h3>
-              </div>
-              <span class="pill-badge pill-badge-dark text-xs font-accent">Reconversión Profesional</span>
-            </div>
-            <div class="space-y-4 text-slate-700 leading-relaxed text-base font-normal">
+              <p>
+                Pero llegó el 2020 y el resto de lo que pasó ese año creo que no hace falta que lo cuente. Para ese entonces ya vivía solo en un apartamento, teletrabajando, intentando rendir materias en una facultad a la que le costó adaptarse a esa realidad, y con mucho tiempo libre y encerrado. Comencé a explorar el Internet como hacía muchos años no lo hacía, con la misma curiosidad que cuando tuve mi primera computadora. Así llegué a un curso online de programación desde cero y decidí anotarme para probar, total... ¿qué podía pasar? ¿Que me terminara interesando más programar que la carrera que estaba cursando? ¡Adiviná!
+              </p>
+
               <p>
                 Y sí, luego de una crisis existencial, ¡y hasta de identidad! porque ya había aceptado mi futuro como contador, tuve que secuestrar y maniatar a mi "yo contador" y dejar libre a mi "yo programador". Así comenzó una aventura de más de tres años, aprendiendo lenguajes, librerías y conceptos que nunca me hubiera imaginado entender. Una vez superada la crisis existencial, llegó la crisis laboral; no porque me haya quedado sin trabajo, sino porque mis intereses personales habían cambiado y ya no se alineaban con los de mi empleo en ese momento, ya que este trabajo lo había conseguido mi "yo contador".
               </p>
+
               <p>
                 Así empezó un plan de reconversión donde tuve la oportunidad de liderar un proyecto de transformación digital dentro del área donde yo trabajaba. De esta manera, con el tiempo, llegaría una propuesta para pasarme al equipo de desarrollo, propuesta que me costó muchísimo aceptar (espero que se entienda la ironía).
               </p>
-            </div>
-          </div>
 
-          <!-- CHAPTER 6 -->
-          <div class="story-card card-brutal-white p-6 sm:p-8 relative bg-gradient-to-br from-white to-[#F8FDCB]/40">
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100 mb-5">
-              <div class="flex items-center gap-3">
-                <span class="w-8 h-8 rounded-full bg-[#D4F653] border-2 border-black flex items-center justify-center font-heading font-black text-xs shadow-[2px_2px_0px_#000]">06</span>
-                <h3 class="font-heading font-black text-xl text-slate-900">El Presente: El Cartoncito y un Labrador 🐕</h3>
-              </div>
-              <span class="pill-badge text-xs font-accent">Hoy • Presente</span>
-            </div>
-            <p class="text-slate-700 leading-relaxed text-base font-normal">
-              Pero como buen geminiano que soy, no podía conformarme solo con esto. Porque a pesar de toda mi experiencia y aprendizaje en estos años, todavía me falta el check de tener un "cartoncito". Así que un día tomé la decisión de volver a golpear las puertas de aquella facultad que en su momento me recibió, y retomar la carrera que había abandonado.
-            </p>
-            <p class="text-slate-700 leading-relaxed text-base font-normal mt-3">
-              Hoy por hoy me encuentro gestionando mi tiempo entre el trabajo, la facultad, el entrenamiento, así como también la crianza de un labrador que un buen día apareció por sorpresa en mi vida. Hecho que se merece un relato propio, pero que dejaré para otro momento.
-            </p>
-          </div>
+              <p>
+                Pero como buen geminiano que soy, no podía conformarme solo con esto. Porque a pesar de toda mi experiencia y aprendizaje en estos años, todavía me falta el check de tener un "cartoncito". Así que un día tomé la decisión de volver a golpear las puertas de aquella facultad que en su momento me recibió, y retomar la carrera que había abandonado.
+              </p>
 
+              <p class="font-medium text-slate-900 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                Hoy por hoy me encuentro gestionando mi tiempo entre el trabajo como Analista Funcional en República AFAP, la facultad, el entrenamiento, así como también la crianza de un labrador que un buen día apareció por sorpresa en mi vida. Hecho que se merece un relato propio, pero que dejaré para otro momento. 🐾
+              </p>
+
+            </div>
+
+            <!-- Footer note of story card -->
+            <div class="pt-6 mt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+              <span class="text-xs text-slate-500 font-medium">📍 Alejandro Vacaro Castro — Montevideo, Uruguay</span>
+              <a href="#experiencia" class="btn-brutal-primary text-xs py-2 px-4">
+                <span>Ver mi experiencia laboral</span>
+                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+              </a>
+            </div>
+
+          </div>
         </div>
 
       </div>
@@ -524,8 +507,8 @@
     </div>
   </section>
 
-  <!-- ================= CURRÍCULUM SECTION ================= -->
-  <section id="curriculum" class="py-20 md:py-32 bg-[#0E1116] text-white relative overflow-hidden">
+  <!-- ================= EXPERIENCIA SECTION ================= -->
+  <section id="experiencia" class="py-20 md:py-32 bg-[#0E1116] text-white relative overflow-hidden">
     
     <!-- Background glowing orbs -->
     <div class="absolute -top-20 -right-20 w-96 h-96 bg-[#D4F653]/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -536,113 +519,373 @@
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4F653] text-black border-2 border-black shadow-[3px_3px_0px_#000]">
-          <i data-lucide="file-badge" class="w-4 h-4 text-black"></i>
-          <span class="font-accent font-bold text-xs uppercase tracking-wider">Currículum Vitae</span>
+          <i data-lucide="briefcase" class="w-4 h-4 text-black"></i>
+          <span class="font-accent font-bold text-xs uppercase tracking-wider">Experiencia Laboral</span>
         </div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-white tracking-tight">
-          Trayectoria, Habilidades & Formación
+          Más de 15 años de trayectoria profesional
         </h2>
         <p class="text-slate-400 text-base md:text-lg">
-          Esta sección está lista para recibir todos los detalles de mi experiencia laboral, tecnologías y certificaciones.
+          Liderazgo funcional, optimización de flujos de negocio, gestión previsional y solvencia contable-financiera.
         </p>
       </div>
 
-      <!-- CV Placeholder Main Card -->
-      <div class="max-w-4xl mx-auto">
-        <div class="card-brutal-dark p-8 md:p-12 text-center relative overflow-hidden border-2 border-[#2D333F]">
+      <!-- Experience Timeline Grid -->
+      <div class="max-w-4xl mx-auto space-y-8">
+        
+        <!-- 1. REPÚBLICA AFAP (Main Block) -->
+        <div class="card-brutal-dark p-6 sm:p-8 border-2 border-[#2D333F] relative">
           
-          <!-- Top Badge -->
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-[#D4F653] font-accent text-xs font-semibold mb-6">
-            <span class="w-2 h-2 rounded-full bg-[#D4F653] animate-ping"></span>
-            <span>Sección en preparación — Próximamente disponible</span>
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-slate-800">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl bg-[#D4F653] text-black border-2 border-black flex items-center justify-center font-heading font-black text-xl shadow-[2px_2px_0px_#000]">
+                RA
+              </div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-heading font-black text-white">REPÚBLICA AFAP</h3>
+                <p class="text-xs text-slate-400 font-accent uppercase">Administradora de Fondos de Ahorro Previsional</p>
+              </div>
+            </div>
+            <span class="px-3.5 py-1.5 rounded-full bg-[#D4F653]/20 border border-[#D4F653] text-[#D4F653] font-accent text-xs font-bold">
+              mar. 2018 — Actualidad
+            </span>
           </div>
 
-          <h3 class="text-2xl md:text-3xl font-heading font-black text-white mb-4">
-            Curriculum Vitae interactivo en camino
-          </h3>
-
-          <p class="text-slate-300 max-w-2xl mx-auto text-base leading-relaxed mb-8">
-            Actualmente estoy preparando el desglose detallado de proyectos realizados, stack de tecnologías dominadas (HTML5, CSS3, JavaScript, React, UI/UX) y mi trayectoria en transformación digital.
-          </p>
-
-          <!-- Preview Pillars Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 text-left">
-            <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
-              <div class="w-8 h-8 rounded-lg bg-[#D4F653] text-black flex items-center justify-center font-bold mb-3">
-                <i data-lucide="code" class="w-4 h-4"></i>
-              </div>
-              <h4 class="font-heading font-bold text-white text-sm">Stack Técnico</h4>
-              <p class="text-xs text-slate-400 mt-1">HTML5, CSS3, Tailwind, JS Moderno, React, Git, UI/UX.</p>
-            </div>
+          <!-- Roles inside República AFAP -->
+          <div class="pt-6 space-y-8">
             
-            <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
-              <div class="w-8 h-8 rounded-lg bg-[#D4F653] text-black flex items-center justify-center font-bold mb-3">
-                <i data-lucide="briefcase" class="w-4 h-4"></i>
+            <!-- Role 1: Analista Funcional -->
+            <div class="relative pl-6 border-l-2 border-[#D4F653] space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h4 class="text-lg font-heading font-bold text-[#D4F653] flex items-center gap-2">
+                  <i data-lucide="zap" class="w-4 h-4 text-[#D4F653]"></i>
+                  Analista Funcional
+                </h4>
+                <span class="text-xs font-accent text-slate-300 font-semibold bg-slate-800 px-3 py-1 rounded-full">
+                  set. 2025 — Actualidad
+                </span>
               </div>
-              <h4 class="font-heading font-bold text-white text-sm">Experiencia</h4>
-              <p class="text-xs text-slate-400 mt-1">Liderazgo en Transformación Digital & Equipo de Desarrollo.</p>
+              <ul class="text-sm text-slate-300 space-y-2 leading-relaxed list-disc list-inside marker:text-[#D4F653]">
+                <li><strong>Liderazgo en BPMS:</strong> Lideré la implementación de un BPMS, coordinando el trabajo entre el equipo técnico del proveedor y nuestros desarrolladores, logrando una instalación exitosa y un alto grado de integración con los sistemas de la empresa.</li>
+                <li><strong>Rediseño y Optimización:</strong> Junto con los responsables de las distintas áreas del negocio, rediseñamos y optimizamos los flujos de información para la gestión de trámites, obteniendo mayor eficiencia en los procesos.</li>
+                <li><strong>Articulador y Consultor:</strong> Me desempeño como articulador, consultor y capacitador tecnológico para todos los colaboradores, asegurando la adopción y el buen uso de las nuevas herramientas.</li>
+              </ul>
             </div>
 
-            <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
-              <div class="w-8 h-8 rounded-lg bg-[#D4F653] text-black flex items-center justify-center font-bold mb-3">
-                <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+            <!-- Role 2: Asistente de Gestión Previsional -->
+            <div class="relative pl-6 border-l-2 border-slate-700 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h4 class="text-base font-heading font-bold text-white flex items-center gap-2">
+                  <i data-lucide="file-check" class="w-4 h-4 text-slate-400"></i>
+                  Asistente de Gestión Previsional
+                </h4>
+                <span class="text-xs font-accent text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
+                  nov. 2019 — set. 2025
+                </span>
               </div>
-              <h4 class="font-heading font-bold text-white text-sm">Formación</h4>
-              <p class="text-xs text-slate-400 mt-1">Facultad de CCEE + Cursos Especializados de Programación.</p>
+              <ul class="text-sm text-slate-400 space-y-1.5 leading-relaxed list-disc list-inside marker:text-slate-600">
+                <li>Análisis de movimientos de estados de cuentas, cierre de cuentas individuales, procesos de retiro de fondos y transferencias de saldos.</li>
+                <li>Gestiones vinculadas a la administración de cuentas con organismos de control como el Banco de Seguros, BPS y el Tesoro Nacional.</li>
+              </ul>
             </div>
-          </div>
 
-          <!-- CV Action Buttons -->
-          <div class="flex flex-wrap items-center justify-center gap-4">
-            <button class="btn-brutal-primary action-cv-download text-base">
-              <i data-lucide="download" class="w-5 h-5"></i>
-              <span>Descargar CV (PDF)</span>
-            </button>
-            <a href="#contacto" class="btn-brutal-outline bg-transparent text-white border-white hover:text-black text-base">
-              <i data-lucide="mail" class="w-5 h-5"></i>
-              <span>Solicitar Información</span>
-            </a>
-          </div>
+            <!-- Role 3: Ejecutivo de Atención al Cliente -->
+            <div class="relative pl-6 border-l-2 border-slate-700 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h4 class="text-base font-heading font-bold text-white flex items-center gap-2">
+                  <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+                  Ejecutivo de Atención al Cliente
+                </h4>
+                <span class="text-xs font-accent text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
+                  mar. 2018 — nov. 2019
+                </span>
+              </div>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Formé parte del equipo de atención presencial, asesorando a clientes y potenciales clientes, llevando adelante la gestión de trámites y brindando asesoramiento integral sobre el funcionamiento del sistema previsional uruguayo.
+              </p>
+            </div>
 
+          </div>
         </div>
+
+        <!-- 2. CORPORACIÓN MÉDICA DE PAYSANDÚ -->
+        <div class="card-brutal-dark p-6 sm:p-8 border-2 border-[#2D333F]">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800 mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-slate-800 text-[#D4F653] border border-slate-700 flex items-center justify-center font-heading font-bold">
+                <i data-lucide="calculator" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-lg sm:text-xl font-heading font-bold text-white">CORPORACIÓN MÉDICA DE PAYSANDÚ</h3>
+                <p class="text-xs text-slate-400 font-accent uppercase">Administrativo Contable</p>
+              </div>
+            </div>
+            <span class="text-xs font-accent text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
+              dic. 2014 — mar. 2018
+            </span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Mi rol se centraba en el control de movimientos bancarios, seguimiento de inversiones y confección de informes diarios de flujos de fondos para la Gerencia General y la Asesoría Contable. En mis inicios comencé con tareas de emisión de cheques y control de vencimientos de diferidos, registro de asientos contables y realización de arqueos de caja.
+          </p>
+        </div>
+
+        <!-- 3. IGLESIA CATÓLICA APOSTÓLICA Y ROMANA EN EL URUGUAY -->
+        <div class="card-brutal-dark p-6 sm:p-8 border-2 border-[#2D333F]">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800 mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-slate-800 text-[#D4F653] border border-slate-700 flex items-center justify-center font-heading font-bold">
+                <i data-lucide="pie-chart" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-lg sm:text-xl font-heading font-bold text-white">IGLESIA CATÓLICA APOSTÓLICA Y ROMANA EN EL URUGUAY</h3>
+                <p class="text-xs text-slate-400 font-accent uppercase">Analista Financiero</p>
+              </div>
+            </div>
+            <span class="text-xs font-accent text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
+              ago. 2016 — mar. 2018
+            </span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Me encargaba del registro de movimientos en sistema contable, arqueos de caja, conciliaciones bancarias e ingreso de nóminas. También presentaba informes financieros en asambleas y órganos externos.
+          </p>
+        </div>
+
+        <!-- 4. BANCO DE PREVISIÓN SOCIAL (BPS) -->
+        <div class="card-brutal-dark p-6 sm:p-8 border-2 border-[#2D333F]">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800 mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-slate-800 text-[#D4F653] border border-slate-700 flex items-center justify-center font-heading font-bold">
+                <i data-lucide="building-2" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-lg sm:text-xl font-heading font-bold text-white">BANCO DE PREVISIÓN SOCIAL (BPS)</h3>
+                <p class="text-xs text-slate-400 font-accent uppercase">Pasante Administrativo</p>
+              </div>
+            </div>
+            <span class="text-xs font-accent text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
+              dic. 2012 — dic. 2014
+            </span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Trabajé en el área de activos, asesorando al público en general y realizando la gestión de trámites.
+          </p>
+        </div>
+
+        <!-- CV Download Action Box -->
+        <div class="card-brutal-lime p-8 text-center text-black">
+          <h3 class="text-2xl font-heading font-black mb-2">¿Deseas revisar el CV completo en formato PDF?</h3>
+          <p class="text-sm text-slate-800 mb-6 max-w-xl mx-auto font-medium">
+            Descarga el archivo PDF oficial con todos los detalles de mi experiencia laboral, educación y datos de contacto.
+          </p>
+          <a href="assets/Alejandro_Vacaro_CV.pdf" download="Alejandro_Vacaro_Castro_CV.pdf" class="btn-brutal-dark action-cv-download text-base inline-flex">
+            <i data-lucide="file-down" class="w-5 h-5"></i>
+            <span>Descargar CV Oficial (PDF)</span>
+          </a>
+        </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- ================= CONTÁCTAME SECTION ================= -->
-  <section id="contacto" class="py-20 md:py-32 bg-[#FAFAFA] relative">
+  <!-- ================= FORMACIÓN SECTION ================= -->
+  <section id="formacion" class="py-20 md:py-32 bg-[#FAFAFA] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border-2 border-black shadow-[3px_3px_0px_#000]">
+          <i data-lucide="graduation-cap" class="w-4 h-4 text-black"></i>
+          <span class="font-accent font-bold text-xs uppercase tracking-wider text-black">Educación & Certificaciones</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-slate-900 tracking-tight">
+          Formación Académica y Especialización Continua
+        </h2>
+        <p class="text-slate-600 text-base md:text-lg font-medium">
+          Una combinación de formación universitaria en gestión con certificaciones técnicas en Business Analysis, Datos y Desarrollo.
+        </p>
+      </div>
+
+      <!-- Education Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        
+        <!-- 1. LICENCIATURA EN ADMINISTRACIÓN (UDELAR) -->
+        <div class="card-brutal-white p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-[#D4F653] border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000]">
+                <i data-lucide="landmark" class="w-6 h-6 text-black"></i>
+              </div>
+              <span class="pill-badge pill-badge-lime text-[11px]">En curso</span>
+            </div>
+            <h3 class="font-heading font-black text-lg text-slate-900 mb-1">Lic. en Administración</h3>
+            <p class="text-xs font-accent font-bold text-slate-500 uppercase">UDELAR (Universidad de la República)</p>
+            <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+              Formación universitaria en administración y dirección empresarial, procesos organizacionales, finanzas y estrategia.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-accent font-semibold text-slate-500">
+            mar. 2018 — en curso
+          </div>
+        </div>
+
+        <!-- 2. ANALISTA DE DATOS (SENPAI) -->
+        <div class="card-brutal-white p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-900 text-[#D4F653] border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000]">
+                <i data-lucide="database" class="w-6 h-6"></i>
+              </div>
+              <span class="pill-badge text-[11px]">Especialización</span>
+            </div>
+            <h3 class="font-heading font-black text-lg text-slate-900 mb-1">Analista de Datos</h3>
+            <p class="text-xs font-accent font-bold text-slate-500 uppercase">SENPAI • Python para Análisis</p>
+            <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+              Análisis cuantitativo de datos, visualización y uso de Python para modelado y toma de decisiones basada en métricas.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-accent font-semibold text-slate-500">
+            abr. 2026 — jun. 2026
+          </div>
+        </div>
+
+        <!-- 3. DIPLOMATURA EN BUSINESS ANALYSIS (UTN BS AS) -->
+        <div class="card-brutal-white p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-[#D4F653] border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000]">
+                <i data-lucide="git-branch" class="w-6 h-6 text-black"></i>
+              </div>
+              <span class="pill-badge pill-badge-dark text-[11px]">Diplomatura</span>
+            </div>
+            <h3 class="font-heading font-black text-lg text-slate-900 mb-1">Business Analysis</h3>
+            <p class="text-xs font-accent font-bold text-slate-500 uppercase">UTN Buenos Aires</p>
+            <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+              Metodologías de análisis de negocio, levantamiento y especificación de requerimientos, diseño de soluciones y modelado.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-accent font-semibold text-slate-500">
+            mar. 2025 — may. 2025
+          </div>
+        </div>
+
+        <!-- 4. DESARROLLO FULL STACK MERN (CODERHOUSE) -->
+        <div class="card-brutal-white p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-900 text-[#D4F653] border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000]">
+                <i data-lucide="code-2" class="w-6 h-6"></i>
+              </div>
+              <span class="pill-badge text-[11px]">Full Stack</span>
+            </div>
+            <h3 class="font-heading font-black text-lg text-slate-900 mb-1">Desarrollo MERN</h3>
+            <p class="text-xs font-accent font-bold text-slate-500 uppercase">Coderhouse</p>
+            <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+              Fundamentos de desarrollo web y arquitectura de aplicaciones: JavaScript, React, Node.js, Express, MongoDB y APIs.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-accent font-semibold text-slate-500">
+            set. 2022 — dic. 2023
+          </div>
+        </div>
+
+        <!-- 5. INGLÉS LEVEL B1 (BIKE ESCUELA DE INGLÉS) -->
+        <div class="card-brutal-white p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-[#D4F653] border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000]">
+                <i data-lucide="globe" class="w-6 h-6 text-black"></i>
+              </div>
+              <span class="pill-badge text-[11px]">Idiomas</span>
+            </div>
+            <h3 class="font-heading font-black text-lg text-slate-900 mb-1">Inglés Level B1</h3>
+            <p class="text-xs font-accent font-bold text-slate-500 uppercase">Bike Escuela de Inglés</p>
+            <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+              Competencia intermedia en comunicación oral y escrita aplicada a entornos profesionales y técnicos.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-accent font-semibold text-slate-500">
+            mar. 2024 — dic. 2024
+          </div>
+        </div>
+
+        <!-- 6. RESUMEN INTEGRAL CARD -->
+        <div class="card-brutal-dark p-6 bg-[#0E1116] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-[#D4F653] text-black border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000]">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-[#D4F653]/20 text-[#D4F653] font-accent text-[11px] font-bold">Perfil 360°</span>
+            </div>
+            <h3 class="font-heading font-black text-lg text-white mb-1">Sinergia Negocio & Tech</h3>
+            <p class="text-xs font-accent font-bold text-[#D4F653] uppercase">Habilidades Clave</p>
+            <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+              Capacidad analítica para traducir necesidades operativas y comerciales en arquitecturas funcionales de software y optimización continua.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800">
+            <a href="#hablemos" class="btn-brutal-primary w-full justify-center text-xs py-2">
+              <span>Coordinar una reunión</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ¡HABLEMOS! (CONTACTO) SECTION ================= -->
+  <section id="hablemos" class="py-20 md:py-32 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4F653] border-2 border-black shadow-[3px_3px_0px_#000]">
           <i data-lucide="message-square" class="w-4 h-4 text-black"></i>
           <span class="font-accent font-bold text-xs uppercase tracking-wider text-black">Contacto Directo</span>
         </div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-slate-900 tracking-tight">
-          ¡Pongámonos en contacto!
+          ¡Hablemos de tu próximo desafío!
         </h2>
         <p class="text-slate-600 text-base md:text-lg font-medium">
-          ¿Tienes una idea, un proyecto o simplemente quieres saludar y conversar? Escríbeme y te responderé lo antes posible.
+          ¿Tienes un proyecto de optimización, una propuesta profesional o simplemente quieres conversar? Escríbeme a través de cualquiera de mis canales oficiales.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
         
-        <!-- Left: Quick Direct Contact Cards -->
+        <!-- Left: Quick Direct Contact Cards & Social Channels -->
         <div class="lg:col-span-5 space-y-4">
           
-          <div class="card-brutal-white p-6 bg-white space-y-4">
-            <h3 class="font-heading font-black text-xl text-slate-900">Canales de Comunicación</h3>
+          <div class="card-brutal-white p-6 bg-slate-50 space-y-4">
+            <h3 class="font-heading font-black text-xl text-slate-900">Canales Directos</h3>
             <p class="text-sm text-slate-600">
-              Siempre estoy abierto a conectar con otros profesionales, reclutadores o entusiastas de la tecnología.
+              Conéctate conmigo directamente por WhatsApp, correo electrónico o a través de mis redes profesionales.
             </p>
 
             <div class="space-y-3 pt-2">
               
+              <!-- WhatsApp Card -->
+              <a href="https://wa.me/59899229549" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-xl border-2 border-slate-200 hover:border-black hover:bg-white transition-all bg-white shadow-sm group">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-emerald-500 text-white border-2 border-black flex items-center justify-center">
+                    <i data-lucide="phone-call" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500 font-semibold font-accent uppercase">WhatsApp / Teléfono</p>
+                    <p class="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">(+598) 99 22 95 49</p>
+                  </div>
+                </div>
+                <span class="text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200 group-hover:bg-[#D4F653]">
+                  Chat ↗
+                </span>
+              </a>
+
               <!-- Email Card with Copy Button -->
-              <div class="flex items-center justify-between p-3.5 rounded-xl border-2 border-slate-200 hover:border-black transition-colors bg-slate-50">
+              <div class="flex items-center justify-between p-3.5 rounded-xl border-2 border-slate-200 hover:border-black transition-colors bg-white shadow-sm">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-lg bg-[#D4F653] border-2 border-black flex items-center justify-center text-black">
                     <i data-lucide="mail" class="w-5 h-5"></i>
@@ -652,14 +895,14 @@
                     <a href="mailto:avacaro@outlook.com" class="text-sm font-bold text-slate-900 hover:underline">avacaro@outlook.com</a>
                   </div>
                 </div>
-                <button type="button" data-copy-text="avacaro@outlook.com" class="p-2 rounded-lg border border-slate-300 hover:bg-slate-200 text-slate-700 transition-colors" title="Copiar correo">
+                <button type="button" data-copy-text="avacaro@outlook.com" class="p-2 rounded-lg border border-slate-300 hover:bg-slate-100 text-slate-700 transition-colors" title="Copiar correo">
                   <i data-lucide="copy" class="w-4 h-4"></i>
                 </button>
               </div>
 
               <!-- Location Card -->
-              <div class="flex items-center gap-3 p-3.5 rounded-xl border-2 border-slate-200 bg-slate-50">
-                <div class="w-10 h-10 rounded-lg bg-white border-2 border-black flex items-center justify-center text-black">
+              <div class="flex items-center gap-3 p-3.5 rounded-xl border-2 border-slate-200 bg-white shadow-sm">
+                <div class="w-10 h-10 rounded-lg bg-slate-900 text-white border-2 border-black flex items-center justify-center">
                   <i data-lucide="map-pin" class="w-5 h-5"></i>
                 </div>
                 <div>
@@ -668,36 +911,40 @@
                 </div>
               </div>
 
-              <!-- Status Card -->
-              <div class="flex items-center gap-3 p-3.5 rounded-xl border-2 border-slate-200 bg-slate-50">
-                <div class="w-10 h-10 rounded-lg bg-[#D4F653] border-2 border-black flex items-center justify-center text-black">
-                  <i data-lucide="clock" class="w-5 h-5"></i>
-                </div>
-                <div>
-                  <p class="text-xs text-slate-500 font-semibold font-accent uppercase">Disponibilidad</p>
-                  <p class="text-sm font-bold text-emerald-700 flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    Abierto a nuevas oportunidades
-                  </p>
-                </div>
-              </div>
-
             </div>
           </div>
 
-          <!-- Social Links Card -->
+          <!-- Social Links Card with All Requested Networks -->
           <div class="card-brutal-white p-6 bg-[#0E1116] text-white">
-            <h4 class="font-heading font-bold text-base text-white mb-3">Sígueme en redes</h4>
-            <div class="flex items-center gap-3">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-800 border-2 border-slate-700 hover:border-[#D4F653] hover:text-[#D4F653] flex items-center justify-center transition-colors" title="LinkedIn">
-                <i data-lucide="linkedin" class="w-5 h-5"></i>
+            <h4 class="font-heading font-bold text-base text-white mb-2">Redes y Comunidad</h4>
+            <p class="text-xs text-slate-400 mb-4">Sigue mis publicaciones y contenido en redes sociales:</p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/in/alejandrovacaro/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-800 border-2 border-slate-700 hover:border-[#D4F653] hover:text-[#D4F653] flex flex-col items-center justify-center text-center transition-colors group" title="LinkedIn">
+                <i data-lucide="linkedin" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[11px] font-bold">LinkedIn</span>
               </a>
-              <a href="https://github.com/AlejandroVacaro" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-800 border-2 border-slate-700 hover:border-[#D4F653] hover:text-[#D4F653] flex items-center justify-center transition-colors" title="GitHub">
-                <i data-lucide="github" class="w-5 h-5"></i>
+
+              <!-- X / Twitter -->
+              <a href="https://x.com/AlejandroVacaro" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-800 border-2 border-slate-700 hover:border-[#D4F653] hover:text-[#D4F653] flex flex-col items-center justify-center text-center transition-colors group" title="X / Twitter">
+                <i data-lucide="twitter" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[11px] font-bold">X</span>
               </a>
-              <a href="mailto:avacaro@outlook.com" class="w-11 h-11 rounded-xl bg-slate-800 border-2 border-slate-700 hover:border-[#D4F653] hover:text-[#D4F653] flex items-center justify-center transition-colors" title="Enviar Email">
-                <i data-lucide="mail" class="w-5 h-5"></i>
+
+              <!-- Instagram -->
+              <a href="https://www.instagram.com/ale.vacaro" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-800 border-2 border-slate-700 hover:border-[#D4F653] hover:text-[#D4F653] flex flex-col items-center justify-center text-center transition-colors group" title="Instagram">
+                <i data-lucide="instagram" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[11px] font-bold">Instagram</span>
               </a>
+
+              <!-- TikTok -->
+              <a href="https://www.tiktok.com/@ale.vacaro" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-800 border-2 border-slate-700 hover:border-[#D4F653] hover:text-[#D4F653] flex flex-col items-center justify-center text-center transition-colors group" title="TikTok">
+                <i data-lucide="video" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[11px] font-bold">TikTok</span>
+              </a>
+
             </div>
           </div>
 
@@ -709,7 +956,7 @@
             
             <div class="mb-8">
               <h3 class="text-2xl font-heading font-black text-slate-900">Envíame un mensaje</h3>
-              <p class="text-slate-600 text-sm mt-1">Completa el formulario y me pondré en contacto contigo a la brevedad.</p>
+              <p class="text-slate-600 text-sm mt-1">Completa el formulario y te responderé a la brevedad.</p>
             </div>
 
             <form id="contact-form" class="space-y-5">
@@ -721,7 +968,7 @@
                     Tu Nombre <span class="text-rose-500">*</span>
                   </label>
                   <div class="relative">
-                    <input type="text" id="contact-name" name="name" required placeholder="Ej: Lucas Martínez" class="form-input-brutal pl-11">
+                    <input type="text" id="contact-name" name="name" required placeholder="Ej: Marcela Gómez" class="form-input-brutal pl-11">
                     <i data-lucide="user" class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                   </div>
                 </div>
@@ -744,7 +991,7 @@
                   Asunto del mensaje
                 </label>
                 <div class="relative">
-                  <input type="text" id="contact-subject" name="subject" placeholder="Ej: Propuesta de proyecto / Consulta" class="form-input-brutal pl-11">
+                  <input type="text" id="contact-subject" name="subject" placeholder="Ej: Propuesta de consultoría / Análisis de procesos" class="form-input-brutal pl-11">
                   <i data-lucide="bookmark" class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                 </div>
               </div>
@@ -755,7 +1002,7 @@
                   Mensaje <span class="text-rose-500">*</span>
                 </label>
                 <div class="relative">
-                  <textarea id="contact-message" name="message" rows="5" required placeholder="Cuéntame en qué te puedo ayudar o sobre qué te gustaría conversar..." class="form-input-brutal pl-11 resize-none"></textarea>
+                  <textarea id="contact-message" name="message" rows="5" required placeholder="Cuéntame sobre tu proyecto, objetivos o sobre qué te gustaría conversar..." class="form-input-brutal pl-11 resize-none"></textarea>
                   <i data-lucide="message-square" class="w-5 h-5 text-slate-400 absolute left-3.5 top-4 pointer-events-none"></i>
                 </div>
               </div>
@@ -794,17 +1041,18 @@
             AV
           </div>
           <div>
-            <p class="font-heading font-black text-xl text-white">Alejandro Vacaro</p>
-            <p class="text-xs text-slate-400 font-accent">Frontend Developer & Tech Explorer</p>
+            <p class="font-heading font-black text-xl text-white">Alejandro Vacaro Castro</p>
+            <p class="text-xs text-slate-400 font-accent">Analista Funcional • Business Analysis</p>
           </div>
         </div>
 
         <!-- Footer Navigation Links -->
         <nav class="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-slate-400" aria-label="Navegación del pie de página">
           <a href="#inicio" class="hover:text-[#D4F653] transition-colors">Inicio</a>
-          <a href="#conoceme" class="hover:text-[#D4F653] transition-colors">Conóceme</a>
-          <a href="#curriculum" class="hover:text-[#D4F653] transition-colors">Currículum</a>
-          <a href="#contacto" class="hover:text-[#D4F653] transition-colors">Contáctame</a>
+          <a href="#sobre-mi" class="hover:text-[#D4F653] transition-colors">Sobre mí</a>
+          <a href="#experiencia" class="hover:text-[#D4F653] transition-colors">Experiencia</a>
+          <a href="#formacion" class="hover:text-[#D4F653] transition-colors">Formación</a>
+          <a href="#hablemos" class="hover:text-[#D4F653] transition-colors">¡Hablemos!</a>
         </nav>
 
         <!-- Back to top trigger -->
@@ -816,11 +1064,11 @@
       </div>
 
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
-        <p>© 2026 Alejandro Vacaro. Todos los derechos reservados.</p>
+        <p>© 2026 Alejandro Vacaro Castro. Montevideo, Uruguay.</p>
         <p class="flex items-center gap-1.5">
           <span>Diseñado y construido con</span>
           <i data-lucide="heart" class="w-3.5 h-3.5 text-[#D4F653] fill-[#D4F653]"></i>
-          <span>y mucho código.</span>
+          <span>y dedicación profesional.</span>
         </p>
       </div>
 
