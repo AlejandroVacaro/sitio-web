@@ -516,10 +516,10 @@ button.card-brutal-white:hover, button.card-brutal-lime:hover, button.card-bruta
 
 /* ---------------- Story Scrollable Reader (Sobre mí) ---------------- */
 .story-scroll-container {
-  flex: 1 1 auto;
-  min-height: 0;
+  height: 480px;
+  max-height: 480px;
   overflow-y: auto;
-  padding-right: 0.75rem;
+  padding-right: 0.85rem;
   scrollbar-width: thin;
   scrollbar-color: var(--color-brand-primary) #E2E8F0;
 }
