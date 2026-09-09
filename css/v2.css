@@ -1,0 +1,400 @@
+/* ==========================================================================
+   ALEJANDRO VACARO - V2 EDITORIAL DESIGN SYSTEM
+   Paleta oficial:
+   - Marfil: #F5F2EC
+   - Carbón: #222222
+   - Blue Slate: #4F5D75
+   - Coral Glow: #EF8354
+   - Jet Black: #2D3142
+   - Silver: #BFC0C0
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+  /* Core Color Palette Tokens */
+  --color-marfil: #F5F2EC;
+  --color-carbon: #222222;
+  --color-blue-slate: #4F5D75;
+  --color-coral-glow: #EF8354;
+  --color-jet-black: #2D3142;
+  --color-silver: #BFC0C0;
+
+  /* Surfaces & Transparencies */
+  --bg-primary: #F5F2EC;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #FAF9F6;
+  --bg-dark: #2D3142;
+  --bg-dark-surface: #222222;
+  
+  --text-primary: #222222;
+  --text-secondary: #4F5D75;
+  --text-muted: #6B7280;
+  --text-light: #F5F2EC;
+  
+  --border-subtle: rgba(79, 93, 117, 0.18);
+  --border-strong: #222222;
+  --border-silver: #BFC0C0;
+  --border-coral: #EF8354;
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+
+  /* Elevation & Shadows */
+  --shadow-editorial: 0 4px 20px -2px rgba(45, 49, 66, 0.06);
+  --shadow-elevated: 0 12px 32px -4px rgba(45, 49, 66, 0.12);
+  --shadow-coral-glow: 0 0 24px rgba(239, 131, 84, 0.25);
+
+  /* Motion Timing */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------------- Base Reset & Typography ---------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-marfil);
+  color: var(--color-carbon);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-marfil);
+  color: var(--color-carbon);
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+}
+
+::selection {
+  background-color: var(--color-coral-glow);
+  color: #FFFFFF;
+}
+
+/* Serif font utility */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* ---------------- Micro-Grid Texture ---------------- */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(79, 93, 117, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(79, 93, 117, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ---------------- Header & Navigation V2 ---------------- */
+.header-glass {
+  background: rgba(245, 242, 236, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.nav-link-v2 {
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-blue-slate);
+  transition: color var(--transition-fast);
+  text-decoration: none;
+  padding: 0.375rem 0.25rem;
+}
+
+.nav-link-v2:hover {
+  color: var(--color-carbon);
+}
+
+.nav-link-v2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-coral-glow);
+  transition: width var(--transition-normal);
+}
+
+.nav-link-v2:hover::after,
+.nav-link-v2.active::after {
+  width: 100%;
+}
+
+/* ---------------- Hero Switcher Control Bar ---------------- */
+.hero-switcher-bar {
+  background: rgba(45, 49, 66, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 36px rgba(34, 34, 34, 0.25);
+  border-radius: 9999px;
+  transition: all var(--transition-normal);
+}
+
+.hero-switch-btn {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  color: #BFC0C0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.hero-switch-btn:hover {
+  color: #FFFFFF;
+}
+
+.hero-switch-btn.active {
+  background-color: var(--color-coral-glow);
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(239, 131, 84, 0.4);
+}
+
+/* ---------------- Hero Content Transitions ---------------- */
+.hero-variant {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.hero-variant.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------- Editorial Cards & Elements ---------------- */
+.card-editorial {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-editorial);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.card-editorial:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-elevated);
+  border-color: rgba(79, 93, 117, 0.35);
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-card);
+  color: var(--color-blue-slate);
+}
+
+.badge-pill-coral {
+  background-color: rgba(239, 131, 84, 0.1);
+  border-color: rgba(239, 131, 84, 0.3);
+  color: #C85C2E;
+}
+
+.badge-pill-dark {
+  background-color: var(--color-jet-black);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-marfil);
+}
+
+/* Buttons */
+.btn-v2-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.625rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  background-color: var(--color-jet-black);
+  color: var(--color-marfil);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-v2-primary:hover {
+  background-color: var(--color-coral-glow);
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(239, 131, 84, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-v2-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.625rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--color-carbon);
+  border: 1px solid var(--border-silver);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-v2-outline:hover {
+  background-color: #FFFFFF;
+  border-color: var(--color-blue-slate);
+  color: var(--color-jet-black);
+  transform: translateY(-2px);
+}
+
+/* ---------------- 01 / CÓMO PIENSO (7 Verbos) ---------------- */
+.verb-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  padding: 2.25rem 2rem;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.verb-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0%;
+  background-color: var(--color-coral-glow);
+  transition: height var(--transition-normal);
+}
+
+.verb-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(79, 93, 117, 0.3);
+  box-shadow: var(--shadow-elevated);
+}
+
+.verb-card:hover::before {
+  height: 100%;
+}
+
+.verb-number {
+  font-family: var(--font-serif);
+  font-size: 2.75rem;
+  line-height: 1;
+  color: var(--color-silver);
+  transition: color var(--transition-fast);
+}
+
+.verb-card:hover .verb-number {
+  color: var(--color-coral-glow);
+}
+
+.verb-title {
+  font-family: var(--font-sans);
+  font-size: 1.375rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-carbon);
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.verb-desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-blue-slate);
+}
+
+/* ---------------- Narrative Transition Card ---------------- */
+.narrative-frame {
+  background: var(--color-jet-black);
+  color: var(--color-marfil);
+  border-radius: 1.5rem;
+  padding: 3.5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.narrative-frame::after {
+  content: '';
+  position: absolute;
+  right: -10%;
+  top: -10%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(239, 131, 84, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ---------------- Motion Level 2: Reveal Observer ---------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay helpers */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* ---------------- Accessibility: Reduced Motion ---------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-variant {
+    transition: none !important;
+  }
+}
