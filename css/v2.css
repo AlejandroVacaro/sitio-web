@@ -1,59 +1,38 @@
 /* ==========================================================================
-   ALEJANDRO VACARO - V2 EDITORIAL DESIGN SYSTEM
+   ALEJANDRO VACARO - SISTEMA VISUAL V2 DEFINITIVO
+   "Estructura seria + Personalidad inesperada"
    Paleta oficial:
-   - Marfil: #F5F2EC
-   - Carbón: #222222
-   - Blue Slate: #4F5D75
-   - Coral Glow: #EF8354
-   - Jet Black: #2D3142
-   - Silver: #BFC0C0
+   --ivory: #F5F2EC
+   --charcoal: #222222
+   --blue-slate: #4F5D75
+   --coral-glow: #EF8354
+   --jet-black: #2D3142
+   --silver: #BFC0C0
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 :root {
-  /* Core Color Palette Tokens */
-  --color-marfil: #F5F2EC;
-  --color-carbon: #222222;
-  --color-blue-slate: #4F5D75;
-  --color-coral-glow: #EF8354;
-  --color-jet-black: #2D3142;
-  --color-silver: #BFC0C0;
+  /* 3. PALETA DEFINITIVA */
+  --ivory: #F5F2EC;
+  --charcoal: #222222;
+  --blue-slate: #4F5D75;
+  --coral-glow: #EF8354;
+  --jet-black: #2D3142;
+  --silver: #BFC0C0;
 
-  /* Surfaces & Transparencies */
-  --bg-primary: #F5F2EC;
-  --bg-card: #FFFFFF;
-  --bg-card-subtle: #FAF9F6;
-  --bg-dark: #2D3142;
-  --bg-dark-surface: #222222;
-  
-  --text-primary: #222222;
-  --text-secondary: #4F5D75;
-  --text-muted: #6B7280;
-  --text-light: #F5F2EC;
-  
-  --border-subtle: rgba(79, 93, 117, 0.18);
-  --border-strong: #222222;
-  --border-silver: #BFC0C0;
-  --border-coral: #EF8354;
-
-  /* Typography */
+  /* Tipografía */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
 
-  /* Elevation & Shadows */
-  --shadow-editorial: 0 4px 20px -2px rgba(45, 49, 66, 0.06);
-  --shadow-elevated: 0 12px 32px -4px rgba(45, 49, 66, 0.12);
-  --shadow-coral-glow: 0 0 24px rgba(239, 131, 84, 0.25);
-
-  /* Motion Timing */
-  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Transiciones */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 650ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ---------------- Base Reset & Typography ---------------- */
+/* ---------------- Base & Resets ---------------- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -63,326 +42,838 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: var(--color-marfil);
-  color: var(--color-carbon);
+  background-color: var(--ivory);
+  color: var(--charcoal);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: var(--color-marfil);
-  color: var(--color-carbon);
+  background-color: var(--ivory);
+  color: var(--charcoal);
   line-height: 1.65;
   overflow-x: hidden;
   position: relative;
 }
 
 ::selection {
-  background-color: var(--color-coral-glow);
+  background-color: var(--coral-glow);
   color: #FFFFFF;
 }
 
-/* Serif font utility */
-.font-serif {
-  font-family: var(--font-serif);
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+
+/* ---------------- 44. SCROLL PROGRESS ---------------- */
+#scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--coral-glow);
+  z-index: 100;
+  pointer-events: none;
+  transition: width 80ms linear;
 }
 
-.font-sans {
-  font-family: var(--font-sans);
-}
-
-/* ---------------- Micro-Grid Texture ---------------- */
-.bg-grid-pattern {
+/* ---------------- 6. FONDO Y TEXTURA (SUTIL, NO GLOBAL) ---------------- */
+.bg-subtle-grid {
   background-image: 
-    linear-gradient(to right, rgba(79, 93, 117, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(79, 93, 117, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(to right, rgba(79, 93, 117, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(79, 93, 117, 0.07) 1px, transparent 1px);
+  background-size: 44px 44px;
 }
 
-/* ---------------- Header & Navigation V2 ---------------- */
-.header-glass {
-  background: rgba(245, 242, 236, 0.9);
+/* ---------------- 7 & 8. HEADER & NAVEGACIÓN ---------------- */
+.header-v2 {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background: rgba(245, 242, 236, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid rgba(34, 34, 34, 0.10);
+  z-index: 50;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
+@media (max-width: 768px) {
+  .header-v2 {
+    height: 64px;
+  }
+}
+
+/* 43. ANIMACIÓN DEL LOGO */
+.brand-symbol-svg {
+  width: 32px;
+  height: 32px;
+  color: var(--jet-black);
+  transition: transform 350ms var(--ease-out);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .brand-symbol-svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brand-symbol-link:hover .brand-symbol-svg {
+    transform: scale(1.04) rotate(-4deg);
+  }
+}
+
+.brand-subtitle-micro {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--blue-slate);
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* 8. HEADER HOVER LINKS */
 .nav-link-v2 {
   position: relative;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--color-blue-slate);
-  transition: color var(--transition-fast);
+  color: var(--blue-slate);
   text-decoration: none;
-  padding: 0.375rem 0.25rem;
+  padding: 0.35rem 0;
+  transition: color 220ms var(--ease-out);
 }
 
 .nav-link-v2:hover {
-  color: var(--color-carbon);
+  color: var(--charcoal);
 }
 
 .nav-link-v2::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
-  width: 0%;
+  width: 0;
   height: 2px;
-  background-color: var(--color-coral-glow);
-  transition: width var(--transition-normal);
+  background-color: var(--coral-glow);
+  transition: width 220ms var(--ease-out);
 }
 
-.nav-link-v2:hover::after,
-.nav-link-v2.active::after {
+.nav-link-v2:hover::after {
   width: 100%;
 }
 
-/* ---------------- Hero Switcher Control Bar ---------------- */
-.hero-switcher-bar {
-  background: rgba(45, 49, 66, 0.95);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 16px 36px rgba(34, 34, 34, 0.25);
-  border-radius: 9999px;
-  transition: all var(--transition-normal);
+.nav-link-v2 .diagonal-arrow {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+  font-size: 0.85em;
+  margin-left: 2px;
 }
 
-.hero-switch-btn {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  padding: 0.5rem 1.1rem;
-  border-radius: 9999px;
-  color: #BFC0C0;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
+.nav-link-v2:hover .diagonal-arrow {
+  transform: translate(2px, -2px);
+  color: var(--coral-glow);
 }
 
-.hero-switch-btn:hover {
-  color: #FFFFFF;
+/* ---------------- 4. TIPOGRAFÍA CLAMP ---------------- */
+.text-hero-h1 {
+  font-size: clamp(3.2rem, 5.8vw, 6.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
 }
 
-.hero-switch-btn.active {
-  background-color: var(--color-coral-glow);
-  color: #FFFFFF;
-  box-shadow: 0 2px 10px rgba(239, 131, 84, 0.4);
+.text-editorial-h2 {
+  font-size: clamp(2.4rem, 4.2vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
 }
 
-/* ---------------- Hero Content Transitions ---------------- */
-.hero-variant {
-  display: none;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+.text-section-h3 {
+  font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+  line-height: 1.15;
 }
 
-.hero-variant.active {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
+.text-body-principal {
+  font-size: clamp(1.125rem, 1.25vw, 1.25rem); /* 18-20px */
+  line-height: 1.65;
+  color: var(--blue-slate);
 }
 
-/* ---------------- Editorial Cards & Elements ---------------- */
-.card-editorial {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1rem;
-  box-shadow: var(--shadow-editorial);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+.text-body-secundario {
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+  color: var(--blue-slate);
 }
 
-.card-editorial:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-elevated);
-  border-color: rgba(79, 93, 117, 0.35);
+.text-metadata {
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1.5;
+  color: var(--blue-slate);
 }
 
-.badge-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.375rem 0.875rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: 1px solid var(--border-subtle);
-  background-color: var(--bg-card);
-  color: var(--color-blue-slate);
-}
-
-.badge-pill-coral {
-  background-color: rgba(239, 131, 84, 0.1);
-  border-color: rgba(239, 131, 84, 0.3);
-  color: #C85C2E;
-}
-
-.badge-pill-dark {
-  background-color: var(--color-jet-black);
-  border-color: rgba(255, 255, 255, 0.15);
-  color: var(--color-marfil);
-}
-
-/* Buttons */
-.btn-v2-primary {
+/* ---------------- 13. BOTONES ---------------- */
+.btn-primary-v2 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  background-color: var(--jet-black);
+  color: #FFFFFF;
   padding: 0.875rem 1.75rem;
-  border-radius: 0.625rem;
+  border-radius: 0.5rem;
   font-size: 0.9375rem;
   font-weight: 600;
-  background-color: var(--color-jet-black);
-  color: var(--color-marfil);
+  text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
-  text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: transform 220ms var(--ease-out), background-color 220ms var(--ease-out), color 220ms var(--ease-out);
 }
 
-.btn-v2-primary:hover {
-  background-color: var(--color-coral-glow);
-  color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(239, 131, 84, 0.35);
+.btn-primary-v2:hover {
   transform: translateY(-2px);
+  background-color: var(--coral-glow);
+  color: var(--charcoal);
 }
 
-.btn-v2-outline {
+.btn-secondary-v2 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  background-color: transparent;
+  color: var(--charcoal);
   padding: 0.875rem 1.75rem;
-  border-radius: 0.625rem;
+  border-radius: 0.5rem;
   font-size: 0.9375rem;
   font-weight: 600;
-  background-color: transparent;
-  color: var(--color-carbon);
-  border: 1px solid var(--border-silver);
-  cursor: pointer;
   text-decoration: none;
-  transition: all var(--transition-fast);
+  border: 1px solid rgba(34, 34, 34, 0.20);
+  cursor: pointer;
+  transition: transform 220ms var(--ease-out), border-color 220ms var(--ease-out), background-color 220ms var(--ease-out);
 }
 
-.btn-v2-outline:hover {
-  background-color: #FFFFFF;
-  border-color: var(--color-blue-slate);
-  color: var(--color-jet-black);
+.btn-secondary-v2:hover {
   transform: translateY(-2px);
+  border-color: var(--charcoal);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
-/* ---------------- 01 / CÓMO PIENSO (7 Verbos) ---------------- */
-.verb-card {
+/* ---------------- 14 & 16. HERO FOTO & TILT ---------------- */
+.hero-photo-wrapper {
   position: relative;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1rem;
-  padding: 2.25rem 2rem;
-  transition: all var(--transition-normal);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  border-radius: 24px;
   overflow: hidden;
+  background-color: #E6E2D8;
+  box-shadow: 0 16px 40px -10px rgba(45, 49, 66, 0.12);
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
-.verb-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 0%;
-  background-color: var(--color-coral-glow);
-  transition: height var(--transition-normal);
-}
-
-.verb-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(79, 93, 117, 0.3);
-  box-shadow: var(--shadow-elevated);
-}
-
-.verb-card:hover::before {
+.hero-photo-img {
+  display: block;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 24px;
+  transition: transform 500ms var(--ease-out);
 }
 
-.verb-number {
-  font-family: var(--font-serif);
-  font-size: 2.75rem;
-  line-height: 1;
-  color: var(--color-silver);
-  transition: color var(--transition-fast);
-}
-
-.verb-card:hover .verb-number {
-  color: var(--color-coral-glow);
-}
-
-.verb-title {
-  font-family: var(--font-sans);
-  font-size: 1.375rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--color-carbon);
-  margin-top: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.verb-desc {
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: var(--color-blue-slate);
-}
-
-/* ---------------- Narrative Transition Card ---------------- */
-.narrative-frame {
-  background: var(--color-jet-black);
-  color: var(--color-marfil);
-  border-radius: 1.5rem;
-  padding: 3.5rem 2.5rem;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.narrative-frame::after {
-  content: '';
+/* Floating badge over photo */
+.hero-photo-badge {
   position: absolute;
-  right: -10%;
-  top: -10%;
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(239, 131, 84, 0.15) 0%, transparent 70%);
+  top: 1.25rem;
+  right: 1.25rem;
+  background-color: var(--jet-black);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.hero-photo-badge .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--coral-glow);
+}
+
+/* 17. DETALLE FLOTANTE HERO */
+.floating-coral-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--coral-glow);
+  bottom: -5px;
+  left: -5px;
+  z-index: 10;
+  box-shadow: 0 0 16px rgba(239, 131, 84, 0.7);
+  animation: floatCoralDot 4s ease-in-out alternate infinite;
   pointer-events: none;
 }
 
-/* ---------------- Motion Level 2: Reveal Observer ---------------- */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+@keyframes floatCoralDot {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(8px); }
 }
 
-.reveal-on-scroll.revealed {
+/* ---------------- 15. HERO MOVIMIENTO INICIAL ---------------- */
+.hero-anim-logo {
+  opacity: 0;
+  transform: translateY(-6px);
+  animation: heroFadeIn 450ms var(--ease-out) forwards;
+}
+
+.hero-anim-eyebrow {
+  opacity: 0;
+  animation: heroFadeIn 500ms var(--ease-out) 80ms forwards;
+}
+
+.hero-h1-line {
+  display: block;
+  overflow: hidden;
+}
+
+.hero-h1-line-inner {
+  display: block;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroSlideUp 600ms var(--ease-out) forwards;
+}
+
+.hero-h1-line:nth-child(1) .hero-h1-line-inner { animation-delay: 120ms; }
+.hero-h1-line:nth-child(2) .hero-h1-line-inner { animation-delay: 210ms; }
+.hero-h1-line:nth-child(3) .hero-h1-line-inner { animation-delay: 300ms; }
+
+.hero-anim-para {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroFadeUp 650ms var(--ease-out) 390ms forwards;
+}
+
+.hero-anim-twist {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroFadeUp 650ms var(--ease-out) 480ms forwards;
+}
+
+.hero-anim-buttons {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroFadeUp 650ms var(--ease-out) 570ms forwards;
+}
+
+.hero-anim-photo {
+  opacity: 0;
+  transform: scale(0.97) rotate(0.6deg);
+  animation: heroPhotoIn 900ms var(--ease-out) 200ms forwards;
+}
+
+@keyframes heroFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroSlideUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroPhotoIn {
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ---------------- 18. TRANSICIÓN TIPOGRÁFICA HORIZONTAL SCROLL ---------------- */
+.scroll-typography-strip {
+  width: 100%;
+  overflow: hidden;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(79, 93, 117, 0.12);
+  border-bottom: 1px solid rgba(79, 93, 117, 0.12);
+  background-color: var(--ivory);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.scroll-typography-content {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  color: rgba(79, 93, 117, 0.22);
+  letter-spacing: -0.02em;
+  will-change: transform;
+}
+
+.scroll-typography-content .serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(239, 131, 84, 0.4);
+}
+
+/* ---------------- 19, 20, 21, 22. SECCIÓN "CÓMO PIENSO" (STICKY WORDS) ---------------- */
+.como-pienso-section {
+  position: relative;
+  padding: 6rem 0 4rem;
+}
+
+.sticky-word-container {
+  position: sticky;
+  top: 180px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.sticky-verb-number {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3vw, 3rem);
+  color: var(--coral-glow);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.sticky-verb-word {
+  font-size: clamp(4rem, 6.5vw, 6.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--charcoal);
+  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out), font-family 400ms ease;
+}
+
+/* Microinteracciones visuales específicas por verbo */
+.verb-micro-visual {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+/* 1. ENTENDER: línea horizontal expandida */
+.micro-entender-line {
+  height: 2px;
+  background-color: var(--coral-glow);
+  width: 0%;
+  transition: width 500ms var(--ease-out);
+}
+.active-verb .micro-entender-line { width: 90px; }
+
+/* 2. PREGUNTAR: signo '?' en opacidad 0.08 */
+.micro-preguntar-mark {
+  position: absolute;
+  top: -40px;
+  right: -20px;
+  font-family: var(--font-serif);
+  font-size: 160px;
+  line-height: 1;
+  color: var(--charcoal);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* 3. CONECTAR: dos puntos unidos por línea */
+.micro-conectar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.micro-conectar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--coral-glow);
+}
+.micro-conectar-line {
+  height: 2px;
+  background-color: var(--coral-glow);
+  width: 0px;
+  transition: width 450ms var(--ease-out);
+}
+.active-verb .micro-conectar-line { width: 50px; }
+
+/* 4. ORDENAR: tres líneas que se alinean */
+.micro-ordenar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.micro-ordenar-bar {
+  height: 2px;
+  background-color: var(--coral-glow);
+  transition: width 400ms var(--ease-out), transform 400ms var(--ease-out);
+}
+.micro-ordenar-bar:nth-child(1) { width: 45px; transform: translateX(12px); }
+.micro-ordenar-bar:nth-child(2) { width: 60px; transform: translateX(-8px); }
+.micro-ordenar-bar:nth-child(3) { width: 35px; transform: translateX(6px); }
+.active-verb .micro-ordenar-bar { transform: translateX(0) !important; width: 55px !important; }
+
+/* 5. PROBAR: círculo vacío pasa a relleno */
+.micro-probar-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--coral-glow);
+  background-color: transparent;
+  transition: background-color 400ms var(--ease-out);
+}
+.active-verb .micro-probar-circle { background-color: var(--coral-glow); }
+
+/* 6. DESTRABAR: línea interrumpida que se completa */
+.micro-destrabar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: gap 400ms var(--ease-out);
+}
+.micro-destrabar-seg {
+  height: 2px;
+  width: 30px;
+  background-color: var(--coral-glow);
+}
+.active-verb .micro-destrabar-wrap { gap: 0px; }
+
+/* 7. CAMBIAR: fuente cambia temporalmente */
+.sticky-verb-word.is-cambiar-serif {
+  font-family: var(--font-serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: var(--coral-glow) !important;
+}
+
+/* Right side content blocks */
+.pienso-step-item {
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(79, 93, 117, 0.12);
+}
+
+.pienso-step-item:last-child {
+  border-bottom: none;
+}
+
+/* ---------------- 23, 24, 25, 26. SECCIÓN "LO QUE HAGO" (DARK ATMOSPHERE) ---------------- */
+.lo-que-hago-section {
+  background-color: var(--jet-black);
+  color: var(--ivory);
+  padding: 7rem 0 6rem;
+  position: relative;
+}
+
+.node-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--ivory);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: all var(--transition-fast);
+}
+
+.node-chip .node-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--coral-glow);
+  box-shadow: 0 0 10px rgba(239, 131, 84, 0.6);
+}
+
+.node-chip:hover {
+  background: rgba(239, 131, 84, 0.15);
+  border-color: var(--coral-glow);
+  transform: translateY(-2px);
+}
+
+/* 25. BLOQUES PROFESIONALES HORIZONTALES (SIN CARDS ELEVADAS) */
+.hago-horizontal-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2.25rem 0;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  align-items: baseline;
+  transition: border-color var(--transition-fast);
+}
+
+.hago-horizontal-row:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hago-horizontal-row:hover {
+  border-color: rgba(239, 131, 84, 0.4);
+}
+
+.hago-row-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--coral-glow);
+}
+
+.hago-row-desc {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: #D1D5DB;
+}
+
+@media (max-width: 768px) {
+  .hago-horizontal-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1.75rem 0;
+  }
+}
+
+/* ---------------- 27. TRANSICIÓN HACIA HISTORIA ---------------- */
+.transition-historia-strip {
+  background-color: var(--ivory);
+  padding: 8rem 0;
+  text-align: center;
+}
+
+/* ---------------- 29 & 30. MOMENTO "PLOT TWIST" (STICKY NARRATIVO) ---------------- */
+.plot-twist-narrative-block {
+  position: relative;
+  background-color: var(--ivory);
+  transition: background-color 700ms var(--ease-out);
+}
+
+.plot-twist-narrative-block.is-dark {
+  background-color: var(--jet-black) !important;
+  color: var(--ivory) !important;
+}
+
+.plot-twist-sticky-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* ---------------- 31. TIMELINE EDITORIAL ---------------- */
+.timeline-editorial {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.timeline-editorial::before {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 7px;
+  width: 2px;
+  background-color: var(--silver);
+}
+
+.timeline-entry {
+  position: relative;
+  margin-bottom: 3.5rem;
+}
+
+.timeline-entry::before {
+  content: '';
+  position: absolute;
+  left: -2.5rem;
+  top: 0.35rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--ivory);
+  border: 3px solid var(--coral-glow);
+  z-index: 2;
+}
+
+/* ---------------- 32. FORMACIÓN ("LO QUE APRENDO") ---------------- */
+.formacion-flow-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 3rem 0;
+}
+
+.formacion-flow-wrap::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--silver);
+  z-index: 0;
+}
+
+@media (max-width: 900px) {
+  .formacion-flow-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    padding-left: 2rem;
+  }
+  .formacion-flow-wrap::before {
+    top: 0;
+    bottom: 0;
+    left: 8px;
+    right: auto;
+    width: 2px;
+    height: 100%;
+  }
+}
+
+.formacion-node-card {
+  position: relative;
+  z-index: 2;
+  background-color: #FFFFFF;
+  border: 1px solid var(--silver);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  transition: all 250ms var(--ease-out);
+  cursor: pointer;
+}
+
+.formacion-node-card:hover {
+  border-color: var(--coral-glow);
+  box-shadow: 0 10px 25px -5px rgba(239, 131, 84, 0.2);
+  transform: translateY(-3px);
+}
+
+.formacion-drawer-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 350ms var(--ease-out), opacity 350ms ease;
+  opacity: 0;
+}
+
+.formacion-node-card:hover .formacion-drawer-content,
+.formacion-node-card:focus-within .formacion-drawer-content {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(79, 93, 117, 0.15);
+}
+
+/* ---------------- 33, 34, 35. FUERA DEL TRABAJO (COLLAGE IRREGULAR) ---------------- */
+.collage-grid-irregular {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.collage-item {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background-color: #E7E3DA;
+  border: 1px solid rgba(79, 93, 117, 0.18);
+  box-shadow: 0 8px 24px -4px rgba(45, 49, 66, 0.08);
+  transition: transform 350ms var(--ease-out), box-shadow 350ms var(--ease-out);
+  will-change: transform;
+}
+
+.collage-item:hover {
+  transform: scale(1.015) rotate(0deg) !important;
+  box-shadow: 0 14px 32px -4px rgba(45, 49, 66, 0.16);
+  z-index: 10;
+}
+
+.placeholder-photo-box {
+  width: 100%;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: #ECE8E0;
+  color: var(--blue-slate);
+  padding: 2rem;
+  text-align: center;
+}
+
+/* ---------------- 36. DETALLES DE PERSONALIDAD (MICROCOPYS) ---------------- */
+.microcopy-stamp {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--coral-glow);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(239, 131, 84, 0.08);
+  border-radius: 6px;
+  border: 1px dashed rgba(239, 131, 84, 0.35);
+  user-select: none;
+}
+
+/* ---------------- 37 & 38. CONTACTO Y FORMULARIO ---------------- */
+.contacto-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(34, 34, 34, 0.2);
+  padding: 0.875rem 0;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color 220ms var(--ease-out);
+}
+
+.contacto-input:focus {
+  border-color: var(--coral-glow);
+}
+
+.contacto-input::placeholder {
+  color: rgba(79, 93, 117, 0.55);
+}
+
+/* ---------------- 42. REVEALS GENERALES ---------------- */
+.reveal-group {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out);
+}
+
+.reveal-group.revealed {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Stagger delay helpers */
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-
-/* ---------------- Accessibility: Reduced Motion ---------------- */
+/* ---------------- 46. ACCESIBILIDAD (PREFERS-REDUCED-MOTION) ---------------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -390,11 +881,22 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal-on-scroll {
+  .reveal-group {
     opacity: 1 !important;
     transform: none !important;
   }
-  .hero-variant {
-    transition: none !important;
+  .floating-coral-dot {
+    animation: none !important;
+  }
+  .hero-anim-logo,
+  .hero-anim-eyebrow,
+  .hero-h1-line-inner,
+  .hero-anim-para,
+  .hero-anim-twist,
+  .hero-anim-buttons,
+  .hero-anim-photo {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }
