@@ -1,7 +1,7 @@
 /* ==========================================================================
-   ALEJANDRO VACARO - SISTEMA VISUAL V2 DEFINITIVO
+   ALEJANDRO VACARO - SISTEMA VISUAL V2 PULIDO & COMPACTO
    "Estructura seria + Personalidad inesperada"
-   Paleta oficial:
+   Paleta definitiva:
    --ivory: #F5F2EC
    --charcoal: #222222
    --blue-slate: #4F5D75
@@ -28,8 +28,8 @@
   /* Transiciones */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: 220ms cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-normal: 350ms cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-slow: 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ---------------- Base & Resets ---------------- */
@@ -52,7 +52,7 @@ html {
 body {
   background-color: var(--ivory);
   color: var(--charcoal);
-  line-height: 1.65;
+  line-height: 1.6;
   overflow-x: hidden;
   position: relative;
 }
@@ -75,53 +75,63 @@ body {
   background-color: var(--coral-glow);
   z-index: 100;
   pointer-events: none;
-  transition: width 80ms linear;
+  transition: width 60ms linear;
 }
 
-/* ---------------- 6. FONDO Y TEXTURA (SUTIL, NO GLOBAL) ---------------- */
+/* ---------------- 6. FONDO Y TEXTURA SUTIL ---------------- */
 .bg-subtle-grid {
   background-image: 
-    linear-gradient(to right, rgba(79, 93, 117, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(79, 93, 117, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(79, 93, 117, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(79, 93, 117, 0.06) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
-/* ---------------- 7 & 8. HEADER & NAVEGACIÓN ---------------- */
+/* ---------------- 6 & 43. HEADER COMPACTO CON SCROLL ---------------- */
 .header-v2 {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   height: 72px;
-  background: rgba(245, 242, 236, 0.88);
+  background: rgba(245, 242, 236, 0.90);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(34, 34, 34, 0.10);
+  border-bottom: 1px solid rgba(34, 34, 34, 0.08);
   z-index: 50;
-  transition: background var(--transition-fast), border-color var(--transition-fast);
+  transition: height 300ms var(--ease-out), background 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
 }
 
-@media (max-width: 768px) {
-  .header-v2 {
-    height: 64px;
-  }
+.header-v2.scrolled {
+  height: 58px;
+  box-shadow: 0 4px 18px rgba(34, 34, 34, 0.04);
 }
 
-/* 43. ANIMACIÓN DEL LOGO */
+.header-inner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* 5. LOGO SVG ORIGINAL CON PROPORCIONES PRECISAS */
 .brand-symbol-svg {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: auto;
+  aspect-ratio: 108 / 96;
   color: var(--jet-black);
-  transition: transform 350ms var(--ease-out);
+  object-fit: contain;
+  overflow: visible;
   display: inline-block;
   flex-shrink: 0;
+  transition: transform 300ms var(--ease-out), width 300ms var(--ease-out);
 }
 
-@media (max-width: 768px) {
-  .brand-symbol-svg {
-    width: 30px;
-    height: 30px;
-  }
+.header-v2.scrolled .brand-symbol-svg {
+  width: 24px;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -130,19 +140,35 @@ body {
   }
 }
 
-.brand-subtitle-micro {
-  font-size: 11px;
+.brand-name {
+  font-size: 0.9375rem; /* 15-16px */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+  line-height: 1.2;
+}
+
+.brand-descriptor {
+  font-size: 0.6875rem; /* 11px */
   letter-spacing: 0.06em;
   color: var(--blue-slate);
   font-weight: 600;
-  line-height: 1;
   text-transform: uppercase;
+  line-height: 1;
+  transition: opacity 300ms var(--ease-out), max-height 300ms var(--ease-out);
+}
+
+.header-v2.scrolled .brand-descriptor {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 /* 8. HEADER HOVER LINKS */
 .nav-link-v2 {
   position: relative;
-  font-size: 0.9375rem;
+  font-size: 0.90625rem; /* 14.5px */
   font-weight: 500;
   color: var(--blue-slate);
   text-decoration: none;
@@ -181,43 +207,43 @@ body {
   color: var(--coral-glow);
 }
 
-/* ---------------- 4. TIPOGRAFÍA CLAMP ---------------- */
+/* ---------------- 2. ESCALA TIPOGRÁFICA AJUSTADA ---------------- */
 .text-hero-h1 {
-  font-size: clamp(3.2rem, 5.8vw, 6.4rem);
+  font-size: clamp(2.8rem, 4.8vw, 5.2rem);
   line-height: 0.96;
   letter-spacing: -0.03em;
 }
 
 .text-editorial-h2 {
-  font-size: clamp(2.4rem, 4.2vw, 4.8rem);
+  font-size: clamp(2.2rem, 3.6vw, 4.0rem);
   line-height: 1.05;
   letter-spacing: -0.025em;
 }
 
 .text-section-h3 {
-  font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
   line-height: 1.15;
 }
 
 .text-body-principal {
-  font-size: clamp(1.125rem, 1.25vw, 1.25rem); /* 18-20px */
-  line-height: 1.65;
-  color: var(--blue-slate);
-}
-
-.text-body-secundario {
-  font-size: 1rem; /* 16px */
+  font-size: 1.125rem; /* 18px */
   line-height: 1.6;
   color: var(--blue-slate);
 }
 
-.text-metadata {
-  font-size: 0.8125rem; /* 13px */
-  line-height: 1.5;
+.text-body-secundario {
+  font-size: 1.03125rem; /* 16.5px */
+  line-height: 1.55;
   color: var(--blue-slate);
 }
 
-/* ---------------- 13. BOTONES ---------------- */
+.text-metadata {
+  font-size: 0.78125rem; /* 12.5px */
+  line-height: 1.45;
+  color: var(--blue-slate);
+}
+
+/* ---------------- 13. BOTONES HERO ---------------- */
 .btn-primary-v2 {
   display: inline-flex;
   align-items: center;
@@ -225,7 +251,7 @@ body {
   gap: 0.5rem;
   background-color: var(--jet-black);
   color: #FFFFFF;
-  padding: 0.875rem 1.75rem;
+  padding: 0.8125rem 1.625rem;
   border-radius: 0.5rem;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -248,7 +274,7 @@ body {
   gap: 0.5rem;
   background-color: transparent;
   color: var(--charcoal);
-  padding: 0.875rem 1.75rem;
+  padding: 0.8125rem 1.625rem;
   border-radius: 0.5rem;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -264,13 +290,49 @@ body {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
-/* ---------------- 14 & 16. HERO FOTO & TILT ---------------- */
+/* ---------------- 3 & 4. HERO SECTION COMPACTO ---------------- */
+.hero-compact-section {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 3.5rem;
+}
+
+.hero-grid-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+  gap: clamp(36px, 4.5vw, 76px);
+  align-items: start;
+}
+
+@media (max-width: 991px) {
+  .hero-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.hero-photo-container {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 991px) {
+  .hero-photo-container {
+    margin-top: 0;
+    max-width: 360px;
+  }
+}
+
 .hero-photo-wrapper {
   position: relative;
   border-radius: 24px;
   overflow: hidden;
   background-color: #E6E2D8;
-  box-shadow: 0 16px 40px -10px rgba(45, 49, 66, 0.12);
+  box-shadow: 0 16px 36px -8px rgba(45, 49, 66, 0.12);
   transform-style: preserve-3d;
   will-change: transform;
 }
@@ -285,125 +347,64 @@ body {
   transition: transform 500ms var(--ease-out);
 }
 
-/* Floating badge over photo */
+/* 9. BADGE MOVIMIENTO AUTÓNOMO */
 .hero-photo-badge {
   position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
+  top: 1rem;
+  right: 1rem;
   background-color: var(--jet-black);
   color: #FFFFFF;
-  font-size: 0.75rem;
+  font-size: 0.71875rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  padding: 0.35rem 0.85rem;
+  padding: 0.3125rem 0.8125rem;
   border-radius: 9999px;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 5;
+  animation: badgeFloat 4.5s ease-in-out infinite;
 }
 
 .hero-photo-badge .dot {
-  width: 7px;
-  height: 7px;
+  width: 6.5px;
+  height: 6.5px;
   border-radius: 50%;
   background-color: var(--coral-glow);
 }
 
-/* 17. DETALLE FLOTANTE HERO */
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* 9. CORAL DOT MOVIMIENTO ORGÁNICO LENTO */
 .floating-coral-dot {
   position: absolute;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background-color: var(--coral-glow);
-  bottom: -5px;
-  left: -5px;
+  bottom: -4px;
+  left: -4px;
   z-index: 10;
-  box-shadow: 0 0 16px rgba(239, 131, 84, 0.7);
-  animation: floatCoralDot 4s ease-in-out alternate infinite;
+  box-shadow: 0 0 14px rgba(239, 131, 84, 0.6);
+  animation: coralDotDrift 5s ease-in-out alternate infinite;
   pointer-events: none;
 }
 
-@keyframes floatCoralDot {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(8px); }
+@keyframes coralDotDrift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(6px, -3px); }
+  100% { transform: translate(2px, 6px); }
 }
 
-/* ---------------- 15. HERO MOVIMIENTO INICIAL ---------------- */
-.hero-anim-logo {
-  opacity: 0;
-  transform: translateY(-6px);
-  animation: heroFadeIn 450ms var(--ease-out) forwards;
-}
-
-.hero-anim-eyebrow {
-  opacity: 0;
-  animation: heroFadeIn 500ms var(--ease-out) 80ms forwards;
-}
-
-.hero-h1-line {
-  display: block;
-  overflow: hidden;
-}
-
-.hero-h1-line-inner {
-  display: block;
-  opacity: 0;
-  transform: translateY(24px);
-  animation: heroSlideUp 600ms var(--ease-out) forwards;
-}
-
-.hero-h1-line:nth-child(1) .hero-h1-line-inner { animation-delay: 120ms; }
-.hero-h1-line:nth-child(2) .hero-h1-line-inner { animation-delay: 210ms; }
-.hero-h1-line:nth-child(3) .hero-h1-line-inner { animation-delay: 300ms; }
-
-.hero-anim-para {
-  opacity: 0;
-  transform: translateY(12px);
-  animation: heroFadeUp 650ms var(--ease-out) 390ms forwards;
-}
-
-.hero-anim-twist {
-  opacity: 0;
-  transform: translateY(12px);
-  animation: heroFadeUp 650ms var(--ease-out) 480ms forwards;
-}
-
-.hero-anim-buttons {
-  opacity: 0;
-  transform: translateY(12px);
-  animation: heroFadeUp 650ms var(--ease-out) 570ms forwards;
-}
-
-.hero-anim-photo {
-  opacity: 0;
-  transform: scale(0.97) rotate(0.6deg);
-  animation: heroPhotoIn 900ms var(--ease-out) 200ms forwards;
-}
-
-@keyframes heroFadeIn {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes heroSlideUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes heroFadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes heroPhotoIn {
-  to { opacity: 1; transform: scale(1) rotate(0deg); }
-}
-
-/* ---------------- 18. TRANSICIÓN TIPOGRÁFICA HORIZONTAL SCROLL ---------------- */
-.scroll-typography-strip {
+/* ---------------- 8. MARQUEE CONTINUO AUTOMÁTICO ---------------- */
+.marquee-band {
   width: 100%;
   overflow: hidden;
-  padding: 3rem 0;
+  padding: 2.25rem 0;
   border-top: 1px solid rgba(79, 93, 117, 0.12);
   border-bottom: 1px solid rgba(79, 93, 117, 0.12);
   background-color: var(--ivory);
@@ -411,32 +412,62 @@ body {
   white-space: nowrap;
 }
 
-.scroll-typography-content {
-  display: inline-block;
-  white-space: nowrap;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 700;
-  color: rgba(79, 93, 117, 0.22);
-  letter-spacing: -0.02em;
-  will-change: transform;
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeLoop 32s linear infinite;
 }
 
-.scroll-typography-content .serif-accent {
+.marquee-band:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-content-chunk {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: clamp(2rem, 3.6vw, 3.4rem);
+  font-weight: 700;
+  color: var(--silver);
+  letter-spacing: -0.02em;
+}
+
+.marquee-content-chunk .serif-accent {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  color: rgba(239, 131, 84, 0.4);
+  color: var(--coral-glow);
 }
 
-/* ---------------- 19, 20, 21, 22. SECCIÓN "CÓMO PIENSO" (STICKY WORDS) ---------------- */
+@keyframes marqueeLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ---------------- 10, 11, 12. SECCIÓN "CÓMO PIENSO" (SIN SOLAPAMIENTO) ---------------- */
 .como-pienso-section {
   position: relative;
-  padding: 6rem 0 4rem;
+  padding: 5rem 0 3rem;
+}
+
+.pienso-grid-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: clamp(60px, 7vw, 110px);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .pienso-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 }
 
 .sticky-word-container {
   position: sticky;
-  top: 180px;
+  top: 140px;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -444,223 +475,233 @@ body {
 
 .sticky-verb-number {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
   color: var(--coral-glow);
   line-height: 1;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .sticky-verb-word {
-  font-size: clamp(4rem, 6.5vw, 6.5rem);
+  font-size: clamp(3.4rem, 5.2vw, 5.8rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.03em;
   color: var(--charcoal);
-  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out), font-family 400ms ease;
+  transition: opacity 350ms var(--ease-out), transform 350ms var(--ease-out), font-family 350ms ease;
 }
 
-/* Microinteracciones visuales específicas por verbo */
+/* 12. Microanimaciones autónomas lentas */
 .verb-micro-visual {
-  min-height: 48px;
+  min-height: 40px;
   display: flex;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
+  position: relative;
 }
 
-/* 1. ENTENDER: línea horizontal expandida */
+/* ENTENDER: línea que crece y decrece suavemente */
 .micro-entender-line {
   height: 2px;
   background-color: var(--coral-glow);
-  width: 0%;
-  transition: width 500ms var(--ease-out);
+  width: 70px;
+  animation: lineBreathe 4s ease-in-out infinite;
 }
-.active-verb .micro-entender-line { width: 90px; }
+@keyframes lineBreathe {
+  0%, 100% { width: 50px; }
+  50% { width: 90px; }
+}
 
-/* 2. PREGUNTAR: signo '?' en opacidad 0.08 */
+/* PREGUNTAR: ? decorativo con desplazamiento 4px vertical */
 .micro-preguntar-mark {
   position: absolute;
-  top: -40px;
-  right: -20px;
+  top: -30px;
+  right: -10px;
   font-family: var(--font-serif);
-  font-size: 160px;
+  font-size: 140px;
   line-height: 1;
   color: var(--charcoal);
   opacity: 0.08;
   pointer-events: none;
+  animation: markFloat 5s ease-in-out infinite;
+}
+@keyframes markFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
 }
 
-/* 3. CONECTAR: dos puntos unidos por línea */
+/* CONECTAR: dos puntos con pulso alternado y línea 90-100% */
 .micro-conectar-wrap {
   display: flex;
   align-items: center;
-  gap: 0;
 }
 .micro-conectar-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: var(--coral-glow);
+}
+.micro-conectar-dot:first-child {
+  animation: dotPulseA 3s ease-in-out infinite;
+}
+.micro-conectar-dot:last-child {
+  animation: dotPulseB 3s ease-in-out infinite;
 }
 .micro-conectar-line {
   height: 2px;
   background-color: var(--coral-glow);
-  width: 0px;
-  transition: width 450ms var(--ease-out);
+  width: 50px;
+  animation: lineStretch 4s ease-in-out infinite;
 }
-.active-verb .micro-conectar-line { width: 50px; }
+@keyframes dotPulseA { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+@keyframes dotPulseB { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes lineStretch { 0%, 100% { width: 45px; } 50% { width: 54px; } }
 
-/* 4. ORDENAR: tres líneas que se alinean */
+/* ORDENAR: tres líneas que se desplazan 2-3px */
 .micro-ordenar-wrap {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 .micro-ordenar-bar {
   height: 2px;
   background-color: var(--coral-glow);
-  transition: width 400ms var(--ease-out), transform 400ms var(--ease-out);
 }
-.micro-ordenar-bar:nth-child(1) { width: 45px; transform: translateX(12px); }
-.micro-ordenar-bar:nth-child(2) { width: 60px; transform: translateX(-8px); }
-.micro-ordenar-bar:nth-child(3) { width: 35px; transform: translateX(6px); }
-.active-verb .micro-ordenar-bar { transform: translateX(0) !important; width: 55px !important; }
+.micro-ordenar-bar:nth-child(1) { width: 45px; animation: barDrift 3.5s ease-in-out infinite; }
+.micro-ordenar-bar:nth-child(2) { width: 55px; animation: barDrift 3.5s ease-in-out infinite 0.4s; }
+.micro-ordenar-bar:nth-child(3) { width: 38px; animation: barDrift 3.5s ease-in-out infinite 0.8s; }
+@keyframes barDrift { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
 
-/* 5. PROBAR: círculo vacío pasa a relleno */
+/* PROBAR: círculo que alterna vacío y relleno parcial */
 .micro-probar-circle {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   border: 2px solid var(--coral-glow);
-  background-color: transparent;
-  transition: background-color 400ms var(--ease-out);
+  animation: circleFillPulse 4s ease-in-out infinite;
 }
-.active-verb .micro-probar-circle { background-color: var(--coral-glow); }
+@keyframes circleFillPulse {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: rgba(239, 131, 84, 0.4); }
+}
 
-/* 6. DESTRABAR: línea interrumpida que se completa */
+/* DESTRABAR: línea interrumpida que se abre/cierra lentamente */
 .micro-destrabar-wrap {
   display: flex;
   align-items: center;
-  gap: 10px;
-  transition: gap 400ms var(--ease-out);
+  gap: 6px;
+  animation: gapBreathe 4s ease-in-out infinite;
 }
 .micro-destrabar-seg {
   height: 2px;
-  width: 30px;
+  width: 25px;
   background-color: var(--coral-glow);
 }
-.active-verb .micro-destrabar-wrap { gap: 0px; }
+@keyframes gapBreathe { 0%, 100% { gap: 6px; } 50% { gap: 1px; } }
 
-/* 7. CAMBIAR: fuente cambia temporalmente */
-.sticky-verb-word.is-cambiar-serif {
-  font-family: var(--font-serif) !important;
-  font-style: italic !important;
-  font-weight: 400 !important;
-  color: var(--coral-glow) !important;
-}
-
-/* Right side content blocks */
+/* Right side steps (60-72vh desktop) */
 .pienso-step-item {
-  min-height: 72vh;
+  min-height: 64vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3rem 0;
-  border-bottom: 1px solid rgba(79, 93, 117, 0.12);
+  padding: 2.5rem 0;
+  border-bottom: 1px solid rgba(79, 93, 117, 0.10);
 }
 
 .pienso-step-item:last-child {
   border-bottom: none;
 }
 
-/* ---------------- 23, 24, 25, 26. SECCIÓN "LO QUE HAGO" (DARK ATMOSPHERE) ---------------- */
+/* ---------------- 14. "LO QUE HAGO" COMPACTO & NODOS ORGÁNICOS ---------------- */
 .lo-que-hago-section {
   background-color: var(--jet-black);
   color: var(--ivory);
-  padding: 7rem 0 6rem;
+  padding: 5.5rem 0 5rem;
   position: relative;
 }
 
-.node-chip {
+.organic-node-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.organic-node-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.organic-node {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1.1rem;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: var(--ivory);
-  font-size: 0.8125rem;
+  font-size: 1.0625rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  transition: all var(--transition-fast);
+  letter-spacing: 0.04em;
+  color: var(--ivory);
 }
 
-.node-chip .node-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--coral-glow);
-  box-shadow: 0 0 10px rgba(239, 131, 84, 0.6);
+.organic-node .node-bullet {
+  color: var(--coral-glow);
+  font-size: 0.75rem;
 }
 
-.node-chip:hover {
-  background: rgba(239, 131, 84, 0.15);
-  border-color: var(--coral-glow);
-  transform: translateY(-2px);
+.node-connecting-line {
+  height: 1px;
+  background-color: rgba(239, 131, 84, 0.45);
+  flex-grow: 1;
+  max-width: 80px;
 }
 
-/* 25. BLOQUES PROFESIONALES HORIZONTALES (SIN CARDS ELEVADAS) */
+/* 4 bloques horizontales compactos */
 .hago-horizontal-row {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 2.25rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  padding: 1.75rem 0;
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 2rem;
+  grid-template-columns: 170px 1fr;
+  gap: 1.75rem;
   align-items: baseline;
   transition: border-color var(--transition-fast);
 }
 
 .hago-horizontal-row:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.hago-horizontal-row:hover {
-  border-color: rgba(239, 131, 84, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .hago-row-title {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: var(--coral-glow);
 }
 
 .hago-row-desc {
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.55;
   color: #D1D5DB;
 }
 
 @media (max-width: 768px) {
   .hago-horizontal-row {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
-    padding: 1.75rem 0;
+    gap: 0.35rem;
+    padding: 1.4rem 0;
   }
 }
 
-/* ---------------- 27. TRANSICIÓN HACIA HISTORIA ---------------- */
+/* ---------------- 16. TRANSICIÓN "PERO NO LLEGUÉ EN LÍNEA RECTA" COMPACTA ---------------- */
 .transition-historia-strip {
   background-color: var(--ivory);
-  padding: 8rem 0;
+  padding: 6.5rem 0;
   text-align: center;
 }
 
-/* ---------------- 29 & 30. MOMENTO "PLOT TWIST" (STICKY NARRATIVO) ---------------- */
+/* ---------------- 18 & 19. PLOT TWIST SECUENCIA EXACTA (160-190vh) ---------------- */
 .plot-twist-narrative-block {
   position: relative;
   background-color: var(--ivory);
-  transition: background-color 700ms var(--ease-out);
+  transition: background-color 500ms var(--ease-out);
 }
 
 .plot-twist-narrative-block.is-dark {
@@ -680,111 +721,229 @@ body {
   padding: 2rem;
 }
 
-/* ---------------- 31. TIMELINE EDITORIAL ---------------- */
-.timeline-editorial {
-  position: relative;
-  padding-left: 2.5rem;
-}
-
-.timeline-editorial::before {
-  content: '';
+.twist-phrase {
   position: absolute;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  left: 7px;
-  width: 2px;
-  background-color: var(--silver);
-}
-
-.timeline-entry {
-  position: relative;
-  margin-bottom: 3.5rem;
-}
-
-.timeline-entry::before {
-  content: '';
-  position: absolute;
-  left: -2.5rem;
-  top: 0.35rem;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: var(--ivory);
-  border: 3px solid var(--coral-glow);
-  z-index: 2;
-}
-
-/* ---------------- 32. FORMACIÓN ("LO QUE APRENDO") ---------------- */
-.formacion-flow-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  padding: 3rem 0;
-}
-
-.formacion-flow-wrap::before {
-  content: '';
-  position: absolute;
-  top: 50%;
   left: 0;
   right: 0;
-  height: 2px;
-  background-color: var(--silver);
-  z-index: 0;
+  margin: auto;
+  max-width: 840px;
+  padding: 0 1.5rem;
+  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
 }
 
-@media (max-width: 900px) {
-  .formacion-flow-wrap {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-    padding-left: 2rem;
-  }
-  .formacion-flow-wrap::before {
-    top: 0;
-    bottom: 0;
-    left: 8px;
-    right: auto;
-    width: 2px;
-    height: 100%;
-  }
+/* ---------------- 20, 21, 22, 23, 24. NUEVA HISTORIA EDITORIAL (5 CAPÍTULOS) ---------------- */
+.historia-editorial-section {
+  padding: 5rem 0 6rem;
 }
 
-.formacion-node-card {
+.story-chapter {
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+  padding: 3.5rem 0;
+  border-bottom: 1px solid rgba(79, 93, 117, 0.12);
+}
+
+.story-chapter:last-child {
+  border-bottom: none;
+}
+
+.chapter-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--coral-glow);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.chapter-title {
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--charcoal);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.chapter-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 1.8vw, 1.75rem);
+  color: var(--jet-black);
+  line-height: 1.35;
+  margin-top: 1.25rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--coral-glow);
+}
+
+/* Capítulo 4: Negocio y Tecnología convergiendo */
+.converge-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2.5rem 1.5rem;
   position: relative;
-  z-index: 2;
-  background-color: #FFFFFF;
-  border: 1px solid var(--silver);
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  transition: all 250ms var(--ease-out);
-  cursor: pointer;
 }
 
-.formacion-node-card:hover {
-  border-color: var(--coral-glow);
-  box-shadow: 0 10px 25px -5px rgba(239, 131, 84, 0.2);
-  transform: translateY(-3px);
+.converge-node {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  color: var(--blue-slate);
+  transition: transform 900ms var(--ease-out);
 }
 
-.formacion-drawer-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 350ms var(--ease-out), opacity 350ms ease;
+.converge-center {
+  background: var(--jet-black);
+  color: #FFFFFF;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 16px rgba(45, 49, 66, 0.2);
   opacity: 0;
+  transition: opacity 900ms var(--ease-out) 300ms;
 }
 
-.formacion-node-card:hover .formacion-drawer-content,
-.formacion-node-card:focus-within .formacion-drawer-content {
-  max-height: 200px;
+.converge-container.in-view .converge-left {
+  transform: translateX(20px);
+}
+.converge-container.in-view .converge-right {
+  transform: translateX(-20px);
+}
+.converge-container.in-view .converge-center {
   opacity: 1;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(79, 93, 117, 0.15);
 }
 
-/* ---------------- 33, 34, 35. FUERA DEL TRABAJO (COLLAGE IRREGULAR) ---------------- */
+/* ---------------- 26, 27, 28, 29. NUEVO "LO QUE APRENDO" (CONSTELACIÓN) ---------------- */
+.constelacion-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  min-height: 480px;
+  margin: 3rem auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.constelacion-center {
+  position: absolute;
+  z-index: 5;
+  background: var(--jet-black);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 8px 24px rgba(45, 49, 66, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.constelacion-svg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.constelacion-line {
+  stroke: var(--coral-glow);
+  stroke-width: 1.5px;
+  stroke-dasharray: 4 4;
+  opacity: 0.4;
+  transition: opacity 300ms var(--ease-out), stroke-width 300ms var(--ease-out);
+  animation: lineGlowPulse 6s ease-in-out infinite;
+}
+
+@keyframes lineGlowPulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.6; }
+}
+
+.constelacion-node {
+  position: absolute;
+  z-index: 6;
+  cursor: pointer;
+  transition: transform 300ms var(--ease-out);
+}
+
+.constelacion-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--charcoal);
+  background-color: var(--ivory);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--silver);
+  transition: all 250ms var(--ease-out);
+  display: inline-block;
+}
+
+.constelacion-node:hover .constelacion-label {
+  color: var(--coral-glow);
+  border-color: var(--coral-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(239, 131, 84, 0.2);
+}
+
+/* Ficha contextual cerca del nodo */
+.constelacion-card {
+  position: absolute;
+  top: 105%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: 260px;
+  background-color: var(--ivory);
+  border: 1px solid var(--silver);
+  border-radius: 10px;
+  padding: 14px 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms var(--ease-out), transform 250ms var(--ease-out);
+  box-shadow: 0 8px 24px -4px rgba(45, 49, 66, 0.12);
+  z-index: 20;
+}
+
+.constelacion-node:hover .constelacion-card,
+.constelacion-node:focus-within .constelacion-card {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 768px) {
+  .constelacion-wrap {
+    min-height: auto;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .constelacion-svg-canvas { display: none; }
+  .constelacion-center,
+  .constelacion-node {
+    position: static;
+    transform: none !important;
+  }
+  .constelacion-card {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    width: 100%;
+    margin-top: 0.5rem;
+    transform: none !important;
+  }
+}
+
+/* ---------------- 31 & 32. "FUERA DEL TRABAJO" PLACEHOLDERS SUTILES ---------------- */
 .collage-grid-irregular {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -796,81 +955,151 @@ body {
   position: relative;
   border-radius: 18px;
   overflow: hidden;
-  background-color: #E7E3DA;
-  border: 1px solid rgba(79, 93, 117, 0.18);
-  box-shadow: 0 8px 24px -4px rgba(45, 49, 66, 0.08);
+  background-color: #EEEAE3;
+  border: 1px solid rgba(79, 93, 117, 0.15);
+  box-shadow: 0 6px 20px -4px rgba(45, 49, 66, 0.06);
   transition: transform 350ms var(--ease-out), box-shadow 350ms var(--ease-out);
-  will-change: transform;
 }
 
 .collage-item:hover {
   transform: scale(1.015) rotate(0deg) !important;
-  box-shadow: 0 14px 32px -4px rgba(45, 49, 66, 0.16);
-  z-index: 10;
+  box-shadow: 0 12px 28px -4px rgba(45, 49, 66, 0.14);
+  z-index: 5;
 }
 
-.placeholder-photo-box {
+.placeholder-photo-subtle {
   width: 100%;
   aspect-ratio: 4/3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  background-color: #ECE8E0;
-  color: var(--blue-slate);
-  padding: 2rem;
+  gap: 0.35rem;
+  background-color: #EEEAE3;
+  border: 1px dashed rgba(79, 93, 117, 0.25);
+  border-radius: 18px;
+  padding: 1.5rem;
   text-align: center;
 }
 
-/* ---------------- 36. DETALLES DE PERSONALIDAD (MICROCOPYS) ---------------- */
-.microcopy-stamp {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.9375rem;
-  color: var(--coral-glow);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.6rem;
-  background: rgba(239, 131, 84, 0.08);
+.collage-tag {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.85rem;
+  background: rgba(34, 34, 34, 0.85);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
   border-radius: 6px;
-  border: 1px dashed rgba(239, 131, 84, 0.35);
-  user-select: none;
 }
 
-/* ---------------- 37 & 38. CONTACTO Y FORMULARIO ---------------- */
-.contacto-input {
+/* ---------------- 33, 34, 35, 36, 37, 38, 39. CONTACTO OSCURO #2D3142 ---------------- */
+.contacto-dark-section {
+  background-color: var(--jet-black);
+  color: var(--ivory);
+  padding: 6.5rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 39. Fondo "HOLA." con drift autónomo */
+.contacto-bg-drift {
+  position: absolute;
+  top: 10%;
+  right: -2%;
+  font-family: var(--font-serif);
+  font-size: clamp(8rem, 20vw, 22rem);
+  font-weight: 400;
+  line-height: 1;
+  color: rgba(245, 242, 236, 0.035);
+  user-select: none;
+  pointer-events: none;
+  animation: driftHola 8s ease-in-out alternate infinite;
+}
+
+@keyframes driftHola {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(8px); }
+}
+
+/* 36 & 37. Social Links con Lucide icons */
+.social-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(245, 242, 236, 0.18);
+  color: var(--ivory);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: color 220ms var(--ease-out);
+}
+
+.social-link-row:hover {
+  color: var(--coral-glow);
+}
+
+.social-link-row .social-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 220ms var(--ease-out);
+}
+
+.social-link-row:hover .social-icon {
+  transform: translateX(3px);
+}
+
+.social-link-row .social-arrow {
+  transition: transform 220ms var(--ease-out);
+}
+
+.social-link-row:hover .social-arrow {
+  transform: translate(3px, -3px);
+  color: var(--coral-glow);
+}
+
+/* 38. Formulario oscuro */
+.contacto-input-dark {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1.5px solid rgba(34, 34, 34, 0.2);
-  padding: 0.875rem 0;
+  border-bottom: 1.5px solid rgba(245, 242, 236, 0.25);
+  padding: 0.8125rem 0;
   font-family: var(--font-sans);
-  font-size: 1.0625rem;
-  color: var(--charcoal);
+  font-size: 1.03125rem;
+  color: var(--ivory);
   outline: none;
   transition: border-color 220ms var(--ease-out);
 }
 
-.contacto-input:focus {
+.contacto-input-dark:focus {
   border-color: var(--coral-glow);
 }
 
-.contacto-input::placeholder {
-  color: rgba(79, 93, 117, 0.55);
+.contacto-input-dark::placeholder {
+  color: rgba(245, 242, 236, 0.45);
 }
 
-/* ---------------- 42. REVEALS GENERALES ---------------- */
-.reveal-group {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out);
+.btn-contacto-dark {
+  background-color: var(--coral-glow);
+  color: var(--charcoal);
+  padding: 0.875rem 1.875rem;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 220ms var(--ease-out), transform 220ms var(--ease-out);
 }
 
-.reveal-group.revealed {
-  opacity: 1;
-  transform: translateY(0);
+.btn-contacto-dark:hover {
+  background-color: var(--ivory);
+  transform: translateY(-2px);
 }
 
 /* ---------------- 46. ACCESIBILIDAD (PREFERS-REDUCED-MOTION) ---------------- */
@@ -881,22 +1110,20 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal-group {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  .floating-coral-dot {
+  .marquee-track {
     animation: none !important;
   }
-  .hero-anim-logo,
-  .hero-anim-eyebrow,
-  .hero-h1-line-inner,
-  .hero-anim-para,
-  .hero-anim-twist,
-  .hero-anim-buttons,
-  .hero-anim-photo {
-    opacity: 1 !important;
-    transform: none !important;
+  .hero-photo-badge,
+  .floating-coral-dot,
+  .micro-entender-line,
+  .micro-preguntar-mark,
+  .micro-conectar-dot,
+  .micro-conectar-line,
+  .micro-ordenar-bar,
+  .micro-probar-circle,
+  .micro-destrabar-wrap,
+  .constelacion-line,
+  .contacto-bg-drift {
     animation: none !important;
   }
 }

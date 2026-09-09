@@ -1,15 +1,15 @@
 /**
- * Alejandro Vacaro - V2 Interactive Script
- * Pure Vanilla JavaScript:
- * - Scroll Progress Indicator (2px coral)
+ * Alejandro Vacaro - V2 Interactive Script (Polished)
+ * - Lucide Icons Initializer
+ * - Scroll Progress Bar (2px coral)
+ * - Header Compacting on Scroll (>100px)
  * - Hero Photo 3D Tilt (rAF, desktop only, max 2deg)
- * - Horizontal Typography Scroll Sync
- * - "Cómo pienso" 7 Verbs Sticky Controller & Microinteractions
- * - Plot Twist Narrative Sequence
- * - "Lo que hago" Node Animation
- * - Mobile Navigation Menu
- * - Reveal Observer (IntersectionObserver)
- * - Form Validation & Feedback
+ * - "Cómo pienso" 7 Verbs Sticky & Autonomous Micro-Animations
+ * - Plot Twist Narrative Sequence (4 steps, progressive dark shift)
+ * - Chapter 4 Convergence Animation (Negocio -> <- Tech)
+ * - Constellation Hover Connections
+ * - Mobile Navigation Menu Drawer
+ * - FormSubmit Validation & Feedback
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,21 +17,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const isDesktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   // =========================================================================
-  // 1. SCROLL PROGRESS BAR (44)
+  // 1. INITIALIZE LUCIDE ICONS (36)
   // =========================================================================
-  const progressBar = document.getElementById('scroll-progress-bar');
-  function updateScrollProgress() {
-    if (!progressBar) return;
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = `${progress}%`;
+  if (window.lucide) {
+    window.lucide.createIcons();
   }
-  window.addEventListener('scroll', updateScrollProgress, { passive: true });
-  updateScrollProgress();
 
   // =========================================================================
-  // 2. HERO PHOTO 3D TILT INTERACTION (16)
+  // 2. SCROLL PROGRESS BAR (44) & HEADER SCROLLED (43)
+  // =========================================================================
+  const progressBar = document.getElementById('scroll-progress-bar');
+  const mainHeader = document.getElementById('main-header');
+
+  function handleScroll() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    
+    // Progress Bar
+    if (progressBar) {
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = `${progress}%`;
+    }
+
+    // 43. Header compacting (>100px reduce from 72px to 58px)
+    if (mainHeader) {
+      if (scrollTop > 100) {
+        mainHeader.classList.add('scrolled');
+      } else {
+        mainHeader.classList.remove('scrolled');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  // =========================================================================
+  // 3. HERO PHOTO 3D TILT (16)
   // =========================================================================
   const heroPhotoWrapper = document.getElementById('hero-photo-wrapper');
   if (heroPhotoWrapper && isDesktopPointer && !prefersReducedMotion) {
@@ -56,14 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateTilt() {
-      currentX += (targetX - currentX) * 0.1;
-      currentY += (targetY - currentY) * 0.1;
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
       const transX = (currentY / 2) * 3;
       const transY = (-currentX / 2) * 3;
 
       heroPhotoWrapper.style.transform = `perspective(800px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg) translate(${transX.toFixed(1)}px, ${transY.toFixed(1)}px)`;
 
-      if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+      if (Math.abs(targetX - currentX) > 0.04 || Math.abs(targetY - currentY) > 0.04) {
         rAFId = requestAnimationFrame(updateTilt);
       } else {
         rAFId = null;
@@ -82,26 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 3. HORIZONTAL TYPOGRAPHY SCROLL TRANSITION (18)
-  // =========================================================================
-  const scrollTypoStrip = document.getElementById('scroll-typography-content');
-  if (scrollTypoStrip && !prefersReducedMotion) {
-    let lastScrollY = window.scrollY;
-    let typoOffset = 0;
-
-    window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
-      const delta = currentScrollY - lastScrollY;
-      lastScrollY = currentScrollY;
-
-      // Move slowly with scroll
-      typoOffset -= delta * 0.45;
-      scrollTypoStrip.style.transform = `translateX(${typoOffset}px)`;
-    }, { passive: true });
-  }
-
-  // =========================================================================
-  // 4. "CÓMO PIENSO" STICKY VERBS & MICROINTERACTIONS (20, 21, 22)
+  // 4. "CÓMO PIENSO" STICKY VERBS & AUTONOMOUS MICRO-ANIMATIONS (10, 11, 12)
   // =========================================================================
   const stickyNumber = document.getElementById('sticky-verb-number');
   const stickyWord = document.getElementById('sticky-verb-word');
@@ -139,42 +142,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  let currentActiveVerb = null;
+  let currentActiveVerb = 'ENTENDER';
 
   function setVerb(verbKey) {
     if (currentActiveVerb === verbKey) return;
     currentActiveVerb = verbKey;
 
     const data = verbMetadata[verbKey];
-    if (!data) return;
+    if (!data || !stickyWord) return;
 
-    if (stickyWord) {
-      stickyWord.style.opacity = '0';
-      stickyWord.style.transform = 'translateY(-16px)';
+    stickyWord.style.opacity = '0';
+    stickyWord.style.transform = 'translateY(-14px)';
 
-      setTimeout(() => {
-        stickyWord.textContent = verbKey;
-        if (stickyNumber) stickyNumber.textContent = data.number;
-        if (verbVisualContainer) verbVisualContainer.innerHTML = data.htmlVisual;
+    setTimeout(() => {
+      stickyWord.textContent = verbKey;
+      if (stickyNumber) stickyNumber.textContent = data.number;
+      if (verbVisualContainer) verbVisualContainer.innerHTML = data.htmlVisual;
 
-        // Specific handling for CAMBIAR (font transition)
-        if (verbKey === 'CAMBIAR') {
-          stickyWord.classList.add('is-cambiar-serif');
-        } else {
-          stickyWord.classList.remove('is-cambiar-serif');
-        }
-
-        stickyWord.style.opacity = '1';
-        stickyWord.style.transform = 'translateY(0)';
-
-        // Trigger micro-visual active animation
-        setTimeout(() => {
-          if (verbVisualContainer) {
-            verbVisualContainer.classList.add('active-verb');
-          }
-        }, 30);
-      }, 200);
-    }
+      stickyWord.style.opacity = '1';
+      stickyWord.style.transform = 'translateY(0)';
+    }, 180);
   }
 
   if (stepItems.length > 0 && 'IntersectionObserver' in window) {
@@ -186,73 +173,137 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      rootMargin: '-30% 0px -40% 0px',
+      rootMargin: '-25% 0px -40% 0px',
       threshold: 0.1
     });
 
     stepItems.forEach(item => stepObserver.observe(item));
   }
 
-  // =========================================================================
-  // 5. PLOT TWIST NARRATIVE MOMENT (29, 30)
-  // =========================================================================
-  const twistContainer = document.getElementById('plot-twist-narrative');
-  const twistStep1 = document.getElementById('twist-step-1');
-  const twistStep2 = document.getElementById('twist-step-2');
-  const twistStep3 = document.getElementById('twist-step-3');
-
-  if (twistContainer && !prefersReducedMotion && window.innerWidth >= 768) {
-    window.addEventListener('scroll', () => {
-      const rect = twistContainer.getBoundingClientRect();
-      const containerHeight = rect.height;
-      const scrollPos = -rect.top;
-      const progress = Math.min(Math.max(scrollPos / (containerHeight - window.innerHeight), 0), 1);
-
-      if (progress > 0 && progress < 1) {
-        if (progress < 0.35) {
-          twistStep1.style.opacity = '1';
-          twistStep2.style.opacity = '0';
-          twistStep3.style.opacity = '0';
-          twistContainer.classList.remove('is-dark');
-        } else if (progress < 0.7) {
-          twistStep1.style.opacity = '0';
-          twistStep2.style.opacity = '1';
-          twistStep3.style.opacity = '0';
-          twistContainer.classList.remove('is-dark');
-        } else {
-          twistStep1.style.opacity = '0';
-          twistStep2.style.opacity = '0';
-          twistStep3.style.opacity = '1';
-          twistContainer.classList.add('is-dark');
-        }
+  // 12. CAMBIAR: cada 5-6s cambia brevemente a Instrument Serif Italic durante 500ms
+  if (!prefersReducedMotion) {
+    setInterval(() => {
+      if (currentActiveVerb === 'CAMBIAR' && stickyWord) {
+        stickyWord.style.fontFamily = "var(--font-serif)";
+        stickyWord.style.fontStyle = "italic";
+        stickyWord.style.color = "var(--coral-glow)";
+        setTimeout(() => {
+          stickyWord.style.fontFamily = "";
+          stickyWord.style.fontStyle = "";
+          stickyWord.style.color = "";
+        }, 550);
       }
-    }, { passive: true });
+    }, 5500);
   }
 
   // =========================================================================
-  // 6. GENERAL REVEALS (42)
+  // 5. PLOT TWIST SECUENCIA EXACTA (18, 19)
   // =========================================================================
-  const revealGroups = document.querySelectorAll('.reveal-group');
-  if (revealGroups.length > 0 && 'IntersectionObserver' in window && !prefersReducedMotion) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
+  const twistBlock = document.getElementById('plot-twist-narrative');
+  const step1 = document.getElementById('twist-step-1');
+  const step2 = document.getElementById('twist-step-2');
+  const step3 = document.getElementById('twist-step-3');
+  const step4 = document.getElementById('twist-step-4');
+
+  function handleTwistScroll() {
+    if (!twistBlock || !step1 || !step2 || !step3 || !step4) return;
+    const rect = twistBlock.getBoundingClientRect();
+    const scrollableDist = rect.height - window.innerHeight;
+    if (scrollableDist <= 0) return;
+
+    const progress = Math.min(Math.max(-rect.top / scrollableDist, 0), 1);
+
+    if (progress <= 0.25) {
+      // Step 1
+      step1.style.opacity = '1';
+      step1.style.transform = 'translateY(0)';
+      step2.style.opacity = '0';
+      step2.style.transform = 'translateY(24px)';
+      step3.style.opacity = '0';
+      step3.style.transform = 'translateY(24px)';
+      step4.style.opacity = '0';
+      step4.style.transform = 'translateY(24px)';
+      twistBlock.classList.remove('is-dark');
+    } else if (progress <= 0.50) {
+      // Step 2
+      step1.style.opacity = '0';
+      step1.style.transform = 'translateY(-18px)';
+      step2.style.opacity = '1';
+      step2.style.transform = 'translateY(0)';
+      step3.style.opacity = '0';
+      step3.style.transform = 'translateY(24px)';
+      step4.style.opacity = '0';
+      step4.style.transform = 'translateY(24px)';
+      twistBlock.classList.remove('is-dark');
+    } else if (progress <= 0.75) {
+      // Step 3 (Adiviná)
+      step1.style.opacity = '0';
+      step2.style.opacity = '0';
+      step2.style.transform = 'translateY(-18px)';
+      step3.style.opacity = '1';
+      step3.style.transform = 'translateY(0)';
+      step4.style.opacity = '0';
+      step4.style.transform = 'translateY(24px)';
+      twistBlock.classList.remove('is-dark');
+    } else {
+      // Step 4 (Hoy trabajo... + Fondo oscuro)
+      step1.style.opacity = '0';
+      step2.style.opacity = '0';
+      step3.style.opacity = '0';
+      step3.style.transform = 'translateY(-18px)';
+      step4.style.opacity = '1';
+      step4.style.transform = 'translateY(0)';
+      twistBlock.classList.add('is-dark');
+    }
+  }
+
+  if (window.innerWidth >= 768) {
+    window.addEventListener('scroll', handleTwistScroll, { passive: true });
+    handleTwistScroll();
+  }
+
+  // =========================================================================
+  // 6. CAPÍTULO 4 CONVERGENCE ANIMATION (24)
+  // =========================================================================
+  const convergeTrigger = document.getElementById('chapter-converge-trigger');
+  const convergeBox = document.getElementById('converge-container');
+
+  if (convergeTrigger && convergeBox && 'IntersectionObserver' in window) {
+    const convergeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
+          convergeBox.classList.add('in-view');
         }
       });
-    }, {
-      rootMargin: '0px 0px -50px 0px',
-      threshold: 0.1
-    });
+    }, { threshold: 0.35 });
 
-    revealGroups.forEach(rg => revealObserver.observe(rg));
-  } else {
-    revealGroups.forEach(rg => rg.classList.add('revealed'));
+    convergeObserver.observe(convergeTrigger);
   }
 
   // =========================================================================
-  // 7. MOBILE MENU DRAWER (7)
+  // 7. CONSTELACIÓN INTERACCIÓN (28, 29)
+  // =========================================================================
+  const constelacionNodes = document.querySelectorAll('.constelacion-node');
+  const constelacionLines = document.querySelectorAll('.constelacion-line');
+
+  constelacionNodes.forEach((node, idx) => {
+    node.addEventListener('mouseenter', () => {
+      if (constelacionLines[idx]) {
+        constelacionLines[idx].style.opacity = '1';
+        constelacionLines[idx].style.strokeWidth = '2.5px';
+      }
+    });
+
+    node.addEventListener('mouseleave', () => {
+      if (constelacionLines[idx]) {
+        constelacionLines[idx].style.opacity = '';
+        constelacionLines[idx].style.strokeWidth = '';
+      }
+    });
+  });
+
+  // =========================================================================
+  // 8. MOBILE MENU DRAWER (47)
   // =========================================================================
   const menuBtn = document.getElementById('mobile-menu-btn');
   const menuDrawer = document.getElementById('mobile-menu-drawer');
@@ -282,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 8. CONTACT FORM HANDLING WITH FORMSUBMIT (37, 38)
+  // 9. FORM HANDLING (38)
   // =========================================================================
   const contactForm = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status-msg');
@@ -297,12 +348,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         if (formStatus) {
           formStatus.textContent = 'Por favor completá todos los campos.';
-          formStatus.className = 'text-xs text-rose-500 mt-2 font-medium';
+          formStatus.className = 'text-xs text-rose-400 mt-2 font-medium';
         }
         return;
       }
 
-      // If valid, button shows feedback
       const submitBtn = document.getElementById('submit-btn');
       if (submitBtn) {
         submitBtn.disabled = true;
