@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submit-btn');
 
   if (contactForm && submitBtn) {
-    contactForm.addEventListener('submit', async (e) => {
+        contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       if (!contactForm.checkValidity()) {
@@ -598,8 +598,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (response.ok) {
+          // Lanza animación de confeti
+          triggerCelebrationConfetti();
+
           showToast('Mensaje enviado. Gracias por escribir.', 'success');
           contactForm.reset();
+
+          // Cambiar el recuadro a mensaje de agradecimiento
+          const formMainState = document.getElementById('form-main-state');
+          const formSuccessState = document.getElementById('form-success-state');
+          if (formMainState && formSuccessState) {
+            formMainState.style.display = 'none';
+            formSuccessState.classList.remove('hidden');
+            void formSuccessState.offsetWidth;
+            formSuccessState.classList.remove('opacity-0', 'scale-95');
+            formSuccessState.classList.add('opacity-100', 'scale-100');
+          }
         } else {
           throw new Error('Error en el servidor');
         }
@@ -613,6 +627,110 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
+
+    // Botón para volver a enviar otro mensaje
+    const sendAnotherBtn = document.getElementById('send-another-btn');
+    if (sendAnotherBtn) {
+      sendAnotherBtn.addEventListener('click', () => {
+        const formMainState = document.getElementById('form-main-state');
+        const formSuccessState = document.getElementById('form-success-state');
+        if (formMainState && formSuccessState) {
+          formSuccessState.classList.remove('opacity-100', 'scale-100');
+          formSuccessState.classList.add('opacity-0', 'scale-95');
+          setTimeout(() => {
+            formSuccessState.classList.add('hidden');
+            formMainState.style.display = '';
+          }, 300);
+        }
+      });
+    }
   }
 
+
+  // ============================================================================
+  // 10. ANIMACIÓN DE CONFETI CELEBRATORIO
+  // ============================================================================
+  function triggerCelebrationConfetti() {
+    if (typeof window.confetti === 'function') {
+      // Ráfaga múltiple estilo fuegos artificiales
+      const count = 200;
+      const defaults = {
+        origin: { y: 0.7 },
+        colors: ['#EF8354', '#F5F2EC', '#2D3142', '#FFD166', '#FFFFFF']
+      };
+
+      function fire(particleRatio, opts) {
+        window.confetti({
+          ...defaults,
+          ...opts,
+          particleCount: Math.floor(count * particleRatio)
+        });
+      }
+
+      fire(0.25, { spread: 26, startVelocity: 55 });
+      fire(0.2, { spread: 60 });
+      fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+      fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+      fire(0.1, { spread: 120, startVelocity: 45 });
+    }
+  }
+
+  // ============================================================================
+  // 11. COPIAR EMAIL AL PORTAPAPELES
+  // ============================================================================
+  const copyEmailBtn = document.getElementById('copy-email-btn');
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      try {
+        await navigator.clipboard.writeText('avacaro@outlook.com');
+        showToast('Correo avacaro@outlook.com copiado al portapapeles.', 'success');
+        const icon = document.getElementById('copy-email-icon');
+        if (icon) {
+          icon.setAttribute('data-lucide', 'check');
+          if (window.lucide) window.lucide.createIcons();
+          setTimeout(() => {
+            icon.setAttribute('data-lucide', 'copy');
+            if (window.lucide) window.lucide.createIcons();
+          }, 2000);
+        }
+      } catch (err) {
+        showToast('Email: avacaro@outlook.com', 'success');
+      }
+    });
+  }
+
+  // ============================================================================
+  // 12. BOTÓN FLOTANTE 'VOLVER ARRIBA'
+  // ============================================================================
+  const scrollToTopWrap = document.getElementById('scroll-to-top-wrap');
+  const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+
+  function updateFloatingButton() {
+    if (!scrollToTopWrap) return;
+    const scrollY = window.scrollY || window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight - windowHeight;
+
+    // Aparece cuando el usuario scrollea más allá del 60% o cerca del final
+    if (docHeight > 0 && scrollY / docHeight > 0.45) {
+      scrollToTopWrap.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+      scrollToTopWrap.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+    } else {
+      scrollToTopWrap.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      scrollToTopWrap.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+    }
+  }
+
+  window.addEventListener('scroll', updateFloatingButton, { passive: true });
+  updateFloatingButton();
+
+  if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 });
