@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function isMobileMenuOpen() {
     return mobileMenuDrawer && 
            !mobileMenuDrawer.classList.contains('hidden') && 
-           mobileMenuDrawer.classList.contains('opacity-100');
+           mobileMenuDrawer.classList.contains('is-open');
   }
 
   function updateMobileMenuIcon(isOpen) {
@@ -305,21 +305,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!mobileMenuDrawer) return;
     mobileMenuDrawer.classList.remove('hidden');
     void mobileMenuDrawer.offsetWidth;
-    mobileMenuDrawer.classList.remove('opacity-0');
-    mobileMenuDrawer.classList.add('opacity-100');
+    mobileMenuDrawer.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     updateMobileMenuIcon(true);
   }
 
   function closeMobileMenu() {
     if (!mobileMenuDrawer) return;
-    mobileMenuDrawer.classList.remove('opacity-100');
-    mobileMenuDrawer.classList.add('opacity-0');
+    mobileMenuDrawer.classList.remove('is-open');
     updateMobileMenuIcon(false);
+    document.body.style.overflow = '';
     setTimeout(() => {
-      mobileMenuDrawer.classList.add('hidden');
-      document.body.style.overflow = '';
-    }, 300);
+      if (!isMobileMenuOpen()) {
+        mobileMenuDrawer.classList.add('hidden');
+      }
+    }, 320);
   }
 
   function toggleMobileMenu() {
