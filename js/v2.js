@@ -1,427 +1,483 @@
 /**
- * Alejandro Vacaro - V2 Narrative System Script
- * - Lucide Icons Initialization
- * - Scroll Progress Bar
- * - Header Scroll Compacting (>80px -> 56px + shadow)
- * - Mobile Menu Drawer
- * - Hero Photo 3D Tilt (Desktop only, max 1.5deg, return 700ms)
- * - Cinta Animada (40s loop, draggable, pause on hover, resume on mouseleave)
- * - Recurso Editorial (5 words staggered reveal)
- * - Conóceme (Narrative steps observer, dark background transition, Adiviná)
- * - Mi Experiencia (Timeline progress line + card reveals)
- * - Accessibility: Prefers-reduced-motion support
+ * ==============================================================================
+ * ALEJANDRO VACARO - SITIO PERSONAL V2
+ * Script de interacciones, animaciones y comportamiento editorial
+ * ==============================================================================
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isDesktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  // =========================================================================
-  // 1. LUCIDE ICONS (Secciones 19, 20, 69)
-  // =========================================================================
+  // 1. INICIALIZAR ICONOS LUCIDE
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }
 
-  // =========================================================================
-  // 2. SCROLL PROGRESS BAR & HEADER SCROLLED (Secciones 4, 43)
-  // =========================================================================
-  const progressBar = document.getElementById('scroll-progress-bar');
+  // ============================================================================
+  // 2. HEADER COMPACTING & PROGRESS BAR
+  // ============================================================================
   const mainHeader = document.getElementById('main-header');
+  const scrollProgressBar = document.getElementById('scroll-progress-bar');
+  const dividerLineTrabajar = document.getElementById('divider-line-trabajar');
+  const dividerSection = document.getElementById('divider-trabajar');
+  const conocemeSection = document.getElementById('conoceme');
+  const darkChapter = document.querySelector('.trigger-dark-chapter');
+  const timelineContainer = document.getElementById('timeline-container');
+  const timelineRailFill = document.getElementById('timeline-rail-fill');
+  const timelineRows = document.querySelectorAll('.timeline-row-item');
 
-  function handleWindowScroll() {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  let dividerAnimated = false;
+  let isTicking = false;
 
-    // Progress Bar
-    if (progressBar) {
-      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progressBar.style.width = `${progress}%`;
+  function onScroll() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight - windowHeight;
+
+    // A. Barra de progreso superior
+    if (scrollProgressBar && docHeight > 0) {
+      const progress = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+      scrollProgressBar.style.width = `${progress}%`;
     }
 
-    // Header compacting: scroll > 80px -> 56px + shadow (Sección 4)
+    // B. Header compacto al scroll > 80px
     if (mainHeader) {
-      if (scrollTop > 80) {
+      if (scrollY > 80) {
         mainHeader.classList.add('scrolled');
       } else {
         mainHeader.classList.remove('scrolled');
       }
     }
 
-    // Timeline progress line
-    updateTimelineProgress();
-  }
-
-  window.addEventListener('scroll', handleWindowScroll, { passive: true });
-  handleWindowScroll();
-
-  // =========================================================================
-  // 3. MOBILE MENU DRAWER (Sección 74)
-  // =========================================================================
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const menuDrawer = document.getElementById('mobile-menu-drawer');
-  const menuClose = document.getElementById('mobile-menu-close');
-
-  if (menuBtn && menuDrawer) {
-    const toggleMenu = (open) => {
-      if (open) {
-        menuDrawer.classList.remove('hidden');
-        setTimeout(() => menuDrawer.classList.remove('opacity-0'), 10);
-        document.body.style.overflow = 'hidden';
+    // C. Conóceme: Transición a fondo oscuro en Escena 6 (Duelo)
+    if (conocemeSection && darkChapter) {
+      const darkRect = darkChapter.getBoundingClientRect();
+      // Activar cuando la escena 6 entra al tercio medio del viewport
+      const isInFocus = darkRect.top < windowHeight * 0.55 && darkRect.bottom > windowHeight * 0.35;
+      if (isInFocus) {
+        conocemeSection.classList.add('dark-mode-active');
       } else {
-        menuDrawer.classList.add('opacity-0');
-        setTimeout(() => {
-          menuDrawer.classList.add('hidden');
-          document.body.style.overflow = '';
-        }, 250);
+        conocemeSection.classList.remove('dark-mode-active');
       }
-    };
+    }
 
-    menuBtn.addEventListener('click', () => toggleMenu(true));
-    if (menuClose) menuClose.addEventListener('click', () => toggleMenu(false));
+    // D. Transición 1: Línea horizontal de 0 a 100% en 900ms
+    if (!dividerAnimated && dividerSection && dividerLineTrabajar) {
+      const divRect = dividerSection.getBoundingClientRect();
+      if (divRect.top < windowHeight * 0.85) {
+        dividerLineTrabajar.style.width = '100%';
+        dividerAnimated = true;
+      }
+    }
 
-    menuDrawer.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => toggleMenu(false));
-    });
+    // E. Mi Experiencia: Línea de progreso vertical en el timeline al 27%
+    if (timelineContainer && timelineRailFill) {
+      const tlRect = timelineContainer.getBoundingClientRect();
+      const tlTop = tlRect.top;
+      const tlHeight = tlRect.height;
+
+      // El punto de escaneo se ubica al 60% de la altura del viewport
+      const triggerPoint = windowHeight * 0.6;
+      if (tlTop < triggerPoint) {
+        const scrolledInside = triggerPoint - tlTop;
+        const fillPercent = Math.min(100, Math.max(0, (scrolledInside / tlHeight) * 100));
+        timelineRailFill.style.height = `${fillPercent}%`;
+      } else {
+        timelineRailFill.style.height = '0%';
+      }
+
+      // Nodos activos
+      timelineRows.forEach(row => {
+        const rowRect = row.getBoundingClientRect();
+        const pin = row.querySelector('.timeline-pin-node');
+        if (rowRect.top < triggerPoint + 30) {
+          row.classList.add('is-active');
+          if (pin) pin.classList.add('is-active');
+        } else {
+          row.classList.remove('is-active');
+          if (pin) pin.classList.remove('is-active');
+        }
+      });
+    }
+
+    isTicking = false;
   }
 
-  // =========================================================================
-  // 4. HERO PHOTO 3D TILT (Sección 24: max 1.5deg, return 700ms)
-  // =========================================================================
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      requestAnimationFrame(onScroll);
+      isTicking = true;
+    }
+  }, { passive: true });
+
+  // Ejecución inicial para estado de scroll al cargar
+  onScroll();
+
+
+  // ============================================================================
+  // 3. MENÚ MÓVIL (DRAWER)
+  // ============================================================================
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const mobileNavLinks = mobileMenuDrawer ? mobileMenuDrawer.querySelectorAll('a') : [];
+
+  function openMobileMenu() {
+    if (!mobileMenuDrawer) return;
+    mobileMenuDrawer.classList.remove('hidden');
+    // Forzar reflow para animación de opacidad
+    void mobileMenuDrawer.offsetWidth;
+    mobileMenuDrawer.classList.remove('opacity-0');
+    mobileMenuDrawer.classList.add('opacity-100');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenu() {
+    if (!mobileMenuDrawer) return;
+    mobileMenuDrawer.classList.remove('opacity-100');
+    mobileMenuDrawer.classList.add('opacity-0');
+    setTimeout(() => {
+      mobileMenuDrawer.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 300);
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+  }
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+  }
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+
+  // ============================================================================
+  // 4. HERO PHOTO 3D TILT
+  // ============================================================================
   const heroPhotoWrapper = document.getElementById('hero-photo-wrapper');
-  if (heroPhotoWrapper && isDesktopPointer && !prefersReducedMotion) {
-    let rAFId = null;
-    let targetX = 0, targetY = 0;
-    let currentX = 0, currentY = 0;
+  if (heroPhotoWrapper && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const maxTilt = 1.5; // Máximo 1.5 grados según directiva
 
     heroPhotoWrapper.addEventListener('mousemove', (e) => {
       const rect = heroPhotoWrapper.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      // Max: rotateX 1.5deg, rotateY 1.5deg, translate 3px
-      targetX = -((y - centerY) / centerY) * 1.5;
-      targetY = ((x - centerX) / centerX) * 1.5;
+      const percentX = (x - centerX) / centerX;
+      const percentY = (y - centerY) / centerY;
 
-      heroPhotoWrapper.style.transition = '';
+      const rotateY = (percentX * maxTilt).toFixed(2);
+      const rotateX = (-percentY * maxTilt).toFixed(2);
 
-      if (!rAFId) {
-        rAFId = requestAnimationFrame(updateTilt);
-      }
+      heroPhotoWrapper.style.transition = 'transform 0.15s ease-out';
+      heroPhotoWrapper.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
     });
 
-    function updateTilt() {
-      currentX += (targetX - currentX) * 0.12;
-      currentY += (targetY - currentY) * 0.12;
-      const transX = (currentY / 1.5) * 3;
-      const transY = (-currentX / 1.5) * 3;
-
-      heroPhotoWrapper.style.transform = `perspective(800px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg) translate(${transX.toFixed(1)}px, ${transY.toFixed(1)}px)`;
-
-      if (Math.abs(targetX - currentX) > 0.02 || Math.abs(targetY - currentY) > 0.02) {
-        rAFId = requestAnimationFrame(updateTilt);
-      } else {
-        rAFId = null;
-      }
-    }
-
     heroPhotoWrapper.addEventListener('mouseleave', () => {
-      targetX = 0;
-      targetY = 0;
-      currentX = 0;
-      currentY = 0;
-      if (rAFId) {
-        cancelAnimationFrame(rAFId);
-        rAFId = null;
-      }
-      heroPhotoWrapper.style.transition = 'transform 700ms cubic-bezier(0.16, 1, 0.3, 1)';
-      heroPhotoWrapper.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translate(0px, 0px)';
-      setTimeout(() => {
-        heroPhotoWrapper.style.transition = '';
-      }, 700);
+      heroPhotoWrapper.style.transition = 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+      heroPhotoWrapper.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
     });
   }
 
-  // =========================================================================
-  // 5. CINTA ANIMADA HORIZONTAL (Secciones 26-29)
-  // 40s loop, draggable con pointer capture, hover pausa, mouseleave reanuda
-  // =========================================================================
-  const cintaBand = document.getElementById('hero-marquee');
-  const cintaTrack = document.getElementById('cinta-track');
 
-  if (cintaBand && cintaTrack) {
-    const groups = cintaTrack.querySelectorAll('.cinta-group');
-    let groupWidth = 0;
+  // ============================================================================
+  // 5. CINTA HORIZONTAL ANIMADA (ENGINE ROBUSTO DE MARQUEE)
+  // Ciclo continuo ~38s, drag 1:1, hover desaceleración, touch resume a 1.5s
+  // ============================================================================
+  const marqueeContainer = document.getElementById('hero-marquee');
+  const marqueeTrack = document.getElementById('cinta-track');
+  const group1 = document.getElementById('cinta-group-1');
 
-    function updateCintaWidth() {
-      if (groups.length > 0) {
-        groupWidth = groups[0].getBoundingClientRect().width;
-        while (groupWidth > 0 && cintaTrack.children.length * groupWidth < window.innerWidth + 2 * groupWidth) {
-          const clone = groups[0].cloneNode(true);
-          clone.setAttribute('aria-hidden', 'true');
-          cintaTrack.appendChild(clone);
-        }
-      }
-    }
-
-    updateCintaWidth();
-    window.addEventListener('resize', updateCintaWidth, { passive: true });
-
-    function getBaseSpeed() {
-      if (prefersReducedMotion) return 0;
-      return groupWidth > 0 ? groupWidth / 40 : 45; // 40s duración (Sección 29)
-    }
-
-    let baseSpeed = getBaseSpeed();
-    let currentSpeed = baseSpeed;
-    let offset = 0;
-    let isHovered = false;
+  if (marqueeContainer && marqueeTrack && group1) {
+    let groupWidth = group1.offsetWidth || 1800;
+    let currentOffset = 0;
+    let lastTime = performance.now();
+    let isRunning = true;
     let isDragging = false;
-    let pointerLastX = 0;
-    let pointerLastTime = 0;
-    let velocityX = 0;
-    let inertiaDist = 0;
-    let inertiaVelocity = 0;
+    let startPointerX = 0;
+    let dragStartOffset = 0;
     let touchResumeTimer = null;
-    let lastFrameTime = performance.now();
+    let speedFactor = 1.0; // Para desaceleración / aceleración suave
+    let targetSpeedFactor = 1.0;
 
-    function cintaStep(now) {
-      const dt = Math.min((now - lastFrameTime) / 1000, 0.1);
-      lastFrameTime = now;
-      baseSpeed = getBaseSpeed();
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const LOOP_DURATION_MS = 38000; // 38 segundos por ciclo
 
-      if (!isDragging) {
-        // Inercia sutil si se soltó con flick
-        if (Math.abs(inertiaDist) > 0.5) {
-          const step = inertiaVelocity * dt;
-          offset += step;
-          inertiaDist -= step;
-          inertiaVelocity *= Math.pow(0.04, dt);
-          if (Math.abs(inertiaDist) <= 0.5) {
-            inertiaDist = 0;
-            inertiaVelocity = 0;
-          }
-        }
-
-        if (!prefersReducedMotion) {
-          if (isHovered) {
-            // Desaceleración suave ~300ms
-            if (currentSpeed > 0) {
-              const decelRate = (baseSpeed || 45) / 0.3;
-              currentSpeed = Math.max(0, currentSpeed - decelRate * dt);
-            }
-          } else {
-            // Aceleración suave ~500ms hasta baseSpeed
-            if (currentSpeed < baseSpeed) {
-              const accelRate = (baseSpeed || 45) / 0.5;
-              currentSpeed = Math.min(baseSpeed, currentSpeed + accelRate * dt);
-            }
-          }
-
-          offset -= currentSpeed * dt;
-        }
+    function measureWidth() {
+      const w = group1.offsetWidth;
+      if (w > 0) {
+        groupWidth = w;
       }
-
-      // Loop infinito por módulo
-      if (groupWidth > 0) {
-        while (offset <= -groupWidth) {
-          offset += groupWidth;
-        }
-        while (offset > 0) {
-          offset -= groupWidth;
-        }
-      }
-
-      cintaTrack.style.transform = `translate3d(${offset.toFixed(2)}px, 0, 0)`;
-      requestAnimationFrame(cintaStep);
     }
 
-    requestAnimationFrame(cintaStep);
+    // Medición tras carga de fuentes y estilos
+    measureWidth();
+    window.addEventListener('load', measureWidth);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(measureWidth);
+    }
+    window.addEventListener('resize', measureWidth);
 
-    // Hover
-    cintaBand.addEventListener('mouseenter', (e) => {
-      if (e.pointerType === 'mouse' || !e.pointerType) {
-        isHovered = true;
-      }
-    });
+    function tick(now) {
+      const dt = now - lastTime;
+      lastTime = now;
 
-    cintaBand.addEventListener('mouseleave', (e) => {
-      if (e.pointerType === 'mouse' || !e.pointerType) {
-        if (!isDragging) {
-          isHovered = false;
+      // Suavizar cambio de velocidad (hover deceleration / resume)
+      if (speedFactor !== targetSpeedFactor) {
+        const step = dt / 350; // ~350ms para transicionar
+        if (speedFactor < targetSpeedFactor) {
+          speedFactor = Math.min(targetSpeedFactor, speedFactor + step);
+        } else {
+          speedFactor = Math.max(targetSpeedFactor, speedFactor - step);
         }
       }
+
+      if (!isDragging && isRunning && !prefersReducedMotion && groupWidth > 0) {
+        const baseSpeed = groupWidth / LOOP_DURATION_MS; // px por ms
+        const effectiveSpeed = baseSpeed * speedFactor;
+        currentOffset = (currentOffset + effectiveSpeed * dt) % groupWidth;
+        marqueeTrack.style.transform = `translate3d(-${currentOffset}px, 0, 0)`;
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    // Iniciar loop
+    requestAnimationFrame(tick);
+
+    // Hover desaceleración suave
+    marqueeContainer.addEventListener('mouseenter', () => {
+      targetSpeedFactor = 0; // Desacelerar suavemente a 0
     });
 
-    // Pointer Drag
-    cintaBand.addEventListener('pointerdown', (e) => {
-      if (e.button !== 0 && e.button !== undefined) return;
+    marqueeContainer.addEventListener('mouseleave', () => {
+      if (!isDragging) {
+        targetSpeedFactor = 1.0; // Reanudar suavemente
+      }
+    });
+
+    // Eventos de arrastre táctil / mouse (Pointer Events)
+    marqueeContainer.addEventListener('pointerdown', (e) => {
       isDragging = true;
-      isHovered = true;
-      pointerLastX = e.clientX;
-      pointerLastTime = performance.now();
-      velocityX = 0;
-      inertiaDist = 0;
-      inertiaVelocity = 0;
+      startPointerX = e.clientX;
+      dragStartOffset = currentOffset;
+      speedFactor = 0;
+      targetSpeedFactor = 0;
 
       if (touchResumeTimer) {
         clearTimeout(touchResumeTimer);
         touchResumeTimer = null;
       }
 
-      cintaBand.classList.add('is-dragging');
+      marqueeTrack.classList.add('is-dragging');
       try {
-        cintaBand.setPointerCapture(e.pointerId);
-      } catch (err) {}
-    });
-
-    cintaBand.addEventListener('pointermove', (e) => {
-      if (!isDragging) return;
-      const currentX = e.clientX;
-      const deltaX = currentX - pointerLastX;
-      const now = performance.now();
-      const timeDelta = now - pointerLastTime;
-
-      offset += deltaX;
-
-      if (timeDelta > 5) {
-        velocityX = (deltaX / timeDelta) * 1000;
-        pointerLastX = currentX;
-        pointerLastTime = now;
+        marqueeTrack.setPointerCapture(e.pointerId);
+      } catch (err) {
+        // Fallback seguro si setPointerCapture no es soportado
       }
     });
 
-    function endCintaDrag(e) {
+    marqueeContainer.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const deltaX = e.clientX - startPointerX;
+      // Invertir delta porque mover el dedo a la izquierda incrementa el offset
+      let newOffset = (dragStartOffset - deltaX) % groupWidth;
+      if (newOffset < 0) {
+        newOffset += groupWidth;
+      }
+      currentOffset = newOffset;
+      marqueeTrack.style.transform = `translate3d(-${currentOffset}px, 0, 0)`;
+    });
+
+    function endDrag(e) {
       if (!isDragging) return;
       isDragging = false;
-      cintaBand.classList.remove('is-dragging');
+      marqueeTrack.classList.remove('is-dragging');
+
       try {
-        cintaBand.releasePointerCapture(e.pointerId);
+        if (marqueeTrack.hasPointerCapture(e.pointerId)) {
+          marqueeTrack.releasePointerCapture(e.pointerId);
+        }
       } catch (err) {}
 
-      // Flick suave 20-30px max
-      if (Math.abs(velocityX) > 150) {
-        const sign = Math.sign(velocityX);
-        const dist = Math.min(Math.max(Math.abs(velocityX) * 0.04, 15), 30);
-        inertiaDist = sign * dist;
-        inertiaVelocity = sign * dist * 4;
-      } else {
-        inertiaDist = 0;
-        inertiaVelocity = 0;
-      }
-
       if (e.pointerType === 'touch') {
+        // En touch: reanudación automática a los 1.5s
         touchResumeTimer = setTimeout(() => {
-          isHovered = false;
+          targetSpeedFactor = 1.0;
         }, 1500);
       } else {
-        const rect = cintaBand.getBoundingClientRect();
-        if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
-          isHovered = true;
-        } else {
-          isHovered = false;
+        // En mouse: reanudar si el cursor ya no está encima
+        if (!marqueeContainer.matches(':hover')) {
+          targetSpeedFactor = 1.0;
         }
       }
     }
 
-    cintaBand.addEventListener('pointerup', endCintaDrag);
-    cintaBand.addEventListener('pointercancel', endCintaDrag);
-    cintaBand.addEventListener('dragstart', (e) => e.preventDefault());
+    marqueeContainer.addEventListener('pointerup', endDrag);
+    marqueeContainer.addEventListener('pointercancel', endDrag);
   }
 
-  // =========================================================================
-  // 6. RECURSO EDITORIAL (Secciones 30-32)
-  // Stagger 100ms, 900ms duration, trigger once
-  // =========================================================================
-  const recursoContainer = document.getElementById('recurso-editorial-container');
-  if (recursoContainer && 'IntersectionObserver' in window) {
-    const editorialObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          recursoContainer.classList.add('editorial-in-view');
-          editorialObserver.unobserve(entry.target);
+
+  // ============================================================================
+  // 6. MI FORMACIÓN: INTERACCIÓN EN DISPOSITIVOS TÁCTILES / ACCESIBILIDAD
+  // ============================================================================
+  const formacionCards = document.querySelectorAll('.formacion-card-v2');
+
+  formacionCards.forEach(card => {
+    // Soporte para tap móvil
+    card.addEventListener('click', (e) => {
+      // Si la pantalla es touch / móvil
+      const isExpanded = card.classList.contains('is-expanded');
+      
+      // Cerrar las demás
+      formacionCards.forEach(c => {
+        if (c !== card) {
+          c.classList.remove('is-expanded');
+          c.setAttribute('aria-expanded', 'false');
         }
       });
-    }, { threshold: 0.2 });
 
-    editorialObserver.observe(recursoContainer);
-  }
-
-  // =========================================================================
-  // 7. CONÓCEME - EXPERIENCIA NARRATIVA POR SCROLL (Secciones 33-42)
-  // Transición de fondo a #2D3142 en momento de duelo y retorno a #F5F2EC
-  // =========================================================================
-  const conocemeSection = document.getElementById('conoceme');
-  const narrativeSteps = document.querySelectorAll('.narrative-step, .narrative-adivina');
-
-  if ('IntersectionObserver' in window) {
-    const stepObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-
-          // Transición de fondo en momentos sensibles (Sección 38)
-          if (conocemeSection) {
-            if (entry.target.classList.contains('trigger-dark-mood') || entry.target.classList.contains('in-dark-mood')) {
-              conocemeSection.classList.add('dark-mood');
-            } else if (entry.target.classList.contains('trigger-light-mood')) {
-              conocemeSection.classList.remove('dark-mood');
-            }
-          }
-        }
-      });
-    }, {
-      rootMargin: '-15% 0px -25% 0px',
-      threshold: 0.15
+      if (!isExpanded) {
+        card.classList.add('is-expanded');
+        card.setAttribute('aria-expanded', 'true');
+      } else {
+        card.classList.remove('is-expanded');
+        card.setAttribute('aria-expanded', 'false');
+      }
     });
 
-    narrativeSteps.forEach(step => stepObserver.observe(step));
-  } else {
-    narrativeSteps.forEach(step => step.classList.add('in-view'));
-  }
-
-  // =========================================================================
-  // 8. MI EXPERIENCIA - TIMELINE ANIMATION (Secciones 44-45)
-  // =========================================================================
-  const timelineItems = document.querySelectorAll('.timeline-item');
-  const timelineFill = document.getElementById('timeline-progress-fill');
-  const timelineContainer = document.getElementById('timeline-container');
-
-  if (timelineItems.length > 0 && 'IntersectionObserver' in window) {
-    const timelineObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-        }
-      });
-    }, {
-      rootMargin: '0px 0px -18% 0px',
-      threshold: 0.1
+    // Soporte para teclado (Enter / Espacio)
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
     });
+  });
 
-    timelineItems.forEach(item => timelineObserver.observe(item));
-  } else {
-    timelineItems.forEach(item => item.classList.add('in-view'));
-  }
-
-  function updateTimelineProgress() {
-    if (!timelineContainer || !timelineFill) return;
-    const rect = timelineContainer.getBoundingClientRect();
-    const windowH = window.innerHeight;
-    
-    // Si el contenedor está en viewport
-    if (rect.top <= windowH * 0.7 && rect.bottom >= windowH * 0.3) {
-      const totalDist = rect.height;
-      const scrolledDist = (windowH * 0.7) - rect.top;
-      const pct = Math.min(Math.max((scrolledDist / totalDist) * 100, 0), 100);
-      timelineFill.style.height = `${pct.toFixed(1)}%`;
-    } else if (rect.top > windowH * 0.7) {
-      timelineFill.style.height = '0%';
-    } else if (rect.bottom < windowH * 0.3) {
-      timelineFill.style.height = '100%';
+  // Cerrar overlays de formación al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.formacion-card-v2')) {
+      formacionCards.forEach(card => {
+        card.classList.remove('is-expanded');
+        card.setAttribute('aria-expanded', 'false');
+      });
     }
+  });
+
+
+  // ============================================================================
+  // 7. TOAST NOTIFICATIONS
+  // ============================================================================
+  const toastContainer = document.getElementById('toast-container');
+
+  function showToast(message, type = 'success') {
+    if (!toastContainer) return;
+
+    const toast = document.createElement('div');
+    toast.className = `px-5 py-3.5 rounded-xl shadow-xl text-sm font-sans font-medium flex items-center gap-3 transition-all duration-300 transform translate-y-4 opacity-0 pointer-events-auto ${
+      type === 'success' 
+        ? 'bg-[#2D3142] text-[#F5F2EC] border border-[#EF8354]/40' 
+        : 'bg-red-900/90 text-white border border-red-500/50'
+    }`;
+
+    const iconHtml = type === 'success'
+      ? `<svg class="w-5 h-5 text-[#EF8354] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`
+      : `<svg class="w-5 h-5 text-red-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>`;
+
+    toast.innerHTML = `${iconHtml}<span>${message}</span>`;
+    toastContainer.appendChild(toast);
+
+    // Animación de entrada
+    requestAnimationFrame(() => {
+      toast.classList.remove('translate-y-4', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+    });
+
+    // Retiro a los 4 segundos
+    setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'translate-y-2');
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 300);
+    }, 4000);
+  }
+
+
+  // ============================================================================
+  // 8. FORMULARIO DE CONTACTO (FORMSUBMIT AJAX REAL)
+  // Endpoint: https://formsubmit.co/ajax/avacaro@outlook.com
+  // ============================================================================
+  const contactForm = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+
+  if (contactForm && submitBtn) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Validación nativa básica
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      // Evitar envíos si el honeypot fue completado por bots
+      const honeyField = contactForm.querySelector('input[name="_honey"]');
+      if (honeyField && honeyField.value.trim() !== '') {
+        return;
+      }
+
+      // Estado de carga
+      const originalBtnHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="inline-block animate-spin mr-2">⏳</span>
+        <span>Enviando...</span>
+      `;
+
+      const formData = new FormData(contactForm);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject') || 'Contacto desde sitio web',
+        message: formData.get('message'),
+        _captcha: 'false',
+        _template: 'table'
+      };
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/avacaro@outlook.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          showToast('Mensaje enviado. Gracias por escribir.', 'success');
+          contactForm.reset();
+        } else {
+          throw new Error('Error en el servidor');
+        }
+      } catch (error) {
+        showToast('No pude enviar el mensaje. Probá de nuevo o escribime por email.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      }
+    });
   }
 
 });
