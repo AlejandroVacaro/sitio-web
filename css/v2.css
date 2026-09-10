@@ -187,6 +187,26 @@ body {
   background-color: var(--coral-glow) !important;
 }
 
+/* Navbar cuando el menú móvil está desplegado: fondo azul idéntico y cruz del mismo color que el nombre */
+.header-v2.mobile-nav-open {
+  background-color: rgba(45, 49, 66, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom-color: rgba(245, 242, 236, 0.1) !important;
+}
+.header-v2.mobile-nav-open .brand-title,
+.header-v2.mobile-nav-open .brand-logo,
+.header-v2.mobile-nav-open #mobile-menu-btn {
+  color: var(--ivory) !important; /* Mismo color marfil que el nombre Alejandro Vacaro */
+}
+.header-v2.mobile-nav-open #mobile-menu-btn:hover {
+  color: var(--coral-glow) !important;
+}
+
+#mobile-menu-btn {
+  transition: color 250ms var(--ease-primary), background-color 250ms var(--ease-primary);
+}
+
 /* Navbar adaptativa sobre secciones oscuras (#conoceme y #contacto) */
 .header-v2.header-dark-theme.scrolled {
   background-color: rgba(35, 38, 52, 0.75) !important;
@@ -197,6 +217,9 @@ body {
   color: var(--ivory) !important;
 }
 .header-v2.header-dark-theme .brand-logo {
+  color: var(--ivory) !important;
+}
+.header-v2.header-dark-theme #mobile-menu-btn {
   color: var(--ivory) !important;
 }
 .header-v2.header-dark-theme .nav-link {

@@ -303,6 +303,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openMobileMenu() {
     if (!mobileMenuDrawer) return;
+    const mainHeader = document.getElementById('main-header');
+    if (mainHeader) mainHeader.classList.add('mobile-nav-open');
     mobileMenuDrawer.classList.remove('hidden');
     void mobileMenuDrawer.offsetWidth;
     mobileMenuDrawer.classList.add('is-open');
@@ -312,6 +314,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeMobileMenu() {
     if (!mobileMenuDrawer) return;
+    const mainHeader = document.getElementById('main-header');
+    if (mainHeader) mainHeader.classList.remove('mobile-nav-open');
     mobileMenuDrawer.classList.remove('is-open');
     updateMobileMenuIcon(false);
     document.body.style.overflow = '';
