@@ -1433,12 +1433,12 @@ body {
   .contacto-right-col {
     display: contents !important;
   }
-  #contacto-canales-card {
+  #contacto-form-col,
+  #form-card-container {
     order: 1 !important;
     width: 100% !important;
   }
-  #contacto-form-col,
-  #form-card-container {
+  #contacto-canales-card {
     order: 2 !important;
     width: 100% !important;
   }
