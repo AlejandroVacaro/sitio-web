@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isMobileMenuOpen()) {
         mobileMenuDrawer.classList.add('hidden');
       }
-    }, 320);
+    }, 420);
   }
 
   function toggleMobileMenu() {
