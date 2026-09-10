@@ -498,7 +498,7 @@ body {
    ========================================================================== */
 .conoceme-apple-section {
   position: relative;
-  height: 480vh; /* Pista de lectura pausada */
+  height: 950vh; /* Calibrado para 45 beats de scrollytelling fluido */
   background-color: var(--jet-black) !important; /* Siempre azul oscuro #2D3142 */
   color: var(--ivory) !important;
   border-top: 1px solid rgba(245, 242, 236, 0.08);
@@ -664,14 +664,19 @@ body {
   flex-direction: column;
   justify-content: center;
   opacity: 0;
-  transform: translateY(36px) scale(0.95);
+  transform: translateY(32px) scale(0.96);
   filter: blur(8px);
   pointer-events: none;
   visibility: hidden;
-  transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 550ms cubic-bezier(0.16, 1, 0.3, 1),
-              filter 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
+              filter 500ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.apple-story-beat::-webkit-scrollbar {
+  display: none;
 }
 
 .apple-story-beat.is-active {
@@ -684,7 +689,7 @@ body {
 
 .apple-story-beat.is-exiting {
   opacity: 0 !important;
-  transform: translateY(-36px) scale(0.95) !important;
+  transform: translateY(-32px) scale(0.96) !important;
   filter: blur(8px) !important;
   pointer-events: none !important;
   visibility: hidden !important;
@@ -713,15 +718,24 @@ body {
 .apple-beat-text {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.35rem, 2.15vw, 1.85rem);
-  line-height: 1.58;
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+  line-height: 1.6;
   color: var(--ivory);
   letter-spacing: -0.01em;
+  margin: 0;
 }
 
 .apple-beat-text strong {
   font-weight: 700;
-  color: #FFFFFF !important;
+  color: #FFFFFF;
+}
+
+.apple-beat-text strong.text-\[\#EF8354\],
+.apple-beat-text .text-\[\#EF8354\],
+.apple-beat-text .cinta-coral,
+.apple-beat-text .highlight-coral {
+  color: var(--coral-glow) !important;
+  font-weight: 700;
 }
 
 .apple-beat-text em {

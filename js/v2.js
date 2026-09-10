@@ -122,9 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
 
-        // Actualizar barra de progreso full-width (de 6% a 100%)
+        // Actualizar barra de progreso full-width (de 2.5% a 100%)
         if (progressFill) {
-          const fillPercent = Math.min(100, Math.max(6, ((currentBeatIndex + 1) / totalBeats) * 100));
+          const fillPercent = Math.min(100, Math.max(2.5, ((currentBeatIndex + 1) / totalBeats) * 100));
           progressFill.style.width = `${fillPercent}%`;
         }
       }
