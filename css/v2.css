@@ -177,6 +177,40 @@ body {
   width: 100%;
 }
 
+/* Indicador de sección activa en la Navbar */
+.nav-link.active-section {
+  color: var(--charcoal) !important;
+  font-weight: 650 !important;
+}
+.nav-link.active-section::after {
+  width: 100% !important;
+  background-color: var(--coral-glow) !important;
+}
+
+/* Navbar adaptativa sobre secciones oscuras (#conoceme y #contacto) */
+.header-v2.header-dark-theme.scrolled {
+  background-color: rgba(35, 38, 52, 0.75) !important;
+  border-bottom-color: rgba(245, 242, 236, 0.12) !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3) !important;
+}
+.header-v2.header-dark-theme .brand-title {
+  color: var(--ivory) !important;
+}
+.header-v2.header-dark-theme .brand-logo {
+  color: var(--ivory) !important;
+}
+.header-v2.header-dark-theme .nav-link {
+  color: var(--silver) !important;
+}
+.header-v2.header-dark-theme .nav-link:hover,
+.header-v2.header-dark-theme .nav-link.active-section {
+  color: #FFFFFF !important;
+}
+.header-v2.header-dark-theme .nav-link.active-section::after {
+  background-color: var(--coral-glow) !important;
+}
+
+
 /* ==========================================================================
    HOME / HERO (Full fold: Home + Cinta ocupan el 100% de la primera pantalla)
    ========================================================================== */
@@ -460,20 +494,15 @@ body {
 }
 
 /* ==========================================================================
-   CONÓCEME - APPLE-GRADE STORYTELLING STAGE
-   Pantalla fija, Foto Izquierda, Frase individual centrada a la Derecha con aire
+   CONÓCEME - PERMANENTE AZUL OSCURO / JET BLACK & NEWSREADER ITÁLICA
    ========================================================================== */
 .conoceme-apple-section {
   position: relative;
   height: 480vh; /* Pista de lectura pausada */
-  background-color: var(--ivory);
-  transition: background-color 700ms cubic-bezier(0.16, 1, 0.3, 1),
-              color 700ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.conoceme-apple-section.dark-mode-active {
-  background-color: var(--jet-black) !important;
+  background-color: var(--jet-black) !important; /* Siempre azul oscuro #2D3142 */
   color: var(--ivory) !important;
+  border-top: 1px solid rgba(245, 242, 236, 0.08);
+  border-bottom: 1px solid rgba(245, 242, 236, 0.08);
 }
 
 .conoceme-apple-viewport {
@@ -483,7 +512,7 @@ body {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 36px 40px 48px;
+  padding: 32px 40px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -498,12 +527,19 @@ body {
   .conoceme-apple-viewport {
     position: static;
     height: auto;
-    padding: 40px 20px;
+    padding: 48px 20px;
   }
 }
 
 .conoceme-apple-header {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
+}
+
+.conoceme-apple-header .conoceme-heading {
+  color: #FFFFFF !important;
+}
+.conoceme-apple-header .conoceme-subheading-dark {
+  color: rgba(245, 242, 236, 0.7) !important;
 }
 
 .conoceme-apple-stage {
@@ -541,9 +577,8 @@ body {
   aspect-ratio: 4 / 5;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(45, 49, 66, 0.12), 0 2px 8px rgba(45, 49, 66, 0.04);
-  border: 1px solid rgba(79, 93, 117, 0.12);
-  background-color: var(--silver);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(245, 242, 236, 0.12);
+  background-color: #1e222d;
 }
 
 .conoceme-apple-photo-img {
@@ -564,24 +599,18 @@ body {
 
 .conoceme-apple-stage-card {
   width: 100%;
-  min-height: 380px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(79, 93, 117, 0.12);
+  min-height: 400px;
+  background: rgba(35, 38, 52, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(245, 242, 236, 0.14);
   border-radius: 24px;
   padding: 36px 44px;
-  box-shadow: 0 16px 45px rgba(45, 49, 66, 0.06);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-}
-
-.conoceme-apple-section.dark-mode-active .conoceme-apple-stage-card {
-  background: rgba(35, 38, 52, 0.85);
-  border-color: rgba(245, 242, 236, 0.15);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 768px) {
@@ -591,40 +620,31 @@ body {
   }
 }
 
-/* Barra de progreso sutil Apple-style */
-.story-progress-bar-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 24px;
+/* Barra de progreso FULL-WIDTH Apple-style */
+.story-progress-bar-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 28px;
+  position: relative;
 }
 
 .story-progress-bar-fill {
-  height: 2px;
-  width: 40px;
+  height: 100%;
+  width: 6%; /* Comienza en el primer beat */
   background-color: var(--coral-glow);
+  box-shadow: 0 0 10px rgba(239, 131, 84, 0.8);
   border-radius: 9999px;
-  transition: width 300ms ease;
-}
-
-.story-beat-counter {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--blue-slate);
-  opacity: 0.7;
-}
-.conoceme-apple-section.dark-mode-active .story-beat-counter {
-  color: var(--silver);
+  transition: width 280ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Contenedor de Frases Escénicas */
 .story-beats-container {
   position: relative;
   flex: 1;
-  min-height: 240px;
+  min-height: 260px;
   display: flex;
   align-items: center;
 }
@@ -636,6 +656,7 @@ body {
   }
 }
 
+/* Transiciones vistosas y elegantes Apple-style (36px + scale + blur 8px) */
 .apple-story-beat {
   position: absolute;
   inset: 0;
@@ -643,18 +664,30 @@ body {
   flex-direction: column;
   justify-content: center;
   opacity: 0;
-  transform: translateY(20px) scale(0.98);
+  transform: translateY(36px) scale(0.95);
+  filter: blur(8px);
   pointer-events: none;
   visibility: hidden;
-  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 550ms cubic-bezier(0.16, 1, 0.3, 1),
+              filter 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
 }
 
 .apple-story-beat.is-active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-  visibility: visible;
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  filter: blur(0) !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+}
+
+.apple-story-beat.is-exiting {
+  opacity: 0 !important;
+  transform: translateY(-36px) scale(0.95) !important;
+  filter: blur(8px) !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 @media (max-width: 768px) {
@@ -663,11 +696,12 @@ body {
     inset: auto;
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     pointer-events: auto !important;
     visibility: visible !important;
     margin-bottom: 24px;
     padding-bottom: 20px;
-    border-bottom: 1px solid rgba(79, 93, 117, 0.1);
+    border-bottom: 1px solid rgba(245, 242, 236, 0.1);
   }
   .apple-story-beat:last-child {
     border-bottom: none;
@@ -675,20 +709,26 @@ body {
   }
 }
 
+/* Tipografía en Newsreader Itálica ("esa cosa itálica") */
 .apple-beat-text {
-  font-family: var(--font-sans);
-  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-  line-height: 1.62;
-  color: var(--charcoal);
-  letter-spacing: -0.012em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.15vw, 1.85rem);
+  line-height: 1.58;
+  color: var(--ivory);
+  letter-spacing: -0.01em;
 }
 
-.conoceme-apple-section.dark-mode-active .apple-beat-text {
-  color: var(--ivory) !important;
-}
-.conoceme-apple-section.dark-mode-active .apple-beat-text strong {
+.apple-beat-text strong {
+  font-weight: 700;
   color: #FFFFFF !important;
 }
+
+.apple-beat-text em {
+  font-style: normal;
+  color: rgba(245, 242, 236, 0.95);
+}
+
 
 /* ==========================================================================
    TRANSICIONES ENTRE SECCIONES

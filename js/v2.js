@@ -24,12 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const conocemeSection = document.getElementById('conoceme');
   const appleBeats = document.querySelectorAll('.apple-story-beat');
   const progressFill = document.getElementById('story-progress-fill');
-  const beatCounter = document.getElementById('story-beat-counter');
 
   // Timeline elements
   const timelineContainer = document.getElementById('timeline-container');
   const timelineRailFill = document.getElementById('timeline-rail-fill');
   const timelineRows = document.querySelectorAll('.timeline-alt-row');
+
+  // Secciones a observar para la Navbar activa
+  const navSections = [
+    { id: 'home', el: document.getElementById('home') },
+    { id: 'conoceme', el: document.getElementById('conoceme') },
+    { id: 'experiencia', el: document.getElementById('experiencia') },
+    { id: 'formacion', el: document.getElementById('formacion') },
+    { id: 'contacto', el: document.getElementById('contacto') }
+  ].filter(s => s.el !== null);
+
+  const navLinks = document.querySelectorAll('.header-v2 .nav-link');
 
   let dividerAnimated = false;
   let isTicking = false;
@@ -57,7 +67,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // C. Conóceme: Apple-Grade Scrollytelling (Una frase a la vez en foco absoluto)
+    // C. Navbar: Detección de Sección Activa y Tema Adaptativo
+    const scanLine = windowHeight * 0.35;
+    let activeSectionId = 'home';
+
+    navSections.forEach(section => {
+      const rect = section.el.getBoundingClientRect();
+      if (rect.top <= scanLine && rect.bottom > scanLine) {
+        activeSectionId = section.id;
+      }
+    });
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === '#' + activeSectionId) {
+        link.classList.add('active-section');
+      } else {
+        link.classList.remove('active-section');
+      }
+    });
+
+    // Tema oscuro adaptativo de la navbar sobre Conóceme o Contacto
+    if (mainHeader) {
+      if (activeSectionId === 'conoceme' || activeSectionId === 'contacto') {
+        mainHeader.classList.add('header-dark-theme');
+      } else {
+        mainHeader.classList.remove('header-dark-theme');
+      }
+    }
+
+    // D. Conóceme: Apple-Grade Scrollytelling (Efectos vistosos con blur 8px y scale)
     if (conocemeSection && appleBeats.length > 0) {
       const secRect = conocemeSection.getBoundingClientRect();
       const secTop = secRect.top;
@@ -65,40 +104,33 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrollableDistance = secHeight - windowHeight;
 
       if (window.innerWidth > 768 && scrollableDistance > 0) {
-        // Progreso dentro de Conóceme (0.0 a 1.0)
         const progress = Math.min(1, Math.max(0, -secTop / scrollableDistance));
         const totalBeats = appleBeats.length;
         const currentBeatIndex = Math.min(totalBeats - 1, Math.floor(progress * totalBeats));
 
-        // Activar la frase correspondiente y apagar las demás
+        // Activar la frase correspondiente y aplicar estados de entrada/salida
         appleBeats.forEach((beat, idx) => {
           if (idx === currentBeatIndex) {
+            beat.classList.remove('is-exiting');
             beat.classList.add('is-active');
+          } else if (idx < currentBeatIndex) {
+            beat.classList.remove('is-active');
+            beat.classList.add('is-exiting');
           } else {
             beat.classList.remove('is-active');
+            beat.classList.remove('is-exiting');
           }
         });
 
-        // Actualizar barra de progreso y contador discreto
+        // Actualizar barra de progreso full-width (de 6% a 100%)
         if (progressFill) {
-          const fillWidth = Math.max(20, progress * 100);
-          progressFill.style.width = `${fillWidth}px`;
-        }
-        if (beatCounter) {
-          const num = String(currentBeatIndex + 1).padStart(2, '0');
-          beatCounter.textContent = `${num} / 18`;
-        }
-
-        // Beat 6: Duelo (activar modo oscuro inmersivo en el background)
-        if (currentBeatIndex === 5) {
-          conocemeSection.classList.add('dark-mode-active');
-        } else {
-          conocemeSection.classList.remove('dark-mode-active');
+          const fillPercent = Math.min(100, Math.max(6, ((currentBeatIndex + 1) / totalBeats) * 100));
+          progressFill.style.width = `${fillPercent}%`;
         }
       }
     }
 
-    // D. Transición 1: Línea horizontal de 0 a 100%
+    // E. Transición 1: Línea horizontal de 0 a 100%
     if (!dividerAnimated && dividerSection && dividerLineTrabajar) {
       const divRect = dividerSection.getBoundingClientRect();
       if (divRect.top < windowHeight * 0.85) {
@@ -107,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // E. Mi Experiencia: Línea naranja que se despinta al scrollear hacia abajo
+    // F. Mi Experiencia: Línea naranja que se despinta al scrollear hacia abajo
     if (timelineContainer && timelineRailFill) {
       const tlRect = timelineContainer.getBoundingClientRect();
       const tlTop = tlRect.top;
