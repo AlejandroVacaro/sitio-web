@@ -18,6 +18,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainHeader = document.getElementById('main-header');
   const scrollProgressBar = document.getElementById('scroll-progress-bar');
   
+  // ============================================================================
+  // CÁLCULO DINÁMICO DE EDAD (Nacimiento: 04/06/1993)
+  // ============================================================================
+  function initCalculatedAge() {
+    const ageEl = document.getElementById('user-calculated-age');
+    if (!ageEl) return;
+    const birthDate = new Date(1993, 5, 4); // 4 de junio de 1993
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    ageEl.textContent = age;
+  }
+  initCalculatedAge();
+
   // Conóceme Apple Stage
   const conocemeSection = document.getElementById('conoceme');
   const stageCard = document.querySelector('.conoceme-apple-stage-card');
