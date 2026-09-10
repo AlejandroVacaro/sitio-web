@@ -290,8 +290,13 @@ body {
   color: var(--coral-glow);
   font-style: italic;
   font-family: var(--font-serif);
-  font-weight: 600;
+  font-size: 1.08em;
+  font-weight: 400;
   letter-spacing: -0.01em;
+}
+
+#mobile-menu-drawer {
+  background-color: rgba(30, 58, 95, 0.98) !important;
 }
 
 @media (max-width: 768px) {
