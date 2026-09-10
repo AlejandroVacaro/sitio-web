@@ -1366,18 +1366,18 @@ body {
 .contacto-quote-coral {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
-  line-height: 1.25;
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  line-height: 1.15;
   color: var(--coral-glow);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .contacto-secondary-text {
   font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 15.5px;
+  line-height: 1.55;
   color: var(--ivory);
-  opacity: 0.85;
+  opacity: 0.88;
   margin-bottom: 0;
 }
 
@@ -1467,8 +1467,20 @@ body {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(245, 242, 236, 0.12);
   border-radius: 20px;
-  padding: 24px 28px;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.2);
+  padding: 30px 32px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.25);
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+
+.form-container-highlight {
+  border-color: rgba(239, 131, 84, 0.32);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.045) 0%, rgba(239, 131, 84, 0.04) 100%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 35px rgba(239, 131, 84, 0.08);
+}
+
+.form-container-highlight:hover {
+  border-color: rgba(239, 131, 84, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), 0 0 45px rgba(239, 131, 84, 0.14);
 }
 @media (max-width: 640px) {
   .form-container-card { padding: 26px 20px; }

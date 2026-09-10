@@ -57,7 +57,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=3.6">
+  <link rel="stylesheet" href="css/v2.css?v=3.7">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -879,23 +879,24 @@
        ========================================================================== -->
   <section id="contacto" class="contacto-section-v2" aria-label="Contacto">
     <div class="contacto-container-v2 max-w-6xl mx-auto w-full">
-      
-      <!-- Texto Superior (Sin el título Contáctame) -->
-      <div class="contacto-header-intro mb-6 text-left">
-        <p class="contacto-quote-coral">
-          Si algo de acá te dio ganas de conversar, escribime.
-        </p>
-        <p class="contacto-secondary-text">
-          Puede ser por trabajo, por tecnología, por una idea o simplemente porque algo de mi historia te resonó.
-        </p>
-      </div>
 
-      <!-- Cuadrícula 2 Columnas de Igual Ancho (50% / 50%) -->
-      <div class="contacto-grid-v2">
+      <!-- Cuadrícula 2 Columnas: Izquierda (Texto + 2 Cajas) / Derecha (Formulario Taller & Resaltado) -->
+      <div class="contacto-grid-v2 items-stretch">
         
-        <!-- Columna Izquierda: Dos Cajitas de Contacto y Redes (Coinciden en ancho) -->
-        <div class="contacto-left-col flex flex-col gap-4 w-full">
+        <!-- Columna Izquierda: Encabezado + Canales Directos + Redes y Comunidad -->
+        <div class="contacto-left-col flex flex-col justify-between gap-5 w-full">
           
+          <!-- Texto Introductorio en la Columna Izquierda -->
+          <div class="contacto-header-intro">
+            <h2 class="contacto-quote-coral">
+              Si llegaste hasta acá, ¡escríbeme!
+            </h2>
+            <p class="contacto-secondary-text">
+              <span>Puede ser por trabajo, por tecnología, por una idea</span><br class="hidden sm:inline">
+              <span>o simplemente porque algo de mi historia te resonó.</span>
+            </p>
+          </div>
+
           <!-- Cajita 1: Canales Directos -->
           <div class="contacto-box-card w-full">
             <h3 class="contacto-box-title">Canales Directos</h3>
@@ -951,7 +952,7 @@
             <p class="text-xs text-[#BFC0C0] mt-0.5 mb-3">Sigue mis publicaciones y contenido en redes sociales:</p>
             
             <div class="grid grid-cols-4 gap-2.5">
-              <!-- LinkedIn -->
+              <!-- LinkedIn con SVG oficial -->
               <a href="https://www.linkedin.com/in/alejandro-vacaro/" target="_blank" rel="noopener noreferrer" class="social-network-card group" aria-label="LinkedIn">
                 <div class="social-card-icon-wrap bg-[#0077B5]/20 text-[#0077B5] border border-[#0077B5]/35 group-hover:bg-[#0077B5] group-hover:text-white transition-all">
                   <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -961,7 +962,7 @@
                 <span class="social-card-label">LinkedIn</span>
               </a>
 
-              <!-- X -->
+              <!-- X con SVG oficial -->
               <a href="https://x.com/alevacaro" target="_blank" rel="noopener noreferrer" class="social-network-card group" aria-label="X">
                 <div class="social-card-icon-wrap bg-white/10 text-white border border-white/20 group-hover:bg-white group-hover:text-[#2D3142] transition-all">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -971,7 +972,7 @@
                 <span class="social-card-label">X</span>
               </a>
 
-              <!-- Instagram -->
+              <!-- Instagram con SVG oficial -->
               <a href="https://www.instagram.com/ale.vacaro/" target="_blank" rel="noopener noreferrer" class="social-network-card group" aria-label="Instagram">
                 <div class="social-card-icon-wrap bg-[#E4405F]/20 text-[#E4405F] border border-[#E4405F]/35 group-hover:bg-[#E4405F] group-hover:text-white transition-all">
                   <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -981,7 +982,7 @@
                 <span class="social-card-label">Instagram</span>
               </a>
 
-              <!-- TikTok -->
+              <!-- TikTok con SVG oficial -->
               <a href="https://www.tiktok.com/@alevacaro" target="_blank" rel="noopener noreferrer" class="social-network-card group" aria-label="TikTok">
                 <div class="social-card-icon-wrap bg-[#00f2fe]/20 text-[#00f2fe] border border-[#00f2fe]/35 group-hover:bg-[#00f2fe] group-hover:text-[#2D3142] transition-all">
                   <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -995,25 +996,25 @@
 
         </div>
 
-        <!-- Columna Derecha: Formulario Funcional (Cuadro de Mensaje - Coincide en ancho) -->
+        <!-- Columna Derecha: Formulario Funcional (Cuadro de Mensaje - Más grande y resaltado) -->
         <div class="contacto-right-col flex flex-col w-full">
-          <div class="form-container-card w-full h-full flex flex-col justify-center" id="form-card-container">
+          <div class="form-container-card form-container-highlight w-full h-full flex flex-col justify-between" id="form-card-container">
             
             <!-- Contenido del Formulario -->
-            <div id="form-main-state">
-              <div class="mb-4">
-                <h3 class="text-xl font-bold font-sans text-white">Mandame un mensaje.</h3>
-                <p class="font-serif italic text-[#EF8354] text-base mt-0.5">Prometo leerlo yo.</p>
+            <div id="form-main-state" class="flex flex-col h-full justify-between">
+              <div class="mb-3">
+                <h3 class="text-2xl font-bold font-sans text-white tracking-tight">Mandame un mensaje.</h3>
+                <p class="font-serif italic text-[#EF8354] text-lg mt-0.5">Prometo responderte a la brevedad.</p>
               </div>
 
               <!-- Formulario FormSubmit Real con endpoint y anti-spam -->
-              <form id="contact-form" action="https://formsubmit.co/avacaro@outlook.com" method="POST" class="flex flex-col gap-3.5">
+              <form id="contact-form" action="https://formsubmit.co/avacaro@outlook.com" method="POST" class="flex flex-col gap-4 flex-1 justify-between">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
                 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
                 <!-- Fila 1: Nombre y Email en 2 Columnas -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <!-- Nombre -->
                   <div class="flex flex-col gap-1.5">
                     <label for="form-name" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Nombre</label>
@@ -1023,7 +1024,7 @@
                   <!-- Email -->
                   <div class="flex flex-col gap-1.5">
                     <label for="form-email" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Email</label>
-                    <input type="email" id="form-email" name="email" required placeholder="tu@email.com" class="form-field-input">
+                    <input type="email" id="form-email" name="email" required placeholder="ejemplo@correo.com" class="form-field-input">
                   </div>
                 </div>
 
@@ -1034,14 +1035,14 @@
                 </div>
 
                 <!-- Fila 3: Mensaje -->
-                <div class="flex flex-col gap-1.5">
+                <div class="flex flex-col gap-1.5 flex-1">
                   <label for="form-message" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Mensaje</label>
-                  <textarea id="form-message" name="message" required rows="3" placeholder="Escribí tranquilo. No hay límite de caracteres creativos." class="form-field-input form-field-textarea"></textarea>
+                  <textarea id="form-message" name="message" required rows="4" placeholder="Siéntete libre, estaré muy contento de leerte." class="form-field-input form-field-textarea flex-1"></textarea>
                 </div>
 
                 <!-- Botón de Envío -->
                 <div class="pt-1">
-                  <button type="submit" id="submit-btn" class="form-submit-btn">
+                  <button type="submit" id="submit-btn" class="form-submit-btn w-full sm:w-auto">
                     <span>Enviar mensaje</span>
                     <i data-lucide="send" class="w-4 h-4"></i>
                   </button>
@@ -1051,16 +1052,16 @@
             </div>
 
             <!-- Estado de Agradecimiento (Celebración con Confeti) -->
-            <div id="form-success-state" class="hidden flex-col items-center justify-center text-center py-8 px-4 transition-all duration-500 transform scale-95 opacity-0">
-              <div class="w-14 h-14 rounded-full bg-[#EF8354]/20 border border-[#EF8354]/50 text-[#EF8354] flex items-center justify-center mb-4 shadow-xl shadow-[#EF8354]/20">
-                <i data-lucide="check" class="w-7 h-7 stroke-[2.5]"></i>
+            <div id="form-success-state" class="hidden flex-col items-center justify-center text-center py-10 px-4 transition-all duration-500 transform scale-95 opacity-0 my-auto">
+              <div class="w-16 h-16 rounded-full bg-[#EF8354]/20 border border-[#EF8354]/50 text-[#EF8354] flex items-center justify-center mb-4 shadow-xl shadow-[#EF8354]/20">
+                <i data-lucide="check" class="w-8 h-8 stroke-[2.5]"></i>
               </div>
-              <h3 class="text-2xl font-bold font-sans text-white mb-1.5">¡Gracias por tu mensaje!</h3>
-              <p class="text-base font-serif italic text-[#EF8354] mb-2.5">En breves me pondré en contacto contigo.</p>
-              <p class="text-xs text-[#BFC0C0] max-w-xs mb-6">
+              <h3 class="text-2xl font-bold font-sans text-white mb-2">¡Gracias por tu mensaje!</h3>
+              <p class="text-lg font-serif italic text-[#EF8354] mb-3">Prometo responderte a la brevedad.</p>
+              <p class="text-sm text-[#BFC0C0] max-w-sm mb-6">
                 Tu consulta ya fue recibida y te estaré respondiendo directamente a tu correo electrónico.
               </p>
-              <button type="button" id="send-another-btn" class="px-5 py-2 rounded-full border border-white/20 text-[#F5F2EC] hover:bg-white/10 hover:border-white/40 text-xs font-semibold uppercase tracking-wider transition-all">
+              <button type="button" id="send-another-btn" class="px-6 py-2.5 rounded-full border border-white/20 text-[#F5F2EC] hover:bg-white/10 hover:border-white/40 text-xs font-semibold uppercase tracking-wider transition-all">
                 Enviar otro mensaje
               </button>
             </div>
@@ -1135,6 +1136,6 @@
   </div>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=3.6"></script>
+  <script src="js/v2.js?v=3.7"></script>
 </body>
 </html>
