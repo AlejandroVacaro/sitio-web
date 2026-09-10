@@ -701,19 +701,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================================
-  // 12. BOTÓN FLOTANTE 'VOLVER ARRIBA'
+  // 12. BOTÓN FLOTANTE 'VOLVER ARRIBA' (Aparece ÚNICAMENTE en Contáctame y Footer)
   // ============================================================================
   const scrollToTopWrap = document.getElementById('scroll-to-top-wrap');
   const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+  const contactoSection = document.getElementById('contacto');
 
   function updateFloatingButton() {
     if (!scrollToTopWrap) return;
-    const scrollY = window.scrollY || window.pageYOffset;
-    const windowHeight = window.innerHeight;
-    const docHeight = document.documentElement.scrollHeight - windowHeight;
+    
+    let isVisible = false;
+    if (contactoSection) {
+      const rect = contactoSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      // Aparece únicamente cuando el inicio de Contáctame entra en el viewport (sección visible)
+      // y se mantiene activo a lo largo de Contáctame y el Footer
+      if (rect.top <= windowHeight * 0.75) {
+        isVisible = true;
+      }
+    }
 
-    // Aparece cuando el usuario scrollea más allá del 60% o cerca del final
-    if (docHeight > 0 && scrollY / docHeight > 0.45) {
+    if (isVisible) {
       scrollToTopWrap.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
       scrollToTopWrap.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
     } else {
@@ -723,6 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', updateFloatingButton, { passive: true });
+  window.addEventListener('resize', updateFloatingButton, { passive: true });
   updateFloatingButton();
 
   if (scrollToTopBtn) {

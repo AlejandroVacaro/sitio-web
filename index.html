@@ -57,7 +57,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=3.5">
+  <link rel="stylesheet" href="css/v2.css?v=3.6">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -878,183 +878,196 @@
        CONTÁCTAME (#contacto) - 2 Columnas (42% Canales / 58% Formulario Real)
        ========================================================================== -->
   <section id="contacto" class="contacto-section-v2" aria-label="Contacto">
-    <div class="contacto-grid-v2">
+    <div class="contacto-container-v2 max-w-6xl mx-auto w-full">
       
-            <!-- Columna Izquierda: Dos Cajitas de Contacto y Redes (45%) -->
-      <div class="contacto-left-col flex flex-col gap-6">
-        
-        <div>
-          <h2 class="contacto-title-v2">Contáctame.</h2>
-          <p class="contacto-quote-coral">
-            Si algo de acá te dio ganas de conversar, escribime.
-          </p>
-          <p class="contacto-secondary-text">
-            Puede ser por trabajo, por tecnología, por una idea o simplemente porque algo de mi historia te resonó.
-          </p>
-        </div>
-
-        <!-- Cajita 1: Canales Directos -->
-        <div class="contacto-box-card">
-          <h3 class="contacto-box-title">Canales Directos</h3>
-          
-          <div class="flex flex-col gap-3 mt-4">
-            <!-- WhatsApp / Teléfono -->
-            <a href="https://wa.me/59899229549" target="_blank" rel="noopener noreferrer" class="contact-channel-item group">
-              <div class="channel-icon-badge bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/40 group-hover:scale-110 transition-transform">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                </svg>
-              </div>
-              <div class="flex flex-col flex-1 min-w-0">
-                <span class="text-[11px] uppercase tracking-wider font-bold text-[#BFC0C0]">WhatsApp / Teléfono</span>
-                <span class="text-sm font-semibold text-white truncate">(+598) 99 22 95 49</span>
-              </div>
-              <div class="channel-action-pill bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] group-hover:bg-[#25D366] group-hover:text-[#2D3142] transition-all">
-                <span>Chat</span>
-                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-              </div>
-            </a>
-
-            <!-- Correo Electrónico -->
-            <div class="contact-channel-item group">
-              <a href="mailto:avacaro@outlook.com" class="channel-icon-badge bg-[#EF8354]/20 text-[#EF8354] border border-[#EF8354]/40 hover:scale-110 transition-transform">
-                <i data-lucide="mail" class="w-5 h-5"></i>
-              </a>
-              <div class="flex flex-col flex-1 min-w-0">
-                <span class="text-[11px] uppercase tracking-wider font-bold text-[#BFC0C0]">Correo Electrónico</span>
-                <a href="mailto:avacaro@outlook.com" class="text-sm font-semibold text-white hover:text-[#EF8354] transition-colors truncate">avacaro@outlook.com</a>
-              </div>
-              <button type="button" id="copy-email-btn" class="channel-copy-btn" title="Copiar correo" aria-label="Copiar correo">
-                <i data-lucide="copy" class="w-4 h-4 text-[#BFC0C0]" id="copy-email-icon"></i>
-              </button>
-            </div>
-
-            <!-- Ubicación -->
-            <div class="contact-channel-item">
-              <div class="channel-icon-badge bg-white/10 text-white border border-white/15">
-                <i data-lucide="map-pin" class="w-5 h-5 text-[#EF8354]"></i>
-              </div>
-              <div class="flex flex-col flex-1 min-w-0">
-                <span class="text-[11px] uppercase tracking-wider font-bold text-[#BFC0C0]">Ubicación</span>
-                <span class="text-sm font-semibold text-white">Montevideo, Uruguay</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cajita 2: Redes y Comunidad -->
-        <div class="contacto-box-card">
-          <h3 class="contacto-box-title">Redes y Comunidad</h3>
-          <p class="text-xs text-[#BFC0C0] mt-1 mb-4">Sigue mis publicaciones y contenido en redes sociales:</p>
-          
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/alejandro-vacaro/" target="_blank" rel="noopener noreferrer" class="social-network-card group">
-              <div class="social-card-icon-wrap bg-[#0077B5]/20 text-[#0077B5] border border-[#0077B5]/30 group-hover:bg-[#0077B5] group-hover:text-white transition-all">
-                <i data-lucide="linkedin" class="w-5 h-5"></i>
-              </div>
-              <span class="social-card-label">LinkedIn</span>
-            </a>
-
-            <!-- X -->
-            <a href="https://x.com/alevacaro" target="_blank" rel="noopener noreferrer" class="social-network-card group">
-              <div class="social-card-icon-wrap bg-white/15 text-white border border-white/25 group-hover:bg-white group-hover:text-[#2D3142] transition-all font-bold text-sm">
-                X
-              </div>
-              <span class="social-card-label">X</span>
-            </a>
-
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/ale.vacaro/" target="_blank" rel="noopener noreferrer" class="social-network-card group">
-              <div class="social-card-icon-wrap bg-[#E4405F]/20 text-[#E4405F] border border-[#E4405F]/30 group-hover:bg-[#E4405F] group-hover:text-white transition-all">
-                <i data-lucide="instagram" class="w-5 h-5"></i>
-              </div>
-              <span class="social-card-label">Instagram</span>
-            </a>
-
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@alevacaro" target="_blank" rel="noopener noreferrer" class="social-network-card group">
-              <div class="social-card-icon-wrap bg-[#00f2fe]/20 text-[#00f2fe] border border-[#00f2fe]/30 group-hover:bg-[#00f2fe] group-hover:text-[#2D3142] transition-all">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-                </svg>
-              </div>
-              <span class="social-card-label">TikTok</span>
-            </a>
-          </div>
-        </div>
-
+      <!-- Texto Superior (Sin el título Contáctame) -->
+      <div class="contacto-header-intro mb-6 text-left">
+        <p class="contacto-quote-coral">
+          Si algo de acá te dio ganas de conversar, escribime.
+        </p>
+        <p class="contacto-secondary-text">
+          Puede ser por trabajo, por tecnología, por una idea o simplemente porque algo de mi historia te resonó.
+        </p>
       </div>
 
-            <!-- Columna Derecha: Formulario Funcional (55%) -->
-      <div class="contacto-right-col">
-        <div class="form-container-card" id="form-card-container">
+      <!-- Cuadrícula 2 Columnas de Igual Ancho (50% / 50%) -->
+      <div class="contacto-grid-v2">
+        
+        <!-- Columna Izquierda: Dos Cajitas de Contacto y Redes (Coinciden en ancho) -->
+        <div class="contacto-left-col flex flex-col gap-4 w-full">
           
-          <!-- Contenido del Formulario -->
-          <div id="form-main-state">
-            <div class="mb-6">
-              <h3 class="text-2xl font-bold font-sans text-white">Mandame un mensaje.</h3>
-              <p class="font-serif italic text-[#EF8354] text-xl mt-1">Prometo leerlo yo.</p>
-            </div>
+          <!-- Cajita 1: Canales Directos -->
+          <div class="contacto-box-card w-full">
+            <h3 class="contacto-box-title">Canales Directos</h3>
+            
+            <div class="flex flex-col gap-2.5 mt-3">
+              <!-- WhatsApp / Teléfono -->
+              <a href="https://wa.me/59899229549" target="_blank" rel="noopener noreferrer" class="contact-channel-item group">
+                <div class="channel-icon-badge bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/40 group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                  </svg>
+                </div>
+                <div class="flex flex-col flex-1 min-w-0">
+                  <span class="text-[10px] uppercase tracking-wider font-bold text-[#BFC0C0]">WhatsApp / Teléfono</span>
+                  <span class="text-sm font-semibold text-white truncate">(+598) 99 22 95 49</span>
+                </div>
+                <div class="channel-action-pill bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] group-hover:bg-[#25D366] group-hover:text-[#2D3142] transition-all">
+                  <span>Chat</span>
+                  <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                </div>
+              </a>
 
-            <!-- Formulario FormSubmit Real con endpoint y anti-spam -->
-            <form id="contact-form" action="https://formsubmit.co/avacaro@outlook.com" method="POST" class="flex flex-col gap-5">
-              <!-- FormSubmit Anti-Spam / Config -->
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
-              <!-- Nombre -->
-              <div class="flex flex-col gap-2">
-                <label for="form-name" class="text-xs uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Nombre</label>
-                <input type="text" id="form-name" name="name" required placeholder="Tu nombre" class="form-field-input">
-              </div>
-
-              <!-- Email -->
-              <div class="flex flex-col gap-2">
-                <label for="form-email" class="text-xs uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Email</label>
-                <input type="email" id="form-email" name="email" required placeholder="tu@email.com" class="form-field-input">
-              </div>
-
-              <!-- Asunto -->
-              <div class="flex flex-col gap-2">
-                <label for="form-subject" class="text-xs uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Asunto</label>
-                <input type="text" id="form-subject" name="subject" placeholder="¿De qué querés hablar?" class="form-field-input">
-              </div>
-
-              <!-- Mensaje -->
-              <div class="flex flex-col gap-2">
-                <label for="form-message" class="text-xs uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Mensaje</label>
-                <textarea id="form-message" name="message" required rows="5" placeholder="Escribí tranquilo. No hay límite de caracteres creativos." class="form-field-input form-field-textarea"></textarea>
-              </div>
-
-              <!-- Botón de Envío -->
-              <div class="pt-2">
-                <button type="submit" id="submit-btn" class="form-submit-btn">
-                  <span>Enviar mensaje</span>
-                  <i data-lucide="send" class="w-4 h-4"></i>
+              <!-- Correo Electrónico -->
+              <div class="contact-channel-item group">
+                <a href="mailto:avacaro@outlook.com" class="channel-icon-badge bg-[#EF8354]/20 text-[#EF8354] border border-[#EF8354]/40 hover:scale-110 transition-transform">
+                  <i data-lucide="mail" class="w-4 h-4"></i>
+                </a>
+                <div class="flex flex-col flex-1 min-w-0">
+                  <span class="text-[10px] uppercase tracking-wider font-bold text-[#BFC0C0]">Correo Electrónico</span>
+                  <a href="mailto:avacaro@outlook.com" class="text-sm font-semibold text-white hover:text-[#EF8354] transition-colors truncate">avacaro@outlook.com</a>
+                </div>
+                <button type="button" id="copy-email-btn" class="channel-copy-btn" title="Copiar correo" aria-label="Copiar correo">
+                  <i data-lucide="copy" class="w-3.5 h-3.5 text-[#BFC0C0]" id="copy-email-icon"></i>
                 </button>
               </div>
 
-            </form>
+              <!-- Ubicación -->
+              <div class="contact-channel-item">
+                <div class="channel-icon-badge bg-white/10 text-white border border-white/15">
+                  <i data-lucide="map-pin" class="w-4 h-4 text-[#EF8354]"></i>
+                </div>
+                <div class="flex flex-col flex-1 min-w-0">
+                  <span class="text-[10px] uppercase tracking-wider font-bold text-[#BFC0C0]">Ubicación</span>
+                  <span class="text-sm font-semibold text-white">Montevideo, Uruguay</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Estado de Agradecimiento (Celebración con Confeti) -->
-          <div id="form-success-state" class="hidden flex-col items-center justify-center text-center py-10 px-4 transition-all duration-500 transform scale-95 opacity-0">
-            <div class="w-16 h-16 rounded-full bg-[#EF8354]/20 border border-[#EF8354]/50 text-[#EF8354] flex items-center justify-center mb-6 shadow-xl shadow-[#EF8354]/20">
-              <i data-lucide="check" class="w-8 h-8 stroke-[2.5]"></i>
+          <!-- Cajita 2: Redes y Comunidad -->
+          <div class="contacto-box-card w-full">
+            <h3 class="contacto-box-title">Redes y Comunidad</h3>
+            <p class="text-xs text-[#BFC0C0] mt-0.5 mb-3">Sigue mis publicaciones y contenido en redes sociales:</p>
+            
+            <div class="grid grid-cols-4 gap-2.5">
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/in/alejandro-vacaro/" target="_blank" rel="noopener noreferrer" class="social-network-card group" aria-label="LinkedIn">
+                <div class="social-card-icon-wrap bg-[#0077B5]/20 text-[#0077B5] border border-[#0077B5]/35 group-hover:bg-[#0077B5] group-hover:text-white transition-all">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6z"/>
+                  </svg>
+                </div>
+                <span class="social-card-label">LinkedIn</span>
+              </a>
+
+              <!-- X -->
+              <a href="https://x.com/alevacaro" target="_blank" rel="noopener noreferrer" class="social-network-card group" aria-label="X">
+                <div class="social-card-icon-wrap bg-white/10 text-white border border-white/20 group-hover:bg-white group-hover:text-[#2D3142] transition-all">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </div>
+                <span class="social-card-label">X</span>
+              </a>
+
+              <!-- Instagram -->
+              <a href="https://www.instagram.com/ale.vacaro/" target="_blank" rel="noopener noreferrer" class="social-network-card group" aria-label="Instagram">
+                <div class="social-card-icon-wrap bg-[#E4405F]/20 text-[#E4405F] border border-[#E4405F]/35 group-hover:bg-[#E4405F] group-hover:text-white transition-all">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </div>
+                <span class="social-card-label">Instagram</span>
+              </a>
+
+              <!-- TikTok -->
+              <a href="https://www.tiktok.com/@alevacaro" target="_blank" rel="noopener noreferrer" class="social-network-card group" aria-label="TikTok">
+                <div class="social-card-icon-wrap bg-[#00f2fe]/20 text-[#00f2fe] border border-[#00f2fe]/35 group-hover:bg-[#00f2fe] group-hover:text-[#2D3142] transition-all">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                  </svg>
+                </div>
+                <span class="social-card-label">TikTok</span>
+              </a>
             </div>
-            <h3 class="text-2xl sm:text-3xl font-bold font-sans text-white mb-2">¡Gracias por tu mensaje!</h3>
-            <p class="text-lg font-serif italic text-[#EF8354] mb-3">En breves me pondré en contacto contigo.</p>
-            <p class="text-sm text-[#BFC0C0] max-w-sm mb-8">
-              Tu consulta ya fue recibida y te estaré respondiendo directamente a tu correo electrónico.
-            </p>
-            <button type="button" id="send-another-btn" class="px-6 py-2.5 rounded-full border border-white/20 text-[#F5F2EC] hover:bg-white/10 hover:border-white/40 text-xs font-semibold uppercase tracking-wider transition-all">
-              Enviar otro mensaje
-            </button>
           </div>
 
         </div>
+
+        <!-- Columna Derecha: Formulario Funcional (Cuadro de Mensaje - Coincide en ancho) -->
+        <div class="contacto-right-col flex flex-col w-full">
+          <div class="form-container-card w-full h-full flex flex-col justify-center" id="form-card-container">
+            
+            <!-- Contenido del Formulario -->
+            <div id="form-main-state">
+              <div class="mb-4">
+                <h3 class="text-xl font-bold font-sans text-white">Mandame un mensaje.</h3>
+                <p class="font-serif italic text-[#EF8354] text-base mt-0.5">Prometo leerlo yo.</p>
+              </div>
+
+              <!-- Formulario FormSubmit Real con endpoint y anti-spam -->
+              <form id="contact-form" action="https://formsubmit.co/avacaro@outlook.com" method="POST" class="flex flex-col gap-3.5">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+                <!-- Fila 1: Nombre y Email en 2 Columnas -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <!-- Nombre -->
+                  <div class="flex flex-col gap-1.5">
+                    <label for="form-name" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Nombre</label>
+                    <input type="text" id="form-name" name="name" required placeholder="Tu nombre" class="form-field-input">
+                  </div>
+
+                  <!-- Email -->
+                  <div class="flex flex-col gap-1.5">
+                    <label for="form-email" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Email</label>
+                    <input type="email" id="form-email" name="email" required placeholder="tu@email.com" class="form-field-input">
+                  </div>
+                </div>
+
+                <!-- Fila 2: Asunto -->
+                <div class="flex flex-col gap-1.5">
+                  <label for="form-subject" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Asunto</label>
+                  <input type="text" id="form-subject" name="subject" placeholder="¿De qué querés hablar?" class="form-field-input">
+                </div>
+
+                <!-- Fila 3: Mensaje -->
+                <div class="flex flex-col gap-1.5">
+                  <label for="form-message" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Mensaje</label>
+                  <textarea id="form-message" name="message" required rows="3" placeholder="Escribí tranquilo. No hay límite de caracteres creativos." class="form-field-input form-field-textarea"></textarea>
+                </div>
+
+                <!-- Botón de Envío -->
+                <div class="pt-1">
+                  <button type="submit" id="submit-btn" class="form-submit-btn">
+                    <span>Enviar mensaje</span>
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                  </button>
+                </div>
+
+              </form>
+            </div>
+
+            <!-- Estado de Agradecimiento (Celebración con Confeti) -->
+            <div id="form-success-state" class="hidden flex-col items-center justify-center text-center py-8 px-4 transition-all duration-500 transform scale-95 opacity-0">
+              <div class="w-14 h-14 rounded-full bg-[#EF8354]/20 border border-[#EF8354]/50 text-[#EF8354] flex items-center justify-center mb-4 shadow-xl shadow-[#EF8354]/20">
+                <i data-lucide="check" class="w-7 h-7 stroke-[2.5]"></i>
+              </div>
+              <h3 class="text-2xl font-bold font-sans text-white mb-1.5">¡Gracias por tu mensaje!</h3>
+              <p class="text-base font-serif italic text-[#EF8354] mb-2.5">En breves me pondré en contacto contigo.</p>
+              <p class="text-xs text-[#BFC0C0] max-w-xs mb-6">
+                Tu consulta ya fue recibida y te estaré respondiendo directamente a tu correo electrónico.
+              </p>
+              <button type="button" id="send-another-btn" class="px-5 py-2 rounded-full border border-white/20 text-[#F5F2EC] hover:bg-white/10 hover:border-white/40 text-xs font-semibold uppercase tracking-wider transition-all">
+                Enviar otro mensaje
+              </button>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1114,14 +1127,14 @@
         Volver arriba
         <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#222222]"></div>
       </div>
-      <!-- Botón Redondo Naranja -->
-      <button type="button" id="scroll-to-top-btn" class="w-12 h-12 rounded-full bg-[#EF8354] hover:bg-[#ff9568] text-[#2D3142] shadow-2xl shadow-[#EF8354]/40 flex items-center justify-center transition-transform duration-300 transform group-hover:scale-110 active:scale-95" aria-label="Volver arriba">
-        <i data-lucide="arrow-up" class="w-5 h-5 stroke-[2.5]"></i>
+      <!-- Botón Redondo Naranja (Apenas más grande: 54px, icono 24px) -->
+      <button type="button" id="scroll-to-top-btn" class="w-[54px] h-[54px] rounded-full bg-[#EF8354] hover:bg-[#ff9568] text-[#2D3142] shadow-2xl shadow-[#EF8354]/40 flex items-center justify-center transition-transform duration-300 transform group-hover:scale-110 active:scale-95" aria-label="Volver arriba">
+        <i data-lucide="arrow-up" class="w-6 h-6 stroke-[2.5]"></i>
       </button>
     </div>
   </div>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=3.5"></script>
+  <script src="js/v2.js?v=3.6"></script>
 </body>
 </html>

@@ -1333,56 +1333,66 @@ body {
 }
 
 /* ==========================================================================
-   CONTÁCTAME (#contacto) - 2 Columnas (42% Canales / 58% Formulario Real)
+   CONTÁCTAME (#contacto) - Cuadrícula 2 Columnas (50% / 50%)
    ========================================================================== */
 .contacto-section-v2 {
   width: 100%;
   background-color: var(--jet-black);
   color: var(--ivory);
-  padding: 80px 32px 100px;
+  padding: 48px 24px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
 }
 @media (max-width: 768px) {
-  .contacto-section-v2 { padding: 60px 20px 80px; }
-}
-
-.contacto-grid-v2 {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 42% 58%;
-  gap: clamp(60px, 7vw, 96px);
-  align-items: start;
-}
-@media (max-width: 960px) {
-  .contacto-grid-v2 {
-    grid-template-columns: 1fr;
-    gap: 48px;
+  .contacto-section-v2 { 
+    padding: 36px 16px 50px;
+    min-height: auto;
   }
 }
 
-.contacto-title-v2 {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: clamp(2.4rem, 4vw, 3.6rem);
-  color: var(--white);
-  margin-bottom: 14px;
+.contacto-container-v2 {
+  max-width: 1140px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.contacto-header-intro {
+  margin-bottom: 24px;
 }
 
 .contacto-quote-coral {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
-  line-height: 1.2;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  line-height: 1.25;
   color: var(--coral-glow);
-  margin-bottom: 18px;
+  margin-bottom: 8px;
 }
 
 .contacto-secondary-text {
   font-family: var(--font-sans);
-  font-size: 16.5px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.5;
   color: var(--ivory);
-  margin-bottom: 36px;
+  opacity: 0.85;
+  margin-bottom: 0;
+}
+
+.contacto-grid-v2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+  width: 100%;
+}
+@media (max-width: 960px) {
+  .contacto-grid-v2 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 .contacto-channels-list {
@@ -1457,7 +1467,7 @@ body {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(245, 242, 236, 0.12);
   border-radius: 20px;
-  padding: 36px 40px;
+  padding: 24px 28px;
   box-shadow: 0 16px 45px rgba(0, 0, 0, 0.2);
 }
 @media (max-width: 640px) {
@@ -2250,7 +2260,7 @@ body {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(245, 242, 236, 0.12);
   border-radius: 20px;
-  padding: 24px 28px;
+  padding: 18px 22px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -2365,8 +2375,8 @@ body {
 }
 
 #scroll-to-top-btn {
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   background: #EF8354;
   color: #2D3142;
