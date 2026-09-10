@@ -224,9 +224,26 @@ body {
   justify-content: center;
   padding: 24px 0;
   box-sizing: border-box;
+  scroll-margin-top: 80px;
 }
 
-@media (max-height: 700px) {
+#home {
+  scroll-margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: auto !important;
+    min-height: calc(100svh - 64px) !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding-top: 36px !important;
+    padding-bottom: 44px !important;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 769px) {
   .hero-section {
     min-height: 520px;
     height: auto;
@@ -1390,8 +1407,26 @@ body {
 }
 @media (max-width: 960px) {
   .contacto-grid-v2 {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .contacto-left-col,
+  .contacto-right-col {
+    display: contents !important;
+  }
+  #contacto-canales-card {
+    order: 1 !important;
+    width: 100% !important;
+  }
+  #contacto-form-col,
+  #form-card-container {
+    order: 2 !important;
+    width: 100% !important;
+  }
+  #contacto-redes-card {
+    order: 3 !important;
+    width: 100% !important;
   }
 }
 
@@ -1732,8 +1767,13 @@ body {
 }
 @media (max-width: 768px) {
   .timeline-central-rail {
-    left: 24px;
-    transform: none;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 1 !important;
+  }
+  .timeline-rail-fill {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
   }
 }
 
@@ -1760,11 +1800,15 @@ body {
 }
 @media (max-width: 768px) {
   .timeline-alt-row {
-    display: flex;
-    flex-direction: column;
-    padding-left: 56px;
-    margin-bottom: 40px;
-    align-items: stretch;
+    display: flex !important;
+    flex-direction: column !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 36px !important;
+    align-items: center !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 }
 
@@ -1794,10 +1838,7 @@ body {
 }
 @media (max-width: 768px) {
   .timeline-center-node {
-    position: absolute;
-    left: 17px;
-    top: 26px;
-    margin: 0;
+    display: none !important;
   }
 }
 
@@ -1949,26 +1990,72 @@ body {
 }
 
 @media (max-width: 768px) {
+  .timeline-exp-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 10px 28px rgba(45, 49, 66, 0.08) !important;
+  }
   .row-left .timeline-exp-card-inner,
   .row-left .timeline-exp-card-overlay,
   .row-right .timeline-exp-card-inner,
-  .row-right .timeline-exp-card-overlay {
-    text-align: left;
-    align-items: flex-start;
+  .row-right .timeline-exp-card-overlay,
+  .timeline-exp-card-inner {
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .timeline-exp-card-inner .flex,
+  .timeline-exp-card-inner .flex.items-center {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  .exp-card-badge {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+  .exp-card-company,
+  .exp-card-role {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .timeline-exp-card-inner p {
+    text-align: center !important;
+    width: 100% !important;
   }
   .row-left .exp-card-city,
-  .row-right .exp-card-city {
-    justify-content: flex-start;
+  .row-right .exp-card-city,
+  .exp-card-city {
+    justify-content: center !important;
+    margin: 10px auto 0 auto !important;
+    width: 100% !important;
   }
   .row-left .exp-overlay-header,
-  .row-right .exp-overlay-header {
-    align-items: flex-start;
-    text-align: left;
+  .row-right .exp-overlay-header,
+  .exp-overlay-header {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
   }
-  .row-left .exp-overlay-coral-line,
-  .row-right .exp-overlay-coral-line {
-    margin-left: 0;
-    margin-right: auto;
+  .exp-overlay-header .flex {
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .exp-overlay-coral-line {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .timeline-exp-card-overlay .border-b > div.flex,
+  .timeline-exp-card-overlay div > div.flex {
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .timeline-exp-card-overlay p,
+  .timeline-exp-card-overlay span {
+    text-align: center !important;
   }
 }
 

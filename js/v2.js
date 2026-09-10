@@ -276,12 +276,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 5. MENÚ MÓVIL (DRAWER)
+  // 5. MENÚ MÓVIL (DRAWER - CON TOGGLE EN HAMBURGUESA Y NAVBAR SIEMPRE VISIBLE)
   // ============================================================================
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
   const mobileMenuClose = document.getElementById('mobile-menu-close');
   const mobileNavLinks = mobileMenuDrawer ? mobileMenuDrawer.querySelectorAll('a') : [];
+
+  function isMobileMenuOpen() {
+    return mobileMenuDrawer && 
+           !mobileMenuDrawer.classList.contains('hidden') && 
+           mobileMenuDrawer.classList.contains('opacity-100');
+  }
+
+  function updateMobileMenuIcon(isOpen) {
+    if (!mobileMenuBtn) return;
+    mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+    mobileMenuBtn.innerHTML = isOpen 
+      ? '<i data-lucide="x" class="w-6 h-6"></i>' 
+      : '<i data-lucide="menu" class="w-6 h-6"></i>';
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  }
 
   function openMobileMenu() {
     if (!mobileMenuDrawer) return;
@@ -290,20 +308,30 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenuDrawer.classList.remove('opacity-0');
     mobileMenuDrawer.classList.add('opacity-100');
     document.body.style.overflow = 'hidden';
+    updateMobileMenuIcon(true);
   }
 
   function closeMobileMenu() {
     if (!mobileMenuDrawer) return;
     mobileMenuDrawer.classList.remove('opacity-100');
     mobileMenuDrawer.classList.add('opacity-0');
+    updateMobileMenuIcon(false);
     setTimeout(() => {
       mobileMenuDrawer.classList.add('hidden');
       document.body.style.overflow = '';
     }, 300);
   }
 
+  function toggleMobileMenu() {
+    if (isMobileMenuOpen()) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
   if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
   }
   if (mobileMenuClose) {
     mobileMenuClose.addEventListener('click', closeMobileMenu);

@@ -57,7 +57,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=3.9">
+  <link rel="stylesheet" href="css/v2.css?v=4.0">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -101,30 +101,18 @@
     </div>
   </header>
 
-  <!-- Menú móvil Drawer -->
-  <div id="mobile-menu-drawer" class="fixed inset-0 bg-[#2D3142]/95 z-50 hidden opacity-0 transition-opacity duration-300 flex flex-col justify-between p-6 text-[#F5F2EC]">
-    <div class="flex items-center justify-between border-b border-white/10 pb-4">
-      <div class="flex items-center gap-3">
-        <svg class="w-7 h-auto aspect-[108/96] text-white" viewBox="0 0 108 96" fill="currentColor">
-          <path d="M 22.57 52.7 L 50.56 4.22 C 52.11 1.54 55.99 1.54 57.54 4.22 L 105.74 87.72 C 107.3 90.42 105.35 93.8 102.24 93.8 L 78.59 93.8 C 72.13 93.8 66.17 90.35 62.94 84.76 L 50.73 63.62 C 45.08 53.82 33.36 49.28 22.57 52.7 Z"/>
-          <path d="M 14.27 67.09 C 17.45 61.58 23.33 58.18 29.69 58.18 C 39.53 58.18 47.5 66.16 47.5 75.99 C 47.5 85.83 39.53 93.8 29.69 93.8 L 5.87 93.8 C 2.75 93.8 0.8 90.42 2.36 87.71 L 14.27 67.09 Z"/>
-        </svg>
-        <span class="font-bold text-sm">Alejandro Vacaro</span>
-      </div>
-      <button id="mobile-menu-close" class="p-2 text-white" aria-label="Cerrar menú">
-        <i data-lucide="x" class="w-6 h-6"></i>
-      </button>
-    </div>
-    
-    <nav class="flex flex-col gap-6 py-8 text-xl font-sans font-medium">
-      <a href="#conoceme" class="hover:text-[#EF8354]">Conóceme</a>
-      <a href="#experiencia" class="hover:text-[#EF8354]">Mi experiencia</a>
-      <a href="#formacion" class="hover:text-[#EF8354]">Mi formación</a>
-      <a href="#contacto" class="hover:text-[#EF8354]">Contáctame</a>
+  <!-- Menú móvil Drawer (Abre bajo el navbar fijo sin taparlo) -->
+  <div id="mobile-menu-drawer" class="fixed left-0 right-0 bottom-0 top-[64px] bg-[#2D3142]/98 backdrop-blur-md z-[999] hidden opacity-0 transition-opacity duration-300 flex flex-col justify-between p-6 text-[#F5F2EC]">
+    <nav class="flex flex-col gap-6 py-6 text-xl font-sans font-medium">
+      <a href="#conoceme" class="hover:text-[#EF8354] transition-colors">Conóceme</a>
+      <a href="#experiencia" class="hover:text-[#EF8354] transition-colors">Mi experiencia</a>
+      <a href="#formacion" class="hover:text-[#EF8354] transition-colors">Mi formación</a>
+      <a href="#contacto" class="hover:text-[#EF8354] transition-colors">Contáctame</a>
     </nav>
 
-    <div class="border-t border-white/10 pt-4 text-xs text-[#BFC0C0]">
-      Montevideo, Uruguay
+    <div class="border-t border-white/10 pt-4 text-xs text-[#BFC0C0] flex items-center justify-between">
+      <span>Montevideo, Uruguay</span>
+      <span class="text-[#EF8354] font-semibold">Alejandro Vacaro</span>
     </div>
   </div>
 
@@ -139,17 +127,17 @@
         
         <!-- Título exacto -->
         <h1 class="hero-title anim-hero-h1">
-          Conecto personas, procesos y tecnología.
+          Mirar como usuario. Pensar como analista.
         </h1>
 
         <!-- Bajada exacta -->
         <p class="hero-bajada anim-hero-bajada">
-          Soy Analista Funcional. Trabajo conectando necesidades de negocio, procesos y tecnología para convertir problemas en soluciones posibles.
+          Soy Alejandro Vacaro, Analista Funcional. Analizo procesos, entiendo sus problemas y traduzco esas necesidades para ayudar a convertirlas en mejoras posibles desde la tecnología.
         </p>
 
         <!-- Frase editorial exacta -->
         <p class="hero-complementary anim-hero-comp">
-          Me interesa entender qué está pasando, hacer las preguntas que faltan y ayudar a que las cosas avancen con más claridad.
+          Ser un outsider en tecnología terminó siendo mi mejor ventaja competitiva.
         </p>
 
         <!-- Dos Acciones exactas -->
@@ -899,7 +887,7 @@
         <div class="contacto-left-col flex flex-col justify-between gap-5 w-full h-full">
           
           <!-- Cajita 1: Canales Directos -->
-          <div class="contacto-box-card w-full flex flex-col justify-between">
+          <div class="contacto-box-card w-full flex flex-col justify-between" id="contacto-canales-card">
             <h3 class="contacto-box-title">Canales Directos</h3>
             
             <div class="flex flex-col gap-2.5 mt-3.5">
@@ -948,7 +936,7 @@
           </div>
 
           <!-- Cajita 2: Redes y Comunidad -->
-          <div class="contacto-box-card w-full">
+          <div class="contacto-box-card w-full" id="contacto-redes-card">
             <h3 class="contacto-box-title">Redes y Comunidad</h3>
             <p class="text-xs text-[#BFC0C0] mt-0.5 mb-3">Sigue mis publicaciones y contenido en redes sociales:</p>
             
@@ -998,7 +986,7 @@
         </div>
 
         <!-- Columna Derecha: Formulario Funcional (Coincide exactamente en altura con la izquierda) -->
-        <div class="contacto-right-col flex flex-col w-full h-full">
+        <div class="contacto-right-col flex flex-col w-full h-full" id="contacto-form-col">
           <div class="form-container-card form-container-highlight w-full h-full flex flex-col justify-between" id="form-card-container">
             
             <!-- Contenido del Formulario (Proporción exacta con el estado de enviado) -->
@@ -1139,6 +1127,6 @@
   </div>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=3.9"></script>
+  <script src="js/v2.js?v=4.0"></script>
 </body>
 </html>
