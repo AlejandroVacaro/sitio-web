@@ -1,15 +1,15 @@
 /**
- * Alejandro Vacaro - V2 Interactive Script (Polished)
- * - Lucide Icons Initializer
- * - Scroll Progress Bar (2px coral)
- * - Header Compacting on Scroll (>100px)
- * - Hero Photo 3D Tilt (rAF, desktop only, max 2deg)
- * - "Cómo pienso" 7 Verbs Sticky & Autonomous Micro-Animations
- * - Plot Twist Narrative Sequence (4 steps, progressive dark shift)
- * - Chapter 4 Convergence Animation (Negocio -> <- Tech)
- * - Constellation Hover Connections
- * - Mobile Navigation Menu Drawer
- * - FormSubmit Validation & Feedback
+ * Alejandro Vacaro - V2 Narrative System Script
+ * - Lucide Icons Initialization
+ * - Scroll Progress Bar
+ * - Header Scroll Compacting (>80px -> 56px + shadow)
+ * - Mobile Menu Drawer
+ * - Hero Photo 3D Tilt (Desktop only, max 1.5deg, return 700ms)
+ * - Cinta Animada (40s loop, draggable, pause on hover, resume on mouseleave)
+ * - Recurso Editorial (5 words staggered reveal)
+ * - Conóceme (Narrative steps observer, dark background transition, Adiviná)
+ * - Mi Experiencia (Timeline progress line + card reveals)
+ * - Accessibility: Prefers-reduced-motion support
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,21 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const isDesktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   // =========================================================================
-  // 1. INITIALIZE LUCIDE ICONS (36)
+  // 1. LUCIDE ICONS (Secciones 19, 20, 69)
   // =========================================================================
-  if (window.lucide) {
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }
 
   // =========================================================================
-  // 2. SCROLL PROGRESS BAR (44) & HEADER SCROLLED (43)
+  // 2. SCROLL PROGRESS BAR & HEADER SCROLLED (Secciones 4, 43)
   // =========================================================================
   const progressBar = document.getElementById('scroll-progress-bar');
   const mainHeader = document.getElementById('main-header');
 
-  function handleScroll() {
+  function handleWindowScroll() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    
+
     // Progress Bar
     if (progressBar) {
       const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -39,271 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
       progressBar.style.width = `${progress}%`;
     }
 
-    // 43. Header compacting (>100px reduce from 72px to 58px)
+    // Header compacting: scroll > 80px -> 56px + shadow (Sección 4)
     if (mainHeader) {
-      if (scrollTop > 100) {
+      if (scrollTop > 80) {
         mainHeader.classList.add('scrolled');
       } else {
         mainHeader.classList.remove('scrolled');
       }
     }
+
+    // Timeline progress line
+    updateTimelineProgress();
   }
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
+  window.addEventListener('scroll', handleWindowScroll, { passive: true });
+  handleWindowScroll();
 
   // =========================================================================
-  // 3. HERO PHOTO 3D TILT (16)
-  // =========================================================================
-  const heroPhotoWrapper = document.getElementById('hero-photo-wrapper');
-  if (heroPhotoWrapper && isDesktopPointer && !prefersReducedMotion) {
-    let rAFId = null;
-    let targetX = 0, targetY = 0;
-    let currentX = 0, currentY = 0;
-
-    heroPhotoWrapper.addEventListener('mousemove', (e) => {
-      const rect = heroPhotoWrapper.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      // Max: rotateX 2deg, rotateY 2deg, translate 3px
-      targetX = -((y - centerY) / centerY) * 2;
-      targetY = ((x - centerX) / centerX) * 2;
-
-      if (!rAFId) {
-        rAFId = requestAnimationFrame(updateTilt);
-      }
-    });
-
-    function updateTilt() {
-      currentX += (targetX - currentX) * 0.12;
-      currentY += (targetY - currentY) * 0.12;
-      const transX = (currentY / 2) * 3;
-      const transY = (-currentX / 2) * 3;
-
-      heroPhotoWrapper.style.transform = `perspective(800px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg) translate(${transX.toFixed(1)}px, ${transY.toFixed(1)}px)`;
-
-      if (Math.abs(targetX - currentX) > 0.04 || Math.abs(targetY - currentY) > 0.04) {
-        rAFId = requestAnimationFrame(updateTilt);
-      } else {
-        rAFId = null;
-      }
-    }
-
-    heroPhotoWrapper.addEventListener('mouseleave', () => {
-      targetX = 0;
-      targetY = 0;
-      heroPhotoWrapper.style.transition = 'transform 500ms cubic-bezier(0.16, 1, 0.3, 1)';
-      heroPhotoWrapper.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translate(0px, 0px)';
-      setTimeout(() => {
-        heroPhotoWrapper.style.transition = '';
-      }, 500);
-    });
-  }
-
-  // =========================================================================
-  // 4. "CÓMO PIENSO" STICKY VERBS & AUTONOMOUS MICRO-ANIMATIONS (10, 11, 12)
-  // =========================================================================
-  const stickyNumber = document.getElementById('sticky-verb-number');
-  const stickyWord = document.getElementById('sticky-verb-word');
-  const verbVisualContainer = document.getElementById('verb-micro-visual-container');
-  const stepItems = document.querySelectorAll('.pienso-step-item');
-
-  const verbMetadata = {
-    ENTENDER: {
-      number: '01',
-      htmlVisual: '<div class="micro-entender-line"></div>'
-    },
-    PREGUNTAR: {
-      number: '02',
-      htmlVisual: '<div class="micro-preguntar-mark">?</div>'
-    },
-    CONECTAR: {
-      number: '03',
-      htmlVisual: '<div class="micro-conectar-wrap"><span class="micro-conectar-dot"></span><span class="micro-conectar-line"></span><span class="micro-conectar-dot"></span></div>'
-    },
-    ORDENAR: {
-      number: '04',
-      htmlVisual: '<div class="micro-ordenar-wrap"><div class="micro-ordenar-bar"></div><div class="micro-ordenar-bar"></div><div class="micro-ordenar-bar"></div></div>'
-    },
-    PROBAR: {
-      number: '05',
-      htmlVisual: '<div class="micro-probar-circle"></div>'
-    },
-    DESTRABAR: {
-      number: '06',
-      htmlVisual: '<div class="micro-destrabar-wrap"><div class="micro-destrabar-seg"></div><div class="micro-destrabar-seg"></div></div>'
-    },
-    CAMBIAR: {
-      number: '07',
-      htmlVisual: ''
-    }
-  };
-
-  let currentActiveVerb = 'ENTENDER';
-
-  function setVerb(verbKey) {
-    if (currentActiveVerb === verbKey) return;
-    currentActiveVerb = verbKey;
-
-    const data = verbMetadata[verbKey];
-    if (!data || !stickyWord) return;
-
-    stickyWord.style.opacity = '0';
-    stickyWord.style.transform = 'translateY(-14px)';
-
-    setTimeout(() => {
-      stickyWord.textContent = verbKey;
-      if (stickyNumber) stickyNumber.textContent = data.number;
-      if (verbVisualContainer) verbVisualContainer.innerHTML = data.htmlVisual;
-
-      stickyWord.style.opacity = '1';
-      stickyWord.style.transform = 'translateY(0)';
-    }, 180);
-  }
-
-  if (stepItems.length > 0 && 'IntersectionObserver' in window) {
-    const stepObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const verb = entry.target.getAttribute('data-verb');
-          setVerb(verb);
-        }
-      });
-    }, {
-      rootMargin: '-25% 0px -40% 0px',
-      threshold: 0.1
-    });
-
-    stepItems.forEach(item => stepObserver.observe(item));
-  }
-
-  // 12. CAMBIAR: cada 5-6s cambia brevemente a Instrument Serif Italic durante 500ms
-  if (!prefersReducedMotion) {
-    setInterval(() => {
-      if (currentActiveVerb === 'CAMBIAR' && stickyWord) {
-        stickyWord.style.fontFamily = "var(--font-serif)";
-        stickyWord.style.fontStyle = "italic";
-        stickyWord.style.color = "var(--coral-glow)";
-        setTimeout(() => {
-          stickyWord.style.fontFamily = "";
-          stickyWord.style.fontStyle = "";
-          stickyWord.style.color = "";
-        }, 550);
-      }
-    }, 5500);
-  }
-
-  // =========================================================================
-  // 5. PLOT TWIST SECUENCIA EXACTA (18, 19)
-  // =========================================================================
-  const twistBlock = document.getElementById('plot-twist-narrative');
-  const step1 = document.getElementById('twist-step-1');
-  const step2 = document.getElementById('twist-step-2');
-  const step3 = document.getElementById('twist-step-3');
-  const step4 = document.getElementById('twist-step-4');
-
-  function handleTwistScroll() {
-    if (!twistBlock || !step1 || !step2 || !step3 || !step4) return;
-    const rect = twistBlock.getBoundingClientRect();
-    const scrollableDist = rect.height - window.innerHeight;
-    if (scrollableDist <= 0) return;
-
-    const progress = Math.min(Math.max(-rect.top / scrollableDist, 0), 1);
-
-    if (progress <= 0.25) {
-      // Step 1
-      step1.style.opacity = '1';
-      step1.style.transform = 'translateY(0)';
-      step2.style.opacity = '0';
-      step2.style.transform = 'translateY(24px)';
-      step3.style.opacity = '0';
-      step3.style.transform = 'translateY(24px)';
-      step4.style.opacity = '0';
-      step4.style.transform = 'translateY(24px)';
-      twistBlock.classList.remove('is-dark');
-    } else if (progress <= 0.50) {
-      // Step 2
-      step1.style.opacity = '0';
-      step1.style.transform = 'translateY(-18px)';
-      step2.style.opacity = '1';
-      step2.style.transform = 'translateY(0)';
-      step3.style.opacity = '0';
-      step3.style.transform = 'translateY(24px)';
-      step4.style.opacity = '0';
-      step4.style.transform = 'translateY(24px)';
-      twistBlock.classList.remove('is-dark');
-    } else if (progress <= 0.75) {
-      // Step 3 (Adiviná)
-      step1.style.opacity = '0';
-      step2.style.opacity = '0';
-      step2.style.transform = 'translateY(-18px)';
-      step3.style.opacity = '1';
-      step3.style.transform = 'translateY(0)';
-      step4.style.opacity = '0';
-      step4.style.transform = 'translateY(24px)';
-      twistBlock.classList.remove('is-dark');
-    } else {
-      // Step 4 (Hoy trabajo... + Fondo oscuro)
-      step1.style.opacity = '0';
-      step2.style.opacity = '0';
-      step3.style.opacity = '0';
-      step3.style.transform = 'translateY(-18px)';
-      step4.style.opacity = '1';
-      step4.style.transform = 'translateY(0)';
-      twistBlock.classList.add('is-dark');
-    }
-  }
-
-  if (window.innerWidth >= 768) {
-    window.addEventListener('scroll', handleTwistScroll, { passive: true });
-    handleTwistScroll();
-  }
-
-  // =========================================================================
-  // 6. CAPÍTULO 4 CONVERGENCE ANIMATION (24)
-  // =========================================================================
-  const convergeTrigger = document.getElementById('chapter-converge-trigger');
-  const convergeBox = document.getElementById('converge-container');
-
-  if (convergeTrigger && convergeBox && 'IntersectionObserver' in window) {
-    const convergeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          convergeBox.classList.add('in-view');
-        }
-      });
-    }, { threshold: 0.35 });
-
-    convergeObserver.observe(convergeTrigger);
-  }
-
-  // =========================================================================
-  // 7. CONSTELACIÓN INTERACCIÓN (28, 29)
-  // =========================================================================
-  const constelacionNodes = document.querySelectorAll('.constelacion-node');
-  const constelacionLines = document.querySelectorAll('.constelacion-line');
-
-  constelacionNodes.forEach((node, idx) => {
-    node.addEventListener('mouseenter', () => {
-      if (constelacionLines[idx]) {
-        constelacionLines[idx].style.opacity = '1';
-        constelacionLines[idx].style.strokeWidth = '2.5px';
-      }
-    });
-
-    node.addEventListener('mouseleave', () => {
-      if (constelacionLines[idx]) {
-        constelacionLines[idx].style.opacity = '';
-        constelacionLines[idx].style.strokeWidth = '';
-      }
-    });
-  });
-
-  // =========================================================================
-  // 8. MOBILE MENU DRAWER (47)
+  // 3. MOBILE MENU DRAWER (Sección 74)
   // =========================================================================
   const menuBtn = document.getElementById('mobile-menu-btn');
   const menuDrawer = document.getElementById('mobile-menu-drawer');
@@ -333,31 +86,342 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 9. FORM HANDLING (38)
+  // 4. HERO PHOTO 3D TILT (Sección 24: max 1.5deg, return 700ms)
   // =========================================================================
-  const contactForm = document.getElementById('contact-form');
-  const formStatus = document.getElementById('form-status-msg');
+  const heroPhotoWrapper = document.getElementById('hero-photo-wrapper');
+  if (heroPhotoWrapper && isDesktopPointer && !prefersReducedMotion) {
+    let rAFId = null;
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      const nameInput = document.getElementById('nombre');
-      const emailInput = document.getElementById('email');
-      const msgInput = document.getElementById('mensaje');
+    heroPhotoWrapper.addEventListener('mousemove', (e) => {
+      const rect = heroPhotoWrapper.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
 
-      if (!nameInput.value.trim() || !emailInput.value.trim() || !msgInput.value.trim()) {
-        e.preventDefault();
-        if (formStatus) {
-          formStatus.textContent = 'Por favor completá todos los campos.';
-          formStatus.className = 'text-xs text-rose-400 mt-2 font-medium';
-        }
-        return;
-      }
+      // Max: rotateX 1.5deg, rotateY 1.5deg, translate 3px
+      targetX = -((y - centerY) / centerY) * 1.5;
+      targetY = ((x - centerX) / centerX) * 1.5;
 
-      const submitBtn = document.getElementById('submit-btn');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Enviando...</span>';
+      heroPhotoWrapper.style.transition = '';
+
+      if (!rAFId) {
+        rAFId = requestAnimationFrame(updateTilt);
       }
     });
+
+    function updateTilt() {
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+      const transX = (currentY / 1.5) * 3;
+      const transY = (-currentX / 1.5) * 3;
+
+      heroPhotoWrapper.style.transform = `perspective(800px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg) translate(${transX.toFixed(1)}px, ${transY.toFixed(1)}px)`;
+
+      if (Math.abs(targetX - currentX) > 0.02 || Math.abs(targetY - currentY) > 0.02) {
+        rAFId = requestAnimationFrame(updateTilt);
+      } else {
+        rAFId = null;
+      }
+    }
+
+    heroPhotoWrapper.addEventListener('mouseleave', () => {
+      targetX = 0;
+      targetY = 0;
+      currentX = 0;
+      currentY = 0;
+      if (rAFId) {
+        cancelAnimationFrame(rAFId);
+        rAFId = null;
+      }
+      heroPhotoWrapper.style.transition = 'transform 700ms cubic-bezier(0.16, 1, 0.3, 1)';
+      heroPhotoWrapper.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translate(0px, 0px)';
+      setTimeout(() => {
+        heroPhotoWrapper.style.transition = '';
+      }, 700);
+    });
   }
+
+  // =========================================================================
+  // 5. CINTA ANIMADA HORIZONTAL (Secciones 26-29)
+  // 40s loop, draggable con pointer capture, hover pausa, mouseleave reanuda
+  // =========================================================================
+  const cintaBand = document.getElementById('hero-marquee');
+  const cintaTrack = document.getElementById('cinta-track');
+
+  if (cintaBand && cintaTrack) {
+    const groups = cintaTrack.querySelectorAll('.cinta-group');
+    let groupWidth = 0;
+
+    function updateCintaWidth() {
+      if (groups.length > 0) {
+        groupWidth = groups[0].getBoundingClientRect().width;
+        while (groupWidth > 0 && cintaTrack.children.length * groupWidth < window.innerWidth + 2 * groupWidth) {
+          const clone = groups[0].cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          cintaTrack.appendChild(clone);
+        }
+      }
+    }
+
+    updateCintaWidth();
+    window.addEventListener('resize', updateCintaWidth, { passive: true });
+
+    function getBaseSpeed() {
+      if (prefersReducedMotion) return 0;
+      return groupWidth > 0 ? groupWidth / 40 : 45; // 40s duración (Sección 29)
+    }
+
+    let baseSpeed = getBaseSpeed();
+    let currentSpeed = baseSpeed;
+    let offset = 0;
+    let isHovered = false;
+    let isDragging = false;
+    let pointerLastX = 0;
+    let pointerLastTime = 0;
+    let velocityX = 0;
+    let inertiaDist = 0;
+    let inertiaVelocity = 0;
+    let touchResumeTimer = null;
+    let lastFrameTime = performance.now();
+
+    function cintaStep(now) {
+      const dt = Math.min((now - lastFrameTime) / 1000, 0.1);
+      lastFrameTime = now;
+      baseSpeed = getBaseSpeed();
+
+      if (!isDragging) {
+        // Inercia sutil si se soltó con flick
+        if (Math.abs(inertiaDist) > 0.5) {
+          const step = inertiaVelocity * dt;
+          offset += step;
+          inertiaDist -= step;
+          inertiaVelocity *= Math.pow(0.04, dt);
+          if (Math.abs(inertiaDist) <= 0.5) {
+            inertiaDist = 0;
+            inertiaVelocity = 0;
+          }
+        }
+
+        if (!prefersReducedMotion) {
+          if (isHovered) {
+            // Desaceleración suave ~300ms
+            if (currentSpeed > 0) {
+              const decelRate = (baseSpeed || 45) / 0.3;
+              currentSpeed = Math.max(0, currentSpeed - decelRate * dt);
+            }
+          } else {
+            // Aceleración suave ~500ms hasta baseSpeed
+            if (currentSpeed < baseSpeed) {
+              const accelRate = (baseSpeed || 45) / 0.5;
+              currentSpeed = Math.min(baseSpeed, currentSpeed + accelRate * dt);
+            }
+          }
+
+          offset -= currentSpeed * dt;
+        }
+      }
+
+      // Loop infinito por módulo
+      if (groupWidth > 0) {
+        while (offset <= -groupWidth) {
+          offset += groupWidth;
+        }
+        while (offset > 0) {
+          offset -= groupWidth;
+        }
+      }
+
+      cintaTrack.style.transform = `translate3d(${offset.toFixed(2)}px, 0, 0)`;
+      requestAnimationFrame(cintaStep);
+    }
+
+    requestAnimationFrame(cintaStep);
+
+    // Hover
+    cintaBand.addEventListener('mouseenter', (e) => {
+      if (e.pointerType === 'mouse' || !e.pointerType) {
+        isHovered = true;
+      }
+    });
+
+    cintaBand.addEventListener('mouseleave', (e) => {
+      if (e.pointerType === 'mouse' || !e.pointerType) {
+        if (!isDragging) {
+          isHovered = false;
+        }
+      }
+    });
+
+    // Pointer Drag
+    cintaBand.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0 && e.button !== undefined) return;
+      isDragging = true;
+      isHovered = true;
+      pointerLastX = e.clientX;
+      pointerLastTime = performance.now();
+      velocityX = 0;
+      inertiaDist = 0;
+      inertiaVelocity = 0;
+
+      if (touchResumeTimer) {
+        clearTimeout(touchResumeTimer);
+        touchResumeTimer = null;
+      }
+
+      cintaBand.classList.add('is-dragging');
+      try {
+        cintaBand.setPointerCapture(e.pointerId);
+      } catch (err) {}
+    });
+
+    cintaBand.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const currentX = e.clientX;
+      const deltaX = currentX - pointerLastX;
+      const now = performance.now();
+      const timeDelta = now - pointerLastTime;
+
+      offset += deltaX;
+
+      if (timeDelta > 5) {
+        velocityX = (deltaX / timeDelta) * 1000;
+        pointerLastX = currentX;
+        pointerLastTime = now;
+      }
+    });
+
+    function endCintaDrag(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      cintaBand.classList.remove('is-dragging');
+      try {
+        cintaBand.releasePointerCapture(e.pointerId);
+      } catch (err) {}
+
+      // Flick suave 20-30px max
+      if (Math.abs(velocityX) > 150) {
+        const sign = Math.sign(velocityX);
+        const dist = Math.min(Math.max(Math.abs(velocityX) * 0.04, 15), 30);
+        inertiaDist = sign * dist;
+        inertiaVelocity = sign * dist * 4;
+      } else {
+        inertiaDist = 0;
+        inertiaVelocity = 0;
+      }
+
+      if (e.pointerType === 'touch') {
+        touchResumeTimer = setTimeout(() => {
+          isHovered = false;
+        }, 1500);
+      } else {
+        const rect = cintaBand.getBoundingClientRect();
+        if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+          isHovered = true;
+        } else {
+          isHovered = false;
+        }
+      }
+    }
+
+    cintaBand.addEventListener('pointerup', endCintaDrag);
+    cintaBand.addEventListener('pointercancel', endCintaDrag);
+    cintaBand.addEventListener('dragstart', (e) => e.preventDefault());
+  }
+
+  // =========================================================================
+  // 6. RECURSO EDITORIAL (Secciones 30-32)
+  // Stagger 100ms, 900ms duration, trigger once
+  // =========================================================================
+  const recursoContainer = document.getElementById('recurso-editorial-container');
+  if (recursoContainer && 'IntersectionObserver' in window) {
+    const editorialObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          recursoContainer.classList.add('editorial-in-view');
+          editorialObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    editorialObserver.observe(recursoContainer);
+  }
+
+  // =========================================================================
+  // 7. CONÓCEME - EXPERIENCIA NARRATIVA POR SCROLL (Secciones 33-42)
+  // Transición de fondo a #2D3142 en momento de duelo y retorno a #F5F2EC
+  // =========================================================================
+  const conocemeSection = document.getElementById('conoceme');
+  const narrativeSteps = document.querySelectorAll('.narrative-step, .narrative-adivina');
+
+  if ('IntersectionObserver' in window) {
+    const stepObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+
+          // Transición de fondo en momentos sensibles (Sección 38)
+          if (conocemeSection) {
+            if (entry.target.classList.contains('trigger-dark-mood') || entry.target.classList.contains('in-dark-mood')) {
+              conocemeSection.classList.add('dark-mood');
+            } else if (entry.target.classList.contains('trigger-light-mood')) {
+              conocemeSection.classList.remove('dark-mood');
+            }
+          }
+        }
+      });
+    }, {
+      rootMargin: '-15% 0px -25% 0px',
+      threshold: 0.15
+    });
+
+    narrativeSteps.forEach(step => stepObserver.observe(step));
+  } else {
+    narrativeSteps.forEach(step => step.classList.add('in-view'));
+  }
+
+  // =========================================================================
+  // 8. MI EXPERIENCIA - TIMELINE ANIMATION (Secciones 44-45)
+  // =========================================================================
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  const timelineFill = document.getElementById('timeline-progress-fill');
+  const timelineContainer = document.getElementById('timeline-container');
+
+  if (timelineItems.length > 0 && 'IntersectionObserver' in window) {
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -18% 0px',
+      threshold: 0.1
+    });
+
+    timelineItems.forEach(item => timelineObserver.observe(item));
+  } else {
+    timelineItems.forEach(item => item.classList.add('in-view'));
+  }
+
+  function updateTimelineProgress() {
+    if (!timelineContainer || !timelineFill) return;
+    const rect = timelineContainer.getBoundingClientRect();
+    const windowH = window.innerHeight;
+    
+    // Si el contenedor está en viewport
+    if (rect.top <= windowH * 0.7 && rect.bottom >= windowH * 0.3) {
+      const totalDist = rect.height;
+      const scrolledDist = (windowH * 0.7) - rect.top;
+      const pct = Math.min(Math.max((scrolledDist / totalDist) * 100, 0), 100);
+      timelineFill.style.height = `${pct.toFixed(1)}%`;
+    } else if (rect.top > windowH * 0.7) {
+      timelineFill.style.height = '0%';
+    } else if (rect.bottom < windowH * 0.3) {
+      timelineFill.style.height = '100%';
+    }
+  }
+
 });
