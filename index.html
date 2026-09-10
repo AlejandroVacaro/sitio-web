@@ -57,7 +57,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=5.0">
+  <link rel="stylesheet" href="css/v2.css?v=5.1">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -123,24 +123,26 @@
     <div class="hero-grid">
       
       <!-- Columna Izquierda: Texto -->
-      <div class="flex flex-col justify-center">
+      <div class="hero-text-col flex flex-col">
         
-        <!-- Título exacto -->
-        <h1 class="hero-title anim-hero-h1">
-          Mirar como usuario. Pensar como <span class="hero-highlight-coral">analista.</span>
-        </h1>
+        <div class="hero-text-content">
+          <!-- Título exacto -->
+          <h1 class="hero-title anim-hero-h1">
+            Mirar como usuario. Pensar como <span class="hero-highlight-coral">analista.</span>
+          </h1>
 
-        <!-- Bajada exacta -->
-        <p class="hero-bajada anim-hero-bajada">
-          Soy Alejandro Vacaro, Analista Funcional. Analizo procesos, entiendo sus problemas y traduzco esas necesidades para ayudar a convertirlas en mejoras posibles desde la tecnología.
-        </p>
+          <!-- Bajada optimizada: Sin redundancia, arranca con impacto y centrada en los usuarios -->
+          <p class="hero-bajada anim-hero-bajada">
+            Soy Alejandro Vacaro, Analista Funcional. Descubro los problemas reales de los usuarios, optimizo sus procesos y traduzco esas necesidades en soluciones tecnológicas que funcionan.
+          </p>
 
-        <!-- Frase editorial exacta -->
-        <p class="hero-complementary anim-hero-comp">
-          Ser un outsider en tecnología terminó siendo mi mejor ventaja competitiva.
-        </p>
+          <!-- Frase editorial exacta -->
+          <p class="hero-complementary anim-hero-comp">
+            Ser un outsider en tecnología terminó siendo mi mejor ventaja competitiva.
+          </p>
+        </div>
 
-        <!-- Dos Acciones exactas -->
+        <!-- Dos Acciones exactas (Alineadas al margen inferior de la foto en desktop) -->
         <div class="hero-actions-container anim-hero-btns">
           <!-- Botón primario: Contáctame con MessageCircle a la izquierda -->
           <a href="#contacto" class="hero-btn-primary">
@@ -254,7 +256,23 @@
           <div class="conoceme-apple-photo-card">
             <img src="assets/images/alejandro_about.jpg" alt="Alejandro Vacaro - Historia personal" class="conoceme-apple-photo-img" loading="lazy">
           </div>
-          <p class="conoceme-photo-caption">Alejandro Vacaro, <span id="user-calculated-age">33</span> años, Montevideo - Uruguay</p>
+          <div class="conoceme-photo-meta-box">
+            <div class="meta-row meta-row-primary">
+              <i data-lucide="user" class="meta-coral-icon"></i>
+              <span class="meta-name">Alejandro Vacaro</span>
+            </div>
+            <div class="meta-row meta-row-secondary">
+              <span class="meta-subitem">
+                <i data-lucide="sparkles" class="meta-coral-icon"></i>
+                <span><span id="user-calculated-age">33</span> años</span>
+              </span>
+              <span class="meta-bullet">·</span>
+              <span class="meta-subitem">
+                <i data-lucide="map-pin" class="meta-coral-icon"></i>
+                <span>Montevideo, Uruguay</span>
+              </span>
+            </div>
+          </div>
         </div>
 
         <!-- Columna Derecha: Tarjeta Escénica con Frases en Spotlight (Una a la vez) -->
@@ -1146,6 +1164,6 @@
   </div>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=5.0"></script>
+  <script src="js/v2.js?v=5.1"></script>
 </body>
 </html>
