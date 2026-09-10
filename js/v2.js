@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================================================
   const mainHeader = document.getElementById('main-header');
   const scrollProgressBar = document.getElementById('scroll-progress-bar');
-  const dividerLineTrabajar = document.getElementById('divider-line-trabajar');
-  const dividerSection = document.getElementById('divider-trabajar');
   
   // Conóceme Apple Stage
   const conocemeSection = document.getElementById('conoceme');
@@ -43,8 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ].filter(s => s.el !== null);
 
   const navLinks = document.querySelectorAll('.header-v2 .nav-link');
-
-  let dividerAnimated = false;
   let isTicking = false;
 
   // ============================================================================
@@ -226,15 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mainHeader.classList.add('header-dark-theme');
       } else {
         mainHeader.classList.remove('header-dark-theme');
-      }
-    }
-
-    // D. Transición 1: Línea horizontal de 0 a 100%
-    if (!dividerAnimated && dividerSection && dividerLineTrabajar) {
-      const divRect = dividerSection.getBoundingClientRect();
-      if (divRect.top < windowHeight * 0.85) {
-        dividerLineTrabajar.style.width = '100%';
-        dividerAnimated = true;
       }
     }
 

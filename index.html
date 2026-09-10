@@ -55,7 +55,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=3.3">
+  <link rel="stylesheet" href="css/v2.css?v=3.4">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -235,14 +235,13 @@
     
     <div class="conoceme-apple-viewport" id="conoceme-apple-viewport">
       
-      <!-- Encabezado de Sección -->
+      <!-- Encabezado de Sección Conóceme -->
       <div class="conoceme-apple-header">
-        <h2 class="conoceme-heading">Conóceme.</h2>
-        <div class="flex items-center gap-3 mt-1">
-          <p class="conoceme-subheading-coral">No fue una línea recta.</p>
-          <span class="text-[#4F5D75]/40 font-serif italic text-lg">/</span>
-          <p class="conoceme-subheading-dark">Y por suerte.</p>
+        <h2 class="conoceme-title-coral">Conóceme.</h2>
+        <div class="conoceme-title-underline-track">
+          <div class="conoceme-title-underline-fill"></div>
         </div>
+        <p class="conoceme-header-tagline">“El plot twist como estrategia de vida”</p>
       </div>
 
       <!-- Stage Central: Foto Izquierda (340px) + Escenario Narrativo Derecha -->
@@ -433,19 +432,6 @@
   </section>
 
   <!-- ==========================================================================
-       TRANSICIÓN 1: Entre Conóceme y Mi experiencia
-       "Y después tocó trabajar." + Línea horizontal de 0 a 100% en 900ms
-       ========================================================================== -->
-  <section class="section-divider-block" id="divider-trabajar">
-    <div class="divider-content-wrap">
-      <p class="divider-quote-coral">Y después tocó trabajar.</p>
-      <div class="divider-horizontal-line-track">
-        <div class="divider-horizontal-line-fill" id="divider-line-trabajar"></div>
-      </div>
-    </div>
-  </section>
-
-      <!-- ==========================================================================
        MI EXPERIENCIA (#experiencia) - Ordenada de Más Reciente a Más Antigua
        Línea resaltada en naranja que se va despintando al scrollear
        ========================================================================== -->
@@ -476,9 +462,9 @@
             <h3 class="exp-card-company company-featured">República AFAP</h3>
             <div class="exp-card-role role-featured">Analista Funcional</div>
             <p class="text-xs text-[#4F5D75] mt-1 font-medium">3 etapas: Atención al Cliente · Gestión Previsional · Analista Funcional</p>
-            <div class="exp-card-hint mt-3">
-              <span>Pasa el mouse para ver las 3 etapas</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            <div class="exp-card-city">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+              <span>Montevideo</span>
             </div>
           </div>
           
@@ -489,10 +475,14 @@
                 <span class="exp-overlay-company text-white">República AFAP</span>
                 <span class="text-xs text-[#EF8354] font-semibold">2018–actualidad</span>
               </div>
+              <div class="flex items-center gap-1.5 text-xs text-[#BFC0C0] mt-1">
+                <i data-lucide="map-pin" class="w-3 h-3 text-[#EF8354]"></i>
+                <span>Montevideo</span>
+              </div>
               <div class="exp-overlay-coral-line"></div>
             </div>
             
-            <div class="flex flex-col gap-3 text-xs leading-relaxed overflow-y-auto max-h-[220px] pr-1">
+            <div class="flex flex-col gap-3 text-xs leading-relaxed">
               <div class="border-b border-white/10 pb-2">
                 <div class="flex items-center justify-between text-[#BFC0C0] font-semibold mb-0.5">
                   <span class="text-white">Ejecutivo de Atención al Cliente</span>
@@ -540,15 +530,16 @@
             <div class="exp-card-badge">2016–2017</div>
             <h3 class="exp-card-company">Gimnasio Raqis</h3>
             <div class="exp-card-role">Instructor</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            <div class="exp-card-city">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+              <span>Paysandú</span>
             </div>
           </div>
           <div class="timeline-exp-card-overlay">
             <div class="exp-overlay-header">
               <span class="exp-overlay-company">Gimnasio Raqis</span>
               <span class="exp-overlay-role">Instructor de Zumba</span>
+              <div class="flex items-center gap-1.5 text-xs text-[#BFC0C0] mt-1"><i data-lucide="map-pin" class="w-3 h-3 text-[#EF8354]"></i><span>Paysandú</span></div>
               <div class="exp-overlay-coral-line"></div>
             </div>
             <p class="exp-overlay-desc">
@@ -568,15 +559,16 @@
             <div class="exp-card-badge">2016</div>
             <h3 class="exp-card-company">Estación Novo Centro Petrobras</h3>
             <div class="exp-card-role">Auxiliar Administrativo</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            <div class="exp-card-city">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+              <span>Paysandú</span>
             </div>
           </div>
           <div class="timeline-exp-card-overlay">
             <div class="exp-overlay-header">
               <span class="exp-overlay-company">Estación Novo Centro Petrobras</span>
               <span class="exp-overlay-role">Auxiliar Administrativo</span>
+              <div class="flex items-center gap-1.5 text-xs text-[#BFC0C0] mt-1"><i data-lucide="map-pin" class="w-3 h-3 text-[#EF8354]"></i><span>Paysandú</span></div>
               <div class="exp-overlay-coral-line"></div>
             </div>
             <p class="exp-overlay-desc">
@@ -605,15 +597,16 @@
             <div class="exp-card-badge">2016–2018</div>
             <h3 class="exp-card-company">Iglesia Católica Apostólica y Romana en el Uruguay</h3>
             <div class="exp-card-role">Analista Financiero</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            <div class="exp-card-city">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+              <span>Paysandú</span>
             </div>
           </div>
           <div class="timeline-exp-card-overlay">
             <div class="exp-overlay-header">
               <span class="exp-overlay-company">Iglesia Católica Apostólica y Romana en el Uruguay</span>
               <span class="exp-overlay-role">Analista Financiero</span>
+              <div class="flex items-center gap-1.5 text-xs text-[#BFC0C0] mt-1"><i data-lucide="map-pin" class="w-3 h-3 text-[#EF8354]"></i><span>Paysandú</span></div>
               <div class="exp-overlay-coral-line"></div>
             </div>
             <p class="exp-overlay-desc">
@@ -630,15 +623,16 @@
             <div class="exp-card-badge">2014–2018</div>
             <h3 class="exp-card-company">Corporación Médica de Paysandú</h3>
             <div class="exp-card-role">Auxiliar Contable / Administrativo de Tesorería</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            <div class="exp-card-city">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+              <span>Paysandú</span>
             </div>
           </div>
           <div class="timeline-exp-card-overlay">
             <div class="exp-overlay-header">
               <span class="exp-overlay-company">Corporación Médica de Paysandú</span>
               <span class="exp-overlay-role">Auxiliar Contable / Administrativo de Tesorería</span>
+              <div class="flex items-center gap-1.5 text-xs text-[#BFC0C0] mt-1"><i data-lucide="map-pin" class="w-3 h-3 text-[#EF8354]"></i><span>Paysandú</span></div>
               <div class="exp-overlay-coral-line"></div>
             </div>
             <p class="exp-overlay-desc">
@@ -667,15 +661,16 @@
             <div class="exp-card-badge">2012–2014</div>
             <h3 class="exp-card-company">Banco de Previsión Social</h3>
             <div class="exp-card-role">Pasante Administrativo</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            <div class="exp-card-city">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+              <span>Paysandú</span>
             </div>
           </div>
           <div class="timeline-exp-card-overlay">
             <div class="exp-overlay-header">
               <span class="exp-overlay-company">Banco de Previsión Social</span>
               <span class="exp-overlay-role">Pasante Administrativo</span>
+              <div class="flex items-center gap-1.5 text-xs text-[#BFC0C0] mt-1"><i data-lucide="map-pin" class="w-3 h-3 text-[#EF8354]"></i><span>Paysandú</span></div>
               <div class="exp-overlay-coral-line"></div>
             </div>
             <p class="exp-overlay-desc">
@@ -692,15 +687,16 @@
             <div class="exp-card-badge">2011–2012</div>
             <h3 class="exp-card-company">TA-TA S.A.</h3>
             <div class="exp-card-role">Auxiliar de Ventas / Auxiliar Especializado</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            <div class="exp-card-city">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+              <span>Paysandú</span>
             </div>
           </div>
           <div class="timeline-exp-card-overlay">
             <div class="exp-overlay-header">
               <span class="exp-overlay-company">TA-TA S.A.</span>
               <span class="exp-overlay-role">Auxiliar de Ventas / Auxiliar de Ventas Especializado</span>
+              <div class="flex items-center gap-1.5 text-xs text-[#BFC0C0] mt-1"><i data-lucide="map-pin" class="w-3 h-3 text-[#EF8354]"></i><span>Paysandú</span></div>
               <div class="exp-overlay-coral-line"></div>
             </div>
             <p class="exp-overlay-desc">
@@ -1051,6 +1047,6 @@
   </footer>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=3.3"></script>
+  <script src="js/v2.js?v=3.4"></script>
 </body>
 </html>
