@@ -453,8 +453,8 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       MI EXPERIENCIA (#experiencia) - Timeline Vertical al 27% + Roles Reales
+    <!-- ==========================================================================
+       MI EXPERIENCIA (#experiencia) - Timeline Vertical con Cuadros a los Lados & Hover
        ========================================================================== -->
   <section id="experiencia" class="experiencia-section" aria-label="Experiencia laboral y trayectoria">
     
@@ -465,152 +465,270 @@
       </p>
     </div>
 
-    <div class="timeline-container-v2" id="timeline-container">
+    <div class="timeline-container-alt" id="timeline-container">
       
-      <!-- Línea base al 27% + Relleno Coral Glow según scroll -->
-      <div class="timeline-rail-base">
+      <!-- Riel vertical central (desktop 50%, móvil 24px) + Relleno Naranja (Coral Glow) al scroll -->
+      <div class="timeline-central-rail">
         <div class="timeline-rail-fill" id="timeline-rail-fill"></div>
       </div>
 
-      <!-- Tarjeta 1: TA-TA S.A. -->
-      <div class="timeline-row-item">
-        <div class="timeline-year-col">2011–2012</div>
-        <div class="timeline-pin-node"></div>
-        <div class="timeline-body-col">
-          <div class="timeline-glass-card">
-            <h3 class="timeline-card-company">TA-TA S.A.</h3>
-            <div class="timeline-card-role">Auxiliar de Ventas / Auxiliar de Ventas Especializado</div>
-            <p class="timeline-card-desc">
+      <!-- ITEM 1: TA-TA S.A. (Lado Izquierdo) -->
+      <div class="timeline-alt-row row-left" data-index="1">
+        <!-- Tarjeta Interactiva -->
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2011–2012</div>
+            <h3 class="exp-card-company">TA-TA S.A.</h3>
+            <div class="exp-card-role">Auxiliar de Ventas / Auxiliar Especializado</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <!-- Overlay interactivo estilo Formación -->
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">TA-TA S.A.</span>
+              <span class="exp-overlay-role">Auxiliar de Ventas / Auxiliar de Ventas Especializado</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
               Mi primer gran capítulo laboral. Operación, reposición, stock, atención y trabajo desde el piso. Ahí también impulsé Radio Ta-Ta, una iniciativa para unificar la ambientación de las sucursales.
             </p>
           </div>
         </div>
+
+        <!-- Pin central en la línea -->
+        <div class="timeline-center-node" aria-hidden="true"></div>
+
+        <!-- Lado opuesto: Fecha / Milestone -->
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2011–2012</span>
+        </div>
       </div>
 
-      <!-- Tarjeta 2: BPS -->
-      <div class="timeline-row-item">
-        <div class="timeline-year-col">2012–2014</div>
-        <div class="timeline-pin-node"></div>
-        <div class="timeline-body-col">
-          <div class="timeline-glass-card">
-            <h3 class="timeline-card-company">Banco de Previsión Social</h3>
-            <div class="timeline-card-role">Pasante Administrativo</div>
-            <p class="timeline-card-desc">
+      <!-- ITEM 2: BPS (Lado Derecho) -->
+      <div class="timeline-alt-row row-right" data-index="2">
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2012–2014</span>
+        </div>
+
+        <div class="timeline-center-node" aria-hidden="true"></div>
+
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2012–2014</div>
+            <h3 class="exp-card-company">Banco de Previsión Social</h3>
+            <div class="exp-card-role">Pasante Administrativo</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">Banco de Previsión Social</span>
+              <span class="exp-overlay-role">Pasante Administrativo</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
               Un paso por la administración pública, con foco en trámites, normativa, atención a usuarios y coordinación de gestiones.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Tarjeta 3: Corporación Médica -->
-      <div class="timeline-row-item">
-        <div class="timeline-year-col">2014–2018</div>
-        <div class="timeline-pin-node"></div>
-        <div class="timeline-body-col">
-          <div class="timeline-glass-card">
-            <h3 class="timeline-card-company">Corporación Médica de Paysandú</h3>
-            <div class="timeline-card-role">Auxiliar Contable / Administrativo de Tesorería</div>
-            <p class="timeline-card-desc">
+      <!-- ITEM 3: COMEPA (Lado Izquierdo) -->
+      <div class="timeline-alt-row row-left" data-index="3">
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2014–2018</div>
+            <h3 class="exp-card-company">Corporación Médica de Paysandú</h3>
+            <div class="exp-card-role">Auxiliar Contable / Administrativo de Tesorería</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">Corporación Médica de Paysandú</span>
+              <span class="exp-overlay-role">Auxiliar Contable / Administrativo de Tesorería</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
               Una etapa muy formativa en tesorería, conciliaciones, flujo de fondos, control financiero e información para la toma de decisiones.
             </p>
           </div>
         </div>
+
+        <div class="timeline-center-node" aria-hidden="true"></div>
+
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2014–2018</span>
+        </div>
       </div>
 
-      <!-- Tarjeta 4: Iglesia Católica -->
-      <div class="timeline-row-item">
-        <div class="timeline-year-col">2016–2018</div>
-        <div class="timeline-pin-node"></div>
-        <div class="timeline-body-col">
-          <div class="timeline-glass-card">
-            <h3 class="timeline-card-company">Iglesia Católica Apostólica y Romana en el Uruguay</h3>
-            <div class="timeline-card-role">Analista Financiero</div>
-            <p class="timeline-card-desc">
+      <!-- ITEM 4: IGLESIA (Lado Derecho) -->
+      <div class="timeline-alt-row row-right" data-index="4">
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2016–2018</span>
+        </div>
+
+        <div class="timeline-center-node" aria-hidden="true"></div>
+
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2016–2018</div>
+            <h3 class="exp-card-company">Iglesia Católica Apostólica y Romana en el Uruguay</h3>
+            <div class="exp-card-role">Analista Financiero</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">Iglesia Católica Apostólica y Romana en el Uruguay</span>
+              <span class="exp-overlay-role">Analista Financiero</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
               Gestión contable y financiera, análisis económico, implementación de sistema contable y reestructura informática, documental y operativa.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Tarjeta 5: Petrobras -->
-      <div class="timeline-row-item">
-        <div class="timeline-year-col">2016</div>
-        <div class="timeline-pin-node"></div>
-        <div class="timeline-body-col">
-          <div class="timeline-glass-card">
-            <h3 class="timeline-card-company">Estación Novo Centro Petrobras</h3>
-            <div class="timeline-card-role">Auxiliar Administrativo</div>
-            <p class="timeline-card-desc">
+      <!-- ITEM 5: PETROBRAS (Lado Izquierdo) -->
+      <div class="timeline-alt-row row-left" data-index="5">
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2016</div>
+            <h3 class="exp-card-company">Estación Novo Centro Petrobras</h3>
+            <div class="exp-card-role">Auxiliar Administrativo</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">Estación Novo Centro Petrobras</span>
+              <span class="exp-overlay-role">Auxiliar Administrativo</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
               Un capítulo breve, enfocado en control administrativo de movimientos de caja y medios de pago.
             </p>
           </div>
         </div>
+
+        <div class="timeline-center-node" aria-hidden="true"></div>
+
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2016</span>
+        </div>
       </div>
 
-      <!-- Tarjeta 6: Gimnasio Raqis -->
-      <div class="timeline-row-item">
-        <div class="timeline-year-col">2016–2017</div>
-        <div class="timeline-pin-node"></div>
-        <div class="timeline-body-col">
-          <div class="timeline-glass-card">
-            <h3 class="timeline-card-company">Gimnasio Raqis</h3>
-            <div class="timeline-card-role">Instructor</div>
-            <p class="timeline-card-desc">
+      <!-- ITEM 6: GIMNASIO RAQIS (Lado Derecho) -->
+      <div class="timeline-alt-row row-right" data-index="6">
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2016–2017</span>
+        </div>
+
+        <div class="timeline-center-node" aria-hidden="true"></div>
+
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2016–2017</div>
+            <h3 class="exp-card-company">Gimnasio Raqis</h3>
+            <div class="exp-card-role">Instructor</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">Gimnasio Raqis</span>
+              <span class="exp-overlay-role">Instructor de Zumba</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
               Sí, también fui instructor de Zumba.
             </p>
-            <p class="timeline-zumba-remate">
+            <p class="text-[#EF8354] font-serif italic text-base mt-2">
               Te dije que no había sido lineal.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Tarjeta 7: República AFAP (Tarjeta Destacada con 3 Subetapas) -->
-      <div class="timeline-row-item">
-        <div class="timeline-year-col text-[#2D3142] font-bold">2018–actualidad</div>
-        <div class="timeline-pin-node node-featured"></div>
-        <div class="timeline-body-col">
-          <div class="timeline-featured-card">
-            <h3 class="featured-card-title">República AFAP</h3>
-            
-            <!-- Subetapa 1 -->
-            <div class="featured-stage-row">
-              <div class="featured-stage-meta">
-                <span class="featured-stage-year">2018–2019</span>
-                <span class="featured-stage-role">Ejecutivo de Atención al Cliente</span>
-              </div>
-              <p class="featured-stage-desc">
-                Empecé acompañando a afiliados, resolviendo consultas y aprendiendo desde adentro cómo se mueven los procesos y las necesidades reales de las personas.
-              </p>
+      <!-- ITEM 7: REPÚBLICA AFAP (Lado Izquierdo con estilo destacado) -->
+      <div class="timeline-alt-row row-left featured-row" data-index="7">
+        <div class="timeline-exp-card card-featured group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="flex items-center justify-between gap-2">
+              <div class="exp-card-badge badge-featured">2018–actualidad</div>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-[#EF8354]/15 text-[#EF8354] border border-[#EF8354]/30">Puesto actual</span>
             </div>
-
-            <!-- Subetapa 2 -->
-            <div class="featured-stage-row">
-              <div class="featured-stage-meta">
-                <span class="featured-stage-year">2019–2025</span>
-                <span class="featured-stage-role">Asistente de Gestión Previsional</span>
-              </div>
-              <p class="featured-stage-desc">
-                Me involucré cada vez más en procesos, análisis operativo, automatizaciones, mejoras internas, articulación entre áreas y oportunidades de transformación digital.
-              </p>
+            <h3 class="exp-card-company company-featured">República AFAP</h3>
+            <div class="exp-card-role role-featured">Analista Funcional</div>
+            <p class="text-xs text-[#4F5D75] mt-1 font-medium">3 etapas de crecimiento: Atención al Cliente · Gestión Previsional · Analista Funcional</p>
+            <div class="exp-card-hint mt-3">
+              <span>Pasa el mouse para ver las 3 etapas</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
             </div>
-
-            <!-- Subetapa 3 -->
-            <div class="featured-stage-row border-none pb-0">
-              <div class="featured-stage-meta">
-                <span class="featured-stage-year text-[#EF8354]">2025–actualidad</span>
-                <span class="featured-stage-role text-[#EF8354] font-extrabold text-lg">Analista Funcional</span>
-              </div>
-              <p class="featured-stage-desc text-[#F5F2EC]">
-                Hoy trabajo conectando negocio, tecnología y procesos. Relevo necesidades, defino requerimientos, acompaño implementaciones, coordino con equipos técnicos y proveedores, participo en pruebas funcionales y ayudo a transformar procesos mediante soluciones tecnológicas.
-              </p>
-            </div>
-
           </div>
+          
+          <!-- Overlay interactivo completo para AFAP -->
+          <div class="timeline-exp-card-overlay overlay-featured">
+            <div class="exp-overlay-header">
+              <div class="flex items-center justify-between">
+                <span class="exp-overlay-company text-white">República AFAP</span>
+                <span class="text-xs text-[#EF8354] font-semibold">2018–actualidad</span>
+              </div>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            
+            <div class="flex flex-col gap-3 text-xs leading-relaxed overflow-y-auto max-h-[220px] pr-1">
+              <div class="border-b border-white/10 pb-2">
+                <div class="flex items-center justify-between text-[#BFC0C0] font-semibold mb-0.5">
+                  <span class="text-white">Ejecutivo de Atención al Cliente</span>
+                  <span>2018–2019</span>
+                </div>
+                <p class="text-[#F5F2EC]/80">Acompañé a afiliados, resolviendo consultas y conociendo las necesidades reales.</p>
+              </div>
+              
+              <div class="border-b border-white/10 pb-2">
+                <div class="flex items-center justify-between text-[#BFC0C0] font-semibold mb-0.5">
+                  <span class="text-white">Asistente de Gestión Previsional</span>
+                  <span>2019–2025</span>
+                </div>
+                <p class="text-[#F5F2EC]/80">Procesos, análisis operativo, automatizaciones y proyectos de transformación digital.</p>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between text-[#EF8354] font-bold mb-0.5">
+                  <span class="text-white">Analista Funcional</span>
+                  <span>2025–act.</span>
+                </div>
+                <p class="text-[#F5F2EC]">Conectando necesidades del negocio con soluciones tecnológicas y equipos de desarrollo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-center-node node-featured" aria-hidden="true"></div>
+
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge badge-active">2018–actualidad</span>
         </div>
       </div>
 
     </div>
+
   </section>
 
   <!-- ==========================================================================

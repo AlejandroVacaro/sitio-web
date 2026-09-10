@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================================
-  // 2. HEADER COMPACTING & PROGRESS BAR
+  // 2. HEADER COMPACTING & PROGRESS BAR & TIMELINE FILL
   // ============================================================================
   const mainHeader = document.getElementById('main-header');
   const scrollProgressBar = document.getElementById('scroll-progress-bar');
@@ -21,9 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const dividerSection = document.getElementById('divider-trabajar');
   const conocemeSection = document.getElementById('conoceme');
   const darkChapter = document.querySelector('.trigger-dark-chapter');
+  
+  // Timeline elements
   const timelineContainer = document.getElementById('timeline-container');
   const timelineRailFill = document.getElementById('timeline-rail-fill');
-  const timelineRows = document.querySelectorAll('.timeline-row-item');
+  const timelineNodes = document.querySelectorAll('.timeline-center-node');
+  const timelineRows = document.querySelectorAll('.timeline-alt-row');
 
   let dividerAnimated = false;
   let isTicking = false;
@@ -33,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const windowHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight - windowHeight;
 
-    // A. Barra de progreso superior
+    // A. Barra de progreso superior de lectura
     if (scrollProgressBar && docHeight > 0) {
       const progress = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
       scrollProgressBar.style.width = `${progress}%`;
@@ -51,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // C. Conóceme: Transición a fondo oscuro en Escena 6 (Duelo)
     if (conocemeSection && darkChapter) {
       const darkRect = darkChapter.getBoundingClientRect();
-      // Activar cuando la escena 6 entra al tercio medio del viewport
-      const isInFocus = darkRect.top < windowHeight * 0.55 && darkRect.bottom > windowHeight * 0.35;
+      // Activar cuando la escena 6 entra al campo de lectura (tercio medio del viewport)
+      const isInFocus = darkRect.top < windowHeight * 0.6 && darkRect.bottom > windowHeight * 0.3;
       if (isInFocus) {
         conocemeSection.classList.add('dark-mode-active');
       } else {
@@ -69,14 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // E. Mi Experiencia: Línea de progreso vertical en el timeline al 27%
+    // E. Mi Experiencia: Pintado de la línea vertical naranja al scrollear
     if (timelineContainer && timelineRailFill) {
       const tlRect = timelineContainer.getBoundingClientRect();
       const tlTop = tlRect.top;
       const tlHeight = tlRect.height;
+      const triggerPoint = windowHeight * 0.55; // Nivel de los ojos / escaneo
 
-      // El punto de escaneo se ubica al 60% de la altura del viewport
-      const triggerPoint = windowHeight * 0.6;
       if (tlTop < triggerPoint) {
         const scrolledInside = triggerPoint - tlTop;
         const fillPercent = Math.min(100, Math.max(0, (scrolledInside / tlHeight) * 100));
@@ -85,16 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
         timelineRailFill.style.height = '0%';
       }
 
-      // Nodos activos
+      // Iluminar nodos centrales a medida que el relleno llega a ellos
       timelineRows.forEach(row => {
-        const rowRect = row.getBoundingClientRect();
-        const pin = row.querySelector('.timeline-pin-node');
-        if (rowRect.top < triggerPoint + 30) {
-          row.classList.add('is-active');
-          if (pin) pin.classList.add('is-active');
-        } else {
-          row.classList.remove('is-active');
-          if (pin) pin.classList.remove('is-active');
+        const node = row.querySelector('.timeline-center-node');
+        if (node) {
+          const nodeRect = node.getBoundingClientRect();
+          if (nodeRect.top < triggerPoint + 20) {
+            node.classList.add('is-active');
+          } else {
+            node.classList.remove('is-active');
+          }
         }
       });
     }
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // Ejecución inicial para estado de scroll al cargar
+  // Ejecutar al cargar
   onScroll();
 
 
@@ -124,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function openMobileMenu() {
     if (!mobileMenuDrawer) return;
     mobileMenuDrawer.classList.remove('hidden');
-    // Forzar reflow para animación de opacidad
     void mobileMenuDrawer.offsetWidth;
     mobileMenuDrawer.classList.remove('opacity-0');
     mobileMenuDrawer.classList.add('opacity-100');
@@ -157,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================================================
   const heroPhotoWrapper = document.getElementById('hero-photo-wrapper');
   if (heroPhotoWrapper && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const maxTilt = 1.5; // Máximo 1.5 grados según directiva
+    const maxTilt = 1.5;
 
     heroPhotoWrapper.addEventListener('mousemove', (e) => {
       const rect = heroPhotoWrapper.getBoundingClientRect();
@@ -185,8 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 5. CINTA HORIZONTAL ANIMADA (ENGINE ROBUSTO DE MARQUEE)
-  // Ciclo continuo ~38s, drag 1:1, hover desaceleración, touch resume a 1.5s
+  // 5. CINTA HORIZONTAL ANIMADA (ENGINE CONTINUO ROBUSTO)
   // ============================================================================
   const marqueeContainer = document.getElementById('hero-marquee');
   const marqueeTrack = document.getElementById('cinta-track');
@@ -201,11 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let startPointerX = 0;
     let dragStartOffset = 0;
     let touchResumeTimer = null;
-    let speedFactor = 1.0; // Para desaceleración / aceleración suave
+    let speedFactor = 1.0;
     let targetSpeedFactor = 1.0;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const LOOP_DURATION_MS = 38000; // 38 segundos por ciclo
+    const LOOP_DURATION_MS = 38000;
 
     function measureWidth() {
       const w = group1.offsetWidth;
@@ -214,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Medición tras carga de fuentes y estilos
     measureWidth();
     window.addEventListener('load', measureWidth);
     if (document.fonts && document.fonts.ready) {
@@ -226,9 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const dt = now - lastTime;
       lastTime = now;
 
-      // Suavizar cambio de velocidad (hover deceleration / resume)
       if (speedFactor !== targetSpeedFactor) {
-        const step = dt / 350; // ~350ms para transicionar
+        const step = dt / 350;
         if (speedFactor < targetSpeedFactor) {
           speedFactor = Math.min(targetSpeedFactor, speedFactor + step);
         } else {
@@ -237,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (!isDragging && isRunning && !prefersReducedMotion && groupWidth > 0) {
-        const baseSpeed = groupWidth / LOOP_DURATION_MS; // px por ms
+        const baseSpeed = groupWidth / LOOP_DURATION_MS;
         const effectiveSpeed = baseSpeed * speedFactor;
         currentOffset = (currentOffset + effectiveSpeed * dt) % groupWidth;
         marqueeTrack.style.transform = `translate3d(-${currentOffset}px, 0, 0)`;
@@ -246,21 +244,18 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(tick);
     }
 
-    // Iniciar loop
     requestAnimationFrame(tick);
 
-    // Hover desaceleración suave
     marqueeContainer.addEventListener('mouseenter', () => {
-      targetSpeedFactor = 0; // Desacelerar suavemente a 0
+      targetSpeedFactor = 0;
     });
 
     marqueeContainer.addEventListener('mouseleave', () => {
       if (!isDragging) {
-        targetSpeedFactor = 1.0; // Reanudar suavemente
+        targetSpeedFactor = 1.0;
       }
     });
 
-    // Eventos de arrastre táctil / mouse (Pointer Events)
     marqueeContainer.addEventListener('pointerdown', (e) => {
       isDragging = true;
       startPointerX = e.clientX;
@@ -276,15 +271,12 @@ document.addEventListener('DOMContentLoaded', () => {
       marqueeTrack.classList.add('is-dragging');
       try {
         marqueeTrack.setPointerCapture(e.pointerId);
-      } catch (err) {
-        // Fallback seguro si setPointerCapture no es soportado
-      }
+      } catch (err) {}
     });
 
     marqueeContainer.addEventListener('pointermove', (e) => {
       if (!isDragging) return;
       const deltaX = e.clientX - startPointerX;
-      // Invertir delta porque mover el dedo a la izquierda incrementa el offset
       let newOffset = (dragStartOffset - deltaX) % groupWidth;
       if (newOffset < 0) {
         newOffset += groupWidth;
@@ -305,12 +297,10 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (err) {}
 
       if (e.pointerType === 'touch') {
-        // En touch: reanudación automática a los 1.5s
         touchResumeTimer = setTimeout(() => {
           targetSpeedFactor = 1.0;
         }, 1500);
       } else {
-        // En mouse: reanudar si el cursor ya no está encima
         if (!marqueeContainer.matches(':hover')) {
           targetSpeedFactor = 1.0;
         }
@@ -323,34 +313,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 6. MI FORMACIÓN: INTERACCIÓN EN DISPOSITIVOS TÁCTILES / ACCESIBILIDAD
+  // 6. MI EXPERIENCIA & MI FORMACIÓN: SOPORTE TOUCH Y TECLADO PARA OVERLAYS
   // ============================================================================
-  const formacionCards = document.querySelectorAll('.formacion-card-v2');
+  const interactiveCards = document.querySelectorAll('.formacion-card-v2, .timeline-exp-card');
 
-  formacionCards.forEach(card => {
-    // Soporte para tap móvil
+  interactiveCards.forEach(card => {
+    // Tap en pantallas táctiles
     card.addEventListener('click', (e) => {
-      // Si la pantalla es touch / móvil
       const isExpanded = card.classList.contains('is-expanded');
       
-      // Cerrar las demás
-      formacionCards.forEach(c => {
-        if (c !== card) {
-          c.classList.remove('is-expanded');
-          c.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      if (!isExpanded) {
-        card.classList.add('is-expanded');
-        card.setAttribute('aria-expanded', 'true');
-      } else {
+      // Si la tarjeta ya estaba expandida, cerrarla
+      if (isExpanded) {
         card.classList.remove('is-expanded');
         card.setAttribute('aria-expanded', 'false');
+      } else {
+        // Cerrar otras del mismo contenedor
+        const parent = card.closest('.timeline-container-alt') || card.closest('.formacion-container-v2');
+        if (parent) {
+          parent.querySelectorAll('.is-expanded').forEach(c => {
+            c.classList.remove('is-expanded');
+            c.setAttribute('aria-expanded', 'false');
+          });
+        }
+        card.classList.add('is-expanded');
+        card.setAttribute('aria-expanded', 'true');
       }
     });
 
-    // Soporte para teclado (Enter / Espacio)
+    // Accesibilidad vía teclado (Enter / Espacio)
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -359,10 +349,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Cerrar overlays de formación al hacer clic fuera
+  // Cerrar al hacer click afuera
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.formacion-card-v2')) {
-      formacionCards.forEach(card => {
+    if (!e.target.closest('.formacion-card-v2') && !e.target.closest('.timeline-exp-card')) {
+      interactiveCards.forEach(card => {
         card.classList.remove('is-expanded');
         card.setAttribute('aria-expanded', 'false');
       });
@@ -392,13 +382,11 @@ document.addEventListener('DOMContentLoaded', () => {
     toast.innerHTML = `${iconHtml}<span>${message}</span>`;
     toastContainer.appendChild(toast);
 
-    // Animación de entrada
     requestAnimationFrame(() => {
       toast.classList.remove('translate-y-4', 'opacity-0');
       toast.classList.add('translate-y-0', 'opacity-100');
     });
 
-    // Retiro a los 4 segundos
     setTimeout(() => {
       toast.classList.remove('opacity-100', 'translate-y-0');
       toast.classList.add('opacity-0', 'translate-y-2');
@@ -413,7 +401,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ============================================================================
   // 8. FORMULARIO DE CONTACTO (FORMSUBMIT AJAX REAL)
-  // Endpoint: https://formsubmit.co/ajax/avacaro@outlook.com
   // ============================================================================
   const contactForm = document.getElementById('contact-form');
   const submitBtn = document.getElementById('submit-btn');
@@ -422,19 +409,16 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      // Validación nativa básica
       if (!contactForm.checkValidity()) {
         contactForm.reportValidity();
         return;
       }
 
-      // Evitar envíos si el honeypot fue completado por bots
       const honeyField = contactForm.querySelector('input[name="_honey"]');
       if (honeyField && honeyField.value.trim() !== '') {
         return;
       }
 
-      // Estado de carga
       const originalBtnHtml = submitBtn.innerHTML;
       submitBtn.disabled = true;
       submitBtn.innerHTML = `
