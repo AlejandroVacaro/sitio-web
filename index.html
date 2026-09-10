@@ -55,7 +55,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css">
+  <link rel="stylesheet" href="css/v2.css?v=3.0">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -228,200 +228,209 @@
   </div>
   </div>
 
-      <!-- ==========================================================================
-       CONÓCEME (#conoceme) - Pinned Viewport Stage
-       Título visible, Foto a la Izquierda, Texto a la Derecha, Espacios compactos
+        <!-- ==========================================================================
+       CONÓCEME (#conoceme) - Apple-Grade Storytelling Stage
+       Pantalla detenida, Foto a la Izquierda, Frase individual en Spotlight a la Derecha
        ========================================================================== -->
-  <section id="conoceme" class="conoceme-pinned-section" aria-label="Historia personal y recorrido">
+  <section id="conoceme" class="conoceme-apple-section" aria-label="Historia personal y recorrido">
     
-    <div class="conoceme-sticky-stage" id="conoceme-sticky-stage">
+    <div class="conoceme-apple-viewport" id="conoceme-apple-viewport">
       
-      <!-- Título de Conóceme (siempre visible en el viewport) -->
-      <div class="conoceme-stage-header">
+      <!-- Encabezado de Sección -->
+      <div class="conoceme-apple-header">
         <h2 class="conoceme-heading">Conóceme.</h2>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 mt-1">
           <p class="conoceme-subheading-coral">No fue una línea recta.</p>
           <span class="text-[#4F5D75]/40 font-serif italic text-lg">/</span>
           <p class="conoceme-subheading-dark">Y por suerte.</p>
         </div>
       </div>
 
-      <!-- Grid 2 Columnas: Foto Izquierda (360px) + Texto Derecha -->
-      <div class="conoceme-stage-grid">
+      <!-- Stage Central: Foto Izquierda (340px) + Escenario Narrativo Derecha -->
+      <div class="conoceme-apple-stage">
         
-        <!-- Columna Izquierda: Fotografía de Alejandro -->
-        <div class="conoceme-photo-side">
-          <div class="conoceme-pinned-photo-card">
-            <img src="assets/images/alejandro_about.jpg" alt="Alejandro Vacaro - Historia personal" class="conoceme-pinned-photo-img" loading="lazy">
+        <!-- Columna Izquierda: Foto de Alejandro -->
+        <div class="conoceme-apple-photo-col">
+          <div class="conoceme-apple-photo-card">
+            <img src="assets/images/alejandro_about.jpg" alt="Alejandro Vacaro - Historia personal" class="conoceme-apple-photo-img" loading="lazy">
           </div>
         </div>
 
-        <!-- Columna Derecha: Frases Dinámicas con Espacios Compactos -->
-        <div class="conoceme-text-side">
-          <div class="conoceme-stream-viewport" id="conoceme-stream-viewport">
-            <div class="conoceme-stream-track" id="conoceme-stream-track">
+        <!-- Columna Derecha: Tarjeta Escénica con Frases en Spotlight (Una a la vez) -->
+        <div class="conoceme-apple-narrative-col">
+          <div class="conoceme-apple-stage-card">
+            
+            <!-- Barra de Progreso Discreta Apple-Style -->
+            <div class="story-progress-bar-wrap">
+              <div class="story-progress-bar-fill" id="story-progress-fill"></div>
+              <span class="story-beat-counter" id="story-beat-counter">01 / 18</span>
+            </div>
+
+            <!-- Contenedor de Frases (Posicionadas de forma limpia en el centro, nunca apiladas) -->
+            <div class="story-beats-container" id="story-beats-container">
               
               <!-- Beat 1 -->
-              <div class="story-beat" data-beat="1">
-                <p class="beat-text">
-                  Nací en <strong class="font-semibold text-[#222222]">Paysandú</strong>. En el 93.<br>
-                  En una casa donde la plata rara vez alcanzaba a fin de mes.<br>
+              <div class="apple-story-beat is-active" data-beat="1">
+                <p class="apple-beat-text">
+                  Nací en <strong class="font-bold text-[#222222]">Paysandú</strong>. En el 93.<br><br>
+                  En una casa donde la plata rara vez alcanzaba a fin de mes.<br><br>
                   Fui el menor de tres hermanos.
                 </p>
               </div>
 
               <!-- Beat 2 -->
-              <div class="story-beat" data-beat="2">
-                <p class="beat-text">
-                  <span class="text-xs uppercase tracking-widest text-[#EF8354] font-bold block mb-1">Infancia</span>
-                  El típico niño bueno. Tímido. Callado. Buen alumno.
+              <div class="apple-story-beat" data-beat="2">
+                <span class="text-xs uppercase tracking-widest text-[#EF8354] font-bold block mb-3">Infancia</span>
+                <p class="apple-beat-text">
+                  El típico niño bueno.<br><br>
+                  Tímido. Callado. Buen alumno.
                 </p>
               </div>
 
               <!-- Beat 3 -->
-              <div class="story-beat" data-beat="3">
-                <p class="beat-text">
-                  Pero eso no te salva en los recreos. Los niños saben ser crueles.<br>
-                  Y a mí me hicieron pagar bastante caro el ser distinto.<br>
+              <div class="apple-story-beat" data-beat="3">
+                <p class="apple-beat-text">
+                  Pero eso no te salva en los recreos. Los niños saben ser crueles.<br><br>
+                  Y a mí me hicieron pagar bastante caro el ser distinto.<br><br>
                   O, como preferían decirlo, <strong class="text-[#EF8354] font-bold">“puto”</strong>.
                 </p>
               </div>
 
               <!-- Beat 4 -->
-              <div class="story-beat" data-beat="4">
-                <p class="beat-text">
-                  Después empecé a trabajar de lo que viniera.<br>
-                  Repositor. Instructor. Administrativo. Empleado público.<br>
+              <div class="apple-story-beat" data-beat="4">
+                <p class="apple-beat-text">
+                  Después empecé a trabajar de lo que viniera.<br><br>
+                  Repositor. Instructor. Administrativo. Empleado público.<br><br>
                   Llegué a tener <strong class="font-bold text-[#222222]">cuatro trabajos al mismo tiempo</strong>.<br>
-                  <span class="font-serif italic text-[#EF8354] text-xl block mt-1.5">Burnout for export.</span>
+                  <span class="font-serif italic text-[#EF8354] text-2xl block mt-3">Burnout for export.</span>
                 </p>
               </div>
 
               <!-- Beat 5 -->
-              <div class="story-beat" data-beat="5">
-                <p class="beat-text">
-                  A los 22 me puse una meta:<br>
-                  Ahorrar peso por peso, subirme a un avión por primera vez, cruzar el Atlántico y conocer Europa.<br>
-                  <strong class="font-bold text-xl block mt-2 text-[#222222]">Lo logré.</strong>
+              <div class="apple-story-beat" data-beat="5">
+                <p class="apple-beat-text">
+                  A los 22 me puse una meta:<br><br>
+                  Ahorrar peso por peso, subirme a un avión por primera vez, cruzar el Atlántico y conocer Europa.<br><br>
+                  <strong class="font-bold text-2xl block text-[#222222]">Lo logré.</strong>
                 </p>
               </div>
 
-              <!-- Beat 6: Duelo (Fondo Oscuro) -->
-              <div class="story-beat trigger-dark-chapter" data-beat="6">
-                <p class="beat-text">
-                  Pero a la vida a veces le gusta hacer bromas bastante pesadas.<br>
-                  <span class="font-serif italic font-bold text-[#EF8354] text-2xl block my-2">Una semana antes de ese viaje, murió mi viejo.</span>
-                  Ese viaje me partió al medio. Por el esfuerzo. Por el sueño. Por el duelo.
+              <!-- Beat 6: Duelo (Fondo Oscuro Inmersivo) -->
+              <div class="apple-story-beat beat-duelo" data-beat="6">
+                <p class="apple-beat-text">
+                  Pero a la vida a veces le gusta hacer bromas bastante pesadas.<br><br>
+                  <span class="font-serif italic font-bold text-[#EF8354] text-2xl md:text-3xl block my-2">Una semana antes de ese viaje, murió mi viejo.</span><br>
+                  Ese viaje me partió al medio.<br>
+                  Por el esfuerzo. Por el sueño. Por el duelo.
                 </p>
               </div>
 
               <!-- Beat 7 -->
-              <div class="story-beat trigger-light-chapter" data-beat="7">
-                <p class="beat-text">
-                  Pero también me empujó.<br>
-                  Volví con una idea fija:<br>
-                  <strong class="font-semibold text-[#222222]">Enfrentar mis miedos. Dejar todo atrás. Irme a otra ciudad.</strong>
+              <div class="apple-story-beat" data-beat="7">
+                <p class="apple-beat-text">
+                  Pero también me empujó.<br><br>
+                  Volví con una idea fija:<br><br>
+                  <strong class="font-bold text-[#222222] text-xl">Enfrentar mis miedos. Dejar todo atrás. Irme a otra ciudad.</strong>
                 </p>
               </div>
 
               <!-- Beat 8 -->
-              <div class="story-beat" data-beat="8">
-                <p class="beat-text">
-                  A los 24 conseguí trabajo en una administradora de fondos.<br>
-                  Vendí lo poco que tenía y <strong class="font-bold text-[#222222]">me vine a Montevideo</strong>.<br>
+              <div class="apple-story-beat" data-beat="8">
+                <p class="apple-beat-text">
+                  A los 24 conseguí trabajo en una administradora de fondos.<br><br>
+                  Vendí lo poco que tenía y <strong class="font-bold text-[#222222]">me vine a Montevideo</strong>.<br><br>
                   Los primeros meses dormí en el altillo de la casa de un amigo, en un colchón prestado.
                 </p>
               </div>
 
               <!-- Beat 9 -->
-              <div class="story-beat" data-beat="9">
-                <p class="beat-text">
-                  Ahí empecé a estudiar <strong class="font-semibold text-[#222222]">Contador Público</strong>.<br>
-                  Quería ser contador desde chico.<br>
-                  <span class="font-serif italic text-[#EF8354] block mt-1">Si te soy sincero, todavía no tengo del todo claro por qué.</span>
+              <div class="apple-story-beat" data-beat="9">
+                <p class="apple-beat-text">
+                  Ahí empecé a estudiar <strong class="font-bold text-[#222222]">Contador Público</strong>.<br><br>
+                  Quería ser contador desde chico.<br><br>
+                  <span class="font-serif italic text-[#EF8354] text-xl block">Si te soy sincero, todavía no tengo del todo claro por qué.</span>
                 </p>
               </div>
 
               <!-- Beat 10 -->
-              <div class="story-beat" data-beat="10">
-                <p class="beat-text">
-                  Porque las computadoras siempre me llamaron la atención.<br>
-                  Pero yo miraba el mundo informático y pensaba:<br>
-                  <span class="font-serif italic text-[#4F5D75]">“Esto no es para mí”. “No me da el bocho”.</span>
+              <div class="apple-story-beat" data-beat="10">
+                <p class="apple-beat-text">
+                  Porque las computadoras siempre me llamaron la atención.<br><br>
+                  Pero yo miraba el mundo informático y pensaba:<br><br>
+                  <span class="font-serif italic text-[#4F5D75] text-xl">“Esto no es para mí”.</span><br>
+                  <span class="font-serif italic text-[#4F5D75] text-xl">“No me da el bocho”.</span>
                 </p>
               </div>
 
               <!-- Beat 11 -->
-              <div class="story-beat" data-beat="11">
-                <p class="beat-text">
-                  Y bueno. <strong class="font-bold text-xl text-[#222222]">Llegó 2020.</strong><br>
-                  Un día encontré un curso gratuito de programación desde cero. Pensé: <em>“Vamos a probar. Total, ¿qué es lo peor que puede pasar? ¿Que me termine gustando más programar que la carrera?”</em>
+              <div class="apple-story-beat" data-beat="11">
+                <p class="apple-beat-text">
+                  Y bueno. <strong class="font-bold text-2xl text-[#222222]">Llegó 2020.</strong><br><br>
+                  Un día encontré un curso gratuito de programación desde cero. Pensé:<br><br>
+                  <em>“Vamos a probar. Total, ¿qué es lo peor que puede pasar? ¿Que me termine gustando más programar que la carrera?”</em>
                 </p>
               </div>
 
-              <!-- Beat 12: Adiviná -->
-              <div class="story-beat beat-adivina" data-beat="12">
-                <div class="py-4">
-                  <span class="font-serif italic text-[#EF8354] text-5xl md:text-7xl font-normal inline-block">Adiviná.</span>
-                </div>
+              <!-- Beat 12: Momento Adiviná -->
+              <div class="apple-story-beat text-center" data-beat="12">
+                <span class="font-serif italic text-[#EF8354] text-6xl md:text-8xl font-normal block my-auto">Adiviná.</span>
               </div>
 
               <!-- Beat 13 -->
-              <div class="story-beat" data-beat="13">
-                <p class="beat-text">
-                  <strong class="font-bold text-2xl text-[#222222]">Sí.</strong> Me gustó más de lo previsto.<br>
-                  <strong class="text-[#EF8354] font-bold text-xl">Bastante más.</strong><br>
-                  Tuve una crisis existencial tremenda. Mandar al armario a mi yo contador y <strong class="font-semibold text-[#222222]">dejar salir a mi yo programador</strong>.<br>
+              <div class="apple-story-beat" data-beat="13">
+                <p class="apple-beat-text">
+                  <strong class="font-bold text-3xl text-[#222222]">Sí.</strong> Me gustó más de lo previsto.<br><br>
+                  <strong class="text-[#EF8354] font-bold text-2xl">Bastante más.</strong><br><br>
+                  Tuve una crisis existencial tremenda. Mandar al armario a mi yo contador y <strong class="font-bold text-[#222222]">dejar salir a mi yo programador</strong>.<br><br>
                   Fueron tres años aprendiendo lenguajes y conceptos que jamás pensé que mi cabeza iba a entender.
                 </p>
               </div>
 
               <!-- Beat 14 -->
-              <div class="story-beat" data-beat="14">
-                <p class="beat-text">
-                  Cuando se acomodó la crisis existencial, llegó la laboral.<br>
-                  No me había quedado sin trabajo, pero mis intereses ya estaban en otra parte.<br>
-                  Ese puesto lo había conseguido mi yo contador. <strong class="font-bold text-[#222222]">Y yo ya estaba en otra.</strong>
+              <div class="apple-story-beat" data-beat="14">
+                <p class="apple-beat-text">
+                  Cuando se acomodó la crisis existencial, llegó la laboral.<br><br>
+                  No me había quedado sin trabajo, pero mis intereses ya estaban en otra parte.<br><br>
+                  Ese puesto lo había conseguido mi yo contador. <strong class="font-bold text-[#222222] text-xl">Y yo ya estaba en otra.</strong>
                 </p>
               </div>
 
-              <!-- Beat 15: El plot twist -->
-              <div class="story-beat" data-beat="15">
-                <p class="beat-text">
-                  Entonces empecé a reconvertirme.<br>
-                  <span class="font-serif italic text-[#EF8354] text-2xl block my-2 font-semibold">El plot twist como estrategia de vida.</span>
-                  Lideré un proyecto de transformación digital dentro de mi área y luego llegó la propuesta para pasarme al equipo de desarrollo.<br>
-                  <span class="text-xs italic text-[#4F5D75]">Una oferta que me costó muchísimo aceptar. Espero que se entienda la ironía.</span>
+              <!-- Beat 15: Frase de Marca -->
+              <div class="apple-story-beat" data-beat="15">
+                <p class="apple-beat-text">
+                  Entonces empecé a reconvertirme.<br><br>
+                  <span class="font-serif italic text-[#EF8354] text-2xl md:text-3xl block my-3 font-semibold">El plot twist como estrategia de vida.</span><br>
+                  Lideré un proyecto de transformación digital dentro de mi área y luego me pasé al equipo de desarrollo.<br>
+                  <span class="text-xs italic text-[#4F5D75] mt-2 block">Una oferta que me costó muchísimo aceptar. Espero que se entienda la ironía.</span>
                 </p>
               </div>
 
               <!-- Beat 16 -->
-              <div class="story-beat" data-beat="16">
-                <p class="beat-text">
-                  Pero como buen geminiano, no me iba a conformar solo con eso.<br>
-                  Un día decidí volver a tocar las puertas de la facultad y <strong class="font-semibold text-[#222222]">retomar la carrera que había dejado</strong>.
+              <div class="apple-story-beat" data-beat="16">
+                <p class="apple-beat-text">
+                  Pero como buen geminiano, no me iba a conformar solo con eso.<br><br>
+                  Un día decidí volver a tocar las puertas de la facultad y <strong class="font-bold text-[#222222] text-xl">retomar la carrera que había dejado</strong>.
                 </p>
               </div>
 
               <!-- Beat 17 -->
-              <div class="story-beat" data-beat="17">
-                <p class="beat-text">
-                  Hoy trabajo como <strong class="font-bold text-xl text-[#222222]">Analista Funcional</strong>.<br>
-                  Sigo estudiando. Sigo aprendiendo. Sigo actualizando mis skills de tecnología.<br>
+              <div class="apple-story-beat" data-beat="17">
+                <p class="apple-beat-text">
+                  Hoy trabajo como <strong class="font-bold text-2xl text-[#222222]">Analista Funcional</strong>.<br><br>
+                  Sigo estudiando. Sigo aprendiendo. Sigo actualizando mis skills de tecnología.<br><br>
                   Y crío a un labrador que apareció por sorpresa en mi vida.
                 </p>
               </div>
 
               <!-- Beat 18: Cierre Estable -->
-              <div class="story-beat beat-cierre" data-beat="18">
-                <div class="p-5 rounded-xl bg-white/60 border border-[#4F5D75]/15 shadow-sm">
-                  <p class="beat-text text-lg md:text-xl font-medium text-[#222222] leading-relaxed">
-                    Hoy por hoy, mi día a día se divide entre mi trabajo como Analista Funcional, mi formación, el aprendizaje constante y la vida con un labrador que apareció para desordenar bastante lindo el guion.
-                  </p>
-                </div>
+              <div class="apple-story-beat" data-beat="18">
+                <p class="apple-beat-text text-lg md:text-xl font-medium text-[#222222] leading-relaxed">
+                  Hoy por hoy, mi día a día se divide entre mi trabajo como Analista Funcional, mi formación, el aprendizaje constante y la vida con un labrador que apareció para desordenar bastante lindo el guion.
+                </p>
               </div>
 
             </div>
+
           </div>
         </div>
 
@@ -1050,6 +1059,6 @@
   </footer>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js"></script>
+  <script src="js/v2.js?v=3.0"></script>
 </body>
 </html>

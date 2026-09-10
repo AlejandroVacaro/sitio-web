@@ -1,7 +1,7 @@
 /**
  * ==============================================================================
  * ALEJANDRO VACARO - SITIO PERSONAL V2
- * Script de interacciones, animaciones, scrollytelling y timeline despintado
+ * Script de interacciones, animaciones, scrollytelling Apple-grade y timeline
  * ==============================================================================
  */
 
@@ -20,10 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const dividerLineTrabajar = document.getElementById('divider-line-trabajar');
   const dividerSection = document.getElementById('divider-trabajar');
   
-  // Conóceme Pinned Stage
+  // Conóceme Apple Stage
   const conocemeSection = document.getElementById('conoceme');
-  const conocemeTrack = document.getElementById('conoceme-stream-track');
-  const storyBeats = document.querySelectorAll('.story-beat');
+  const appleBeats = document.querySelectorAll('.apple-story-beat');
+  const progressFill = document.getElementById('story-progress-fill');
+  const beatCounter = document.getElementById('story-beat-counter');
 
   // Timeline elements
   const timelineContainer = document.getElementById('timeline-container');
@@ -47,55 +48,53 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollProgressBar.style.width = `${progress}%`;
     }
 
-    // B. Header: Transparencia sutil con blur sin cambiar altura
+    // B. Header: Transparencia Glassmorphism Apple al scroll > 20px
     if (mainHeader) {
-      if (scrollY > 50) {
+      if (scrollY > 20) {
         mainHeader.classList.add('scrolled');
       } else {
         mainHeader.classList.remove('scrolled');
       }
     }
 
-    // C. Conóceme: Pinned Viewport Track Translation & Beat Focus
-    if (conocemeSection && conocemeTrack && storyBeats.length > 0) {
+    // C. Conóceme: Apple-Grade Scrollytelling (Una frase a la vez en foco absoluto)
+    if (conocemeSection && appleBeats.length > 0) {
       const secRect = conocemeSection.getBoundingClientRect();
       const secTop = secRect.top;
       const secHeight = secRect.height;
       const scrollableDistance = secHeight - windowHeight;
 
       if (window.innerWidth > 768 && scrollableDistance > 0) {
-        // Progreso dentro de la sección Conóceme (0 a 1)
+        // Progreso dentro de Conóceme (0.0 a 1.0)
         const progress = Math.min(1, Math.max(0, -secTop / scrollableDistance));
-        
-        // Calcular desplazamiento del track
-        const trackHeight = conocemeTrack.scrollHeight;
-        const viewportHeight = 420; // Altura máxima visible de la máscara
-        const maxScrollTrack = Math.max(0, trackHeight - viewportHeight * 0.7);
-        const currentTranslateY = progress * maxScrollTrack;
-        conocemeTrack.style.transform = `translate3d(0, -${currentTranslateY.toFixed(1)}px, 0)`;
-
-        // Determinar qué beat está en el foco central
-        const totalBeats = storyBeats.length;
+        const totalBeats = appleBeats.length;
         const currentBeatIndex = Math.min(totalBeats - 1, Math.floor(progress * totalBeats));
 
-        storyBeats.forEach((beat, idx) => {
+        // Activar la frase correspondiente y apagar las demás
+        appleBeats.forEach((beat, idx) => {
           if (idx === currentBeatIndex) {
-            beat.classList.add('is-focused');
+            beat.classList.add('is-active');
           } else {
-            beat.classList.remove('is-focused');
+            beat.classList.remove('is-active');
           }
         });
 
-        // Beat 6: Duelo (activar fondo oscuro)
-        if (currentBeatIndex === 5) { // data-beat 6 es índice 5
+        // Actualizar barra de progreso y contador discreto
+        if (progressFill) {
+          const fillWidth = Math.max(20, progress * 100);
+          progressFill.style.width = `${fillWidth}px`;
+        }
+        if (beatCounter) {
+          const num = String(currentBeatIndex + 1).padStart(2, '0');
+          beatCounter.textContent = `${num} / 18`;
+        }
+
+        // Beat 6: Duelo (activar modo oscuro inmersivo en el background)
+        if (currentBeatIndex === 5) {
           conocemeSection.classList.add('dark-mode-active');
         } else {
           conocemeSection.classList.remove('dark-mode-active');
         }
-      } else {
-        // Modo móvil: todos los beats visibles
-        storyBeats.forEach(b => b.classList.add('is-focused'));
-        conocemeTrack.style.transform = 'none';
       }
     }
 
@@ -108,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // E. Mi Experiencia: LÍNEA NARANJA QUE SE VA DESPINTANDO AL SCROLL
+    // E. Mi Experiencia: Línea naranja que se despinta al scrollear hacia abajo
     if (timelineContainer && timelineRailFill) {
       const tlRect = timelineContainer.getBoundingClientRect();
       const tlTop = tlRect.top;
