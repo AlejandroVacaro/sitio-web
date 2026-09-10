@@ -1,7 +1,7 @@
 /**
  * ==============================================================================
  * ALEJANDRO VACARO - SITIO PERSONAL V2
- * Script de interacciones, animaciones y comportamiento editorial
+ * Script de interacciones, animaciones, scrollytelling y timeline despintado
  * ==============================================================================
  */
 
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================================
-  // 2. HEADER COMPACTING & PROGRESS BAR & TIMELINE FILL
+  // 2. ELEMENTOS PRINCIPALES
   // ============================================================================
   const mainHeader = document.getElementById('main-header');
   const scrollProgressBar = document.getElementById('scroll-progress-bar');
@@ -22,21 +22,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const conocemeSection = document.getElementById('conoceme');
   const darkChapter = document.querySelector('.trigger-dark-chapter');
   
+  // Scrollytelling Beats en Conóceme
+  const storyBeats = document.querySelectorAll('.story-beat');
+
   // Timeline elements
   const timelineContainer = document.getElementById('timeline-container');
   const timelineRailFill = document.getElementById('timeline-rail-fill');
-  const timelineNodes = document.querySelectorAll('.timeline-center-node');
   const timelineRows = document.querySelectorAll('.timeline-alt-row');
 
   let dividerAnimated = false;
   let isTicking = false;
 
+  // ============================================================================
+  // 3. CONTROLADOR DE SCROLL PRINCIPAL
+  // ============================================================================
   function onScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
     const windowHeight = window.innerHeight;
+    const viewportCenter = windowHeight * 0.5;
     const docHeight = document.documentElement.scrollHeight - windowHeight;
 
-    // A. Barra de progreso superior de lectura
+    // A. Barra de progreso superior
     if (scrollProgressBar && docHeight > 0) {
       const progress = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
       scrollProgressBar.style.width = `${progress}%`;
@@ -51,11 +57,41 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // C. Conóceme: Transición a fondo oscuro en Escena 6 (Duelo)
+    // C. Conóceme: SCROLLYTELLING FRASES EN SPOTLIGHT (Aparecen de a una sutilmente)
+    if (storyBeats.length > 0) {
+      const activeWindow = windowHeight * 0.32; // Ventana focal ~32% del viewport
+
+      storyBeats.forEach(beat => {
+        if (beat.classList.contains('beat-cierre')) {
+          beat.classList.add('is-focused');
+          return;
+        }
+
+        const rect = beat.getBoundingClientRect();
+        const beatCenter = rect.top + rect.height / 2;
+        const distFromCenter = Math.abs(beatCenter - viewportCenter);
+
+        if (distFromCenter < activeWindow) {
+          const intensity = 1 - (distFromCenter / activeWindow);
+          const opacity = Math.min(1, Math.max(0.1, Math.pow(intensity, 1.2)));
+          const translateY = (beatCenter - viewportCenter) * 0.08;
+          beat.style.opacity = opacity.toFixed(3);
+          beat.style.transform = `translateY(${translateY.toFixed(1)}px) scale(${0.97 + 0.03 * intensity})`;
+          beat.style.filter = `blur(${Math.max(0, (1 - intensity) * 2).toFixed(1)}px)`;
+          beat.classList.add('is-focused');
+        } else {
+          beat.style.opacity = '0.08';
+          beat.style.transform = 'translateY(16px) scale(0.96)';
+          beat.style.filter = 'blur(3px)';
+          beat.classList.remove('is-focused');
+        }
+      });
+    }
+
+    // D. Conóceme: Transición a fondo oscuro en Escena 6 (Duelo)
     if (conocemeSection && darkChapter) {
       const darkRect = darkChapter.getBoundingClientRect();
-      // Activar cuando la escena 6 entra al campo de lectura (tercio medio del viewport)
-      const isInFocus = darkRect.top < windowHeight * 0.6 && darkRect.bottom > windowHeight * 0.3;
+      const isInFocus = darkRect.top < windowHeight * 0.65 && darkRect.bottom > windowHeight * 0.35;
       if (isInFocus) {
         conocemeSection.classList.add('dark-mode-active');
       } else {
@@ -63,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // D. Transición 1: Línea horizontal de 0 a 100% en 900ms
+    // E. Transición 1: Línea horizontal de 0 a 100%
     if (!dividerAnimated && dividerSection && dividerLineTrabajar) {
       const divRect = dividerSection.getBoundingClientRect();
       if (divRect.top < windowHeight * 0.85) {
@@ -72,33 +108,43 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // E. Mi Experiencia: Pintado de la línea vertical naranja al scrollear
+    // F. Mi Experiencia: LÍNEA NARANJA QUE SE VA DESPINTANDO AL SCROLL
     if (timelineContainer && timelineRailFill) {
       const tlRect = timelineContainer.getBoundingClientRect();
       const tlTop = tlRect.top;
       const tlHeight = tlRect.height;
-      const triggerPoint = windowHeight * 0.55; // Nivel de los ojos / escaneo
+      const scanPoint = windowHeight * 0.55;
 
-      if (tlTop < triggerPoint) {
-        const scrolledInside = triggerPoint - tlTop;
-        const fillPercent = Math.min(100, Math.max(0, (scrolledInside / tlHeight) * 100));
-        timelineRailFill.style.height = `${fillPercent}%`;
+      if (tlTop >= scanPoint) {
+        // Aún no llegamos a la experiencia: 100% pintada de naranja
+        timelineRailFill.style.top = '0%';
+        timelineRailFill.style.height = '100%';
+        timelineRows.forEach(row => {
+          const node = row.querySelector('.timeline-center-node');
+          if (node) node.classList.add('is-active');
+        });
       } else {
-        timelineRailFill.style.height = '0%';
-      }
+        // Se va despintando desde arriba hacia abajo
+        const scrolledDistance = scanPoint - tlTop;
+        const unpaintPercent = Math.min(100, Math.max(0, (scrolledDistance / tlHeight) * 100));
 
-      // Iluminar nodos centrales a medida que el relleno llega a ellos
-      timelineRows.forEach(row => {
-        const node = row.querySelector('.timeline-center-node');
-        if (node) {
-          const nodeRect = node.getBoundingClientRect();
-          if (nodeRect.top < triggerPoint + 20) {
-            node.classList.add('is-active');
-          } else {
-            node.classList.remove('is-active');
+        // El relleno naranja queda en la parte inferior aún no alcanzada
+        timelineRailFill.style.top = `${unpaintPercent}%`;
+        timelineRailFill.style.height = `${100 - unpaintPercent}%`;
+
+        // Despintar los nodos que ya pasaron por el scanPoint
+        timelineRows.forEach(row => {
+          const node = row.querySelector('.timeline-center-node');
+          if (node) {
+            const nodeRect = node.getBoundingClientRect();
+            if (nodeRect.top < scanPoint) {
+              node.classList.remove('is-active'); // Se despinta
+            } else {
+              node.classList.add('is-active'); // Sigue pintado
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     isTicking = false;
@@ -111,12 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // Ejecutar al cargar
   onScroll();
 
 
   // ============================================================================
-  // 3. MENÚ MÓVIL (DRAWER)
+  // 4. MENÚ MÓVIL (DRAWER)
   // ============================================================================
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
@@ -154,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 4. HERO PHOTO 3D TILT
+  // 5. HERO PHOTO 3D TILT
   // ============================================================================
   const heroPhotoWrapper = document.getElementById('hero-photo-wrapper');
   if (heroPhotoWrapper && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
@@ -186,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 5. CINTA HORIZONTAL ANIMADA (ENGINE CONTINUO ROBUSTO)
+  // 6. CINTA HORIZONTAL ANIMADA (ENGINE CONTINUO)
   // ============================================================================
   const marqueeContainer = document.getElementById('hero-marquee');
   const marqueeTrack = document.getElementById('cinta-track');
@@ -313,21 +358,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 6. MI EXPERIENCIA & MI FORMACIÓN: SOPORTE TOUCH Y TECLADO PARA OVERLAYS
+  // 7. MI EXPERIENCIA & MI FORMACIÓN: SOPORTE TOUCH / CLIC PARA OVERLAYS
   // ============================================================================
   const interactiveCards = document.querySelectorAll('.formacion-card-v2, .timeline-exp-card');
 
   interactiveCards.forEach(card => {
-    // Tap en pantallas táctiles
     card.addEventListener('click', (e) => {
       const isExpanded = card.classList.contains('is-expanded');
       
-      // Si la tarjeta ya estaba expandida, cerrarla
       if (isExpanded) {
         card.classList.remove('is-expanded');
         card.setAttribute('aria-expanded', 'false');
       } else {
-        // Cerrar otras del mismo contenedor
         const parent = card.closest('.timeline-container-alt') || card.closest('.formacion-container-v2');
         if (parent) {
           parent.querySelectorAll('.is-expanded').forEach(c => {
@@ -340,7 +382,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Accesibilidad vía teclado (Enter / Espacio)
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -349,7 +390,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Cerrar al hacer click afuera
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.formacion-card-v2') && !e.target.closest('.timeline-exp-card')) {
       interactiveCards.forEach(card => {
@@ -361,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 7. TOAST NOTIFICATIONS
+  // 8. TOAST NOTIFICATIONS & FORMULARIO DE CONTACTO AJAX
   // ============================================================================
   const toastContainer = document.getElementById('toast-container');
 
@@ -398,10 +438,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4000);
   }
 
-
-  // ============================================================================
-  // 8. FORMULARIO DE CONTACTO (FORMSUBMIT AJAX REAL)
-  // ============================================================================
   const contactForm = document.getElementById('contact-form');
   const submitBtn = document.getElementById('submit-btn');
 

@@ -223,8 +223,8 @@
     </div>
   </div>
 
-  <!-- ==========================================================================
-       CONÓCEME (#conoceme) - Storytelling por escenas + Fondo dinámico + Adiviná
+    <!-- ==========================================================================
+       CONÓCEME (#conoceme) - Scrollytelling de Alta Intriga & Frases en Spotlight
        ========================================================================== -->
   <section id="conoceme" class="conoceme-section" aria-label="Historia personal y recorrido">
     
@@ -235,202 +235,178 @@
       <p class="conoceme-subheading-dark">Y por suerte.</p>
     </div>
 
-    <!-- Contenedor principal con columna narrativa y foto lateral sticky -->
+    <!-- Contenedor principal con columna de frases scrollytelling y foto lateral sticky -->
     <div class="conoceme-story-container">
       
-      <!-- Columna Narrativa Fluida -->
+      <!-- Columna de Frases Secuenciales (Spotlight: aparecen sutilmente de a una al scroll) -->
       <div class="story-stream" id="story-stream">
         
-        <!-- Escena 1 -->
-        <div class="story-scene" data-scene="1">
-          <p class="story-line font-medium">Nací en Paysandú. En el 93.</p>
-          <p class="story-line text-[#4F5D75] mt-2">En una casa donde la plata rara vez alcanzaba a fin de mes.</p>
-          <p class="story-line text-[#4F5D75] mt-2">Fui el menor de tres hermanos.</p>
-        </div>
-
-        <!-- Escena 2 -->
-        <div class="story-scene" data-scene="2">
-          <p class="story-line text-sm uppercase tracking-wider text-[#EF8354] font-semibold mb-2">Infancia</p>
-          <div class="stagger-lines flex flex-col gap-1.5">
-            <p class="story-stagger-item">El típico niño bueno.</p>
-            <p class="story-stagger-item">Tímido.</p>
-            <p class="story-stagger-item">Callado.</p>
-            <p class="story-stagger-item">Buen alumno.</p>
-          </div>
-        </div>
-
-        <!-- Escena 3 -->
-        <div class="story-scene" data-scene="3">
-          <p class="story-line">Pero eso no te salva en los recreos.</p>
-          <p class="story-line mt-3">Los niños saben ser crueles.</p>
-          <p class="story-line mt-1">Y a mí me hicieron pagar bastante caro el ser distinto.</p>
-          <p class="story-line mt-1 text-[#222222] font-semibold">O, como preferían decirlo, “puto”.</p>
-        </div>
-
-        <!-- Escena 4 -->
-        <div class="story-scene" data-scene="4">
-          <p class="story-line">Después empecé a trabajar de lo que viniera.</p>
-          <div class="stagger-lines flex flex-col gap-1.5 mt-3 text-lg font-medium text-[#4F5D75]">
-            <p class="story-stagger-item">Repositor.</p>
-            <p class="story-stagger-item">Instructor.</p>
-            <p class="story-stagger-item">Administrativo.</p>
-            <p class="story-stagger-item">Empleado público.</p>
-          </div>
-          <p class="story-line mt-4">Llegué a tener cuatro trabajos al mismo tiempo.</p>
-          <p class="story-burnout-quote">Burnout for export.</p>
-        </div>
-
-        <!-- Escena 5 -->
-        <div class="story-scene" data-scene="5">
-          <p class="story-line">A los 22 me puse una meta.</p>
-          <div class="stagger-lines flex flex-col gap-1.5 mt-3 text-[#4F5D75]">
-            <p class="story-stagger-item">Ahorrar.</p>
-            <p class="story-stagger-item">Peso por peso.</p>
-            <p class="story-stagger-item">Subirme a un avión por primera vez.</p>
-            <p class="story-stagger-item">Cruzar el Atlántico.</p>
-            <p class="story-stagger-item">Conocer Europa.</p>
-          </div>
-          <p class="story-line text-2xl font-bold text-[#222222] mt-4">Lo logré.</p>
-        </div>
-
-        <!-- Escena 6 (Duelo: transición gradual a fondo oscuro #2D3142 en 1200ms) -->
-        <div class="story-scene trigger-dark-chapter" data-scene="6">
-          <p class="story-line">Pero a la vida a veces le gusta hacer bromas bastante pesadas.</p>
-          <p class="story-duelo-highlight">Una semana antes de ese viaje, murió mi viejo.</p>
-          <div class="flex flex-col gap-2 mt-4 text-xl">
-            <p class="story-line">Ese viaje me partió al medio.</p>
-            <p class="story-line">Por el esfuerzo.</p>
-            <p class="story-line">Por el sueño.</p>
-            <p class="story-line">Por el duelo.</p>
-          </div>
-        </div>
-
-        <!-- Escena 7 (Regreso gradual a fondo marfil) -->
-        <div class="story-scene trigger-light-chapter" data-scene="7">
-          <p class="story-line">Pero también me empujó.</p>
-          <p class="story-line font-semibold text-xl mt-3">Volví con una idea fija.</p>
-          <div class="stagger-lines flex flex-col gap-1.5 mt-2 text-[#4F5D75]">
-            <p class="story-stagger-item">Enfrentar mis miedos.</p>
-            <p class="story-stagger-item">Dejar todo atrás.</p>
-            <p class="story-stagger-item">Irme a otra ciudad.</p>
-          </div>
-        </div>
-
-        <!-- Escena 8 -->
-        <div class="story-scene" data-scene="8">
-          <p class="story-line">A los 24 conseguí trabajo en una administradora de fondos.</p>
-          <p class="story-line mt-1">Vendí lo poco que tenía.</p>
-          <p class="story-line mt-1 font-semibold text-xl">Y me vine a Montevideo.</p>
-          <div class="mt-4 p-4 rounded-xl bg-white/40 border border-[#4F5D75]/10 max-w-md">
-            <p class="story-line text-base text-[#4F5D75]">Los primeros meses dormí en el altillo de la casa de un amigo.</p>
-            <p class="story-line text-base text-[#4F5D75] mt-1 font-medium">En un colchón prestado.</p>
-          </div>
-        </div>
-
-        <!-- Escena 9 -->
-        <div class="story-scene" data-scene="9">
-          <p class="story-line">Ahí empecé a estudiar Contador Público.</p>
-          <p class="story-line mt-2">Quería ser contador desde chico.</p>
-          <p class="story-contador-quote">Si te soy sincero, todavía no tengo del todo claro por qué.</p>
-          
-          <div class="mt-6 flex flex-col gap-2">
-            <p class="story-line">Porque las computadoras siempre me llamaron la atención.</p>
-            <p class="story-line">Siempre estuvieron ahí.</p>
-            <p class="story-line mt-2">Pero yo miraba el mundo informático y pensaba:</p>
-            <p class="story-line italic text-[#4F5D75]">“Esto no es para mí”.</p>
-            <p class="story-line italic text-[#4F5D75]">“No me da el bocho”.</p>
-          </div>
-
-          <div class="narrative-pause-box mt-8">
-            <p class="story-line font-bold text-2xl">Y bueno.</p>
-            <p class="story-line text-sm uppercase tracking-widest text-[#EF8354] mt-3">Pausa visual</p>
-            <p class="story-line text-3xl font-extrabold mt-2">Llegó 2020.</p>
-          </div>
-
-          <div class="mt-8 flex flex-col gap-3">
-            <p class="story-line">Un día encontré un curso gratuito de programación desde cero.</p>
-            <p class="story-line">Pensé:</p>
-            <p class="story-line italic text-[#4F5D75]">“Vamos a probar”.</p>
-            <p class="story-line italic text-[#4F5D75]">“Total, ¿qué es lo peor que puede pasar?”</p>
-            <p class="story-line italic text-[#4F5D75]">“¿Que me termine gustando más programar que la carrera?”</p>
-          </div>
-        </div>
-
-        <!-- Escena 10 (MOMENTO VISUAL ADIVINÁ: centrado, aislado, Newsreader Italic Coral) -->
-        <div class="story-scene story-adivina-section" data-scene="10">
-          <div class="story-adivina-box" id="adivina-box">
-            <span class="adivina-word">Adiviná.</span>
-          </div>
-        </div>
-
-        <!-- Escena 11 -->
-        <div class="story-scene" data-scene="11">
-          <p class="story-line font-bold text-3xl">Sí.</p>
-          <p class="story-line text-xl mt-3">Me gustó más de lo previsto.</p>
-          <p class="story-line text-2xl font-bold text-[#EF8354]">Bastante más.</p>
-          <p class="story-line mt-5">Tuve una crisis existencial tremenda.</p>
-          <p class="story-line text-[#4F5D75] italic">Si hasta ya me había reservado un mail con el prefijo “Cr.”.</p>
-          <p class="story-line mt-4">Así que tuve que mandar al armario a mi yo contador.</p>
-          <p class="story-line font-semibold">Y dejar salir a mi yo programador.</p>
-          <p class="story-line mt-5 text-[#4F5D75]">Fueron tres años aprendiendo lenguajes, librerías y conceptos que jamás pensé que mi cabeza iba a entender.</p>
-        </div>
-
-        <!-- Escena 12 -->
-        <div class="story-scene" data-scene="12">
-          <p class="story-line font-medium">Cuando se acomodó la crisis existencial, llegó la laboral.</p>
-          <div class="mt-4 flex flex-col gap-2 text-[#4F5D75]">
-            <p class="story-line">No me había quedado sin trabajo.</p>
-            <p class="story-line">Pero mis intereses ya estaban en otra parte.</p>
-            <p class="story-line mt-2">Ese puesto lo había conseguido mi yo contador.</p>
-            <p class="story-line font-semibold text-[#222222]">Y yo ya estaba en otra.</p>
-          </div>
-        </div>
-
-        <!-- Escena 13 (Frase de Marca: El plot twist como estrategia de vida) -->
-        <div class="story-scene" data-scene="13">
-          <p class="story-line text-xl font-medium">Entonces empecé a reconvertirme.</p>
-          
-          <div class="brand-plot-twist-display">
-            El plot twist como estrategia de vida.
-          </div>
-
-          <div class="mt-6 flex flex-col gap-3">
-            <p class="story-line">Lideré un proyecto de transformación digital dentro de mi área.</p>
-            <p class="story-line">Y tiempo después me llegó la propuesta para pasarme al equipo de desarrollo.</p>
-            <p class="story-line font-medium text-lg">Una oferta que me costó muchísimo aceptar.</p>
-            <p class="story-line text-sm italic text-[#EF8354]">Espero que se entienda la ironía.</p>
-          </div>
-        </div>
-
-        <!-- Escena 14 -->
-        <div class="story-scene" data-scene="14">
-          <p class="story-line">Pero como buen geminiano, no me iba a conformar solo con eso.</p>
-          <p class="story-line mt-2">Un día decidí volver a tocar las puertas de la facultad.</p>
-          <p class="story-line mt-1 font-semibold">Y retomar la carrera que había dejado.</p>
-        </div>
-
-        <!-- Escena 15 -->
-        <div class="story-scene" data-scene="15">
-          <p class="story-line font-bold text-2xl">Hoy trabajo como Analista Funcional.</p>
-          <div class="stagger-lines flex flex-col gap-1 mt-3 text-[#4F5D75]">
-            <p class="story-stagger-item">Sigo estudiando.</p>
-            <p class="story-stagger-item">Sigo aprendiendo.</p>
-            <p class="story-stagger-item">Sigo actualizando mis skills de tecnología.</p>
-          </div>
-          <p class="story-line text-xl font-medium mt-5">Y crío a un labrador que apareció por sorpresa en mi vida.</p>
-          <p class="story-line text-sm italic text-[#4F5D75] mt-1">Pero esa historia se merece su propio relato.</p>
-        </div>
-
-        <!-- Escena 16: Cierre Estable (NO desaparece con scroll) -->
-        <div class="conoceme-cierre-estable">
-          <p class="text-xl md:text-2xl font-sans font-medium text-[#222222] leading-relaxed">
-            Hoy por hoy, mi día a día se divide entre mi trabajo como Analista Funcional, mi formación, el aprendizaje constante y la vida con un labrador que apareció para desordenar bastante lindo el guion.
+        <!-- Frase 1 -->
+        <div class="story-beat" data-beat="1">
+          <p class="beat-text">
+            Nací en <strong class="font-semibold text-[#222222]">Paysandú</strong>. En el 93.<br>
+            En una casa donde la plata rara vez alcanzaba a fin de mes.<br>
+            Fui el menor de tres hermanos.
           </p>
+        </div>
+
+        <!-- Frase 2 -->
+        <div class="story-beat" data-beat="2">
+          <p class="beat-text">
+            <span class="text-xs uppercase tracking-widest text-[#EF8354] font-bold block mb-2">Infancia</span>
+            El típico niño bueno. Tímido. Callado. Buen alumno.
+          </p>
+        </div>
+
+        <!-- Frase 3 -->
+        <div class="story-beat" data-beat="3">
+          <p class="beat-text">
+            Pero eso no te salva en los recreos.<br>
+            Los niños saben ser crueles.<br>
+            Y a mí me hicieron pagar bastante caro el ser distinto.<br>
+            O, como preferían decirlo, <strong class="text-[#EF8354] font-bold">“puto”</strong>.
+          </p>
+        </div>
+
+        <!-- Frase 4 -->
+        <div class="story-beat" data-beat="4">
+          <p class="beat-text">
+            Después empecé a trabajar de lo que viniera.<br>
+            Repositor. Instructor. Administrativo. Empleado público.<br>
+            Llegué a tener <strong class="font-bold text-[#222222]">cuatro trabajos al mismo tiempo</strong>.<br>
+            <span class="font-serif italic text-[#EF8354] text-2xl block mt-2">Burnout for export.</span>
+          </p>
+        </div>
+
+        <!-- Frase 5 -->
+        <div class="story-beat" data-beat="5">
+          <p class="beat-text">
+            A los 22 me puse una meta.<br>
+            Ahorrar. Peso por peso. Subirme a un avión por primera vez. Cruzar el Atlántico. Conocer Europa.<br>
+            <strong class="font-bold text-2xl block mt-3 text-[#222222]">Lo logré.</strong>
+          </p>
+        </div>
+
+        <!-- Frase 6: Momento Crítico del Duelo (Trigger Dark Mode) -->
+        <div class="story-beat trigger-dark-chapter" data-beat="6">
+          <p class="beat-text">
+            Pero a la vida a veces le gusta hacer bromas bastante pesadas.<br>
+            <span class="font-serif italic font-bold text-[#EF8354] text-2xl md:text-3xl block my-3">Una semana antes de ese viaje, murió mi viejo.</span>
+            Ese viaje me partió al medio.<br>
+            Por el esfuerzo. Por el sueño. Por el duelo.
+          </p>
+        </div>
+
+        <!-- Frase 7 -->
+        <div class="story-beat trigger-light-chapter" data-beat="7">
+          <p class="beat-text">
+            Pero también me empujó.<br>
+            Volví con una idea fija:<br>
+            <strong class="font-semibold text-[#222222]">Enfrentar mis miedos. Dejar todo atrás. Irme a otra ciudad.</strong>
+          </p>
+        </div>
+
+        <!-- Frase 8 -->
+        <div class="story-beat" data-beat="8">
+          <p class="beat-text">
+            A los 24 conseguí trabajo en una administradora de fondos.<br>
+            Vendí lo poco que tenía y <strong class="font-bold text-[#222222]">me vine a Montevideo</strong>.<br>
+            Los primeros meses dormí en el altillo de la casa de un amigo. En un colchón prestado.
+          </p>
+        </div>
+
+        <!-- Frase 9 -->
+        <div class="story-beat" data-beat="9">
+          <p class="beat-text">
+            Ahí empecé a estudiar <strong class="font-semibold text-[#222222]">Contador Público</strong>.<br>
+            Quería ser contador desde chico.<br>
+            <span class="font-serif italic text-[#EF8354] block mt-1">Si te soy sincero, todavía no tengo del todo claro por qué.</span>
+          </p>
+        </div>
+
+        <!-- Frase 10 -->
+        <div class="story-beat" data-beat="10">
+          <p class="beat-text">
+            Porque las computadoras siempre me llamaron la atención.<br>
+            Pero yo miraba el mundo informático y pensaba:<br>
+            <span class="font-serif italic text-[#4F5D75]">“Esto no es para mí”.</span><br>
+            <span class="font-serif italic text-[#4F5D75]">“No me da el bocho”.</span>
+          </p>
+        </div>
+
+        <!-- Frase 11 -->
+        <div class="story-beat" data-beat="11">
+          <p class="beat-text">
+            Y bueno. <strong class="font-bold text-2xl text-[#222222]">Llegó 2020.</strong><br>
+            Un día encontré un curso gratuito de programación desde cero. Pensé: <em>“Vamos a probar. Total, ¿qué es lo peor que puede pasar? ¿Que me termine gustando más programar que la carrera?”</em>
+          </p>
+        </div>
+
+        <!-- Frase 12: Momento de Máxima Intriga "Adiviná." -->
+        <div class="story-beat beat-adivina" data-beat="12">
+          <div class="text-center py-6">
+            <span class="font-serif italic text-[#EF8354] text-6xl md:text-8xl font-normal inline-block">Adiviná.</span>
+          </div>
+        </div>
+
+        <!-- Frase 13 -->
+        <div class="story-beat" data-beat="13">
+          <p class="beat-text">
+            <strong class="font-bold text-3xl text-[#222222]">Sí.</strong> Me gustó más de lo previsto.<br>
+            <strong class="text-[#EF8354] font-bold text-2xl">Bastante más.</strong><br>
+            Tuve una crisis existencial tremenda. Tuve que mandar al armario a mi yo contador y <strong class="font-semibold text-[#222222]">dejar salir a mi yo programador</strong>.<br>
+            Fueron tres años aprendiendo lenguajes y conceptos que jamás pensé que mi cabeza iba a entender.
+          </p>
+        </div>
+
+        <!-- Frase 14 -->
+        <div class="story-beat" data-beat="14">
+          <p class="beat-text">
+            Cuando se acomodó la crisis existencial, llegó la laboral.<br>
+            No me había quedado sin trabajo, pero mis intereses ya estaban en otra parte.<br>
+            Ese puesto lo había conseguido mi yo contador. <strong class="font-bold text-[#222222]">Y yo ya estaba en otra.</strong>
+          </p>
+        </div>
+
+        <!-- Frase 15: Frase de Marca -->
+        <div class="story-beat" data-beat="15">
+          <p class="beat-text">
+            Entonces empecé a reconvertirme.<br>
+            <span class="font-serif italic text-[#EF8354] text-2xl md:text-3xl block my-3 font-semibold">El plot twist como estrategia de vida.</span>
+            Lideré un proyecto de transformación digital dentro de mi área y tiempo después me llegó la propuesta para pasarme al equipo de desarrollo.<br>
+            <span class="text-sm italic text-[#4F5D75]">Una oferta que me costó muchísimo aceptar. Espero que se entienda la ironía.</span>
+          </p>
+        </div>
+
+        <!-- Frase 16 -->
+        <div class="story-beat" data-beat="16">
+          <p class="beat-text">
+            Pero como buen geminiano, no me iba a conformar solo con eso.<br>
+            Un día decidí volver a tocar las puertas de la facultad y <strong class="font-semibold text-[#222222]">retomar la carrera que había dejado</strong>.
+          </p>
+        </div>
+
+        <!-- Frase 17 -->
+        <div class="story-beat" data-beat="17">
+          <p class="beat-text">
+            Hoy trabajo como <strong class="font-bold text-2xl text-[#222222]">Analista Funcional</strong>.<br>
+            Sigo estudiando. Sigo aprendiendo. Sigo actualizando mis skills de tecnología.<br>
+            Y crío a un labrador que apareció por sorpresa en mi vida.
+          </p>
+        </div>
+
+        <!-- Frase 18: Cierre Estable -->
+        <div class="story-beat beat-cierre" data-beat="18">
+          <div class="p-6 rounded-2xl bg-white/50 border border-[#4F5D75]/15 backdrop-blur-md">
+            <p class="beat-text text-xl md:text-2xl font-medium text-[#222222] leading-relaxed">
+              Hoy por hoy, mi día a día se divide entre mi trabajo como Analista Funcional, mi formación, el aprendizaje constante y la vida con un labrador que apareció para desordenar bastante lindo el guion.
+            </p>
+          </div>
         </div>
 
       </div>
 
-      <!-- Columna Lateral Sticky: Fotografía Real (assets/images/alejandro_about.jpg) -->
+      <!-- Columna Lateral Sticky: Fotografía de Alejandro -->
       <div class="story-photo-sticky-col">
         <div class="story-photo-wrapper">
           <img src="assets/images/alejandro_about.jpg" alt="Alejandro Vacaro - Historia personal" class="story-photo-img" loading="lazy">
@@ -453,8 +429,9 @@
     </div>
   </section>
 
-    <!-- ==========================================================================
-       MI EXPERIENCIA (#experiencia) - Timeline Vertical con Cuadros a los Lados & Hover
+      <!-- ==========================================================================
+       MI EXPERIENCIA (#experiencia) - Ordenada de Más Reciente a Más Antigua
+       Línea resaltada en naranja que se va despintando al scrollear
        ========================================================================== -->
   <section id="experiencia" class="experiencia-section" aria-label="Experiencia laboral y trayectoria">
     
@@ -467,206 +444,13 @@
 
     <div class="timeline-container-alt" id="timeline-container">
       
-      <!-- Riel vertical central (desktop 50%, móvil 24px) + Relleno Naranja (Coral Glow) al scroll -->
+      <!-- Riel vertical central: TOTALMENTE NARANJA INICIALMENTE, SE DESPINTA AL SCROLL -->
       <div class="timeline-central-rail">
         <div class="timeline-rail-fill" id="timeline-rail-fill"></div>
       </div>
 
-      <!-- ITEM 1: TA-TA S.A. (Lado Izquierdo) -->
-      <div class="timeline-alt-row row-left" data-index="1">
-        <!-- Tarjeta Interactiva -->
-        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
-          <div class="timeline-exp-card-inner">
-            <div class="exp-card-badge">2011–2012</div>
-            <h3 class="exp-card-company">TA-TA S.A.</h3>
-            <div class="exp-card-role">Auxiliar de Ventas / Auxiliar Especializado</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
-            </div>
-          </div>
-          <!-- Overlay interactivo estilo Formación -->
-          <div class="timeline-exp-card-overlay">
-            <div class="exp-overlay-header">
-              <span class="exp-overlay-company">TA-TA S.A.</span>
-              <span class="exp-overlay-role">Auxiliar de Ventas / Auxiliar de Ventas Especializado</span>
-              <div class="exp-overlay-coral-line"></div>
-            </div>
-            <p class="exp-overlay-desc">
-              Mi primer gran capítulo laboral. Operación, reposición, stock, atención y trabajo desde el piso. Ahí también impulsé Radio Ta-Ta, una iniciativa para unificar la ambientación de las sucursales.
-            </p>
-          </div>
-        </div>
-
-        <!-- Pin central en la línea -->
-        <div class="timeline-center-node" aria-hidden="true"></div>
-
-        <!-- Lado opuesto: Fecha / Milestone -->
-        <div class="timeline-alt-side-label">
-          <span class="side-year-badge">2011–2012</span>
-        </div>
-      </div>
-
-      <!-- ITEM 2: BPS (Lado Derecho) -->
-      <div class="timeline-alt-row row-right" data-index="2">
-        <div class="timeline-alt-side-label">
-          <span class="side-year-badge">2012–2014</span>
-        </div>
-
-        <div class="timeline-center-node" aria-hidden="true"></div>
-
-        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
-          <div class="timeline-exp-card-inner">
-            <div class="exp-card-badge">2012–2014</div>
-            <h3 class="exp-card-company">Banco de Previsión Social</h3>
-            <div class="exp-card-role">Pasante Administrativo</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
-            </div>
-          </div>
-          <div class="timeline-exp-card-overlay">
-            <div class="exp-overlay-header">
-              <span class="exp-overlay-company">Banco de Previsión Social</span>
-              <span class="exp-overlay-role">Pasante Administrativo</span>
-              <div class="exp-overlay-coral-line"></div>
-            </div>
-            <p class="exp-overlay-desc">
-              Un paso por la administración pública, con foco en trámites, normativa, atención a usuarios y coordinación de gestiones.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ITEM 3: COMEPA (Lado Izquierdo) -->
-      <div class="timeline-alt-row row-left" data-index="3">
-        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
-          <div class="timeline-exp-card-inner">
-            <div class="exp-card-badge">2014–2018</div>
-            <h3 class="exp-card-company">Corporación Médica de Paysandú</h3>
-            <div class="exp-card-role">Auxiliar Contable / Administrativo de Tesorería</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
-            </div>
-          </div>
-          <div class="timeline-exp-card-overlay">
-            <div class="exp-overlay-header">
-              <span class="exp-overlay-company">Corporación Médica de Paysandú</span>
-              <span class="exp-overlay-role">Auxiliar Contable / Administrativo de Tesorería</span>
-              <div class="exp-overlay-coral-line"></div>
-            </div>
-            <p class="exp-overlay-desc">
-              Una etapa muy formativa en tesorería, conciliaciones, flujo de fondos, control financiero e información para la toma de decisiones.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-center-node" aria-hidden="true"></div>
-
-        <div class="timeline-alt-side-label">
-          <span class="side-year-badge">2014–2018</span>
-        </div>
-      </div>
-
-      <!-- ITEM 4: IGLESIA (Lado Derecho) -->
-      <div class="timeline-alt-row row-right" data-index="4">
-        <div class="timeline-alt-side-label">
-          <span class="side-year-badge">2016–2018</span>
-        </div>
-
-        <div class="timeline-center-node" aria-hidden="true"></div>
-
-        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
-          <div class="timeline-exp-card-inner">
-            <div class="exp-card-badge">2016–2018</div>
-            <h3 class="exp-card-company">Iglesia Católica Apostólica y Romana en el Uruguay</h3>
-            <div class="exp-card-role">Analista Financiero</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
-            </div>
-          </div>
-          <div class="timeline-exp-card-overlay">
-            <div class="exp-overlay-header">
-              <span class="exp-overlay-company">Iglesia Católica Apostólica y Romana en el Uruguay</span>
-              <span class="exp-overlay-role">Analista Financiero</span>
-              <div class="exp-overlay-coral-line"></div>
-            </div>
-            <p class="exp-overlay-desc">
-              Gestión contable y financiera, análisis económico, implementación de sistema contable y reestructura informática, documental y operativa.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ITEM 5: PETROBRAS (Lado Izquierdo) -->
-      <div class="timeline-alt-row row-left" data-index="5">
-        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
-          <div class="timeline-exp-card-inner">
-            <div class="exp-card-badge">2016</div>
-            <h3 class="exp-card-company">Estación Novo Centro Petrobras</h3>
-            <div class="exp-card-role">Auxiliar Administrativo</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
-            </div>
-          </div>
-          <div class="timeline-exp-card-overlay">
-            <div class="exp-overlay-header">
-              <span class="exp-overlay-company">Estación Novo Centro Petrobras</span>
-              <span class="exp-overlay-role">Auxiliar Administrativo</span>
-              <div class="exp-overlay-coral-line"></div>
-            </div>
-            <p class="exp-overlay-desc">
-              Un capítulo breve, enfocado en control administrativo de movimientos de caja y medios de pago.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-center-node" aria-hidden="true"></div>
-
-        <div class="timeline-alt-side-label">
-          <span class="side-year-badge">2016</span>
-        </div>
-      </div>
-
-      <!-- ITEM 6: GIMNASIO RAQIS (Lado Derecho) -->
-      <div class="timeline-alt-row row-right" data-index="6">
-        <div class="timeline-alt-side-label">
-          <span class="side-year-badge">2016–2017</span>
-        </div>
-
-        <div class="timeline-center-node" aria-hidden="true"></div>
-
-        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
-          <div class="timeline-exp-card-inner">
-            <div class="exp-card-badge">2016–2017</div>
-            <h3 class="exp-card-company">Gimnasio Raqis</h3>
-            <div class="exp-card-role">Instructor</div>
-            <div class="exp-card-hint">
-              <span>Pasa el mouse para ver detalle</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
-            </div>
-          </div>
-          <div class="timeline-exp-card-overlay">
-            <div class="exp-overlay-header">
-              <span class="exp-overlay-company">Gimnasio Raqis</span>
-              <span class="exp-overlay-role">Instructor de Zumba</span>
-              <div class="exp-overlay-coral-line"></div>
-            </div>
-            <p class="exp-overlay-desc">
-              Sí, también fui instructor de Zumba.
-            </p>
-            <p class="text-[#EF8354] font-serif italic text-base mt-2">
-              Te dije que no había sido lineal.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ITEM 7: REPÚBLICA AFAP (Lado Izquierdo con estilo destacado) -->
-      <div class="timeline-alt-row row-left featured-row" data-index="7">
+      <!-- ITEM 1: REPÚBLICA AFAP (2018–actualidad) - Más Reciente / Puesto Actual -->
+      <div class="timeline-alt-row row-left featured-row" data-index="1">
         <div class="timeline-exp-card card-featured group" tabindex="0" role="button" aria-expanded="false">
           <div class="timeline-exp-card-inner">
             <div class="flex items-center justify-between gap-2">
@@ -675,14 +459,14 @@
             </div>
             <h3 class="exp-card-company company-featured">República AFAP</h3>
             <div class="exp-card-role role-featured">Analista Funcional</div>
-            <p class="text-xs text-[#4F5D75] mt-1 font-medium">3 etapas de crecimiento: Atención al Cliente · Gestión Previsional · Analista Funcional</p>
+            <p class="text-xs text-[#4F5D75] mt-1 font-medium">3 etapas: Atención al Cliente · Gestión Previsional · Analista Funcional</p>
             <div class="exp-card-hint mt-3">
               <span>Pasa el mouse para ver las 3 etapas</span>
               <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
             </div>
           </div>
           
-          <!-- Overlay interactivo completo para AFAP -->
+          <!-- Overlay interactivo con las 3 subetapas -->
           <div class="timeline-exp-card-overlay overlay-featured">
             <div class="exp-overlay-header">
               <div class="flex items-center justify-between">
@@ -720,10 +504,199 @@
           </div>
         </div>
 
-        <div class="timeline-center-node node-featured" aria-hidden="true"></div>
+        <div class="timeline-center-node node-featured is-active" aria-hidden="true"></div>
 
         <div class="timeline-alt-side-label">
           <span class="side-year-badge badge-active">2018–actualidad</span>
+        </div>
+      </div>
+
+      <!-- ITEM 2: GIMNASIO RAQIS (2016–2017) -->
+      <div class="timeline-alt-row row-right" data-index="2">
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2016–2017</span>
+        </div>
+
+        <div class="timeline-center-node is-active" aria-hidden="true"></div>
+
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2016–2017</div>
+            <h3 class="exp-card-company">Gimnasio Raqis</h3>
+            <div class="exp-card-role">Instructor</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">Gimnasio Raqis</span>
+              <span class="exp-overlay-role">Instructor de Zumba</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
+              Sí, también fui instructor de Zumba.
+            </p>
+            <p class="text-[#EF8354] font-serif italic text-base mt-2">
+              Te dije que no había sido lineal.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 3: PETROBRAS (2016) -->
+      <div class="timeline-alt-row row-left" data-index="3">
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2016</div>
+            <h3 class="exp-card-company">Estación Novo Centro Petrobras</h3>
+            <div class="exp-card-role">Auxiliar Administrativo</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">Estación Novo Centro Petrobras</span>
+              <span class="exp-overlay-role">Auxiliar Administrativo</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
+              Un capítulo breve, enfocado en control administrativo de movimientos de caja y medios de pago.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-center-node is-active" aria-hidden="true"></div>
+
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2016</span>
+        </div>
+      </div>
+
+      <!-- ITEM 4: IGLESIA CATÓLICA (2016–2018) -->
+      <div class="timeline-alt-row row-right" data-index="4">
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2016–2018</span>
+        </div>
+
+        <div class="timeline-center-node is-active" aria-hidden="true"></div>
+
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2016–2018</div>
+            <h3 class="exp-card-company">Iglesia Católica Apostólica y Romana en el Uruguay</h3>
+            <div class="exp-card-role">Analista Financiero</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">Iglesia Católica Apostólica y Romana en el Uruguay</span>
+              <span class="exp-overlay-role">Analista Financiero</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
+              Gestión contable y financiera, análisis económico, implementación de sistema contable y reestructura informática, documental y operativa.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 5: COMEPA (2014–2018) -->
+      <div class="timeline-alt-row row-left" data-index="5">
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2014–2018</div>
+            <h3 class="exp-card-company">Corporación Médica de Paysandú</h3>
+            <div class="exp-card-role">Auxiliar Contable / Administrativo de Tesorería</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">Corporación Médica de Paysandú</span>
+              <span class="exp-overlay-role">Auxiliar Contable / Administrativo de Tesorería</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
+              Una etapa muy formativa en tesorería, conciliaciones, flujo de fondos, control financiero e información para la toma de decisiones.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-center-node is-active" aria-hidden="true"></div>
+
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2014–2018</span>
+        </div>
+      </div>
+
+      <!-- ITEM 6: BPS (2012–2014) -->
+      <div class="timeline-alt-row row-right" data-index="6">
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2012–2014</span>
+        </div>
+
+        <div class="timeline-center-node is-active" aria-hidden="true"></div>
+
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2012–2014</div>
+            <h3 class="exp-card-company">Banco de Previsión Social</h3>
+            <div class="exp-card-role">Pasante Administrativo</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">Banco de Previsión Social</span>
+              <span class="exp-overlay-role">Pasante Administrativo</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
+              Un paso por la administración pública, con foco en trámites, normativa, atención a usuarios y coordinación de gestiones.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 7: TA-TA S.A. (2011–2012) -->
+      <div class="timeline-alt-row row-left" data-index="7">
+        <div class="timeline-exp-card group" tabindex="0" role="button" aria-expanded="false">
+          <div class="timeline-exp-card-inner">
+            <div class="exp-card-badge">2011–2012</div>
+            <h3 class="exp-card-company">TA-TA S.A.</h3>
+            <div class="exp-card-role">Auxiliar de Ventas / Auxiliar Especializado</div>
+            <div class="exp-card-hint">
+              <span>Pasa el mouse para ver detalle</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#EF8354]"></i>
+            </div>
+          </div>
+          <div class="timeline-exp-card-overlay">
+            <div class="exp-overlay-header">
+              <span class="exp-overlay-company">TA-TA S.A.</span>
+              <span class="exp-overlay-role">Auxiliar de Ventas / Auxiliar de Ventas Especializado</span>
+              <div class="exp-overlay-coral-line"></div>
+            </div>
+            <p class="exp-overlay-desc">
+              Mi primer gran capítulo laboral. Operación, reposición, stock, atención y trabajo desde el piso. Ahí también impulsé Radio Ta-Ta, una iniciativa para unificar la ambientación de las sucursales.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-center-node is-active" aria-hidden="true"></div>
+
+        <div class="timeline-alt-side-label">
+          <span class="side-year-badge">2011–2012</span>
         </div>
       </div>
 
@@ -742,16 +715,16 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       MI FORMACIÓN (#formacion) - 5 Tarjetas (3 arriba + 2 centradas abajo)
-       Overlay total desde abajo (450-550ms) + Mobile tap toggle
+    <!-- ==========================================================================
+       MI FORMACIÓN (#formacion) - 6 Tarjetas en Grid 3x2 Simétrico
+       Incluye: Contador, Business Analysis, Data Analytics, Full Stack, Excel Avanzado (Deloitte), Inglés B1
        ========================================================================== -->
   <section id="formacion" class="formacion-section" aria-label="Formación académica y continua">
     
     <div class="formacion-header">
       <h2 class="section-h2">Mi formación.</h2>
       <p class="section-intro">
-        Mi formación tampoco fue lineal. Fui sumando herramientas, capas y lenguajes distintos para entender mejor los problemas que quiero ayudar a resolver.
+        Una combinación entre base analítica, negocio, procesos y tecnología. Aprendizaje formal, continuo y aplicado.
       </p>
     </div>
 
@@ -768,7 +741,6 @@
             <div class="formacion-card-institution">Universidad de la República</div>
             <div class="formacion-card-date">mar. 2018 – en curso</div>
           </div>
-          <!-- Overlay interactivo total -->
           <div class="formacion-card-overlay">
             <div class="overlay-header">
               <span class="overlay-title">CONTADOR PÚBLICO</span>
@@ -820,8 +792,8 @@
 
       </div>
 
-      <!-- Fila 2: 2 Tarjetas CENTRADAS visualmente -->
-      <div class="formacion-row-bottom">
+      <!-- Fila 2: 3 Tarjetas (Simetría Perfecta) -->
+      <div class="formacion-row-top">
         
         <!-- Tarjeta 4: Full Stack -->
         <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
@@ -842,7 +814,26 @@
           </div>
         </div>
 
-        <!-- Tarjeta 5: Inglés -->
+        <!-- Tarjeta 5: Excel Avanzado (Deloitte) -->
+        <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
+          <div class="formacion-card-inner">
+            <span class="formacion-card-category">GESTIÓN & PRODUCTIVIDAD</span>
+            <h3 class="formacion-card-name">EXCEL AVANZADO</h3>
+            <div class="formacion-card-institution">Deloitte</div>
+            <div class="formacion-card-date">Certificación profesional</div>
+          </div>
+          <div class="formacion-card-overlay">
+            <div class="overlay-header">
+              <span class="overlay-title">EXCEL AVANZADO</span>
+              <div class="overlay-coral-line"></div>
+            </div>
+            <p class="overlay-desc">
+              Formación intensiva orientada a la manipulación avanzada de datos, funciones complejas, vinculación de información, tablas dinámicas y reportería ejecutiva para la toma de decisiones.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 6: Inglés -->
         <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
           <div class="formacion-card-inner">
             <span class="formacion-card-category">COMUNICACIÓN GLOBAL</span>
@@ -991,47 +982,55 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       FOOTER (Franja Superior 'Plan sujeto a cambios' + Fila inferior completa)
+    <!-- ==========================================================================
+       FOOTER REDISEÑADO (Idéntico a la referencia con la estética editorial actual)
        ========================================================================== -->
-  <footer class="footer-section-v2">
-    <div class="footer-container-v2">
+  <footer class="footer-section-v2 bg-[#2D3142] text-[#F5F2EC] py-10 px-6 md:px-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col gap-8">
       
-      <!-- Franja superior del footer -->
-      <div class="footer-top-strip">
-        <p class="footer-lead-phrase">Plan sujeto a cambios.</p>
-        <p class="footer-sub-phrase">El plot twist ya está contemplado.</p>
-      </div>
-
-      <!-- Fila inferior del footer -->
-      <div class="footer-bottom-row">
+      <!-- Fila Superior: AV Badge + Nombre / Cargo + Enlaces Centro + Botón 'Volver arriba' -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         
-        <!-- Izquierda: Logo SVG (rotación -4deg al hover) + Alejandro Vacaro -->
-        <div class="footer-brand-wrap">
-          <svg class="footer-logo-svg" viewBox="0 0 108 96" fill="currentColor" aria-hidden="true">
-            <path d="M 22.57 52.7 L 50.56 4.22 C 52.11 1.54 55.99 1.54 57.54 4.22 L 105.74 87.72 C 107.3 90.42 105.35 93.8 102.24 93.8 L 78.59 93.8 C 72.13 93.8 66.17 90.35 62.94 84.76 L 50.73 63.62 C 45.08 53.82 33.36 49.28 22.57 52.7 Z"/>
-            <path d="M 14.27 67.09 C 17.45 61.58 23.33 58.18 29.69 58.18 C 39.53 58.18 47.5 66.16 47.5 75.99 C 47.5 85.83 39.53 93.8 29.69 93.8 L 5.87 93.8 C 2.75 93.8 0.8 90.42 2.36 87.71 L 14.27 67.09 Z"/>
-          </svg>
-          <span class="font-sans font-semibold text-base text-[#F5F2EC]">Alejandro Vacaro</span>
+        <!-- Izquierda: AV Badge + Nombre y Cargo -->
+        <div class="flex items-center gap-3.5">
+          <!-- AV Badge Circular -->
+          <div class="w-10 h-10 rounded-full bg-[#EF8354] text-[#2D3142] font-black text-sm flex items-center justify-center tracking-tight shadow-md select-none shrink-0">
+            AV
+          </div>
+          <div class="flex flex-col">
+            <span class="text-white font-bold text-base leading-tight">Alejandro Vacaro</span>
+            <span class="text-xs text-[#BFC0C0] font-medium mt-0.5">Analista Funcional · Business Analysis</span>
+          </div>
         </div>
 
-        <!-- Centro: Navegación de pie de página (solo desktop) -->
-        <nav class="hidden md:flex items-center gap-5 text-sm font-sans" aria-label="Navegación del pie">
-          <a href="#conoceme" class="footer-nav-link">Conóceme</a>
-          <span class="text-[#4F5D75]">·</span>
-          <a href="#experiencia" class="footer-nav-link">Mi experiencia</a>
-          <span class="text-[#4F5D75]">·</span>
-          <a href="#formacion" class="footer-nav-link">Mi formación</a>
-          <span class="text-[#4F5D75]">·</span>
-          <a href="#contacto" class="footer-nav-link">Contáctame</a>
+        <!-- Centro: Navegación -->
+        <nav class="flex items-center flex-wrap justify-center gap-6 text-sm font-medium text-[#BFC0C0]" aria-label="Navegación del pie">
+          <a href="#home" class="hover:text-[#EF8354] transition-colors">Inicio</a>
+          <a href="#conoceme" class="hover:text-[#EF8354] transition-colors">Conóceme</a>
+          <a href="#experiencia" class="hover:text-[#EF8354] transition-colors">Experiencia</a>
+          <a href="#formacion" class="hover:text-[#EF8354] transition-colors">Formación</a>
+          <a href="#contacto" class="hover:text-[#EF8354] transition-colors">¡Hablemos!</a>
         </nav>
 
-        <!-- Derecha: Copyright & Micro-crédito -->
-        <div class="footer-right-col">
-          <p class="text-sm text-[#F5F2EC]/90 font-medium">© 2026 Alejandro Vacaro</p>
-          <p class="text-xs text-[#BFC0C0]/70 mt-1">Hecho con criterio, curiosidad y alguna que otra IA.</p>
+        <!-- Derecha: Botón 'Volver arriba' con flecha -->
+        <div>
+          <a href="#home" class="inline-flex items-center gap-2 bg-[#EF8354] text-[#2D3142] hover:bg-[#F5F2EC] transition-all duration-300 px-5 py-2 rounded-full font-bold text-xs tracking-wide uppercase shadow-lg shadow-[#EF8354]/20 group" aria-label="Volver arriba">
+            <i data-lucide="arrow-up" class="w-4 h-4 transition-transform group-hover:-translate-y-0.5"></i>
+            <span>Volver arriba</span>
+          </a>
         </div>
 
+      </div>
+
+      <!-- Línea Divisoria Sutil -->
+      <div class="w-full h-px bg-white/10"></div>
+
+      <!-- Fila Inferior: Copyright izquierda + Crédito derecha -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#BFC0C0]/80">
+        <p>© 2026 Alejandro Vacaro. Montevideo, Uruguay.</p>
+        <p class="flex items-center gap-1">
+          Diseñado y construido con <span class="text-[#EF8354]">💛</span> e inteligencia artificial.
+        </p>
       </div>
 
     </div>
