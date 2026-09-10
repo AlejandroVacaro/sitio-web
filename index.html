@@ -57,7 +57,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=3.8">
+  <link rel="stylesheet" href="css/v2.css?v=3.9">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -457,8 +457,8 @@
       <div class="timeline-alt-row row-left featured-row" data-index="1">
         <div class="timeline-exp-card card-featured group" tabindex="0" role="button" aria-expanded="false">
           <div class="timeline-exp-card-inner">
-            <div class="flex items-center justify-between gap-2">
-              <div class="exp-card-badge badge-featured">2018–actualidad</div>
+            <div class="flex items-center justify-end gap-2 w-full mb-2">
+              <div class="exp-card-badge badge-featured !mb-0">2018–actualidad</div>
               <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-[#EF8354]/15 text-[#EF8354] border border-[#EF8354]/30">Puesto actual</span>
             </div>
             <h3 class="exp-card-company company-featured">República AFAP</h3>
@@ -1001,49 +1001,49 @@
         <div class="contacto-right-col flex flex-col w-full h-full">
           <div class="form-container-card form-container-highlight w-full h-full flex flex-col justify-between" id="form-card-container">
             
-            <!-- Contenido del Formulario -->
+            <!-- Contenido del Formulario (Proporción exacta con el estado de enviado) -->
             <div id="form-main-state" class="flex flex-col h-full justify-between">
-              <div class="mb-3">
-                <h3 class="text-2xl font-bold font-sans text-white tracking-tight">Mandame un mensaje.</h3>
-                <p class="font-serif italic text-[#EF8354] text-lg mt-0.5">Prometo responderte a la brevedad.</p>
+              <div class="mb-2.5">
+                <h3 class="text-xl sm:text-2xl font-bold font-sans text-white tracking-tight">Mandame un mensaje.</h3>
+                <p class="font-serif italic text-[#EF8354] text-base sm:text-lg mt-0.5">Prometo responderte a la brevedad.</p>
               </div>
 
               <!-- Formulario FormSubmit Real con endpoint y anti-spam -->
-              <form id="contact-form" action="https://formsubmit.co/avacaro@outlook.com" method="POST" class="flex flex-col gap-4 flex-1 justify-between">
+              <form id="contact-form" action="https://formsubmit.co/avacaro@outlook.com" method="POST" class="flex flex-col gap-3 flex-1 justify-between">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
                 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
                 <!-- Fila 1: Nombre y Email en 2 Columnas -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <!-- Nombre -->
-                  <div class="flex flex-col gap-1.5">
+                  <div class="flex flex-col gap-1">
                     <label for="form-name" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Nombre</label>
-                    <input type="text" id="form-name" name="name" required placeholder="Tu nombre" class="form-field-input">
+                    <input type="text" id="form-name" name="name" required placeholder="Tu nombre" class="form-field-input !py-2.5 !text-sm">
                   </div>
 
                   <!-- Email -->
-                  <div class="flex flex-col gap-1.5">
+                  <div class="flex flex-col gap-1">
                     <label for="form-email" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Email</label>
-                    <input type="email" id="form-email" name="email" required placeholder="ejemplo@correo.com" class="form-field-input">
+                    <input type="email" id="form-email" name="email" required placeholder="ejemplo@correo.com" class="form-field-input !py-2.5 !text-sm">
                   </div>
                 </div>
 
                 <!-- Fila 2: Asunto -->
-                <div class="flex flex-col gap-1.5">
+                <div class="flex flex-col gap-1">
                   <label for="form-subject" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Asunto</label>
-                  <input type="text" id="form-subject" name="subject" placeholder="¿De qué querés hablar?" class="form-field-input">
+                  <input type="text" id="form-subject" name="subject" placeholder="¿De qué querés hablar?" class="form-field-input !py-2.5 !text-sm">
                 </div>
 
                 <!-- Fila 3: Mensaje -->
-                <div class="flex flex-col gap-1.5 flex-1">
+                <div class="flex flex-col gap-1 flex-1">
                   <label for="form-message" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Mensaje</label>
-                  <textarea id="form-message" name="message" required rows="4" placeholder="Siéntete libre, estaré muy contento de leerte." class="form-field-input form-field-textarea flex-1"></textarea>
+                  <textarea id="form-message" name="message" required rows="3" placeholder="Siéntete libre, estaré muy contento de leerte." class="form-field-input form-field-textarea flex-1 !py-2.5 !text-sm"></textarea>
                 </div>
 
                 <!-- Botón de Envío -->
-                <div class="pt-1">
-                  <button type="submit" id="submit-btn" class="form-submit-btn w-full sm:w-auto">
+                <div class="pt-0.5">
+                  <button type="submit" id="submit-btn" class="form-submit-btn w-full sm:w-auto !py-2.5 !px-6">
                     <span>Enviar mensaje</span>
                     <i data-lucide="send" class="w-4 h-4"></i>
                   </button>
@@ -1052,19 +1052,21 @@
               </form>
             </div>
 
-            <!-- Estado de Agradecimiento (Celebración con Confeti) -->
-            <div id="form-success-state" class="hidden flex-col items-center justify-center text-center py-10 px-4 transition-all duration-500 transform scale-95 opacity-0 my-auto">
-              <div class="w-16 h-16 rounded-full bg-[#EF8354]/20 border border-[#EF8354]/50 text-[#EF8354] flex items-center justify-center mb-4 shadow-xl shadow-[#EF8354]/20">
+            <!-- Estado de Agradecimiento (Celebración con Confeti) - 100% Centrado -->
+            <div id="form-success-state" class="hidden flex flex-col items-center justify-center text-center py-8 px-4 transition-all duration-500 transform scale-95 opacity-0 my-auto w-full h-full">
+              <div id="form-success-icon-badge" class="w-16 h-16 rounded-full bg-[#EF8354]/20 border border-[#EF8354]/50 text-[#EF8354] flex items-center justify-center mx-auto mb-4 shadow-xl shadow-[#EF8354]/20">
                 <i data-lucide="check" class="w-8 h-8 stroke-[2.5]"></i>
               </div>
-              <h3 class="text-2xl font-bold font-sans text-white mb-2">¡Gracias por tu mensaje!</h3>
-              <p class="text-lg font-serif italic text-[#EF8354] mb-3">Prometo responderte a la brevedad.</p>
-              <p class="text-sm text-[#BFC0C0] max-w-sm mb-6">
+              <h3 class="text-2xl sm:text-3xl font-bold font-sans text-white mb-2 text-center w-full">¡Gracias por tu mensaje!</h3>
+              <p class="text-lg font-serif italic text-[#EF8354] mb-3 text-center w-full">Prometo responderte a la brevedad.</p>
+              <p class="text-sm text-[#BFC0C0] max-w-sm mx-auto mb-6 text-center leading-relaxed">
                 Tu consulta ya fue recibida y te estaré respondiendo directamente a tu correo electrónico.
               </p>
-              <button type="button" id="send-another-btn" class="px-6 py-2.5 rounded-full border border-white/20 text-[#F5F2EC] hover:bg-white/10 hover:border-white/40 text-xs font-semibold uppercase tracking-wider transition-all">
-                Enviar otro mensaje
-              </button>
+              <div class="flex justify-center w-full">
+                <button type="button" id="send-another-btn" class="px-6 py-2.5 rounded-full border border-white/20 text-[#F5F2EC] hover:bg-white/10 hover:border-white/40 text-xs font-semibold uppercase tracking-wider transition-all mx-auto">
+                  Enviar otro mensaje
+                </button>
+              </div>
             </div>
 
           </div>
@@ -1137,6 +1139,6 @@
   </div>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=3.8"></script>
+  <script src="js/v2.js?v=3.9"></script>
 </body>
 </html>
