@@ -494,25 +494,29 @@ body {
 }
 
 /* ==========================================================================
-   CONÓCEME - PERMANENTE AZUL OSCURO / JET BLACK & NEWSREADER ITÁLICA
+   CONÓCEME - ESCENARIO INTERACTIVO APPLE-GRADE
+   Fondo azul oscuro #2D3142, Newsreader itálica, flechas y scroll contenido
    ========================================================================== */
 .conoceme-apple-section {
   position: relative;
-  height: 950vh; /* Calibrado para 45 beats de scrollytelling fluido */
+  min-height: calc(100vh - 64px);
   background-color: var(--jet-black) !important; /* Siempre azul oscuro #2D3142 */
   color: var(--ivory) !important;
   border-top: 1px solid rgba(245, 242, 236, 0.08);
   border-bottom: 1px solid rgba(245, 242, 236, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 0;
+  box-sizing: border-box;
 }
 
 .conoceme-apple-viewport {
-  position: sticky;
-  top: 64px;
-  height: calc(100vh - 64px);
+  position: relative;
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 32px 40px 40px;
+  padding: 0 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -520,14 +524,15 @@ body {
 }
 
 @media (max-width: 1024px) {
-  .conoceme-apple-viewport { padding: 24px 28px; }
+  .conoceme-apple-viewport { padding: 0 28px; }
 }
 @media (max-width: 768px) {
-  .conoceme-apple-section { height: auto; }
+  .conoceme-apple-section {
+    min-height: auto;
+    padding: 56px 0;
+  }
   .conoceme-apple-viewport {
-    position: static;
-    height: auto;
-    padding: 48px 20px;
+    padding: 0 20px;
   }
 }
 
@@ -544,8 +549,8 @@ body {
 
 .conoceme-apple-stage {
   display: grid;
-  grid-template-columns: 340px minmax(0, 1fr);
-  gap: clamp(48px, 6vw, 84px);
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 72px);
   align-items: center;
   width: 100%;
 }
@@ -553,14 +558,14 @@ body {
 @media (max-width: 900px) {
   .conoceme-apple-stage {
     grid-template-columns: 280px minmax(0, 1fr);
-    gap: 36px;
+    gap: 32px;
   }
 }
 @media (max-width: 768px) {
   .conoceme-apple-stage {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
   }
 }
 
@@ -573,7 +578,7 @@ body {
 
 .conoceme-apple-photo-card {
   width: 100%;
-  max-width: 340px;
+  max-width: 320px;
   aspect-ratio: 4 / 5;
   border-radius: 24px;
   overflow: hidden;
@@ -599,24 +604,25 @@ body {
 
 .conoceme-apple-stage-card {
   width: 100%;
-  min-height: 400px;
-  background: rgba(35, 38, 52, 0.85);
+  min-height: 420px;
+  background: rgba(35, 38, 52, 0.88);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(245, 242, 236, 0.14);
   border-radius: 24px;
-  padding: 36px 44px;
+  padding: 36px 44px 56px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  cursor: default;
 }
 
 @media (max-width: 768px) {
   .conoceme-apple-stage-card {
-    min-height: auto;
-    padding: 28px 24px;
+    min-height: 380px;
+    padding: 28px 24px 60px;
   }
 }
 
@@ -627,36 +633,73 @@ body {
   background: rgba(255, 255, 255, 0.14);
   border-radius: 9999px;
   overflow: hidden;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   position: relative;
 }
 
 .story-progress-bar-fill {
   height: 100%;
-  width: 6%; /* Comienza en el primer beat */
+  width: 4.76%; /* 1 de 21 beats */
   background-color: var(--coral-glow);
   box-shadow: 0 0 10px rgba(239, 131, 84, 0.8);
   border-radius: 9999px;
-  transition: width 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 320ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Contenedor de Frases Escénicas */
 .story-beats-container {
   position: relative;
   flex: 1;
-  min-height: 260px;
+  min-height: 270px;
   display: flex;
   align-items: center;
 }
 
-@media (max-width: 768px) {
-  .story-beats-container {
-    min-height: auto;
-    display: block;
-  }
+/* Flechas Interactivas en la parte inferior derecha dentro de la tarjeta */
+.story-nav-arrows {
+  position: absolute;
+  bottom: 20px;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 20;
 }
 
-/* Transiciones vistosas y elegantes Apple-style (36px + scale + blur 8px) */
+.story-arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(245, 242, 236, 0.16);
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.story-arrow-btn:hover:not(:disabled) {
+  background: rgba(239, 131, 84, 0.2);
+  border-color: var(--coral-glow);
+  color: var(--coral-glow);
+  transform: scale(1.08);
+}
+
+.story-arrow-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.story-arrow-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+}
+
+/* Transiciones vistosas y elegantes Apple-style (32px + scale + blur 8px) */
 .apple-story-beat {
   position: absolute;
   inset: 0;
@@ -668,12 +711,13 @@ body {
   filter: blur(8px);
   pointer-events: none;
   visibility: hidden;
-  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
-              filter 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 450ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
+              filter 450ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
   overflow-y: auto;
   scrollbar-width: none;
+  padding-right: 48px; /* Margen para no invadir zona de flechas si el texto baja */
 }
 .apple-story-beat::-webkit-scrollbar {
   display: none;
@@ -695,31 +739,12 @@ body {
   visibility: hidden !important;
 }
 
-@media (max-width: 768px) {
-  .apple-story-beat {
-    position: relative;
-    inset: auto;
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    pointer-events: auto !important;
-    visibility: visible !important;
-    margin-bottom: 24px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(245, 242, 236, 0.1);
-  }
-  .apple-story-beat:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
-}
-
 /* Tipografía en Newsreader Itálica ("esa cosa itálica") */
 .apple-beat-text {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
-  line-height: 1.6;
+  font-size: clamp(1.15rem, 1.45vw, 1.38rem);
+  line-height: 1.62;
   color: var(--ivory);
   letter-spacing: -0.01em;
   margin: 0;
@@ -742,7 +767,6 @@ body {
   font-style: normal;
   color: rgba(245, 242, 236, 0.95);
 }
-
 
 /* ==========================================================================
    TRANSICIONES ENTRE SECCIONES

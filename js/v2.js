@@ -22,8 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Conóceme Apple Stage
   const conocemeSection = document.getElementById('conoceme');
+  const stageCard = document.querySelector('.conoceme-apple-stage-card');
   const appleBeats = document.querySelectorAll('.apple-story-beat');
   const progressFill = document.getElementById('story-progress-fill');
+  const prevBtn = document.getElementById('story-prev-btn');
+  const nextBtn = document.getElementById('story-next-btn');
 
   // Timeline elements
   const timelineContainer = document.getElementById('timeline-container');
@@ -45,7 +48,137 @@ document.addEventListener('DOMContentLoaded', () => {
   let isTicking = false;
 
   // ============================================================================
-  // 3. CONTROLADOR DE SCROLL PRINCIPAL
+  // 3. CONÓCEME: CONTROLADOR NARRATIVO (FLECHAS + WHEEL DENTRO DE LA TARJETA)
+  // ============================================================================
+  let currentBeatIndex = 0;
+  const totalBeats = appleBeats.length;
+
+  function updateArrows() {
+    if (prevBtn) prevBtn.disabled = (currentBeatIndex === 0);
+    if (nextBtn) nextBtn.disabled = (currentBeatIndex >= totalBeats - 1);
+  }
+
+  function goToBeat(index) {
+    if (index < 0 || index >= totalBeats) return;
+    currentBeatIndex = index;
+
+    appleBeats.forEach((beat, idx) => {
+      if (idx === currentBeatIndex) {
+        beat.classList.remove('is-exiting');
+        beat.classList.add('is-active');
+      } else if (idx < currentBeatIndex) {
+        beat.classList.remove('is-active');
+        beat.classList.add('is-exiting');
+      } else {
+        beat.classList.remove('is-active');
+        beat.classList.remove('is-exiting');
+      }
+    });
+
+    if (progressFill && totalBeats > 0) {
+      const fillPercent = Math.min(100, Math.max(3, ((currentBeatIndex + 1) / totalBeats) * 100));
+      progressFill.style.width = `${fillPercent}%`;
+    }
+
+    updateArrows();
+  }
+
+  // Inicializar estado de flechas y primer beat
+  updateArrows();
+
+  // A. Eventos de click en las flechas inferior derecha
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentBeatIndex > 0) {
+        goToBeat(currentBeatIndex - 1);
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentBeatIndex < totalBeats - 1) {
+        goToBeat(currentBeatIndex + 1);
+      }
+    });
+  }
+
+  // B. Scroll controlado: SOLO cuando el mouse está DENTRO del recuadro
+  // Si está por fuera, el scroll total de la página sigue su camino normal.
+  if (stageCard) {
+    let wheelAccumulator = 0;
+    let isWheelThrottled = false;
+    let wheelResetTimer = null;
+
+    stageCard.addEventListener('wheel', (e) => {
+      // 1. Si está en la primera frase y scrollea hacia arriba, permitir que la página suba
+      if (currentBeatIndex === 0 && e.deltaY < 0) {
+        return;
+      }
+      // 2. Si está en la última frase y scrollea hacia abajo, permitir que la página baje
+      if (currentBeatIndex >= totalBeats - 1 && e.deltaY > 0) {
+        return;
+      }
+
+      // 3. Dentro del rango narrativo, capturar el scroll para alternar frases
+      e.preventDefault();
+
+      wheelAccumulator += e.deltaY;
+
+      if (wheelResetTimer) clearTimeout(wheelResetTimer);
+      wheelResetTimer = setTimeout(() => {
+        wheelAccumulator = 0;
+      }, 180);
+
+      const THRESHOLD = 28;
+
+      if (!isWheelThrottled) {
+        if (wheelAccumulator > THRESHOLD) {
+          if (currentBeatIndex < totalBeats - 1) {
+            goToBeat(currentBeatIndex + 1);
+            wheelAccumulator = 0;
+            isWheelThrottled = true;
+            setTimeout(() => { isWheelThrottled = false; }, 360);
+          }
+        } else if (wheelAccumulator < -THRESHOLD) {
+          if (currentBeatIndex > 0) {
+            goToBeat(currentBeatIndex - 1);
+            wheelAccumulator = 0;
+            isWheelThrottled = true;
+            setTimeout(() => { isWheelThrottled = false; }, 360);
+          }
+        }
+      }
+    }, { passive: false });
+
+    // Soporte táctil / swipe horizontal en móviles
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    stageCard.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    stageCard.addEventListener('touchend', (e) => {
+      const diffX = e.changedTouches[0].clientX - touchStartX;
+      const diffY = e.changedTouches[0].clientY - touchStartY;
+
+      if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX < 0 && currentBeatIndex < totalBeats - 1) {
+          goToBeat(currentBeatIndex + 1);
+        } else if (diffX > 0 && currentBeatIndex > 0) {
+          goToBeat(currentBeatIndex - 1);
+        }
+      }
+    }, { passive: true });
+  }
+
+
+  // ============================================================================
+  // 4. CONTROLADOR DE SCROLL PRINCIPAL DE LA PÁGINA
   // ============================================================================
   function onScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
@@ -96,41 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // D. Conóceme: Apple-Grade Scrollytelling (Efectos vistosos con blur 8px y scale)
-    if (conocemeSection && appleBeats.length > 0) {
-      const secRect = conocemeSection.getBoundingClientRect();
-      const secTop = secRect.top;
-      const secHeight = secRect.height;
-      const scrollableDistance = secHeight - windowHeight;
-
-      if (window.innerWidth > 768 && scrollableDistance > 0) {
-        const progress = Math.min(1, Math.max(0, -secTop / scrollableDistance));
-        const totalBeats = appleBeats.length;
-        const currentBeatIndex = Math.min(totalBeats - 1, Math.floor(progress * totalBeats));
-
-        // Activar la frase correspondiente y aplicar estados de entrada/salida
-        appleBeats.forEach((beat, idx) => {
-          if (idx === currentBeatIndex) {
-            beat.classList.remove('is-exiting');
-            beat.classList.add('is-active');
-          } else if (idx < currentBeatIndex) {
-            beat.classList.remove('is-active');
-            beat.classList.add('is-exiting');
-          } else {
-            beat.classList.remove('is-active');
-            beat.classList.remove('is-exiting');
-          }
-        });
-
-        // Actualizar barra de progreso full-width (de 2.5% a 100%)
-        if (progressFill) {
-          const fillPercent = Math.min(100, Math.max(2.5, ((currentBeatIndex + 1) / totalBeats) * 100));
-          progressFill.style.width = `${fillPercent}%`;
-        }
-      }
-    }
-
-    // E. Transición 1: Línea horizontal de 0 a 100%
+    // D. Transición 1: Línea horizontal de 0 a 100%
     if (!dividerAnimated && dividerSection && dividerLineTrabajar) {
       const divRect = dividerSection.getBoundingClientRect();
       if (divRect.top < windowHeight * 0.85) {
@@ -139,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // F. Mi Experiencia: Línea naranja que se despinta al scrollear hacia abajo
+    // E. Mi Experiencia: Línea naranja que se despinta al scrollear hacia abajo
     if (timelineContainer && timelineRailFill) {
       const tlRect = timelineContainer.getBoundingClientRect();
       const tlTop = tlRect.top;
@@ -190,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 4. MENÚ MÓVIL (DRAWER)
+  // 5. MENÚ MÓVIL (DRAWER)
   // ============================================================================
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
@@ -228,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 5. HERO PHOTO 3D TILT
+  // 6. HERO PHOTO 3D TILT
   // ============================================================================
   const heroPhotoWrapper = document.getElementById('hero-photo-wrapper');
   if (heroPhotoWrapper && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
@@ -260,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 6. CINTA HORIZONTAL ANIMADA (ENGINE CONTINUO)
+  // 7. CINTA HORIZONTAL ANIMADA (ENGINE CONTINUO)
   // ============================================================================
   const marqueeContainer = document.getElementById('hero-marquee');
   const marqueeTrack = document.getElementById('cinta-track');
@@ -387,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 7. MI EXPERIENCIA & MI FORMACIÓN: OVERLAYS INTERACTIVOS
+  // 8. MI EXPERIENCIA & MI FORMACIÓN: OVERLAYS INTERACTIVOS
   // ============================================================================
   const interactiveCards = document.querySelectorAll('.formacion-card-v2, .timeline-exp-card');
 
@@ -430,7 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 8. TOAST NOTIFICATIONS & FORMULARIO DE CONTACTO AJAX
+  // 9. TOAST NOTIFICATIONS & FORMULARIO DE CONTACTO AJAX
   // ============================================================================
   const toastContainer = document.getElementById('toast-container');
 
