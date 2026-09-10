@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const scrollProgressBar = document.getElementById('scroll-progress-bar');
   const dividerLineTrabajar = document.getElementById('divider-line-trabajar');
   const dividerSection = document.getElementById('divider-trabajar');
-  const conocemeSection = document.getElementById('conoceme');
-  const darkChapter = document.querySelector('.trigger-dark-chapter');
   
-  // Scrollytelling Beats en Conóceme
+  // Conóceme Pinned Stage
+  const conocemeSection = document.getElementById('conoceme');
+  const conocemeTrack = document.getElementById('conoceme-stream-track');
   const storyBeats = document.querySelectorAll('.story-beat');
 
   // Timeline elements
@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function onScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
     const windowHeight = window.innerHeight;
-    const viewportCenter = windowHeight * 0.5;
     const docHeight = document.documentElement.scrollHeight - windowHeight;
 
     // A. Barra de progreso superior
@@ -48,58 +47,59 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollProgressBar.style.width = `${progress}%`;
     }
 
-    // B. Header compacto al scroll > 80px
+    // B. Header: Transparencia sutil con blur sin cambiar altura
     if (mainHeader) {
-      if (scrollY > 80) {
+      if (scrollY > 50) {
         mainHeader.classList.add('scrolled');
       } else {
         mainHeader.classList.remove('scrolled');
       }
     }
 
-    // C. Conóceme: SCROLLYTELLING FRASES EN SPOTLIGHT (Aparecen de a una sutilmente)
-    if (storyBeats.length > 0) {
-      const activeWindow = windowHeight * 0.32; // Ventana focal ~32% del viewport
+    // C. Conóceme: Pinned Viewport Track Translation & Beat Focus
+    if (conocemeSection && conocemeTrack && storyBeats.length > 0) {
+      const secRect = conocemeSection.getBoundingClientRect();
+      const secTop = secRect.top;
+      const secHeight = secRect.height;
+      const scrollableDistance = secHeight - windowHeight;
 
-      storyBeats.forEach(beat => {
-        if (beat.classList.contains('beat-cierre')) {
-          beat.classList.add('is-focused');
-          return;
-        }
+      if (window.innerWidth > 768 && scrollableDistance > 0) {
+        // Progreso dentro de la sección Conóceme (0 a 1)
+        const progress = Math.min(1, Math.max(0, -secTop / scrollableDistance));
+        
+        // Calcular desplazamiento del track
+        const trackHeight = conocemeTrack.scrollHeight;
+        const viewportHeight = 420; // Altura máxima visible de la máscara
+        const maxScrollTrack = Math.max(0, trackHeight - viewportHeight * 0.7);
+        const currentTranslateY = progress * maxScrollTrack;
+        conocemeTrack.style.transform = `translate3d(0, -${currentTranslateY.toFixed(1)}px, 0)`;
 
-        const rect = beat.getBoundingClientRect();
-        const beatCenter = rect.top + rect.height / 2;
-        const distFromCenter = Math.abs(beatCenter - viewportCenter);
+        // Determinar qué beat está en el foco central
+        const totalBeats = storyBeats.length;
+        const currentBeatIndex = Math.min(totalBeats - 1, Math.floor(progress * totalBeats));
 
-        if (distFromCenter < activeWindow) {
-          const intensity = 1 - (distFromCenter / activeWindow);
-          const opacity = Math.min(1, Math.max(0.1, Math.pow(intensity, 1.2)));
-          const translateY = (beatCenter - viewportCenter) * 0.08;
-          beat.style.opacity = opacity.toFixed(3);
-          beat.style.transform = `translateY(${translateY.toFixed(1)}px) scale(${0.97 + 0.03 * intensity})`;
-          beat.style.filter = `blur(${Math.max(0, (1 - intensity) * 2).toFixed(1)}px)`;
-          beat.classList.add('is-focused');
+        storyBeats.forEach((beat, idx) => {
+          if (idx === currentBeatIndex) {
+            beat.classList.add('is-focused');
+          } else {
+            beat.classList.remove('is-focused');
+          }
+        });
+
+        // Beat 6: Duelo (activar fondo oscuro)
+        if (currentBeatIndex === 5) { // data-beat 6 es índice 5
+          conocemeSection.classList.add('dark-mode-active');
         } else {
-          beat.style.opacity = '0.08';
-          beat.style.transform = 'translateY(16px) scale(0.96)';
-          beat.style.filter = 'blur(3px)';
-          beat.classList.remove('is-focused');
+          conocemeSection.classList.remove('dark-mode-active');
         }
-      });
-    }
-
-    // D. Conóceme: Transición a fondo oscuro en Escena 6 (Duelo)
-    if (conocemeSection && darkChapter) {
-      const darkRect = darkChapter.getBoundingClientRect();
-      const isInFocus = darkRect.top < windowHeight * 0.65 && darkRect.bottom > windowHeight * 0.35;
-      if (isInFocus) {
-        conocemeSection.classList.add('dark-mode-active');
       } else {
-        conocemeSection.classList.remove('dark-mode-active');
+        // Modo móvil: todos los beats visibles
+        storyBeats.forEach(b => b.classList.add('is-focused'));
+        conocemeTrack.style.transform = 'none';
       }
     }
 
-    // E. Transición 1: Línea horizontal de 0 a 100%
+    // D. Transición 1: Línea horizontal de 0 a 100%
     if (!dividerAnimated && dividerSection && dividerLineTrabajar) {
       const divRect = dividerSection.getBoundingClientRect();
       if (divRect.top < windowHeight * 0.85) {
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // F. Mi Experiencia: LÍNEA NARANJA QUE SE VA DESPINTANDO AL SCROLL
+    // E. Mi Experiencia: LÍNEA NARANJA QUE SE VA DESPINTANDO AL SCROLL
     if (timelineContainer && timelineRailFill) {
       const tlRect = timelineContainer.getBoundingClientRect();
       const tlTop = tlRect.top;
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const scanPoint = windowHeight * 0.55;
 
       if (tlTop >= scanPoint) {
-        // Aún no llegamos a la experiencia: 100% pintada de naranja
+        // 100% pintada de naranja
         timelineRailFill.style.top = '0%';
         timelineRailFill.style.height = '100%';
         timelineRows.forEach(row => {
@@ -128,19 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrolledDistance = scanPoint - tlTop;
         const unpaintPercent = Math.min(100, Math.max(0, (scrolledDistance / tlHeight) * 100));
 
-        // El relleno naranja queda en la parte inferior aún no alcanzada
         timelineRailFill.style.top = `${unpaintPercent}%`;
         timelineRailFill.style.height = `${100 - unpaintPercent}%`;
 
-        // Despintar los nodos que ya pasaron por el scanPoint
         timelineRows.forEach(row => {
           const node = row.querySelector('.timeline-center-node');
           if (node) {
             const nodeRect = node.getBoundingClientRect();
             if (nodeRect.top < scanPoint) {
-              node.classList.remove('is-active'); // Se despinta
+              node.classList.remove('is-active');
             } else {
-              node.classList.add('is-active'); // Sigue pintado
+              node.classList.add('is-active');
             }
           }
         });
@@ -238,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const group1 = document.getElementById('cinta-group-1');
 
   if (marqueeContainer && marqueeTrack && group1) {
-    let groupWidth = group1.offsetWidth || 1800;
+    let groupWidth = group1.offsetWidth || 2000;
     let currentOffset = 0;
     let lastTime = performance.now();
     let isRunning = true;
@@ -250,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetSpeedFactor = 1.0;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const LOOP_DURATION_MS = 38000;
+    const LOOP_DURATION_MS = 40000;
 
     function measureWidth() {
       const w = group1.offsetWidth;
@@ -358,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 7. MI EXPERIENCIA & MI FORMACIÓN: SOPORTE TOUCH / CLIC PARA OVERLAYS
+  // 7. MI EXPERIENCIA & MI FORMACIÓN: OVERLAYS INTERACTIVOS
   // ============================================================================
   const interactiveCards = document.querySelectorAll('.formacion-card-v2, .timeline-exp-card');
 

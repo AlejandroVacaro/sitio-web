@@ -177,8 +177,8 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       CINTA ANIMADA HORIZONTAL (Inmediatamente debajo del Hero, 50px, loop 38s)
+    <!-- ==========================================================================
+       CINTA ANIMADA HORIZONTAL (Patrón exacto: 2 grises - 1 naranja)
        ========================================================================== -->
   <div id="hero-marquee" class="cinta-band" aria-label="Ejes profesionales y competencias">
     <div class="cinta-track" id="cinta-track">
@@ -186,17 +186,19 @@
       <div class="cinta-group" id="cinta-group-1">
         <span>ANÁLISIS FUNCIONAL</span>
         <span class="cinta-sep">·</span>
-        <span class="cinta-coral">TRANSFORMACIÓN DIGITAL</span>
-        <span class="cinta-sep">·</span>
         <span>BUSINESS ANALYSIS</span>
         <span class="cinta-sep">·</span>
-        <span>DATA ANALYTICS PROFESSIONAL</span>
+        <span class="cinta-coral">TRANSFORMACIÓN DIGITAL</span>
+        <span class="cinta-sep">·</span>
+        <span>CONECTAR EL NEGOCIO CON LA TECNOLOGÍA</span>
         <span class="cinta-sep">·</span>
         <span>SOLUCIONES TECNOLÓGICAS</span>
         <span class="cinta-sep">·</span>
         <span class="cinta-coral">OPTIMIZACIÓN DE PROCESOS</span>
         <span class="cinta-sep">·</span>
-        <span>ANÁLISIS DE DATOS</span>
+        <span>ASESORAMIENTO Y CAPACITACIONES PARA USUARIOS</span>
+        <span class="cinta-sep">·</span>
+        <span>DATA ANALYTICS PROFESSIONAL</span>
         <span class="cinta-sep">·</span>
         <span class="cinta-coral">MEJORA CONTINUA</span>
         <span class="cinta-sep">·</span>
@@ -205,215 +207,228 @@
       <div class="cinta-group" aria-hidden="true">
         <span>ANÁLISIS FUNCIONAL</span>
         <span class="cinta-sep">·</span>
-        <span class="cinta-coral">TRANSFORMACIÓN DIGITAL</span>
-        <span class="cinta-sep">·</span>
         <span>BUSINESS ANALYSIS</span>
         <span class="cinta-sep">·</span>
-        <span>DATA ANALYTICS PROFESSIONAL</span>
+        <span class="cinta-coral">TRANSFORMACIÓN DIGITAL</span>
+        <span class="cinta-sep">·</span>
+        <span>CONECTAR EL NEGOCIO CON LA TECNOLOGÍA</span>
         <span class="cinta-sep">·</span>
         <span>SOLUCIONES TECNOLÓGICAS</span>
         <span class="cinta-sep">·</span>
         <span class="cinta-coral">OPTIMIZACIÓN DE PROCESOS</span>
         <span class="cinta-sep">·</span>
-        <span>ANÁLISIS DE DATOS</span>
+        <span>ASESORAMIENTO Y CAPACITACIONES PARA USUARIOS</span>
+        <span class="cinta-sep">·</span>
+        <span>DATA ANALYTICS PROFESSIONAL</span>
         <span class="cinta-sep">·</span>
         <span class="cinta-coral">MEJORA CONTINUA</span>
         <span class="cinta-sep">·</span>
       </div>
     </div>
   </div>
+  </div>
 
-    <!-- ==========================================================================
-       CONÓCEME (#conoceme) - Scrollytelling de Alta Intriga & Frases en Spotlight
+      <!-- ==========================================================================
+       CONÓCEME (#conoceme) - Pinned Viewport Stage
+       Título visible, Foto a la Izquierda, Texto a la Derecha, Espacios compactos
        ========================================================================== -->
-  <section id="conoceme" class="conoceme-section" aria-label="Historia personal y recorrido">
+  <section id="conoceme" class="conoceme-pinned-section" aria-label="Historia personal y recorrido">
     
-    <!-- Entrada breve de la sección -->
-    <div class="conoceme-intro-block">
-      <h2 class="conoceme-heading">Conóceme.</h2>
-      <p class="conoceme-subheading-coral">No fue una línea recta.</p>
-      <p class="conoceme-subheading-dark">Y por suerte.</p>
-    </div>
-
-    <!-- Contenedor principal con columna de frases scrollytelling y foto lateral sticky -->
-    <div class="conoceme-story-container">
+    <div class="conoceme-sticky-stage" id="conoceme-sticky-stage">
       
-      <!-- Columna de Frases Secuenciales (Spotlight: aparecen sutilmente de a una al scroll) -->
-      <div class="story-stream" id="story-stream">
-        
-        <!-- Frase 1 -->
-        <div class="story-beat" data-beat="1">
-          <p class="beat-text">
-            Nací en <strong class="font-semibold text-[#222222]">Paysandú</strong>. En el 93.<br>
-            En una casa donde la plata rara vez alcanzaba a fin de mes.<br>
-            Fui el menor de tres hermanos.
-          </p>
+      <!-- Título de Conóceme (siempre visible en el viewport) -->
+      <div class="conoceme-stage-header">
+        <h2 class="conoceme-heading">Conóceme.</h2>
+        <div class="flex items-center gap-3">
+          <p class="conoceme-subheading-coral">No fue una línea recta.</p>
+          <span class="text-[#4F5D75]/40 font-serif italic text-lg">/</span>
+          <p class="conoceme-subheading-dark">Y por suerte.</p>
         </div>
-
-        <!-- Frase 2 -->
-        <div class="story-beat" data-beat="2">
-          <p class="beat-text">
-            <span class="text-xs uppercase tracking-widest text-[#EF8354] font-bold block mb-2">Infancia</span>
-            El típico niño bueno. Tímido. Callado. Buen alumno.
-          </p>
-        </div>
-
-        <!-- Frase 3 -->
-        <div class="story-beat" data-beat="3">
-          <p class="beat-text">
-            Pero eso no te salva en los recreos.<br>
-            Los niños saben ser crueles.<br>
-            Y a mí me hicieron pagar bastante caro el ser distinto.<br>
-            O, como preferían decirlo, <strong class="text-[#EF8354] font-bold">“puto”</strong>.
-          </p>
-        </div>
-
-        <!-- Frase 4 -->
-        <div class="story-beat" data-beat="4">
-          <p class="beat-text">
-            Después empecé a trabajar de lo que viniera.<br>
-            Repositor. Instructor. Administrativo. Empleado público.<br>
-            Llegué a tener <strong class="font-bold text-[#222222]">cuatro trabajos al mismo tiempo</strong>.<br>
-            <span class="font-serif italic text-[#EF8354] text-2xl block mt-2">Burnout for export.</span>
-          </p>
-        </div>
-
-        <!-- Frase 5 -->
-        <div class="story-beat" data-beat="5">
-          <p class="beat-text">
-            A los 22 me puse una meta.<br>
-            Ahorrar. Peso por peso. Subirme a un avión por primera vez. Cruzar el Atlántico. Conocer Europa.<br>
-            <strong class="font-bold text-2xl block mt-3 text-[#222222]">Lo logré.</strong>
-          </p>
-        </div>
-
-        <!-- Frase 6: Momento Crítico del Duelo (Trigger Dark Mode) -->
-        <div class="story-beat trigger-dark-chapter" data-beat="6">
-          <p class="beat-text">
-            Pero a la vida a veces le gusta hacer bromas bastante pesadas.<br>
-            <span class="font-serif italic font-bold text-[#EF8354] text-2xl md:text-3xl block my-3">Una semana antes de ese viaje, murió mi viejo.</span>
-            Ese viaje me partió al medio.<br>
-            Por el esfuerzo. Por el sueño. Por el duelo.
-          </p>
-        </div>
-
-        <!-- Frase 7 -->
-        <div class="story-beat trigger-light-chapter" data-beat="7">
-          <p class="beat-text">
-            Pero también me empujó.<br>
-            Volví con una idea fija:<br>
-            <strong class="font-semibold text-[#222222]">Enfrentar mis miedos. Dejar todo atrás. Irme a otra ciudad.</strong>
-          </p>
-        </div>
-
-        <!-- Frase 8 -->
-        <div class="story-beat" data-beat="8">
-          <p class="beat-text">
-            A los 24 conseguí trabajo en una administradora de fondos.<br>
-            Vendí lo poco que tenía y <strong class="font-bold text-[#222222]">me vine a Montevideo</strong>.<br>
-            Los primeros meses dormí en el altillo de la casa de un amigo. En un colchón prestado.
-          </p>
-        </div>
-
-        <!-- Frase 9 -->
-        <div class="story-beat" data-beat="9">
-          <p class="beat-text">
-            Ahí empecé a estudiar <strong class="font-semibold text-[#222222]">Contador Público</strong>.<br>
-            Quería ser contador desde chico.<br>
-            <span class="font-serif italic text-[#EF8354] block mt-1">Si te soy sincero, todavía no tengo del todo claro por qué.</span>
-          </p>
-        </div>
-
-        <!-- Frase 10 -->
-        <div class="story-beat" data-beat="10">
-          <p class="beat-text">
-            Porque las computadoras siempre me llamaron la atención.<br>
-            Pero yo miraba el mundo informático y pensaba:<br>
-            <span class="font-serif italic text-[#4F5D75]">“Esto no es para mí”.</span><br>
-            <span class="font-serif italic text-[#4F5D75]">“No me da el bocho”.</span>
-          </p>
-        </div>
-
-        <!-- Frase 11 -->
-        <div class="story-beat" data-beat="11">
-          <p class="beat-text">
-            Y bueno. <strong class="font-bold text-2xl text-[#222222]">Llegó 2020.</strong><br>
-            Un día encontré un curso gratuito de programación desde cero. Pensé: <em>“Vamos a probar. Total, ¿qué es lo peor que puede pasar? ¿Que me termine gustando más programar que la carrera?”</em>
-          </p>
-        </div>
-
-        <!-- Frase 12: Momento de Máxima Intriga "Adiviná." -->
-        <div class="story-beat beat-adivina" data-beat="12">
-          <div class="text-center py-6">
-            <span class="font-serif italic text-[#EF8354] text-6xl md:text-8xl font-normal inline-block">Adiviná.</span>
-          </div>
-        </div>
-
-        <!-- Frase 13 -->
-        <div class="story-beat" data-beat="13">
-          <p class="beat-text">
-            <strong class="font-bold text-3xl text-[#222222]">Sí.</strong> Me gustó más de lo previsto.<br>
-            <strong class="text-[#EF8354] font-bold text-2xl">Bastante más.</strong><br>
-            Tuve una crisis existencial tremenda. Tuve que mandar al armario a mi yo contador y <strong class="font-semibold text-[#222222]">dejar salir a mi yo programador</strong>.<br>
-            Fueron tres años aprendiendo lenguajes y conceptos que jamás pensé que mi cabeza iba a entender.
-          </p>
-        </div>
-
-        <!-- Frase 14 -->
-        <div class="story-beat" data-beat="14">
-          <p class="beat-text">
-            Cuando se acomodó la crisis existencial, llegó la laboral.<br>
-            No me había quedado sin trabajo, pero mis intereses ya estaban en otra parte.<br>
-            Ese puesto lo había conseguido mi yo contador. <strong class="font-bold text-[#222222]">Y yo ya estaba en otra.</strong>
-          </p>
-        </div>
-
-        <!-- Frase 15: Frase de Marca -->
-        <div class="story-beat" data-beat="15">
-          <p class="beat-text">
-            Entonces empecé a reconvertirme.<br>
-            <span class="font-serif italic text-[#EF8354] text-2xl md:text-3xl block my-3 font-semibold">El plot twist como estrategia de vida.</span>
-            Lideré un proyecto de transformación digital dentro de mi área y tiempo después me llegó la propuesta para pasarme al equipo de desarrollo.<br>
-            <span class="text-sm italic text-[#4F5D75]">Una oferta que me costó muchísimo aceptar. Espero que se entienda la ironía.</span>
-          </p>
-        </div>
-
-        <!-- Frase 16 -->
-        <div class="story-beat" data-beat="16">
-          <p class="beat-text">
-            Pero como buen geminiano, no me iba a conformar solo con eso.<br>
-            Un día decidí volver a tocar las puertas de la facultad y <strong class="font-semibold text-[#222222]">retomar la carrera que había dejado</strong>.
-          </p>
-        </div>
-
-        <!-- Frase 17 -->
-        <div class="story-beat" data-beat="17">
-          <p class="beat-text">
-            Hoy trabajo como <strong class="font-bold text-2xl text-[#222222]">Analista Funcional</strong>.<br>
-            Sigo estudiando. Sigo aprendiendo. Sigo actualizando mis skills de tecnología.<br>
-            Y crío a un labrador que apareció por sorpresa en mi vida.
-          </p>
-        </div>
-
-        <!-- Frase 18: Cierre Estable -->
-        <div class="story-beat beat-cierre" data-beat="18">
-          <div class="p-6 rounded-2xl bg-white/50 border border-[#4F5D75]/15 backdrop-blur-md">
-            <p class="beat-text text-xl md:text-2xl font-medium text-[#222222] leading-relaxed">
-              Hoy por hoy, mi día a día se divide entre mi trabajo como Analista Funcional, mi formación, el aprendizaje constante y la vida con un labrador que apareció para desordenar bastante lindo el guion.
-            </p>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Columna Lateral Sticky: Fotografía de Alejandro -->
-      <div class="story-photo-sticky-col">
-        <div class="story-photo-wrapper">
-          <img src="assets/images/alejandro_about.jpg" alt="Alejandro Vacaro - Historia personal" class="story-photo-img" loading="lazy">
+      <!-- Grid 2 Columnas: Foto Izquierda (360px) + Texto Derecha -->
+      <div class="conoceme-stage-grid">
+        
+        <!-- Columna Izquierda: Fotografía de Alejandro -->
+        <div class="conoceme-photo-side">
+          <div class="conoceme-pinned-photo-card">
+            <img src="assets/images/alejandro_about.jpg" alt="Alejandro Vacaro - Historia personal" class="conoceme-pinned-photo-img" loading="lazy">
+          </div>
         </div>
+
+        <!-- Columna Derecha: Frases Dinámicas con Espacios Compactos -->
+        <div class="conoceme-text-side">
+          <div class="conoceme-stream-viewport" id="conoceme-stream-viewport">
+            <div class="conoceme-stream-track" id="conoceme-stream-track">
+              
+              <!-- Beat 1 -->
+              <div class="story-beat" data-beat="1">
+                <p class="beat-text">
+                  Nací en <strong class="font-semibold text-[#222222]">Paysandú</strong>. En el 93.<br>
+                  En una casa donde la plata rara vez alcanzaba a fin de mes.<br>
+                  Fui el menor de tres hermanos.
+                </p>
+              </div>
+
+              <!-- Beat 2 -->
+              <div class="story-beat" data-beat="2">
+                <p class="beat-text">
+                  <span class="text-xs uppercase tracking-widest text-[#EF8354] font-bold block mb-1">Infancia</span>
+                  El típico niño bueno. Tímido. Callado. Buen alumno.
+                </p>
+              </div>
+
+              <!-- Beat 3 -->
+              <div class="story-beat" data-beat="3">
+                <p class="beat-text">
+                  Pero eso no te salva en los recreos. Los niños saben ser crueles.<br>
+                  Y a mí me hicieron pagar bastante caro el ser distinto.<br>
+                  O, como preferían decirlo, <strong class="text-[#EF8354] font-bold">“puto”</strong>.
+                </p>
+              </div>
+
+              <!-- Beat 4 -->
+              <div class="story-beat" data-beat="4">
+                <p class="beat-text">
+                  Después empecé a trabajar de lo que viniera.<br>
+                  Repositor. Instructor. Administrativo. Empleado público.<br>
+                  Llegué a tener <strong class="font-bold text-[#222222]">cuatro trabajos al mismo tiempo</strong>.<br>
+                  <span class="font-serif italic text-[#EF8354] text-xl block mt-1.5">Burnout for export.</span>
+                </p>
+              </div>
+
+              <!-- Beat 5 -->
+              <div class="story-beat" data-beat="5">
+                <p class="beat-text">
+                  A los 22 me puse una meta:<br>
+                  Ahorrar peso por peso, subirme a un avión por primera vez, cruzar el Atlántico y conocer Europa.<br>
+                  <strong class="font-bold text-xl block mt-2 text-[#222222]">Lo logré.</strong>
+                </p>
+              </div>
+
+              <!-- Beat 6: Duelo (Fondo Oscuro) -->
+              <div class="story-beat trigger-dark-chapter" data-beat="6">
+                <p class="beat-text">
+                  Pero a la vida a veces le gusta hacer bromas bastante pesadas.<br>
+                  <span class="font-serif italic font-bold text-[#EF8354] text-2xl block my-2">Una semana antes de ese viaje, murió mi viejo.</span>
+                  Ese viaje me partió al medio. Por el esfuerzo. Por el sueño. Por el duelo.
+                </p>
+              </div>
+
+              <!-- Beat 7 -->
+              <div class="story-beat trigger-light-chapter" data-beat="7">
+                <p class="beat-text">
+                  Pero también me empujó.<br>
+                  Volví con una idea fija:<br>
+                  <strong class="font-semibold text-[#222222]">Enfrentar mis miedos. Dejar todo atrás. Irme a otra ciudad.</strong>
+                </p>
+              </div>
+
+              <!-- Beat 8 -->
+              <div class="story-beat" data-beat="8">
+                <p class="beat-text">
+                  A los 24 conseguí trabajo en una administradora de fondos.<br>
+                  Vendí lo poco que tenía y <strong class="font-bold text-[#222222]">me vine a Montevideo</strong>.<br>
+                  Los primeros meses dormí en el altillo de la casa de un amigo, en un colchón prestado.
+                </p>
+              </div>
+
+              <!-- Beat 9 -->
+              <div class="story-beat" data-beat="9">
+                <p class="beat-text">
+                  Ahí empecé a estudiar <strong class="font-semibold text-[#222222]">Contador Público</strong>.<br>
+                  Quería ser contador desde chico.<br>
+                  <span class="font-serif italic text-[#EF8354] block mt-1">Si te soy sincero, todavía no tengo del todo claro por qué.</span>
+                </p>
+              </div>
+
+              <!-- Beat 10 -->
+              <div class="story-beat" data-beat="10">
+                <p class="beat-text">
+                  Porque las computadoras siempre me llamaron la atención.<br>
+                  Pero yo miraba el mundo informático y pensaba:<br>
+                  <span class="font-serif italic text-[#4F5D75]">“Esto no es para mí”. “No me da el bocho”.</span>
+                </p>
+              </div>
+
+              <!-- Beat 11 -->
+              <div class="story-beat" data-beat="11">
+                <p class="beat-text">
+                  Y bueno. <strong class="font-bold text-xl text-[#222222]">Llegó 2020.</strong><br>
+                  Un día encontré un curso gratuito de programación desde cero. Pensé: <em>“Vamos a probar. Total, ¿qué es lo peor que puede pasar? ¿Que me termine gustando más programar que la carrera?”</em>
+                </p>
+              </div>
+
+              <!-- Beat 12: Adiviná -->
+              <div class="story-beat beat-adivina" data-beat="12">
+                <div class="py-4">
+                  <span class="font-serif italic text-[#EF8354] text-5xl md:text-7xl font-normal inline-block">Adiviná.</span>
+                </div>
+              </div>
+
+              <!-- Beat 13 -->
+              <div class="story-beat" data-beat="13">
+                <p class="beat-text">
+                  <strong class="font-bold text-2xl text-[#222222]">Sí.</strong> Me gustó más de lo previsto.<br>
+                  <strong class="text-[#EF8354] font-bold text-xl">Bastante más.</strong><br>
+                  Tuve una crisis existencial tremenda. Mandar al armario a mi yo contador y <strong class="font-semibold text-[#222222]">dejar salir a mi yo programador</strong>.<br>
+                  Fueron tres años aprendiendo lenguajes y conceptos que jamás pensé que mi cabeza iba a entender.
+                </p>
+              </div>
+
+              <!-- Beat 14 -->
+              <div class="story-beat" data-beat="14">
+                <p class="beat-text">
+                  Cuando se acomodó la crisis existencial, llegó la laboral.<br>
+                  No me había quedado sin trabajo, pero mis intereses ya estaban en otra parte.<br>
+                  Ese puesto lo había conseguido mi yo contador. <strong class="font-bold text-[#222222]">Y yo ya estaba en otra.</strong>
+                </p>
+              </div>
+
+              <!-- Beat 15: El plot twist -->
+              <div class="story-beat" data-beat="15">
+                <p class="beat-text">
+                  Entonces empecé a reconvertirme.<br>
+                  <span class="font-serif italic text-[#EF8354] text-2xl block my-2 font-semibold">El plot twist como estrategia de vida.</span>
+                  Lideré un proyecto de transformación digital dentro de mi área y luego llegó la propuesta para pasarme al equipo de desarrollo.<br>
+                  <span class="text-xs italic text-[#4F5D75]">Una oferta que me costó muchísimo aceptar. Espero que se entienda la ironía.</span>
+                </p>
+              </div>
+
+              <!-- Beat 16 -->
+              <div class="story-beat" data-beat="16">
+                <p class="beat-text">
+                  Pero como buen geminiano, no me iba a conformar solo con eso.<br>
+                  Un día decidí volver a tocar las puertas de la facultad y <strong class="font-semibold text-[#222222]">retomar la carrera que había dejado</strong>.
+                </p>
+              </div>
+
+              <!-- Beat 17 -->
+              <div class="story-beat" data-beat="17">
+                <p class="beat-text">
+                  Hoy trabajo como <strong class="font-bold text-xl text-[#222222]">Analista Funcional</strong>.<br>
+                  Sigo estudiando. Sigo aprendiendo. Sigo actualizando mis skills de tecnología.<br>
+                  Y crío a un labrador que apareció por sorpresa en mi vida.
+                </p>
+              </div>
+
+              <!-- Beat 18: Cierre Estable -->
+              <div class="story-beat beat-cierre" data-beat="18">
+                <div class="p-5 rounded-xl bg-white/60 border border-[#4F5D75]/15 shadow-sm">
+                  <p class="beat-text text-lg md:text-xl font-medium text-[#222222] leading-relaxed">
+                    Hoy por hoy, mi día a día se divide entre mi trabajo como Analista Funcional, mi formación, el aprendizaje constante y la vida con un labrador que apareció para desordenar bastante lindo el guion.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
+
   </section>
 
   <!-- ==========================================================================
@@ -982,8 +997,8 @@
     </div>
   </section>
 
-    <!-- ==========================================================================
-       FOOTER REDISEÑADO (Idéntico a la referencia con la estética editorial actual)
+      <!-- ==========================================================================
+       FOOTER REDISEÑADO (Nombres de secciones idénticos a la navbar)
        ========================================================================== -->
   <footer class="footer-section-v2 bg-[#2D3142] text-[#F5F2EC] py-10 px-6 md:px-12 border-t border-white/10">
     <div class="max-w-7xl mx-auto flex flex-col gap-8">
@@ -993,7 +1008,6 @@
         
         <!-- Izquierda: AV Badge + Nombre y Cargo -->
         <div class="flex items-center gap-3.5">
-          <!-- AV Badge Circular -->
           <div class="w-10 h-10 rounded-full bg-[#EF8354] text-[#2D3142] font-black text-sm flex items-center justify-center tracking-tight shadow-md select-none shrink-0">
             AV
           </div>
@@ -1003,13 +1017,12 @@
           </div>
         </div>
 
-        <!-- Centro: Navegación -->
+        <!-- Centro: Navegación idéntica a la Navbar -->
         <nav class="flex items-center flex-wrap justify-center gap-6 text-sm font-medium text-[#BFC0C0]" aria-label="Navegación del pie">
-          <a href="#home" class="hover:text-[#EF8354] transition-colors">Inicio</a>
           <a href="#conoceme" class="hover:text-[#EF8354] transition-colors">Conóceme</a>
-          <a href="#experiencia" class="hover:text-[#EF8354] transition-colors">Experiencia</a>
-          <a href="#formacion" class="hover:text-[#EF8354] transition-colors">Formación</a>
-          <a href="#contacto" class="hover:text-[#EF8354] transition-colors">¡Hablemos!</a>
+          <a href="#experiencia" class="hover:text-[#EF8354] transition-colors">Mi experiencia</a>
+          <a href="#formacion" class="hover:text-[#EF8354] transition-colors">Mi formación</a>
+          <a href="#contacto" class="hover:text-[#EF8354] transition-colors">Contáctame</a>
         </nav>
 
         <!-- Derecha: Botón 'Volver arriba' con flecha -->

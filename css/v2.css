@@ -84,17 +84,19 @@ body {
   left: 0;
   width: 100%;
   height: 64px;
-  background: rgba(245, 242, 236, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(34, 34, 34, 0.07);
+  background-color: #F5F2EC;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.05);
   z-index: 1000;
-  transition: height 500ms var(--ease-primary), box-shadow 500ms var(--ease-primary), background 500ms var(--ease-primary);
+  transition: background-color 350ms var(--ease-primary), backdrop-filter 350ms var(--ease-primary), box-shadow 350ms var(--ease-primary), border-color 350ms var(--ease-primary);
 }
 
 .header-v2.scrolled {
-  height: 56px;
-  box-shadow: 0 6px 22px rgba(45, 49, 66, 0.05);
+  height: 64px; /* Mantiene la misma altura en todo momento */
+  background-color: rgba(245, 242, 236, 0.88); /* Levemente transparente */
+  backdrop-filter: blur(16px); /* Desenfoque fino que deja entrever lo que pasa por abajo */
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(79, 93, 117, 0.12);
+  box-shadow: 0 4px 20px rgba(45, 49, 66, 0.06);
 }
 
 .header-inner {
@@ -145,8 +147,8 @@ body {
 .nav-link {
   position: relative;
   font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15.5px; /* Apenas más grande sutilmente (era 14px) */
+  font-weight: 550;
   color: var(--blue-slate);
   text-decoration: none;
   padding: 4px 0;
@@ -178,10 +180,12 @@ body {
 .hero-section {
   position: relative;
   width: 100%;
-  padding-top: 36px;
-  padding-bottom: 24px;
+  min-height: calc(100vh - 114px); /* 100vh menos navbar (64px) y cinta (50px) */
+  padding-top: 48px;
+  padding-bottom: 48px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .hero-grid {
@@ -306,7 +310,7 @@ body {
   transition: transform 350ms var(--ease-primary);
 }
 .hero-btn-secondary:hover .cv-download-icon {
-  transform: translateY(2px);
+  transform: none !important; /* El icono se mueve unificado con todo el botón */
 }
 
 /* Fotografía Hero */
@@ -344,40 +348,50 @@ body {
 
 /* Animaciones de entrada Hero */
 @keyframes heroFadeH1 {
-  from { opacity: 0; transform: translateY(22px); }
+  from { opacity: 0; transform: translateY(38px); }
+  to { opacity: 1; transform: translateY(0); }
+}
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes heroFadeBajada {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes heroFadeComp {
-  from { opacity: 0; }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
   to { opacity: 1; }
 }
 @keyframes heroFadeBtns {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes heroFadePhoto {
-  from { opacity: 0; transform: scale(0.975) translateY(12px); }
+  from { opacity: 0; transform: scale(0.95) translateY(34px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .anim-hero-h1 {
-  animation: heroFadeH1 900ms var(--ease-primary) 0ms both;
+  animation: heroFadeH1 950ms var(--ease-primary) 180ms both;
 }
 .anim-hero-bajada {
-  animation: heroFadeBajada 800ms var(--ease-primary) 160ms both;
+  animation: heroFadeBajada 850ms var(--ease-primary) 320ms both;
 }
 .anim-hero-comp {
-  animation: heroFadeComp 850ms var(--ease-primary) 310ms both;
+  animation: heroFadeComp 900ms var(--ease-primary) 460ms both;
 }
 .anim-hero-btns {
-  animation: heroFadeBtns 750ms var(--ease-primary) 460ms both;
+  animation: heroFadeBtns 800ms var(--ease-primary) 600ms both;
 }
 .anim-hero-photo {
-  animation: heroFadePhoto 1200ms var(--ease-primary) 0ms both;
+  animation: heroFadePhoto 1200ms var(--ease-primary) 220ms both;
 }
 
 /* ==========================================================================
@@ -1908,4 +1922,166 @@ body {
   border-color: var(--coral-glow);
   background-color: var(--coral-glow);
   transform: scale(1.3);
+}
+
+
+/* ==========================================================================
+   CONÓCEME - PINNED STAGE VIEWPORT (FOTO IZQUIERDA / TEXTO DERECHA)
+   ========================================================================== */
+.conoceme-pinned-section {
+  position: relative;
+  height: 380vh; /* Pista de scroll para leer pausadamente con la pantalla detenida */
+  background-color: var(--ivory);
+  transition: background-color 700ms var(--ease-primary), color 700ms var(--ease-primary);
+}
+
+.conoceme-pinned-section.dark-mode-active {
+  background-color: var(--jet-black) !important;
+  color: var(--ivory) !important;
+}
+
+.conoceme-sticky-stage {
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 32px 48px 36px;
+  max-width: 1320px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .conoceme-sticky-stage { padding: 24px 28px; }
+}
+@media (max-width: 768px) {
+  .conoceme-pinned-section { height: auto; }
+  .conoceme-sticky-stage {
+    position: static;
+    height: auto;
+    padding: 32px 20px;
+    overflow: visible;
+  }
+}
+
+.conoceme-stage-header {
+  margin-bottom: 24px;
+}
+
+.conoceme-stage-grid {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: clamp(36px, 5vw, 68px);
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 960px) {
+  .conoceme-stage-grid {
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 32px;
+  }
+}
+@media (max-width: 768px) {
+  .conoceme-stage-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+}
+
+/* Foto a la izquierda */
+.conoceme-photo-side {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.conoceme-pinned-photo-card {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(45, 49, 66, 0.12), 0 4px 12px rgba(45, 49, 66, 0.05);
+  background-color: var(--silver);
+}
+
+.conoceme-pinned-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Texto a la derecha: stream con máscara de difuminado arriba y abajo */
+.conoceme-text-side {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  min-height: 0;
+}
+
+.conoceme-stream-viewport {
+  width: 100%;
+  max-height: 420px;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .conoceme-stream-viewport {
+    max-height: none;
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow: visible;
+  }
+}
+
+.conoceme-stream-track {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 120ms ease-out;
+  will-change: transform;
+}
+
+.story-beat {
+  margin-bottom: 22px; /* Espacios mucho más compactos */
+  padding: 10px 0;
+  opacity: 0.15;
+  filter: blur(1.5px);
+  transform: translateY(10px) scale(0.98);
+  transition: opacity 300ms var(--ease-primary), transform 300ms var(--ease-primary), filter 300ms var(--ease-primary);
+}
+
+.story-beat.is-focused {
+  opacity: 1 !important;
+  filter: blur(0) !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+.beat-text {
+  font-family: var(--font-sans);
+  font-size: clamp(1.15rem, 1.65vw, 1.45rem); /* Fuente apenas más chica (era 2.05rem) */
+  line-height: 1.65;
+  color: var(--charcoal);
+  max-width: 680px;
+  letter-spacing: -0.01em;
+}
+
+.conoceme-pinned-section.dark-mode-active .beat-text {
+  color: var(--ivory) !important;
+}
+.conoceme-pinned-section.dark-mode-active .beat-text strong {
+  color: #FFFFFF !important;
 }
