@@ -57,7 +57,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=3.7">
+  <link rel="stylesheet" href="css/v2.css?v=3.8">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -880,28 +880,29 @@
   <section id="contacto" class="contacto-section-v2" aria-label="Contacto">
     <div class="contacto-container-v2 max-w-6xl mx-auto w-full">
 
-      <!-- Cuadrícula 2 Columnas: Izquierda (Texto + 2 Cajas) / Derecha (Formulario Taller & Resaltado) -->
+      <!-- Texto Superior (Más arriba que el resto: '¡escríbeme!' debajo) -->
+      <div class="contacto-header-intro mb-8 text-left">
+        <h2 class="contacto-quote-coral">
+          <span>Si llegaste hasta acá,</span><br>
+          <span class="text-[#EF8354]">¡escríbeme!</span>
+        </h2>
+        <p class="contacto-secondary-text">
+          <span>Puede ser por trabajo, por tecnología, por una idea</span><br class="hidden sm:inline">
+          <span>o simplemente porque algo de mi historia te resonó.</span>
+        </p>
+      </div>
+
+      <!-- Cuadrícula 2 Columnas que COINCIDEN EN ALTURA (Canales + Redes vs Formulario) -->
       <div class="contacto-grid-v2 items-stretch">
         
-        <!-- Columna Izquierda: Encabezado + Canales Directos + Redes y Comunidad -->
-        <div class="contacto-left-col flex flex-col justify-between gap-5 w-full">
+        <!-- Columna Izquierda: Canales Directos y Redes (Coinciden en altura con la caja de mensaje) -->
+        <div class="contacto-left-col flex flex-col justify-between gap-5 w-full h-full">
           
-          <!-- Texto Introductorio en la Columna Izquierda -->
-          <div class="contacto-header-intro">
-            <h2 class="contacto-quote-coral">
-              Si llegaste hasta acá, ¡escríbeme!
-            </h2>
-            <p class="contacto-secondary-text">
-              <span>Puede ser por trabajo, por tecnología, por una idea</span><br class="hidden sm:inline">
-              <span>o simplemente porque algo de mi historia te resonó.</span>
-            </p>
-          </div>
-
           <!-- Cajita 1: Canales Directos -->
-          <div class="contacto-box-card w-full">
+          <div class="contacto-box-card w-full flex flex-col justify-between">
             <h3 class="contacto-box-title">Canales Directos</h3>
             
-            <div class="flex flex-col gap-2.5 mt-3">
+            <div class="flex flex-col gap-2.5 mt-3.5">
               <!-- WhatsApp / Teléfono -->
               <a href="https://wa.me/59899229549" target="_blank" rel="noopener noreferrer" class="contact-channel-item group">
                 <div class="channel-icon-badge bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/40 group-hover:scale-110 transition-transform">
@@ -996,8 +997,8 @@
 
         </div>
 
-        <!-- Columna Derecha: Formulario Funcional (Cuadro de Mensaje - Más grande y resaltado) -->
-        <div class="contacto-right-col flex flex-col w-full">
+        <!-- Columna Derecha: Formulario Funcional (Coincide exactamente en altura con la izquierda) -->
+        <div class="contacto-right-col flex flex-col w-full h-full">
           <div class="form-container-card form-container-highlight w-full h-full flex flex-col justify-between" id="form-card-container">
             
             <!-- Contenido del Formulario -->
@@ -1136,6 +1137,6 @@
   </div>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=3.7"></script>
+  <script src="js/v2.js?v=3.8"></script>
 </body>
 </html>
