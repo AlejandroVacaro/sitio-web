@@ -276,13 +276,13 @@ body {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) auto;
-  gap: clamp(28px, 3.5vw, 44px);
+  grid-template-columns: minmax(0, 1.25fr) auto;
+  gap: clamp(28px, 3.5vw, 48px);
   align-items: stretch;
-  max-width: 1160px;
+  max-width: 1280px;
   margin: 0 auto;
   width: 100%;
-  padding: 0 32px;
+  padding: 0 40px;
 }
 
 @media (min-width: 1025px) {
@@ -295,10 +295,30 @@ body {
     justify-content: space-between;
     height: 100%;
   }
-  .hero-actions-container {
+  .hero-text-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding-bottom: 24px;
+  }
+  .hero-title {
+    margin-bottom: 0;
+  }
+  .hero-body-block {
     margin-top: auto;
     margin-bottom: 0;
-    padding-top: 24px;
+  }
+  .hero-bajada {
+    margin-top: 0;
+  }
+  .hero-complementary {
+    margin-top: 14px;
+  }
+  .hero-actions-container {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
   }
   .hero-photo-col {
     display: flex;
@@ -346,6 +366,14 @@ body {
   .hero-title-line-2 {
     white-space: normal;
   }
+}
+
+.hero-word-usuario {
+  font-size: 1.15em;
+  font-weight: inherit;
+  color: inherit;
+  letter-spacing: -0.02em;
+  display: inline-block;
 }
 
 .hero-highlight-coral {
@@ -1182,9 +1210,12 @@ body {
 }
 
 .experiencia-header {
-  max-width: 1080px;
-  margin: 0 auto 60px;
-  padding: 0 32px;
+  max-width: 1280px;
+  margin: 0 auto 52px;
+  padding: 0 40px;
+}
+@media (max-width: 1024px) {
+  .experiencia-header { padding: 0 28px; }
 }
 @media (max-width: 768px) {
   .experiencia-header { padding: 0 20px; }
@@ -1455,21 +1486,27 @@ body {
 }
 
 .formacion-header {
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 0 auto 52px;
-  padding: 0 32px;
+  padding: 0 40px;
+}
+@media (max-width: 1024px) {
+  .formacion-header { padding: 0 28px; }
 }
 @media (max-width: 768px) {
   .formacion-header { padding: 0 20px; }
 }
 
 .formacion-container-v2 {
-  max-width: 1160px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 40px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+@media (max-width: 1024px) {
+  .formacion-container-v2 { padding: 0 28px; }
 }
 @media (max-width: 768px) {
   .formacion-container-v2 { padding: 0 20px; }
@@ -2025,12 +2062,16 @@ body {
    Línea central, alternancia, jerarquía tipográfica invertida y hover estratificado
    ========================================================================== */
 .timeline-container-alt {
-  max-width: 1160px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 40px 32px 0;
+  padding: 40px 40px 0;
   position: relative;
 }
-
+@media (max-width: 1024px) {
+  .timeline-container-alt {
+    padding: 30px 28px 0 !important;
+  }
+}
 @media (max-width: 768px) {
   .experiencia-section {
     padding-top: 40px !important;
@@ -2465,10 +2506,9 @@ body {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   color: var(--ivory);
-  padding: 22px 26px;
+  padding: 16px 22px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   box-sizing: border-box;
   opacity: 0;
   transform: translateY(10px);
@@ -2476,10 +2516,27 @@ body {
   z-index: 5;
   transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1) 140ms, transform 350ms cubic-bezier(0.16, 1, 0.3, 1) 140ms;
   overflow-y: auto;
-  scrollbar-width: none;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(239, 131, 84, 0.45) transparent;
 }
 .timeline-exp-card-overlay::-webkit-scrollbar {
-  display: none;
+  width: 4px;
+}
+.timeline-exp-card-overlay::-webkit-scrollbar-track {
+  background: transparent;
+}
+.timeline-exp-card-overlay::-webkit-scrollbar-thumb {
+  background: rgba(239, 131, 84, 0.45);
+  border-radius: 4px;
+}
+
+.timeline-exp-overlay-content {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  padding: 10px 0;
+  width: 100%;
 }
 
 .card-overlay-desc {
