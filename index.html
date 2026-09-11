@@ -57,7 +57,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=6.3">
+  <link rel="stylesheet" href="css/v2.css?v=6.4">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -146,16 +146,16 @@
 
         <!-- Dos Acciones -->
         <div class="hero-actions-container anim-hero-btns">
-          <!-- Botón primario: Contáctame con MessageCircle a la izquierda -->
-          <a href="#contacto" class="hero-btn-primary">
-            <i data-lucide="message-circle" class="w-4 h-4"></i>
-            <span>Contáctame</span>
-          </a>
-
-          <!-- Botón secundario: Descargar CV con Download a la izquierda -->
-          <a href="assets/Alejandro_Vacaro_CV.pdf" download="Alejandro_Vacaro_CV.pdf" class="hero-btn-secondary group">
+          <!-- Botón primario a la izquierda: Descargar CV resaltado en azul -->
+          <a href="assets/Alejandro_Vacaro_CV.pdf" download="Alejandro_Vacaro_CV.pdf" class="hero-btn-primary group">
             <i data-lucide="download" class="w-4 h-4 cv-download-icon"></i>
             <span>Descargar CV</span>
+          </a>
+
+          <!-- Botón secundario a la derecha: Contáctame en blanco -->
+          <a href="#contacto" class="hero-btn-secondary">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Contáctame</span>
           </a>
         </div>
 
@@ -247,7 +247,11 @@
         <div class="conoceme-title-underline-track">
           <div class="conoceme-title-underline-fill"></div>
         </div>
-        <p class="conoceme-header-tagline">Antes de llegar hasta acá pasaron muchas cosas. Si querés conocer un poco más a la persona detrás de todo esto, te invito a seguir leyendo y descubrir mi lado más humano.</p>
+        <p class="conoceme-header-tagline">
+          Antes de llegar hasta acá pasaron muchas cosas.<br class="hidden sm:inline">
+          Si querés conocer un poco más a la persona detrás de todo esto,<br class="hidden sm:inline">
+          te invito a seguir leyendo y descubrir mi lado más humano.
+        </p>
       </div>
 
       <!-- Stage Central: Foto Izquierda (340px) + Escenario Narrativo Derecha -->
@@ -1158,13 +1162,20 @@
           </div>
         </div>
 
-        <!-- Derecha: Navegación del Footer alineada a la derecha -->
-        <nav class="md:ml-auto flex items-center flex-wrap justify-center md:justify-end gap-6 text-sm font-medium text-[#BFC0C0]" aria-label="Navegación del pie">
-          <a href="#conoceme" class="hover:text-[#EF8354] transition-colors">Conóceme</a>
-          <a href="#experiencia" class="hover:text-[#EF8354] transition-colors">Mi experiencia</a>
-          <a href="#formacion" class="hover:text-[#EF8354] transition-colors">Mi formación</a>
-          <a href="#contacto" class="hover:text-[#EF8354] transition-colors">Contáctame</a>
-        </nav>
+        <!-- Derecha: Navegación del Footer y Botón Descargar CV en naranja al lado -->
+        <div class="md:ml-auto flex items-center flex-wrap justify-center md:justify-end gap-5 lg:gap-6">
+          <nav class="flex items-center flex-wrap justify-center gap-5 sm:gap-6 text-sm font-medium text-[#BFC0C0]" aria-label="Navegación del pie">
+            <a href="#conoceme" class="hover:text-[#EF8354] transition-colors">Conóceme</a>
+            <a href="#experiencia" class="hover:text-[#EF8354] transition-colors">Mi experiencia</a>
+            <a href="#formacion" class="hover:text-[#EF8354] transition-colors">Mi formación</a>
+            <a href="#contacto" class="hover:text-[#EF8354] transition-colors">Contáctame</a>
+          </nav>
+
+          <a href="assets/Alejandro_Vacaro_CV.pdf" download="Alejandro_Vacaro_CV.pdf" class="footer-btn-cv group">
+            <i data-lucide="download" class="w-4 h-4 cv-download-icon"></i>
+            <span>Descargar CV</span>
+          </a>
+        </div>
 
       </div>
 
@@ -1198,6 +1209,6 @@
   </div>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=6.3"></script>
+  <script src="js/v2.js?v=6.4"></script>
 </body>
 </html>

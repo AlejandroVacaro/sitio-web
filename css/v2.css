@@ -578,10 +578,14 @@ body {
   border-color: rgba(79, 93, 117, 0.35);
   box-shadow: 0 4px 12px rgba(45, 49, 66, 0.06);
 }
-.hero-btn-secondary .cv-download-icon {
+.hero-btn-primary .cv-download-icon,
+.hero-btn-secondary .cv-download-icon,
+.footer-btn-cv .cv-download-icon {
   transition: transform 300ms var(--ease-primary);
 }
-.hero-btn-secondary:hover .cv-download-icon {
+.hero-btn-primary:hover .cv-download-icon,
+.hero-btn-secondary:hover .cv-download-icon,
+.footer-btn-cv:hover .cv-download-icon {
   transform: none !important;
 }
 
@@ -893,9 +897,11 @@ body {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  line-height: 1.48;
   color: rgba(245, 242, 236, 0.88);
   letter-spacing: -0.01em;
   margin: 0;
+  max-width: 720px;
 }
 
 
@@ -2161,6 +2167,34 @@ body {
 }
 @media (max-width: 768px) {
   .footer-right-col { text-align: left; }
+}
+
+/* Botón Footer: Descargar CV en naranja (mismo estilo y dimensiones que en hero) */
+.footer-btn-cv {
+  height: 42px;
+  padding: 0 20px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-decoration: none;
+  background-color: var(--coral-glow);
+  color: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 10px rgba(239, 131, 84, 0.28);
+  transition: transform 300ms var(--ease-primary), box-shadow 300ms var(--ease-primary), background-color 300ms ease;
+  cursor: pointer;
+}
+.footer-btn-cv:hover {
+  transform: translateY(-1.5px);
+  background-color: #E26D3B;
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(239, 131, 84, 0.42);
 }
 
 /* ==========================================================================
