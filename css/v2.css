@@ -2310,25 +2310,25 @@ body {
 
 /* Jerarquía de tamaño sutil por duración / relevancia */
 .card-tier-base {
-  min-height: 112px;
-  padding: 18px 24px;
+  min-height: 140px;
+  padding: 22px 24px;
 }
 
 .card-tier-mid {
-  min-height: 126px;
-  padding: 22px 28px;
+  min-height: 154px;
+  padding: 26px 28px;
 }
 
 .card-tier-lg {
-  min-height: 144px;
-  padding: 26px 32px;
+  min-height: 172px;
+  padding: 30px 32px;
   border-color: rgba(79, 93, 117, 0.18);
   box-shadow: 0 14px 34px rgba(45, 49, 66, 0.07), 0 3px 8px rgba(45, 49, 66, 0.04);
 }
 
 .card-tier-current {
-  min-height: 138px;
-  padding: 24px 30px;
+  min-height: 166px;
+  padding: 28px 30px;
   border-color: rgba(239, 131, 84, 0.45);
   box-shadow: 0 16px 40px rgba(239, 131, 84, 0.13), 0 4px 12px rgba(45, 49, 66, 0.05);
 }
