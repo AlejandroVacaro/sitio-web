@@ -295,13 +295,13 @@ body {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) auto;
-  gap: clamp(36px, 4.5vw, 60px);
+  grid-template-columns: minmax(0, 1.22fr) auto;
+  gap: clamp(28px, 3.5vw, 46px); /* Espacio horizontal reducido para unir texto y fotografía */
   align-items: center;
-  max-width: 1280px;
+  max-width: 1160px; /* Contenedor más compacto y editorial para evitar separación excesiva */
   margin: 0 auto;
   width: 100%;
-  padding: 0 40px;
+  padding: 0 36px;
 }
 
 @media (min-width: 1025px) {
@@ -316,7 +316,7 @@ body {
   }
   .hero-photo-col {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
   }
 }
@@ -324,7 +324,7 @@ body {
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: minmax(0, 1.15fr) minmax(280px, 340px);
-    gap: 32px;
+    gap: 28px;
     padding: 0 28px;
     align-items: center;
   }
@@ -472,53 +472,56 @@ body {
     max-width: 100% !important;
   }
   .hero-bajada {
-    font-size: 16px !important;
-    line-height: 1.55 !important;
+    font-size: 16.5px !important;
+    line-height: 1.58 !important;
+    color: #4A5568 !important;
   }
   .hero-complementary {
-    font-size: 1.18rem !important;
-    margin-top: 14px !important;
-    line-height: 1.4 !important;
+    font-size: 1.25rem !important;
+    margin-top: 18px !important;
+    line-height: 1.36 !important;
+    color: #1A1D24 !important;
   }
   .hero-actions-container {
     margin-top: 24px !important;
   }
 }
 
-/* 2. Bloque Narrativo: Párrafo + Frase Outsider (unidad de lectura integrada) */
+/* 2. Bloque Narrativo: Jerarquía clara entre explicación y remate editorial */
 .hero-narrative-block {
-  margin-top: clamp(26px, 3.6vh, 38px); /* Espacio sutil y equilibrado tras el titular */
-  max-width: 580px; /* Aire horizontal ampliado para evitar saltos de línea forzados */
+  margin-top: clamp(26px, 3.5vh, 36px); /* Espacio sutil y distinguido tras el titular */
+  max-width: 600px; /* Medida de línea cómoda y elegante sin cortes forzados */
 }
 
-/* Párrafo descriptivo: segundo nivel de lectura con presencia recuperada */
+/* Párrafo descriptivo (Nivel 2): Bloque explicativo principal, legible, amplio y en tono pizarra */
 .hero-bajada {
   font-family: var(--font-sans);
-  font-size: clamp(17px, 1.22vw, 18px);
-  line-height: 1.6;
-  color: #373D4D; /* Tono grafito pizarra con excelente legibilidad y peso visual */
+  font-size: clamp(17.5px, 1.25vw, 18.5px);
+  line-height: 1.62;
+  color: #4A5568; /* Tono grafito/pizarra elegante que distingue claramente la explicación */
   margin: 0;
 }
 
-/* Frase Outsider: remate personal con presencia recuperada, sin competir con el titular */
+/* Frase Outsider (Nivel 3): Remate editorial con personalidad, cercano al negro y alto contraste */
 .hero-complementary {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.24rem, 1.42vw, 1.38rem);
-  line-height: 1.44;
-  color: #2D3142; /* Azul pizarra oscuro con carácter editorial definido */
-  margin-top: 18px; /* Separación sutil y elegante del párrafo, manteniendo cohesión narrativa */
+  font-size: clamp(1.32rem, 1.55vw, 1.48rem); /* Mayor escala que el párrafo, sin ser segundo titular */
+  line-height: 1.38;
+  color: #1A1D24; /* Color oscuro cercano al negro del título (#222222), alto impacto emocional */
+  margin-top: clamp(20px, 2.6vh, 26px); /* Separación intencional que marca el cambio a remate */
   margin-bottom: 0;
-  max-width: 560px;
+  max-width: 570px;
+  letter-spacing: -0.01em;
 }
 
-/* 3. Botones: Integrados con naturalidad como cierre operativo, sin exceso de protagonismo */
+/* 3. Botones (Nivel 4): Cierre operativo integrado, sin competir con el contenido */
 .hero-actions-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
-  margin-top: clamp(28px, 4vh, 42px); /* Transición vertical equilibrada */
+  margin-top: clamp(26px, 3.6vh, 38px); /* Transición vertical armónica */
 }
 
 /* Botón primario: Contáctame */
@@ -603,7 +606,7 @@ body {
 
 .hero-photo-wrapper {
   width: 100%;
-  max-width: 390px;
+  max-width: 385px;
   aspect-ratio: 4 / 5;
   border-radius: 20px;
   overflow: hidden;
