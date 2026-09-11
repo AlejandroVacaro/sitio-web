@@ -303,7 +303,7 @@ body {
   .hero-photo-col {
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: flex-start;
   }
 }
 
@@ -331,18 +331,28 @@ body {
 .hero-title {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: clamp(2.8rem, 4.2vw, 4.8rem);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.1rem, 3.1vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   color: var(--charcoal);
-  max-width: 720px;
+  max-width: 680px;
+}
+
+.hero-title-line-2 {
+  display: inline-block;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .hero-title-line-2 {
+    white-space: normal;
+  }
 }
 
 .hero-highlight-coral {
   color: var(--coral-glow);
   font-style: italic;
   font-family: var(--font-serif);
-  font-size: 1.18em;
+  font-size: 1.15em;
   font-weight: 300;
   letter-spacing: -0.01em;
 }
@@ -1167,7 +1177,7 @@ body {
    ========================================================================== */
 .experiencia-section {
   width: 100%;
-  padding: 60px 0 100px;
+  padding: 60px 0 24px;
   background-color: var(--ivory);
 }
 
@@ -1439,7 +1449,7 @@ body {
    ========================================================================== */
 .formacion-section {
   width: 100%;
-  padding: 72px 0 0;
+  padding: 40px 0 0;
   background-color: var(--ivory);
   position: relative;
 }
@@ -2016,7 +2026,7 @@ body {
 .timeline-container-alt {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 40px 32px 80px;
+  padding: 40px 32px 0;
   position: relative;
 }
 @media (max-width: 768px) {
@@ -2033,7 +2043,7 @@ body {
 .timeline-central-rail {
   position: absolute;
   top: 40px;
-  bottom: 80px;
+  bottom: 60px;
   left: 50%;
   width: 2px;
   background-color: rgba(79, 93, 117, 0.2);
@@ -2073,6 +2083,9 @@ body {
   margin-bottom: 56px;
   position: relative;
   z-index: 2;
+}
+.timeline-alt-row:last-child {
+  margin-bottom: 0 !important;
 }
 @media (max-width: 768px) {
   .timeline-alt-row {
