@@ -274,6 +274,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // F. Mi Formación: Aparición y desaparición dinámica de tarjetas al scrollear (mismo efecto que Mi Experiencia)
+    const formacionCards = document.querySelectorAll('.formacion-card-v2');
+    if (formacionCards.length > 0) {
+      const scanPointFormacion = windowHeight * 0.85;
+      formacionCards.forEach(card => {
+        const cardRect = card.getBoundingClientRect();
+        if (cardRect.top < scanPointFormacion) {
+          card.classList.add('is-revealed');
+        } else {
+          card.classList.remove('is-revealed');
+        }
+      });
+    }
+
     isTicking = false;
   }
 

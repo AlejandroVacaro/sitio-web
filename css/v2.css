@@ -1657,7 +1657,33 @@ body {
   overflow: hidden;
   cursor: pointer;
   outline: none;
-  transition: transform 450ms var(--ease-primary), box-shadow 450ms var(--ease-primary);
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 450ms var(--ease-primary),
+              border-color 300ms ease;
+  will-change: opacity, transform;
+}
+
+.formacion-card-v2.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.formacion-row-top .formacion-card-v2:nth-child(1) {
+  transition-delay: 0ms;
+}
+.formacion-row-top .formacion-card-v2:nth-child(2) {
+  transition-delay: 120ms;
+}
+.formacion-row-top .formacion-card-v2:nth-child(3) {
+  transition-delay: 240ms;
+}
+@media (max-width: 1024px) {
+  .formacion-row-top .formacion-card-v2 {
+    transition-delay: 0ms !important;
+  }
 }
 
 .formacion-row-bottom .formacion-card-v2 {
@@ -1756,13 +1782,21 @@ body {
 
 /* Hover Desktop */
 @media (hover: hover) and (pointer: fine) {
-  .formacion-card-v2:hover {
+  .formacion-card-v2.is-revealed:hover {
     transform: translateY(-3px);
     box-shadow: 0 16px 36px rgba(45, 49, 66, 0.1);
   }
   .formacion-card-v2:hover .formacion-card-overlay {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formacion-card-v2 {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
@@ -2226,13 +2260,14 @@ body {
 
 @media (max-width: 768px) {
   .timeline-central-rail {
-    left: 20px !important;
-    transform: none !important;
+    left: 50% !important; /* Línea central por detrás de las tarjetas en mobile */
+    transform: translateX(-50%) !important;
     z-index: 1 !important;
     bottom: 24px !important;
   }
   .timeline-rail-fill {
     left: 0 !important;
+    width: 100% !important;
     transform: none !important;
   }
 }
@@ -2277,7 +2312,7 @@ body {
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    padding-left: 38px !important;
+    padding-left: 0 !important; /* Tarjetas ocupan el ancho completo sin indentación */
     padding-right: 0 !important;
     margin-bottom: 28px !important;
     width: 100% !important;
@@ -2362,10 +2397,16 @@ body {
 @media (max-width: 768px) {
   .timeline-alt-side-label {
     order: 1 !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 10px !important;
     padding: 0 !important;
-    justify-content: flex-start !important;
+    justify-content: center !important; /* Centrado sobre el riel en mobile */
     opacity: 1 !important;
+  }
+  .side-date-badge {
+    background: rgba(255, 255, 255, 0.94) !important;
+    box-shadow: 0 2px 8px rgba(45, 49, 66, 0.08) !important;
+    position: relative !important;
+    z-index: 3 !important;
   }
 }
 
@@ -2417,7 +2458,11 @@ body {
   .timeline-exp-card {
     order: 2 !important;
     width: 100% !important;
-    background: rgba(255, 255, 255, 0.85);
+    position: relative !important;
+    z-index: 2 !important;
+    background: rgba(255, 255, 255, 0.95) !important; /* Fondo opaco/frosted para que la línea pase por detrás */
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
   }
 }
 
