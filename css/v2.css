@@ -978,6 +978,16 @@ body {
   }
 }
 
+.conoceme-photo-bio-text {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.52;
+  color: rgba(245, 242, 236, 0.90);
+  text-align: center;
+  margin: 0;
+  padding: 4px 6px;
+}
+
 .conoceme-photo-meta-box:hover {
   border-color: rgba(239, 131, 84, 0.35);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
