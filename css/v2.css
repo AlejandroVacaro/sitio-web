@@ -123,28 +123,43 @@ body {
 .brand-link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px; /* Espaciado compacto: isotipo y nombre forman una sola firma de marca */
   text-decoration: none;
   color: var(--charcoal);
-  transition: opacity 220ms var(--ease-primary);
+  cursor: pointer;
 }
-.brand-link:hover { opacity: 0.85; }
 
 .brand-logo {
-  width: 28px;
+  width: 31px; /* Presencia visual sutilmente mayor respecto al texto sin agrandar la navbar */
   height: auto;
   aspect-ratio: 108 / 96;
   color: var(--charcoal);
   display: block;
+  flex-shrink: 0;
+  position: relative;
+  top: -0.5px; /* Corrección óptica vertical respecto a la caja tipográfica del nombre */
   transform: none !important;
+  transition: color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: color;
 }
 
 .brand-title {
   font-family: var(--font-sans);
   font-size: 16px;
-  font-weight: 650;
+  font-weight: 600; /* Peso balanceado de wordmark identificador */
   color: var(--charcoal);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.018em;
+  line-height: 1;
+  display: inline-block;
+  transition: color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover de marca: únicamente el isotipo pasa con suavidad a Coral Glow #EF8354 */
+.brand-link:hover .brand-logo {
+  color: var(--coral-glow) !important;
+}
+.brand-link:hover {
+  opacity: 1 !important;
 }
 
 .nav-link {
@@ -218,6 +233,10 @@ body {
 }
 .header-v2.header-dark-theme .brand-logo {
   color: var(--ivory) !important;
+}
+.header-v2.header-dark-theme .brand-link:hover .brand-logo,
+.header-v2.mobile-nav-open .brand-link:hover .brand-logo {
+  color: var(--coral-glow) !important;
 }
 .header-v2.header-dark-theme #mobile-menu-btn {
   color: var(--ivory) !important;
@@ -709,6 +728,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .brand-logo,
+  .brand-title {
+    transition: none !important;
+  }
   .anim-hero-h1,
   .anim-hero-bajada,
   .anim-hero-comp,
@@ -1562,13 +1585,13 @@ body {
    ========================================================================== */
 .formacion-section {
   width: 100%;
-  padding: 96px 0 110px;
+  padding: 96px 0 0; /* padding-bottom 0 para que la transición degradee se una directamente a Contacto */
   background-color: var(--ivory);
   position: relative;
 }
 @media (max-width: 768px) {
   .formacion-section {
-    padding: 68px 0 76px !important;
+    padding: 68px 0 0 !important;
   }
 }
 
@@ -1750,8 +1773,14 @@ body {
 .formacion-to-dark-transition {
   width: 100%;
   height: 120px;
-  margin-top: 60px;
+  margin-top: 100px; /* Margen amplio ubicado exactamente después de las tarjetas */
   background: linear-gradient(to bottom, #F5F2EC 0%, #2D3142 100%);
+}
+@media (max-width: 768px) {
+  .formacion-to-dark-transition {
+    height: 90px;
+    margin-top: 64px;
+  }
 }
 
 /* ==========================================================================
