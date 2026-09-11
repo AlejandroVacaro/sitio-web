@@ -57,7 +57,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=6.4">
+  <link rel="stylesheet" href="css/v2.css?v=6.5">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -1139,14 +1139,14 @@
     </div>
   </section>
 
-      <!-- ==========================================================================
-       FOOTER REDISEÑADO (Nombres de secciones idénticos a la navbar)
+  <!-- ==========================================================================
+       FOOTER REDISEÑADO (Logo + Nombre a la izquierda, Descargar CV a la derecha)
        ========================================================================== -->
-  <footer class="footer-section-v2 bg-[#2D3142] text-[#F5F2EC] py-10 px-6 md:px-12 border-t border-white/10">
-    <div class="max-w-7xl mx-auto flex flex-col gap-8">
+  <footer class="footer-section-v2 bg-[#2D3142] text-[#F5F2EC] border-t border-white/10">
+    <div class="contacto-container-v2 max-w-6xl mx-auto w-full flex flex-col gap-8">
       
-            <!-- Fila Superior: Logo A + Nombre / Cargo a la Izquierda + Enlaces a la Derecha -->
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <!-- Fila Superior: Logo A + Nombre / Cargo a la Izquierda + Botón Descargar CV a la Derecha -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 w-full">
         
         <!-- Izquierda: Logo A + Nombre y Cargo -->
         <div class="flex items-center gap-3.5">
@@ -1162,20 +1162,11 @@
           </div>
         </div>
 
-        <!-- Derecha: Navegación del Footer y Botón Descargar CV en naranja al lado -->
-        <div class="md:ml-auto flex items-center flex-wrap justify-center md:justify-end gap-5 lg:gap-6">
-          <nav class="flex items-center flex-wrap justify-center gap-5 sm:gap-6 text-sm font-medium text-[#BFC0C0]" aria-label="Navegación del pie">
-            <a href="#conoceme" class="hover:text-[#EF8354] transition-colors">Conóceme</a>
-            <a href="#experiencia" class="hover:text-[#EF8354] transition-colors">Mi experiencia</a>
-            <a href="#formacion" class="hover:text-[#EF8354] transition-colors">Mi formación</a>
-            <a href="#contacto" class="hover:text-[#EF8354] transition-colors">Contáctame</a>
-          </nav>
-
-          <a href="assets/Alejandro_Vacaro_CV.pdf" download="Alejandro_Vacaro_CV.pdf" class="footer-btn-cv group">
-            <i data-lucide="download" class="w-4 h-4 cv-download-icon"></i>
-            <span>Descargar CV</span>
-          </a>
-        </div>
+        <!-- Derecha: Botón Descargar CV alineado exactamente con la caja de mensaje -->
+        <a href="assets/Alejandro_Vacaro_CV.pdf" download="Alejandro_Vacaro_CV.pdf" class="footer-btn-cv group">
+          <i data-lucide="download" class="w-4 h-4 cv-download-icon"></i>
+          <span>Descargar CV</span>
+        </a>
 
       </div>
 
@@ -1209,6 +1200,6 @@
   </div>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=6.4"></script>
+  <script src="js/v2.js?v=6.5"></script>
 </body>
 </html>

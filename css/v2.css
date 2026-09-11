@@ -2088,14 +2088,14 @@ body {
   background-color: var(--jet-black);
   color: var(--ivory);
   border-top: 1px solid rgba(245, 242, 236, 0.12);
-  padding: 56px 32px 40px;
+  padding: 40px 24px 36px;
 }
 @media (max-width: 768px) {
-  .footer-section-v2 { padding: 48px 20px 32px; }
+  .footer-section-v2 { padding: 36px 16px 30px; }
 }
 
 .footer-container-v2 {
-  max-width: 1280px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 
