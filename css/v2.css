@@ -599,52 +599,109 @@ body {
   image-rendering: -webkit-optimize-contrast;
 }
 
-/* Animaciones de entrada Hero */
-@keyframes heroFadeH1 {
-  from { opacity: 0; transform: translateY(38px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ==========================================================================
+   ANIMACIONES DE ENTRADA HERO (Aparecen al entrar al sitio, luego quedan fijas)
+   Elegante, llamativo, moderno, con filtro blur y aceleración Apple-grade
+   ========================================================================== */
+@keyframes heroRevealTitle {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
-  to { opacity: 1; transform: translateY(0); }
+
+@keyframes heroRevealBajada {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
-@keyframes heroFadeBajada {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
+
+@keyframes heroRevealComp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
-  to { opacity: 1; transform: translateY(0); }
+
+@keyframes heroRevealBtns {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-@keyframes heroFadeComp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-  to { opacity: 1; }
-}
-@keyframes heroFadeBtns {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes heroFadePhoto {
-  from { opacity: 0; transform: scale(0.95) translateY(34px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-  to { opacity: 1; transform: scale(1) translateY(0); }
+
+@keyframes heroRevealPhoto {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 
 .anim-hero-h1 {
-  animation: heroFadeH1 950ms var(--ease-primary) 180ms both;
+  animation: heroRevealTitle 1000ms cubic-bezier(0.16, 1, 0.3, 1) 140ms both;
+  will-change: opacity, transform, filter;
 }
+
 .anim-hero-bajada {
-  animation: heroFadeBajada 850ms var(--ease-primary) 320ms both;
+  animation: heroRevealBajada 950ms cubic-bezier(0.16, 1, 0.3, 1) 280ms both;
+  will-change: opacity, transform, filter;
 }
+
 .anim-hero-comp {
-  animation: heroFadeComp 900ms var(--ease-primary) 460ms both;
+  animation: heroRevealComp 950ms cubic-bezier(0.16, 1, 0.3, 1) 400ms both;
+  will-change: opacity, transform, filter;
 }
+
 .anim-hero-btns {
-  animation: heroFadeBtns 800ms var(--ease-primary) 600ms both;
+  animation: heroRevealBtns 900ms cubic-bezier(0.16, 1, 0.3, 1) 520ms both;
+  will-change: opacity, transform;
 }
+
 .anim-hero-photo {
-  animation: heroFadePhoto 1200ms var(--ease-primary) 220ms both;
+  animation: heroRevealPhoto 1200ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+  will-change: opacity, transform, filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-hero-h1,
+  .anim-hero-bajada,
+  .anim-hero-comp,
+  .anim-hero-btns,
+  .anim-hero-photo {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -1213,7 +1270,7 @@ body {
    ========================================================================== */
 .experiencia-section {
   width: 100%;
-  padding: 60px 0 24px;
+  padding: 100px 0 80px;
   background-color: var(--ivory);
 }
 
@@ -1488,9 +1545,14 @@ body {
    ========================================================================== */
 .formacion-section {
   width: 100%;
-  padding: 40px 0 0;
+  padding: 96px 0 110px;
   background-color: var(--ivory);
   position: relative;
+}
+@media (max-width: 768px) {
+  .formacion-section {
+    padding: 68px 0 76px !important;
+  }
 }
 
 .formacion-header {
@@ -2072,21 +2134,21 @@ body {
 .timeline-container-alt {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 40px 40px 0;
+  padding: 24px 40px 48px;
   position: relative;
 }
 @media (max-width: 1024px) {
   .timeline-container-alt {
-    padding: 30px 28px 0 !important;
+    padding: 20px 28px 36px !important;
   }
 }
 @media (max-width: 768px) {
   .experiencia-section {
-    padding-top: 40px !important;
-    padding-bottom: 24px !important;
+    padding-top: 68px !important;
+    padding-bottom: 60px !important;
   }
   .timeline-container-alt {
-    padding: 20px 20px 0 !important;
+    padding: 16px 20px 24px !important;
   }
 }
 
@@ -2507,27 +2569,30 @@ body {
 /* ==========================================================================
    HOVER ESTRATIFICADO: OVERLAY AZUL OSCURO #2D3142
    ========================================================================== */
+/* Overlay total con deslizamiento desde abajo (idéntico a formación) */
 .timeline-exp-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(45, 49, 66, 0.96);
+  background: rgba(45, 49, 66, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   color: var(--ivory);
-  padding: 16px 22px;
+  padding: 18px 24px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(100%); /* Comienza oculta abajo */
+  opacity: 0.3;
   pointer-events: none;
   z-index: 5;
-  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1) 140ms, transform 350ms cubic-bezier(0.16, 1, 0.3, 1) 140ms;
+  transition: transform 480ms var(--ease-primary), opacity 450ms var(--ease-primary);
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: rgba(239, 131, 84, 0.45) transparent;
+  border-radius: 17px;
 }
+
 .timeline-exp-card-overlay::-webkit-scrollbar {
   width: 4px;
 }
@@ -2543,63 +2608,43 @@ body {
   display: flex;
   flex-direction: column;
   margin: auto 0;
-  padding: 10px 0;
+  padding: 8px 0;
   width: 100%;
 }
 
 .card-overlay-desc {
   font-family: var(--font-sans);
   font-size: 13.5px;
-  line-height: 1.58;
+  line-height: 1.56;
   color: #F5F2EC;
   margin: 0;
   letter-spacing: -0.005em;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 220ms ease, transform 220ms ease;
 }
 
 .card-overlay-quote {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.02rem, 1.2vw, 1.15rem);
+  font-size: clamp(1rem, 1.18vw, 1.14rem);
   line-height: 1.38;
   color: var(--coral-glow);
-  margin: 12px 0 0;
+  margin: 10px 0 0;
   letter-spacing: -0.01em;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 200ms ease, transform 200ms ease;
 }
 
-/* Transición secuenciada al entrar el hover / expand */
+/* Hover Desktop y Tap Móvil: Desliza desde abajo hacia arriba; al salir se oculta hacia abajo */
 .timeline-exp-card:hover .timeline-exp-card-inner,
 .timeline-exp-card.is-expanded .timeline-exp-card-inner {
-  opacity: 0;
-  transform: scale(0.97);
+  opacity: 0.15;
+  transform: scale(0.98);
   transition: opacity 300ms ease, transform 300ms ease;
 }
 
 .timeline-exp-card:hover .timeline-exp-card-overlay,
 .timeline-exp-card.is-expanded .timeline-exp-card-overlay {
+  transform: translateY(0); /* Aparece la descripción azul desde abajo */
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
-  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1), transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.timeline-exp-card:hover .card-overlay-desc,
-.timeline-exp-card.is-expanded .card-overlay-desc {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1) 120ms, transform 400ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
-}
-
-.timeline-exp-card:hover .card-overlay-quote,
-.timeline-exp-card.is-expanded .card-overlay-quote {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1) 220ms, transform 400ms cubic-bezier(0.16, 1, 0.3, 1) 220ms;
+  transition: transform 480ms var(--ease-primary), opacity 450ms var(--ease-primary);
 }
 
 /* ==========================================================================
