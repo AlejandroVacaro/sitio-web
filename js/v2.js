@@ -242,38 +242,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // E. Mi Experiencia: Línea naranja que se despinta al scrollear hacia abajo
+    // E. Mi Experiencia: Línea que progresa a Coral Glow al scrollear y activación de tarjetas
     if (timelineContainer && timelineRailFill) {
       const tlRect = timelineContainer.getBoundingClientRect();
       const tlTop = tlRect.top;
       const tlHeight = tlRect.height;
-      const scanPoint = windowHeight * 0.55;
+      const scanPoint = windowHeight * 0.70;
 
       if (tlTop >= scanPoint) {
-        // 100% pintada de naranja
         timelineRailFill.style.top = '0%';
-        timelineRailFill.style.height = '100%';
-        timelineRows.forEach(row => {
-          const node = row.querySelector('.timeline-center-node');
-          if (node) node.classList.add('is-active');
-        });
+        timelineRailFill.style.height = '0%';
       } else {
-        // Se va despintando desde arriba hacia abajo
         const scrolledDistance = scanPoint - tlTop;
-        const unpaintPercent = Math.min(100, Math.max(0, (scrolledDistance / tlHeight) * 100));
+        const progressPercent = Math.min(100, Math.max(0, (scrolledDistance / tlHeight) * 100));
 
-        timelineRailFill.style.top = `${unpaintPercent}%`;
-        timelineRailFill.style.height = `${100 - unpaintPercent}%`;
+        timelineRailFill.style.top = '0%';
+        timelineRailFill.style.height = progressPercent + '%';
 
-        timelineRows.forEach(row => {
+        const allRows = timelineContainer.querySelectorAll('.timeline-alt-row');
+        allRows.forEach(row => {
+          const rowRect = row.getBoundingClientRect();
           const node = row.querySelector('.timeline-center-node');
-          if (node) {
-            const nodeRect = node.getBoundingClientRect();
-            if (nodeRect.top < scanPoint) {
-              node.classList.remove('is-active');
-            } else {
-              node.classList.add('is-active');
-            }
+          if (rowRect.top < scanPoint) {
+            row.classList.add('is-revealed');
+            if (node) node.classList.add('is-active');
+          } else {
+            row.classList.remove('is-revealed');
+            if (node) node.classList.remove('is-active');
           }
         });
       }

@@ -2021,7 +2021,8 @@ body {
 
 
 /* ==========================================================================
-   MI EXPERIENCIA - TIMELINE ALTERNADO CON CUADROS A LOS LADOS & HOVER
+   MI EXPERIENCIA - TIMELINE EDITORIAL POR PUESTOS
+   Línea central, alternancia, jerarquía tipográfica invertida y hover estratificado
    ========================================================================== */
 .timeline-container-alt {
   max-width: 1160px;
@@ -2029,6 +2030,7 @@ body {
   padding: 40px 32px 0;
   position: relative;
 }
+
 @media (max-width: 768px) {
   .experiencia-section {
     padding-top: 40px !important;
@@ -2039,31 +2041,18 @@ body {
   }
 }
 
-/* Riel Central (Desktop 50% / Móvil 24px) */
+/* Riel Central (Desktop 50% / Móvil 20px) */
 .timeline-central-rail {
   position: absolute;
   top: 40px;
   bottom: 60px;
   left: 50%;
   width: 2px;
-  background-color: rgba(79, 93, 117, 0.2);
+  background-color: rgba(79, 93, 117, 0.18);
   transform: translateX(-50%);
   z-index: 1;
 }
-@media (max-width: 768px) {
-  .timeline-central-rail {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 1 !important;
-    bottom: 24px !important; /* Evita que el riel sobresalga debajo de la última tarjeta */
-  }
-  .timeline-rail-fill {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-  }
-}
 
-/* Relleno Naranja (Coral Glow) al scrollear */
 .timeline-rail-fill {
   position: absolute;
   top: 0;
@@ -2075,35 +2064,77 @@ body {
   transition: height 100ms linear;
 }
 
+@media (max-width: 768px) {
+  .timeline-central-rail {
+    left: 20px !important;
+    transform: none !important;
+    z-index: 1 !important;
+    bottom: 24px !important;
+  }
+  .timeline-rail-fill {
+    left: 0 !important;
+    transform: none !important;
+  }
+}
+
 /* Filas Alternadas */
 .timeline-alt-row {
   display: grid;
   grid-template-columns: calc(50% - 40px) 80px calc(50% - 40px);
   align-items: center;
-  margin-bottom: 56px;
+  margin-bottom: 48px; /* Ritmo base editorial */
   position: relative;
   z-index: 2;
 }
+
+/* Proporcionalidad Editorial en la separación vertical */
+.timeline-alt-row.row-gap-compact {
+  margin-bottom: 34px; /* Hitos directos / promociones internas rápidas */
+}
+
+.timeline-alt-row.row-gap-standard {
+  margin-bottom: 48px; /* Ritmo estándar */
+}
+
+.timeline-alt-row.row-cluster-simultaneous {
+  margin-bottom: 22px; /* Zona temporal densa 2016-2017: simultaneidad visual evidente */
+}
+
+.timeline-alt-row.row-gap-transition-stage {
+  margin-bottom: 68px; /* Respiración amplia tras el fin de una etapa y cambio de ciudad */
+}
+
+.timeline-alt-row.row-gap-long-span {
+  margin-bottom: 74px; /* Mayor espacio vertical para el período de 6 años en Gestión Previsional */
+}
+
 .timeline-alt-row:last-child {
   margin-bottom: 0 !important;
 }
+
 @media (max-width: 768px) {
   .timeline-alt-row {
     display: flex !important;
     flex-direction: column !important;
-    padding-left: 0 !important;
+    align-items: stretch !important;
+    padding-left: 38px !important;
     padding-right: 0 !important;
-    margin-bottom: 32px !important;
-    align-items: center !important;
+    margin-bottom: 28px !important;
     width: 100% !important;
     position: relative !important;
     z-index: 2 !important;
   }
+  .timeline-alt-row.row-cluster-simultaneous {
+    margin-bottom: 20px !important;
+  }
+  .timeline-alt-row.row-gap-transition-stage {
+    margin-bottom: 34px !important;
+  }
+  .timeline-alt-row.row-gap-long-span {
+    margin-bottom: 36px !important;
+  }
   .timeline-alt-row:last-child {
     margin-bottom: 0 !important;
-  }
-  .formacion-section {
-    padding-top: 28px !important;
   }
 }
 
@@ -2117,359 +2148,394 @@ body {
   margin: 0 auto;
   position: relative;
   z-index: 3;
-  transition: background-color 350ms var(--ease-primary), border-color 350ms var(--ease-primary), transform 350ms var(--ease-primary);
+  transition: background-color 350ms var(--ease-primary), border-color 350ms var(--ease-primary), transform 350ms var(--ease-primary), box-shadow 350ms var(--ease-primary);
 }
+
 .timeline-center-node.is-active {
   background-color: var(--coral-glow);
   border-color: var(--coral-glow);
-  transform: scale(1.3);
+  transform: scale(1.25);
   box-shadow: 0 0 12px rgba(239, 131, 84, 0.6);
 }
-.timeline-center-node.node-featured {
-  width: 18px;
-  height: 18px;
-  border-color: var(--coral-glow);
-  background-color: var(--coral-glow);
+
+.timeline-center-node.node-heavy {
+  width: 16px;
+  height: 16px;
 }
+
+.timeline-center-node.node-current {
+  width: 17px;
+  height: 17px;
+  background-color: var(--coral-glow);
+  border-color: #FFFFFF;
+  box-shadow: 0 0 16px rgba(239, 131, 84, 0.7);
+}
+
 @media (max-width: 768px) {
   .timeline-center-node {
     display: none !important;
   }
 }
 
-/* Lado Opuesto: Etiqueta de Año */
+/* Lado Opuesto: Etiqueta de Fecha junto a la línea */
 .timeline-alt-side-label {
   display: flex;
   align-items: center;
+  opacity: 0;
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
 }
+
+.timeline-alt-row.is-revealed .timeline-alt-side-label {
+  opacity: 1;
+}
+
 .row-left .timeline-alt-side-label {
   justify-content: flex-start;
   padding-left: 20px;
 }
+
 .row-right .timeline-alt-side-label {
   justify-content: flex-end;
   padding-right: 20px;
 }
+
 @media (max-width: 768px) {
   .timeline-alt-side-label {
-    display: none;
+    order: 1 !important;
+    margin-bottom: 8px !important;
+    padding: 0 !important;
+    justify-content: flex-start !important;
+    opacity: 1 !important;
   }
 }
 
-.side-year-badge {
+.side-date-badge {
   font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--blue-slate);
-  background: rgba(79, 93, 117, 0.08);
-  padding: 6px 14px;
+  letter-spacing: 0.015em;
+  padding: 4px 12px;
   border-radius: 9999px;
-  border: 1px solid rgba(79, 93, 117, 0.15);
-  letter-spacing: 0.03em;
-}
-.side-year-badge.badge-active {
-  background: rgba(239, 131, 84, 0.12);
-  color: var(--coral-glow);
-  border-color: rgba(239, 131, 84, 0.35);
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(79, 93, 117, 0.14);
+  white-space: nowrap;
+  transition: color 300ms ease, border-color 300ms ease, background 300ms ease;
 }
 
-/* TARJETA INTERACTIVA DE EXPERIENCIA (ESTILO FORMACIÓN) */
+.timeline-alt-row.is-revealed .side-date-badge {
+  color: var(--charcoal);
+  border-color: rgba(79, 93, 117, 0.22);
+}
+
+.side-date-current {
+  color: var(--coral-glow) !important;
+  border-color: rgba(239, 131, 84, 0.35) !important;
+  background: rgba(239, 131, 84, 0.09) !important;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   TARJETAS DE PUESTO (CARD)
+   ========================================================================== */
 .timeline-exp-card {
   position: relative;
-  min-height: 215px;
-  background: rgba(255, 255, 255, 0.65);
+  width: 100%;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.68);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(79, 93, 117, 0.14);
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(45, 49, 66, 0.06);
+  box-shadow: 0 10px 28px rgba(45, 49, 66, 0.05), 0 2px 6px rgba(45, 49, 66, 0.03);
   overflow: hidden;
   cursor: pointer;
   outline: none;
-  transition: transform 400ms var(--ease-primary), box-shadow 400ms var(--ease-primary), border-color 400ms var(--ease-primary);
-  display: flex;
-  flex-direction: column;
+  transition: transform 400ms var(--ease-primary), box-shadow 400ms var(--ease-primary), border-color 300ms ease;
 }
 
-.timeline-exp-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(45, 49, 66, 0.12);
-  border-color: rgba(239, 131, 84, 0.3);
+@media (max-width: 768px) {
+  .timeline-exp-card {
+    order: 2 !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.85);
+  }
 }
 
+.timeline-exp-card:hover,
+.timeline-exp-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(45, 49, 66, 0.12), 0 4px 10px rgba(45, 49, 66, 0.05);
+  border-color: rgba(239, 131, 84, 0.4);
+}
+
+/* Animaciones de entrada suaves (desplazamiento lateral refinado) */
+.timeline-alt-row.row-left .timeline-exp-card {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 350ms ease, border-color 350ms ease;
+}
+.timeline-alt-row.row-left.is-revealed .timeline-exp-card {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-alt-row.row-right .timeline-exp-card {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 350ms ease, border-color 350ms ease;
+}
+.timeline-alt-row.row-right.is-revealed .timeline-exp-card {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .timeline-alt-row.row-left .timeline-exp-card,
+  .timeline-alt-row.row-right .timeline-exp-card {
+    transform: translateY(16px);
+  }
+  .timeline-alt-row.is-revealed .timeline-exp-card {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-alt-row .timeline-exp-card,
+  .timeline-alt-row .timeline-alt-side-label {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Jerarquía de tamaño sutil por duración / relevancia */
+.card-tier-base {
+  min-height: 112px;
+  padding: 18px 24px;
+}
+
+.card-tier-mid {
+  min-height: 126px;
+  padding: 22px 28px;
+}
+
+.card-tier-lg {
+  min-height: 144px;
+  padding: 26px 32px;
+  border-color: rgba(79, 93, 117, 0.18);
+  box-shadow: 0 14px 34px rgba(45, 49, 66, 0.07), 0 3px 8px rgba(45, 49, 66, 0.04);
+}
+
+.card-tier-current {
+  min-height: 138px;
+  padding: 24px 30px;
+  border-color: rgba(239, 131, 84, 0.45);
+  box-shadow: 0 16px 40px rgba(239, 131, 84, 0.13), 0 4px 12px rgba(45, 49, 66, 0.05);
+}
+
+/* Continuidad sutil en República AFAP */
+.card-afap {
+  border-left: 3px solid rgba(79, 93, 117, 0.28);
+}
+.row-left .card-afap {
+  border-left: 1px solid rgba(79, 93, 117, 0.14);
+  border-right: 3px solid rgba(79, 93, 117, 0.28);
+}
+@media (max-width: 768px) {
+  .row-left .card-afap,
+  .row-right .card-afap {
+    border-right: 1px solid rgba(79, 93, 117, 0.14) !important;
+    border-left: 3px solid rgba(79, 93, 117, 0.28) !important;
+  }
+}
+.card-tier-current.card-afap {
+  border-right-color: var(--coral-glow) !important;
+  border-left-color: var(--coral-glow) !important;
+}
+
+/* ==========================================================================
+   ESTADO FRONTAL NORMAL (PUESTO, EMPRESA, LUGAR)
+   ========================================================================== */
 .timeline-exp-card-inner {
-  padding: 24px 28px;
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1), transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.exp-card-badge {
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--coral-glow);
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.exp-card-company {
-  font-family: var(--font-sans);
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--charcoal);
-  line-height: 1.25;
-  margin-bottom: 6px;
-}
-
-.exp-card-role {
-  font-family: var(--font-sans);
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--blue-slate);
-  line-height: 1.4;
-  margin-bottom: 4px;
-}
-
-/* Alineación hacia la línea de tiempo y centrado vertical (Mi experiencia) */
+/* Alineación interna hacia la línea de tiempo */
 .row-left .timeline-exp-card-inner {
   text-align: right;
   align-items: flex-end;
 }
-.row-left .exp-card-city {
+.row-left .card-meta-loc {
   justify-content: flex-end;
-  margin-left: auto;
-  margin-right: 0;
-}
-.row-left .timeline-exp-card-overlay {
-  text-align: right;
-  align-items: flex-end;
-  justify-content: center;
-}
-.row-left .exp-overlay-header {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-.row-left .exp-overlay-coral-line {
-  margin-left: auto;
-  margin-right: 0;
 }
 
 .row-right .timeline-exp-card-inner {
   text-align: left;
   align-items: flex-start;
 }
-.row-right .exp-card-city {
+.row-right .card-meta-loc {
   justify-content: flex-start;
-  margin-left: 0;
-  margin-right: auto;
-}
-.row-right .timeline-exp-card-overlay {
-  text-align: left;
-  align-items: flex-start;
-  justify-content: center;
-}
-.row-right .exp-overlay-header {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.row-right .exp-overlay-coral-line {
-  margin-left: 0;
-  margin-right: auto;
 }
 
 @media (max-width: 768px) {
-  .timeline-exp-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-height: 185px !important;
-    background: #FFFFFF !important;
-    box-shadow: 0 10px 28px rgba(45, 49, 66, 0.08) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important; /* Centrado en eje vertical */
-    align-items: center !important;     /* Centrado en eje horizontal */
-  }
   .row-left .timeline-exp-card-inner,
-  .row-left .timeline-exp-card-overlay,
-  .row-right .timeline-exp-card-inner,
-  .row-right .timeline-exp-card-overlay,
-  .timeline-exp-card-inner {
-    width: 100% !important;
-    flex: 1 1 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important; /* Centrado en eje vertical */
-    align-items: center !important;     /* Centrado en eje horizontal */
-    text-align: center !important;
-    padding: 24px 20px !important;
-    box-sizing: border-box !important;
+  .row-right .timeline-exp-card-inner {
+    text-align: left !important;
+    align-items: flex-start !important;
   }
-  .timeline-exp-card-inner .flex,
-  .timeline-exp-card-inner .flex.items-center {
-    justify-content: center !important;
-    width: 100% !important;
-  }
-  .exp-card-badge {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-  }
-  .exp-card-company,
-  .exp-card-role {
-    text-align: center !important;
-    width: 100% !important;
-  }
-  .timeline-exp-card-inner p {
-    text-align: center !important;
-    width: 100% !important;
-  }
-  .row-left .exp-card-city,
-  .row-right .exp-card-city,
-  .exp-card-city {
-    justify-content: center !important;
-    margin: 10px auto 0 auto !important;
-    width: 100% !important;
-  }
-  .row-left .exp-overlay-header,
-  .row-right .exp-overlay-header,
-  .exp-overlay-header {
-    align-items: center !important;
-    text-align: center !important;
-    width: 100% !important;
-  }
-  .exp-overlay-header .flex {
-    justify-content: center !important;
-    gap: 8px !important;
-    width: 100% !important;
-  }
-  .exp-overlay-coral-line {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  .timeline-exp-card-overlay .border-b > div.flex,
-  .timeline-exp-card-overlay div > div.flex {
-    justify-content: center !important;
-    gap: 8px !important;
-    width: 100% !important;
-  }
-  .timeline-exp-card-overlay p,
-  .timeline-exp-card-overlay span {
-    text-align: center !important;
+  .row-left .card-meta-loc,
+  .row-right .card-meta-loc {
+    justify-content: flex-start !important;
   }
 }
 
-.exp-card-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+/* Etiqueta ACTUAL */
+.card-badge-actual-wrap {
+  margin-bottom: 6px;
+}
+.badge-actual {
+  display: inline-block;
   font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 10.5px;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
   color: var(--coral-glow);
-  margin-top: 14px;
-  opacity: 0.85;
+  background: rgba(239, 131, 84, 0.12);
+  border: 1px solid rgba(239, 131, 84, 0.35);
+  padding: 2px 8px;
+  border-radius: 6px;
 }
-.exp-card-city {
+
+/* 1. EL PUESTO (Protagonista principal, Carbón, mayor tamaño y peso) */
+.card-puesto {
+  font-family: var(--font-sans);
+  font-size: clamp(1.15rem, 1.35vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--charcoal);
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+/* 2. LA EMPRESA (En mayúsculas, menor tamaño, Blue Slate) */
+.card-empresa {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue-slate);
+  margin-top: 5px;
+  line-height: 1.3;
+}
+
+/* 3. EL LUGAR (MapPin en Coral Glow + ciudad) */
+.card-meta-loc {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  margin-top: 6px;
   font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--blue-slate);
-  margin-top: 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #718096;
 }
 
+.card-loc-icon {
+  width: 13px;
+  height: 13px;
+  color: var(--coral-glow);
+  stroke: var(--coral-glow);
+  flex-shrink: 0;
+}
 
-/* OVERLAY INTERACTIVO ESTILO FORMACIÓN */
+/* ==========================================================================
+   HOVER ESTRATIFICADO: OVERLAY AZUL OSCURO #2D3142
+   ========================================================================== */
 .timeline-exp-card-overlay {
   position: absolute;
   inset: 0;
   background: rgba(45, 49, 66, 0.96);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  padding: 24px 28px;
+  color: var(--ivory);
+  padding: 22px 26px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  transform: translateY(100%);
+  justify-content: center;
+  box-sizing: border-box;
   opacity: 0;
-  transition: transform 450ms var(--ease-primary), opacity 450ms var(--ease-primary);
-  z-index: 10;
-  border-radius: 18px;
+  transform: translateY(10px);
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1) 140ms, transform 350ms cubic-bezier(0.16, 1, 0.3, 1) 140ms;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.timeline-exp-card-overlay::-webkit-scrollbar {
+  display: none;
 }
 
-/* Hover en desktop o expandido en móvil */
+.card-overlay-desc {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.58;
+  color: #F5F2EC;
+  margin: 0;
+  letter-spacing: -0.005em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.card-overlay-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.02rem, 1.2vw, 1.15rem);
+  line-height: 1.38;
+  color: var(--coral-glow);
+  margin: 12px 0 0;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+/* Transición secuenciada al entrar el hover / expand */
+.timeline-exp-card:hover .timeline-exp-card-inner,
+.timeline-exp-card.is-expanded .timeline-exp-card-inner {
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
 .timeline-exp-card:hover .timeline-exp-card-overlay,
 .timeline-exp-card.is-expanded .timeline-exp-card-overlay {
-  transform: translateY(0);
   opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1), transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.exp-overlay-header {
-  margin-bottom: 12px;
+.timeline-exp-card:hover .card-overlay-desc,
+.timeline-exp-card.is-expanded .card-overlay-desc {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1) 120ms, transform 400ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
 }
 
-.exp-overlay-company {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--white);
-  display: block;
+.timeline-exp-card:hover .card-overlay-quote,
+.timeline-exp-card.is-expanded .card-overlay-quote {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1) 220ms, transform 400ms cubic-bezier(0.16, 1, 0.3, 1) 220ms;
 }
-
-.exp-overlay-role {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--silver);
-  display: block;
-  margin-top: 2px;
-}
-
-.exp-overlay-coral-line {
-  width: 36px;
-  height: 2px;
-  background-color: var(--coral-glow);
-  margin-top: 8px;
-}
-
-.exp-overlay-desc {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--ivory);
-}
-
-/* TARJETA DESTACADA REPÚBLICA AFAP */
-.timeline-exp-card.card-featured {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1.5px solid rgba(239, 131, 84, 0.4);
-  box-shadow: 0 14px 36px rgba(239, 131, 84, 0.12);
-  min-height: 380px;
-}
-
-.company-featured {
-  font-size: 21px;
-  color: var(--jet-black);
-}
-
-.role-featured {
-  color: var(--charcoal);
-  font-weight: 700;
-}
-
-.timeline-exp-card-overlay.overlay-featured {
-  background: rgba(35, 38, 52, 0.98);
-}
-
 
 /* ==========================================================================
    CONÓCEME - SCROLLYTELLING SPOTLIGHT & FRASES DINÁMICAS
