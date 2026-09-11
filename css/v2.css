@@ -1883,6 +1883,7 @@ body {
   color: var(--ivory);
   opacity: 0.88;
   margin-bottom: 0;
+  max-width: 720px;
 }
 
 .contacto-grid-v2 {
@@ -2088,10 +2089,21 @@ body {
   background-color: var(--jet-black);
   color: var(--ivory);
   border-top: 1px solid rgba(245, 242, 236, 0.12);
-  padding: 40px 24px 36px;
+  padding: 56px 24px 44px;
 }
 @media (max-width: 768px) {
-  .footer-section-v2 { padding: 36px 16px 30px; }
+  .footer-section-v2 { padding: 44px 16px 36px; }
+}
+
+.footer-thanks-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.65rem, 2.6vw, 2.25rem);
+  font-weight: 500;
+  color: var(--coral-glow);
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-align: center;
 }
 
 .footer-container-v2 {
