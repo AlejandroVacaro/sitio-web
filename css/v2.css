@@ -2577,22 +2577,37 @@ body {
 
 /* Ajustes específicos de altura mínima por extensión de texto/quote para evitar scroll */
 .timeline-alt-row[data-index="1"] .timeline-exp-card {
-  min-height: 238px;
+  min-height: 258px;
 }
 .timeline-alt-row[data-index="2"] .timeline-exp-card {
-  min-height: 282px;
+  min-height: 245px;
+}
+.timeline-alt-row[data-index="3"] .timeline-exp-card {
+  min-height: 236px;
 }
 .timeline-alt-row[data-index="4"] .timeline-exp-card {
-  min-height: 152px;
+  min-height: 192px;
 }
 .timeline-alt-row[data-index="5"] .timeline-exp-card {
-  min-height: 218px;
+  min-height: 236px;
+}
+.timeline-alt-row[data-index="6"] .timeline-exp-card {
+  min-height: 236px;
+}
+.timeline-alt-row[data-index="7"] .timeline-exp-card {
+  min-height: 258px;
 }
 .timeline-alt-row[data-index="8"] .timeline-exp-card {
-  min-height: 162px;
+  min-height: 192px;
+}
+.timeline-alt-row[data-index="9"] .timeline-exp-card {
+  min-height: 214px;
 }
 .timeline-alt-row[data-index="10"] .timeline-exp-card {
-  min-height: 176px;
+  min-height: 192px;
+}
+.timeline-alt-row[data-index="11"] .timeline-exp-card {
+  min-height: 192px;
 }
 
 /* Continuidad sutil en República AFAP */
