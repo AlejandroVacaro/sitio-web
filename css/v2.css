@@ -1259,7 +1259,7 @@ body {
 
 /* Bloque de frase distintiva al pie de Conóceme */
 .conoceme-bottom-quote-block {
-  margin-top: clamp(48px, 6vw, 72px);
+  margin-top: clamp(76px, 8.5vw, 112px);
   margin-bottom: 16px;
   text-align: center;
   display: flex;

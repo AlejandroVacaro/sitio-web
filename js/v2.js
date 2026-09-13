@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startStripTimer() {
       if (stripTimer) clearInterval(stripTimer);
-      stripTimer = setInterval(advanceStrip, 5000);
+      stripTimer = setInterval(advanceStrip, 10000);
     }
 
     function stopStripTimer() {
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
       startStripTimer();
     });
 
-    // Iniciar rotación de 5 segundos
+    // Iniciar rotación de 10 segundos
     startStripTimer();
   }
 
