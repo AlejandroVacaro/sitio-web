@@ -2737,22 +2737,7 @@ body {
   pointer-events: none;
   z-index: 5;
   transition: transform 480ms var(--ease-primary), opacity 450ms var(--ease-primary);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(239, 131, 84, 0.45) transparent;
   border-radius: 17px;
-}
-
-.timeline-exp-card-overlay::-webkit-scrollbar {
-  width: 4px;
-}
-.timeline-exp-card-overlay::-webkit-scrollbar-track {
-  background: transparent;
-}
-.timeline-exp-card-overlay::-webkit-scrollbar-thumb {
-  background: rgba(239, 131, 84, 0.45);
-  border-radius: 4px;
 }
 
 .timeline-exp-overlay-content {
