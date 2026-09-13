@@ -57,7 +57,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=7.0">
+  <link rel="stylesheet" href="css/v2.css?v=7.1">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -262,14 +262,9 @@
           <div class="conoceme-apple-photo-card">
             <img src="assets/images/alejandro_about.jpg" alt="Alejandro Vacaro - Historia personal" class="conoceme-apple-photo-img" loading="lazy">
           </div>
-          <div class="conoceme-photo-meta-box">
-            <p class="conoceme-photo-bio-text">
-              Fanático de los momentos en silencio, de un mate recién hecho, de la compañía de mi perro y de los atardeceres al aire libre.
-            </p>
-          </div>
         </div>
 
-        <!-- Columna Derecha: Tarjeta Escénica con Frases en Spotlight (Una a la vez) -->
+        <!-- Columna Derecha: Tarjeta Escénica con Frases en Spotlight (Una a la vez) + Nueva Sección Dinámica -->
         <div class="conoceme-apple-narrative-col">
           <div class="conoceme-apple-stage-card">
             
@@ -436,6 +431,72 @@
               <button type="button" id="story-next-btn" class="story-arrow-btn" aria-label="Frase siguiente">
                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
               </button>
+            </div>
+          </div>
+
+          <!-- Nueva Sección Dinámica: Notas y Reflexiones rotativas -->
+          <div class="conoceme-dynamic-strip" id="conoceme-dynamic-strip" aria-label="Notas y reflexiones">
+            <div class="strip-divider-line"></div>
+            <div class="strip-slider-container">
+              <!-- Item 1: Cosas simples -->
+              <div class="strip-item is-active" data-index="0">
+                <div class="strip-icon-box">
+                  <i data-lucide="coffee" class="strip-icon"></i>
+                </div>
+                <div class="strip-v-sep"></div>
+                <div class="strip-content">
+                  <span class="strip-title">Cosas simples que me hacen bien</span>
+                  <p class="strip-text">Un mate recién hecho, los momentos en silencio, la compañía de mi perro y los atardeceres al aire libre.</p>
+                </div>
+              </div>
+
+              <!-- Item 2: Una frase -->
+              <div class="strip-item" data-index="1">
+                <div class="strip-icon-box">
+                  <i data-lucide="quote" class="strip-icon"></i>
+                </div>
+                <div class="strip-v-sep"></div>
+                <div class="strip-content">
+                  <span class="strip-title">Una frase que todavía recuerdo</span>
+                  <p class="strip-text">Cuando renuncié a mi primer trabajo me dijeron: “De lechero a ejecutivo, quién lo diría”. Todavía me causa gracia. Y, de alguna manera, resume bastante bien cómo empezó todo.</p>
+                </div>
+              </div>
+
+              <!-- Item 3: Líneas rectas -->
+              <div class="strip-item" data-index="2">
+                <div class="strip-icon-box">
+                  <i data-lucide="route" class="strip-icon"></i>
+                </div>
+                <div class="strip-v-sep"></div>
+                <div class="strip-content">
+                  <span class="strip-title">Nunca fui muy de las líneas rectas</span>
+                  <p class="strip-text">Fui cambiando de trabajos, intereses y planes más de una vez. Con el tiempo entendí que esos desvíos no me alejaron del camino: terminaron construyéndolo.</p>
+                </div>
+              </div>
+
+              <!-- Item 4: Obsesión útil -->
+              <div class="strip-item" data-index="3">
+                <div class="strip-icon-box">
+                  <i data-lucide="search" class="strip-icon"></i>
+                </div>
+                <div class="strip-v-sep"></div>
+                <div class="strip-content">
+                  <span class="strip-title">Tengo una obsesión bastante útil</span>
+                  <p class="strip-text">Me cuesta aceptar un “siempre se hizo así” sin hacer al menos una pregunta más. Necesito entender cómo funcionan las cosas y qué podría hacerse mejor.</p>
+                </div>
+              </div>
+
+              <!-- Item 5: Versión anterior -->
+              <div class="strip-item" data-index="4">
+                <div class="strip-icon-box">
+                  <i data-lucide="sparkles" class="strip-icon"></i>
+                </div>
+                <div class="strip-v-sep"></div>
+                <div class="strip-content">
+                  <span class="strip-title">Cambiar de versión también cuenta</span>
+                  <p class="strip-text">Durante mucho tiempo pensé que cambiar de rumbo era empezar de cero. Hoy creo casi lo contrario: cada versión anterior sigue apareciendo, de alguna forma, en la que soy ahora.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1326,6 +1387,6 @@
   </div>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=7.0"></script>
+  <script src="js/v2.js?v=7.1"></script>
 </body>
 </html>

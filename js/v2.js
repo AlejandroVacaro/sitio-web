@@ -189,6 +189,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // ============================================================================
+  // 3B. CONÓCEME: ROTADOR DINÁMICO DE NOTAS Y REFLEXIONES (5s + PAUSA EN HOVER)
+  // ============================================================================
+  const dynamicStrip = document.getElementById('conoceme-dynamic-strip');
+  if (dynamicStrip) {
+    const stripItems = dynamicStrip.querySelectorAll('.strip-item');
+    let currentStripIndex = 0;
+    const totalStripItems = stripItems.length;
+    let stripTimer = null;
+    let isStripPaused = false;
+
+    function showStripItem(nextIndex) {
+      if (nextIndex === currentStripIndex || totalStripItems === 0) return;
+      
+      const prevItem = stripItems[currentStripIndex];
+      const nextItem = stripItems[nextIndex];
+      
+      if (prevItem) {
+        prevItem.classList.remove('is-active');
+      }
+      if (nextItem) {
+        nextItem.classList.add('is-active');
+      }
+      currentStripIndex = nextIndex;
+    }
+
+    function advanceStrip() {
+      if (isStripPaused || totalStripItems === 0) return;
+      const nextIndex = (currentStripIndex + 1) % totalStripItems;
+      showStripItem(nextIndex);
+    }
+
+    function startStripTimer() {
+      if (stripTimer) clearInterval(stripTimer);
+      stripTimer = setInterval(advanceStrip, 5000);
+    }
+
+    function stopStripTimer() {
+      if (stripTimer) {
+        clearInterval(stripTimer);
+        stripTimer = null;
+      }
+    }
+
+    dynamicStrip.addEventListener('mouseenter', () => {
+      isStripPaused = true;
+      stopStripTimer();
+    });
+
+    dynamicStrip.addEventListener('mouseleave', () => {
+      isStripPaused = false;
+      startStripTimer();
+    });
+
+    // Iniciar rotación de 5 segundos
+    startStripTimer();
+  }
+
 
   // ============================================================================
   // 4. CONTROLADOR DE SCROLL PRINCIPAL DE LA PÁGINA

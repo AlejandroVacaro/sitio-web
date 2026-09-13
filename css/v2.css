@@ -862,7 +862,7 @@ body {
 }
 
 .conoceme-apple-header {
-  margin-bottom: 24px;
+  margin-bottom: clamp(36px, 4vw, 48px);
 }
 .conoceme-title-coral {
   font-family: var(--font-serif);
@@ -904,7 +904,6 @@ body {
   max-width: 720px;
 }
 
-
 .conoceme-apple-header .conoceme-heading {
   color: #FFFFFF !important;
 }
@@ -914,15 +913,15 @@ body {
 
 .conoceme-apple-stage {
   display: grid;
-  grid-template-columns: 360px minmax(0, 1fr);
-  gap: clamp(40px, 5vw, 72px);
-  align-items: center;
+  grid-template-columns: 370px minmax(0, 1fr);
+  gap: clamp(36px, 4.5vw, 56px);
+  align-items: stretch;
   width: 100%;
 }
 
 @media (max-width: 960px) {
   .conoceme-apple-stage {
-    grid-template-columns: 310px minmax(0, 1fr);
+    grid-template-columns: 320px minmax(0, 1fr);
     gap: 32px;
   }
 }
@@ -934,157 +933,185 @@ body {
   }
 }
 
-/* Columna Izquierda: Fotografía */
+/* Columna Izquierda: Fotografía agrandada verticalmente */
 .conoceme-apple-photo-col {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
 }
 
 .conoceme-apple-photo-card {
   width: 100%;
-  max-width: 360px;
-  aspect-ratio: 4 / 5;
-  border-radius: 24px;
+  height: 100%;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(245, 242, 236, 0.12);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(245, 242, 236, 0.12);
   background-color: #1e222d;
 }
 
 @media (max-width: 768px) {
   .conoceme-apple-photo-card {
     max-width: 330px;
+    min-height: 380px;
+    margin: 0 auto;
   }
-}
-
-/* Tarjeta / Badge de identidad bajo la foto de Conóceme */
-.conoceme-photo-meta-box {
-  width: 100%;
-  max-width: 360px;
-  margin-top: 14px;
-  background: rgba(35, 38, 52, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(245, 242, 236, 0.12);
-  border-radius: 16px;
-  padding: 12px 18px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  box-sizing: border-box;
-  transition: border-color 300ms ease, box-shadow 300ms ease;
-}
-
-@media (max-width: 768px) {
-  .conoceme-photo-meta-box {
-    max-width: 330px;
-  }
-}
-
-.conoceme-photo-bio-text {
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  line-height: 1.52;
-  color: rgba(245, 242, 236, 0.90);
-  text-align: center;
-  margin: 0;
-  padding: 4px 6px;
-}
-
-.conoceme-photo-meta-box:hover {
-  border-color: rgba(239, 131, 84, 0.35);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
-}
-
-.meta-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.meta-row-primary {
-  gap: 8px;
-}
-
-.meta-coral-icon {
-  width: 15px;
-  height: 15px;
-  color: var(--coral-glow);
-  stroke: var(--coral-glow);
-  flex-shrink: 0;
-}
-
-.meta-name {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 15px;
-  color: #FFFFFF;
-  letter-spacing: 0.015em;
-}
-
-.meta-row-secondary {
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  color: rgba(245, 242, 236, 0.76);
-}
-
-.meta-subitem {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.meta-subitem .meta-coral-icon {
-  width: 13px;
-  height: 13px;
-}
-
-.meta-bullet {
-  color: rgba(245, 242, 236, 0.28);
-  font-size: 14px;
 }
 
 .conoceme-apple-photo-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 15%;
   display: block;
 }
 
-/* Columna Derecha: Tarjeta Escénica */
+/* Columna Derecha: Tarjeta Escénica + Nueva Sección Dinámica */
 .conoceme-apple-narrative-col {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .conoceme-apple-stage-card {
   width: 100%;
-  min-height: 420px;
+  min-height: 320px;
   background: rgba(35, 38, 52, 0.88);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(245, 242, 236, 0.14);
   border-radius: 24px;
-  padding: 36px 44px 56px;
+  padding: 28px 36px 36px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   cursor: default;
+  box-sizing: border-box;
+  flex: 1 1 auto;
 }
 
 @media (max-width: 768px) {
   .conoceme-apple-stage-card {
-    min-height: 380px;
-    padding: 28px 24px 60px;
+    min-height: 340px;
+    padding: 26px 22px 48px;
+  }
+}
+
+/* ==========================================================================
+   NOTAS Y REFLEXIONES ROTATIVAS (Conóceme Dynamic Strip)
+   ========================================================================== */
+.conoceme-dynamic-strip {
+  width: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 4px;
+}
+
+.strip-divider-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(245, 242, 236, 0.14);
+  margin-bottom: 16px;
+}
+
+.strip-slider-container {
+  position: relative;
+  width: 100%;
+  min-height: 84px;
+}
+
+.strip-item {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 450ms cubic-bezier(0.16, 1, 0.3, 1), transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.strip-item.is-active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.strip-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.strip-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--coral-glow);
+  stroke: var(--coral-glow);
+  stroke-width: 1.8;
+  flex-shrink: 0;
+}
+
+.strip-v-sep {
+  width: 1px;
+  height: 48px;
+  background: rgba(245, 242, 236, 0.24);
+  flex-shrink: 0;
+}
+
+.strip-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.strip-title {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 242, 236, 0.52);
+}
+
+.strip-text {
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-size: clamp(1.05rem, 1.22vw, 1.2rem);
+  line-height: 1.45;
+  color: #F5F2EC;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+  .strip-slider-container {
+    min-height: 110px;
+  }
+  .strip-item {
+    gap: 14px;
+  }
+  .strip-icon {
+    width: 26px;
+    height: 26px;
+  }
+  .strip-v-sep {
+    height: 42px;
   }
 }
 
