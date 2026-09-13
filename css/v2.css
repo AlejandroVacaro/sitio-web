@@ -1064,6 +1064,51 @@ body {
   flex-shrink: 0;
 }
 
+.broom-sparkle-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.broom-sparkle-wrap .main-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--coral-glow);
+  stroke: var(--coral-glow);
+  stroke-width: 1.8;
+}
+
+.broom-sparkle-wrap .sparkle-sub {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 14px;
+  height: 14px;
+  color: var(--coral-glow);
+  stroke: var(--coral-glow);
+  stroke-width: 2;
+}
+
+.dual-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 44px;
+}
+
+.dual-icon-wrap .dual-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--coral-glow);
+  stroke: var(--coral-glow);
+  stroke-width: 1.8;
+  flex-shrink: 0;
+}
+
 .strip-v-sep {
   width: 1px;
   height: 48px;
@@ -1109,6 +1154,28 @@ body {
   .strip-icon {
     width: 26px;
     height: 26px;
+  }
+  .broom-sparkle-wrap {
+    width: 32px;
+    height: 32px;
+  }
+  .broom-sparkle-wrap .main-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .broom-sparkle-wrap .sparkle-sub {
+    width: 12px;
+    height: 12px;
+    top: -2px;
+    right: -2px;
+  }
+  .dual-icon-wrap {
+    width: 38px;
+    gap: 2px;
+  }
+  .dual-icon-wrap .dual-icon {
+    width: 17px;
+    height: 17px;
   }
   .strip-v-sep {
     height: 42px;
