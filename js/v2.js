@@ -243,6 +243,24 @@ document.addEventListener('DOMContentLoaded', () => {
       startStripTimer();
     });
 
+    const stripContainer = dynamicStrip.querySelector('.strip-slider-container');
+
+    function syncMaxStripHeight() {
+      if (!stripContainer || totalStripItems === 0) return;
+      let maxH = 0;
+      stripItems.forEach(item => {
+        const itemH = item.offsetHeight || item.scrollHeight;
+        if (itemH > maxH) maxH = itemH;
+      });
+      if (maxH > 0) {
+        stripContainer.style.minHeight = maxH + 'px';
+      }
+    }
+
+    window.addEventListener('load', syncMaxStripHeight);
+    window.addEventListener('resize', syncMaxStripHeight);
+    setTimeout(syncMaxStripHeight, 150);
+
     // Iniciar rotación de 10 segundos
     startStripTimer();
   }

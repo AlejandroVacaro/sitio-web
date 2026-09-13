@@ -1024,12 +1024,16 @@ body {
 .strip-slider-container {
   position: relative;
   width: 100%;
-  min-height: 84px;
+  min-height: 118px;
+  display: flex;
+  align-items: center;
 }
 
 .strip-item {
   position: absolute;
   inset: 0;
+  width: 100%;
+  min-height: 100%;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -1058,51 +1062,6 @@ body {
 .strip-icon {
   width: 32px;
   height: 32px;
-  color: var(--coral-glow);
-  stroke: var(--coral-glow);
-  stroke-width: 1.8;
-  flex-shrink: 0;
-}
-
-.broom-sparkle-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-}
-
-.broom-sparkle-wrap .main-icon {
-  width: 28px;
-  height: 28px;
-  color: var(--coral-glow);
-  stroke: var(--coral-glow);
-  stroke-width: 1.8;
-}
-
-.broom-sparkle-wrap .sparkle-sub {
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  width: 14px;
-  height: 14px;
-  color: var(--coral-glow);
-  stroke: var(--coral-glow);
-  stroke-width: 2;
-}
-
-.dual-icon-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  width: 44px;
-}
-
-.dual-icon-wrap .dual-icon {
-  width: 20px;
-  height: 20px;
   color: var(--coral-glow);
   stroke: var(--coral-glow);
   stroke-width: 1.8;
@@ -1144,9 +1103,21 @@ body {
   letter-spacing: -0.01em;
 }
 
+@media (max-width: 1024px) {
+  .strip-slider-container {
+    min-height: 130px;
+  }
+}
+
+@media (max-width: 960px) {
+  .strip-slider-container {
+    min-height: 168px;
+  }
+}
+
 @media (max-width: 768px) {
   .strip-slider-container {
-    min-height: 110px;
+    min-height: 140px;
   }
   .strip-item {
     gap: 14px;
@@ -1154,28 +1125,6 @@ body {
   .strip-icon {
     width: 26px;
     height: 26px;
-  }
-  .broom-sparkle-wrap {
-    width: 32px;
-    height: 32px;
-  }
-  .broom-sparkle-wrap .main-icon {
-    width: 24px;
-    height: 24px;
-  }
-  .broom-sparkle-wrap .sparkle-sub {
-    width: 12px;
-    height: 12px;
-    top: -2px;
-    right: -2px;
-  }
-  .dual-icon-wrap {
-    width: 38px;
-    gap: 2px;
-  }
-  .dual-icon-wrap .dual-icon {
-    width: 17px;
-    height: 17px;
   }
   .strip-v-sep {
     height: 42px;
