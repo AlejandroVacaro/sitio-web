@@ -49,4 +49,4 @@
 - 💼 LinkedIn: [/in/alejandrovacaro](https://www.linkedin.com/in/alejandrovacaro/)  
 - 📹 TikTok: [@ale.vacaro](https://www.tiktok.com/@ale.vacaro)  
 - 📸 Instagram: [@ale.vacaro](https://www.instagram.com/ale.vacaro)  
-- 🐦 X (Twitter): [@AlejandroVacaro](https://x.com/AlejandroVacaro)
+- 🐦 X (Twitter): [@aleejo_shordee](https://x.com/aleejo_shordee)
