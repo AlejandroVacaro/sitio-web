@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
-Sitemap: https://alejandrovacaro.vercel.app/sitemap.xml
+Sitemap: https://alevacaro.com/sitemap.xml
