@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Secciones a observar para la Navbar activa
   const navSections = [
     { id: 'home', el: document.getElementById('home') },
-    { id: 'conoceme', el: document.getElementById('conoceme') },
+    { id: 'sobre-mi', el: document.getElementById('sobre-mi') || document.getElementById('conoceme') },
     { id: 'experiencia', el: document.getElementById('experiencia') },
     { id: 'formacion', el: document.getElementById('formacion') },
     { id: 'contacto', el: document.getElementById('contacto') }
@@ -309,9 +309,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Tema oscuro adaptativo de la navbar sobre Conóceme o Contacto
+    // Tema oscuro adaptativo de la navbar sobre Sobre mí o Contacto
     if (mainHeader) {
-      if (activeSectionId === 'conoceme' || activeSectionId === 'contacto') {
+      if (activeSectionId === 'sobre-mi' || activeSectionId === 'conoceme' || activeSectionId === 'contacto') {
         mainHeader.classList.add('header-dark-theme');
       } else {
         mainHeader.classList.remove('header-dark-theme');
@@ -782,31 +782,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================================================
-  // 10. ANIMACIÓN DE CONFETI CELEBRATORIO
+  // 10. ANIMACIÓN DE CONFETI CELEBRATORIO (Carga diferida bajo demanda)
   // ============================================================================
-  function triggerCelebrationConfetti() {
+  let isConfettiLoading = false;
+  function loadConfettiScript(callback) {
     if (typeof window.confetti === 'function') {
-      // Ráfaga múltiple estilo fuegos artificiales
-      const count = 200;
-      const defaults = {
-        origin: { y: 0.7 },
-        colors: ['#EF8354', '#F5F2EC', '#2D3142', '#FFD166', '#FFFFFF']
-      };
-
-      function fire(particleRatio, opts) {
-        window.confetti({
-          ...defaults,
-          ...opts,
-          particleCount: Math.floor(count * particleRatio)
-        });
-      }
-
-      fire(0.25, { spread: 26, startVelocity: 55 });
-      fire(0.2, { spread: 60 });
-      fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-      fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
-      fire(0.1, { spread: 120, startVelocity: 45 });
+      if (callback) callback();
+      return;
     }
+    if (isConfettiLoading) {
+      if (callback) {
+        const interval = setInterval(() => {
+          if (typeof window.confetti === 'function') {
+            clearInterval(interval);
+            callback();
+          }
+        }, 50);
+      }
+      return;
+    }
+    isConfettiLoading = true;
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js';
+    script.defer = true;
+    script.onload = () => {
+      isConfettiLoading = false;
+      if (callback) callback();
+    };
+    script.onerror = () => {
+      isConfettiLoading = false;
+    };
+    document.body.appendChild(script);
+  }
+
+  // Pre-cargar confetti cuando el usuario interactúa con el formulario o entra a Contacto
+  const contactSectionEl = document.getElementById('contacto');
+  if (contactSectionEl && 'IntersectionObserver' in window) {
+    const confettiObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadConfettiScript();
+          confettiObserver.disconnect();
+        }
+      });
+    }, { rootMargin: '200px' });
+    confettiObserver.observe(contactSectionEl);
+  }
+
+  if (contactForm) {
+    contactForm.addEventListener('focusin', () => loadConfettiScript(), { once: true });
+  }
+
+  function triggerCelebrationConfetti() {
+    loadConfettiScript(() => {
+      if (typeof window.confetti === 'function') {
+        // Ráfaga múltiple estilo fuegos artificiales
+        const count = 200;
+        const defaults = {
+          origin: { y: 0.7 },
+          colors: ['#EF8354', '#F5F2EC', '#2D3142', '#FFD166', '#FFFFFF']
+        };
+
+        function fire(particleRatio, opts) {
+          window.confetti({
+            ...defaults,
+            ...opts,
+            particleCount: Math.floor(count * particleRatio)
+          });
+        }
+
+        fire(0.25, { spread: 26, startVelocity: 55 });
+        fire(0.2, { spread: 60 });
+        fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+        fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+        fire(0.1, { spread: 120, startVelocity: 45 });
+      }
+    });
   }
 
   // ============================================================================

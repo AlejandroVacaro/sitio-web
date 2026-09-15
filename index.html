@@ -20,7 +20,9 @@
   <meta property="og:url" content="https://alevacaro.com/">
   <meta property="og:title" content="Alejandro Vacaro | Analista Funcional">
   <meta property="og:description" content="Conecto personas, procesos y tecnología para convertir problemas en soluciones posibles.">
-  <meta property="og:image" content="https://alevacaro.com/assets/images/alejandro_hero.jpg">
+  <meta property="og:image" content="https://alevacaro.com/assets/images/og_card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Alejandro Vacaro - Analista Funcional">
   <meta property="og:site_name" content="Alejandro Vacaro">
   <meta property="og:locale" content="es_UY">
@@ -34,7 +36,7 @@
   <meta name="twitter:url" content="https://alevacaro.com/">
   <meta name="twitter:title" content="Alejandro Vacaro | Analista Funcional">
   <meta name="twitter:description" content="Conecto personas, procesos y tecnología para convertir problemas en soluciones posibles.">
-  <meta name="twitter:image" content="https://alevacaro.com/assets/images/alejandro_hero.jpg">
+  <meta name="twitter:image" content="https://alevacaro.com/assets/images/og_card.jpg">
   <meta name="twitter:image:alt" content="Alejandro Vacaro - Analista Funcional">
   <meta name="twitter:site" content="@aleejo_shordee">
   <meta name="twitter:creator" content="@aleejo_shordee">
@@ -50,17 +52,16 @@
         "name": "Alejandro Vacaro",
         "givenName": "Alejandro",
         "familyName": "Vacaro",
-        "additionalName": "Alejandro Vacaro (Analista Funcional)",
         "url": "https://alevacaro.com/",
-        "image": "https://alevacaro.com/assets/images/alejandro_hero.jpg",
+        "image": "https://alevacaro.com/assets/images/og_card.jpg",
         "jobTitle": "Analista Funcional",
         "worksFor": {
           "@type": "Organization",
           "name": "República AFAP",
           "url": "https://www.rafap.com.uy/"
         },
-        "description": "Alejandro Vacaro es un Analista Funcional uruguayo especializado en Business Analysis, optimización de flujos de procesos, implementación de BPMS y transformación digital, con más de 15 años de trayectoria en el mercado laboral en Montevideo, Uruguay.",
-        "disambiguatingDescription": "Profesional uruguayo de análisis funcional y optimización de procesos en Montevideo, Uruguay, con apellido Vacaro (escrito con una sola 'c', a diferencia del escritor argentino Alejandro Vaccaro).",
+        "description": "Alejandro Vacaro es un Analista Funcional uruguayo especializado en Business Analysis, optimización de flujos de procesos e implementación de soluciones tecnológicas. Su trayectoria laboral comenzó en 2011 en Paysandú y continuó luego en Montevideo en los sectores financiero, previsional y operativo.",
+        "disambiguatingDescription": "Profesional uruguayo especializado en análisis funcional y optimización de procesos, con apellido Vacaro (con una sola 'c').",
         "alumniOf": [
           {
             "@type": "CollegeOrUniversity",
@@ -157,36 +158,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ivory: '#F5F2EC',
-            charcoal: '#222222',
-            blueSlate: '#4F5D75',
-            coralGlow: '#EF8354',
-            jetBlack: '#2D3142',
-            silver: '#BFC0C0'
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Newsreader', 'Georgia', 'serif']
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="css/tailwind.min.css?v=1.0">
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Canvas Confetti CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <!-- Lucide Icons (Subset Optimizado v0.344.0) -->
+  <script src="js/lucide.min.js?v=1.0"></script>
 
   <!-- Stylesheet V2 -->
-  <link rel="stylesheet" href="css/v2.css?v=7.9">
+  <link rel="stylesheet" href="css/v2.css?v=8.0">
 </head>
 
 <body class="bg-[#F5F2EC] text-[#222222] font-sans antialiased relative selection:bg-[#EF8354] selection:text-white">
@@ -214,10 +193,10 @@
 
       <!-- Navegación derecha (4 enlaces exactos) -->
       <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
-        <a href="#conoceme" class="nav-link">Conóceme</a>
+        <a href="#sobre-mi" class="nav-link">Sobre mí</a>
         <a href="#experiencia" class="nav-link">Mi experiencia</a>
         <a href="#formacion" class="nav-link">Mi formación</a>
-        <a href="#contacto" class="nav-link">Contáctame</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
       </nav>
 
       <!-- Botón móvil -->
@@ -233,10 +212,10 @@
   <!-- Menú móvil Drawer (Mismo azul #2D3142 de Conóceme levemente transparente, opciones centradas y transición fluida) -->
   <div id="mobile-menu-drawer" class="hidden">
     <nav class="flex flex-col items-center justify-center gap-7 py-6 text-xl font-sans font-medium text-center w-full my-auto">
-      <a href="#conoceme" class="mobile-nav-link hover:text-[#EF8354] py-1">Conóceme</a>
+      <a href="#sobre-mi" class="mobile-nav-link hover:text-[#EF8354] py-1">Sobre mí</a>
       <a href="#experiencia" class="mobile-nav-link hover:text-[#EF8354] py-1">Mi experiencia</a>
       <a href="#formacion" class="mobile-nav-link hover:text-[#EF8354] py-1">Mi formación</a>
-      <a href="#contacto" class="mobile-nav-link hover:text-[#EF8354] py-1">Contáctame</a>
+      <a href="#contacto" class="mobile-nav-link hover:text-[#EF8354] py-1">Contacto</a>
     </nav>
 
     <div class="mobile-drawer-footer border-t border-white/10 pt-4 text-xs text-[#BFC0C0] flex flex-col items-center justify-center gap-1 text-center w-full">
@@ -281,10 +260,10 @@
             <span>Descargar CV</span>
           </a>
 
-          <!-- Botón secundario a la derecha: Contáctame en blanco -->
+          <!-- Botón secundario a la derecha: Contactame en blanco -->
           <a href="#contacto" class="hero-btn-secondary">
             <i data-lucide="message-circle" class="w-4 h-4"></i>
-            <span>Contáctame</span>
+            <span>Contactame</span>
           </a>
         </div>
 
@@ -293,7 +272,10 @@
       <!-- Columna Derecha: Fotografía (max-width 460px, tilt desktop) -->
       <div class="hero-photo-col anim-hero-photo">
         <div id="hero-photo-wrapper" class="hero-photo-wrapper">
-          <img src="assets/images/alejandro_hero.jpg" alt="Alejandro Vacaro" class="hero-photo-img">
+          <picture>
+            <source srcset="assets/images/alejandro_hero.webp" type="image/webp">
+            <img src="assets/images/alejandro_hero.jpg" alt="Alejandro Vacaro" class="hero-photo-img" width="720" height="900">
+          </picture>
         </div>
       </div>
 
@@ -363,16 +345,17 @@
   </div>
 
   <!-- ==========================================================================
-       CONÓCEME (#conoceme) - Apple-Grade Storytelling Stage
+       SOBRE MÍ (#sobre-mi) - Apple-Grade Storytelling Stage
        Pantalla detenida, Foto a la Izquierda, Frase individual en Spotlight a la Derecha
        ========================================================================== -->
-  <section id="conoceme" class="conoceme-apple-section" aria-label="Historia personal y recorrido">
+  <section id="sobre-mi" class="conoceme-apple-section" aria-label="Sobre mí">
+    <div id="conoceme" class="sr-only"></div>
     
     <div class="conoceme-apple-viewport" id="conoceme-apple-viewport">
       
-      <!-- Encabezado de Sección Conóceme -->
+      <!-- Encabezado de Sección Sobre mí -->
       <div class="conoceme-apple-header">
-        <h2 class="conoceme-title-coral">Conóceme.</h2>
+        <h2 class="conoceme-title-coral">Sobre mí.</h2>
         <div class="conoceme-title-underline-track">
           <div class="conoceme-title-underline-fill"></div>
         </div>
@@ -389,7 +372,10 @@
         <!-- Columna Izquierda: Foto de Alejandro -->
         <div class="conoceme-apple-photo-col">
           <div class="conoceme-apple-photo-card">
-            <img src="assets/images/alejandro_about.jpg" alt="Alejandro Vacaro - Historia personal" class="conoceme-apple-photo-img" loading="lazy">
+            <picture>
+              <source srcset="assets/images/alejandro_about.webp" type="image/webp">
+              <img src="assets/images/alejandro_about.jpg" alt="Alejandro Vacaro - Historia personal" class="conoceme-apple-photo-img" loading="lazy" width="819" height="1024">
+            </picture>
           </div>
         </div>
 
@@ -690,14 +676,14 @@
         <div class="timeline-center-node node-current" aria-hidden="true"></div>
 
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge side-date-current">set. 2025 – actualidad</span>
+          <span class="side-date-badge side-date-current">set. 2025 - actualidad</span>
         </div>
       </div>
 
       <!-- ITEM 2: ASISTENTE DE GESTIÓN PREVISIONAL (República AFAP, 6 años - alta relevancia) -->
       <div class="timeline-alt-row row-right row-gap-long-span row-afap" data-index="2">
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge">nov. 2019 – set. 2025</span>
+          <span class="side-date-badge">nov. 2019 - set. 2025</span>
         </div>
 
         <div class="timeline-center-node node-heavy" aria-hidden="true"></div>
@@ -750,14 +736,14 @@
         <div class="timeline-center-node" aria-hidden="true"></div>
 
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge">mar. 2018 – nov. 2019</span>
+          <span class="side-date-badge">mar. 2018 - nov. 2019</span>
         </div>
       </div>
 
       <!-- ITEM 4: INSTRUCTOR DE ZUMBA (Simultáneo - Raqis, breve) -->
       <div class="timeline-alt-row row-right row-cluster-simultaneous" data-index="4">
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge">dic. 2016 – mar. 2017</span>
+          <span class="side-date-badge">dic. 2016 - mar. 2017</span>
         </div>
 
         <div class="timeline-center-node" aria-hidden="true"></div>
@@ -810,14 +796,14 @@
         <div class="timeline-center-node" aria-hidden="true"></div>
 
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge">ago. 2016 – mar. 2018</span>
+          <span class="side-date-badge">ago. 2016 - mar. 2018</span>
         </div>
       </div>
 
       <!-- ITEM 6: AUXILIAR ADMINISTRATIVO (Simultáneo - Petrobras, breve) -->
       <div class="timeline-alt-row row-right row-cluster-simultaneous" data-index="6">
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge">abr. 2016 – jun. 2016</span>
+          <span class="side-date-badge">abr. 2016 - jun. 2016</span>
         </div>
 
         <div class="timeline-center-node" aria-hidden="true"></div>
@@ -870,14 +856,14 @@
         <div class="timeline-center-node" aria-hidden="true"></div>
 
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge">nov. 2015 – mar. 2018</span>
+          <span class="side-date-badge">nov. 2015 - mar. 2018</span>
         </div>
       </div>
 
       <!-- ITEM 8: AUXILIAR CONTABLE -->
       <div class="timeline-alt-row row-right row-gap-compact" data-index="8">
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge">dic. 2014 – nov. 2015</span>
+          <span class="side-date-badge">dic. 2014 - nov. 2015</span>
         </div>
 
         <div class="timeline-center-node" aria-hidden="true"></div>
@@ -930,14 +916,14 @@
         <div class="timeline-center-node" aria-hidden="true"></div>
 
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge">dic. 2012 – dic. 2014</span>
+          <span class="side-date-badge">dic. 2012 - dic. 2014</span>
         </div>
       </div>
 
       <!-- ITEM 10: AUXILIAR DE VENTAS ESPECIALIZADO -->
       <div class="timeline-alt-row row-right row-gap-compact" data-index="10">
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge">mar. 2012 – nov. 2012</span>
+          <span class="side-date-badge">mar. 2012 - nov. 2012</span>
         </div>
 
         <div class="timeline-center-node" aria-hidden="true"></div>
@@ -990,7 +976,7 @@
         <div class="timeline-center-node" aria-hidden="true"></div>
 
         <div class="timeline-alt-side-label">
-          <span class="side-date-badge">set. 2011 – mar. 2012</span>
+          <span class="side-date-badge">set. 2011 - mar. 2012</span>
         </div>
       </div>
 
@@ -1018,12 +1004,14 @@
       <!-- Tarjeta 1: Contador Público -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">CIENCIAS ECONÓMICAS</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">CIENCIAS ECONÓMICAS</span>
+            <span class="badge-status-formacion status-en-curso">En curso</span>
+          </div>
           <h3 class="formacion-card-name">CONTADOR PÚBLICO</h3>
           <div class="formacion-card-institution">Universidad de la República</div>
-          <div class="formacion-card-date">mar. 2018 – en curso</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">mar. 2018 - en curso</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">CONTADOR PÚBLICO</span>
             <div class="overlay-coral-line"></div>
@@ -1037,12 +1025,14 @@
       <!-- Tarjeta 2: Analista de datos -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">DATOS & DECISIONES</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">DATOS & DECISIONES</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">ANALISTA DE DATOS</h3>
           <div class="formacion-card-institution">Senpai Academy</div>
-          <div class="formacion-card-date">feb. 26 a may. 26</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">feb. 2026 - may. 2026</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">ANALISTA DE DATOS</span>
             <div class="overlay-coral-line"></div>
@@ -1056,12 +1046,14 @@
       <!-- Tarjeta 3: Python para análisis de datos -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">DATOS & DECISIONES</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">DATOS & DECISIONES</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">PYTHON PARA ANÁLISIS DE DATOS</h3>
           <div class="formacion-card-institution">Senpai Academy</div>
-          <div class="formacion-card-date">jun. 26 a set. 26</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">jun. 2026 - set. 2026</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">PYTHON PARA DATOS</span>
             <div class="overlay-coral-line"></div>
@@ -1075,12 +1067,14 @@
       <!-- Tarjeta 4: Diplomatura en Business Analysis -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">NEGOCIO & PROCESOS</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">NEGOCIO & PROCESOS</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">DIPLOMATURA EN BUSINESS ANALYSIS</h3>
           <div class="formacion-card-institution">Universidad Tecnológica Nacional</div>
-          <div class="formacion-card-date">mar. 2025 – may. 2025</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">mar. 2025 - may. 2025</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">BUSINESS ANALYSIS</span>
             <div class="overlay-coral-line"></div>
@@ -1094,12 +1088,14 @@
       <!-- Tarjeta 5: Inglés Level B1 -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">COMUNICACIÓN GLOBAL</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">COMUNICACIÓN GLOBAL</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">INGLÉS LEVEL B1</h3>
           <div class="formacion-card-institution">Bike Escuela de Inglés</div>
-          <div class="formacion-card-date">mar. 2024 – dic. 2024</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">mar. 2024 - dic. 2024</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">INGLÉS LEVEL B1</span>
             <div class="overlay-coral-line"></div>
@@ -1113,12 +1109,14 @@
       <!-- Tarjeta 6: Programación Backend -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">PROGRAMACIÓN BACKEND</h3>
           <div class="formacion-card-institution">Coderhouse</div>
-          <div class="formacion-card-date">may. 23 a nov. 23</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">may. 2023 - nov. 2023</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">PROGRAMACIÓN BACKEND</span>
             <div class="overlay-coral-line"></div>
@@ -1132,12 +1130,14 @@
       <!-- Tarjeta 7: React JS -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">REACT JS</h3>
           <div class="formacion-card-institution">Coderhouse</div>
-          <div class="formacion-card-date">feb. 23 a mar. 23</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">feb. 2023 - mar. 2023</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">REACT JS</span>
             <div class="overlay-coral-line"></div>
@@ -1151,12 +1151,14 @@
       <!-- Tarjeta 8: JavaScript -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">JAVASCRIPT</h3>
           <div class="formacion-card-institution">Coderhouse</div>
-          <div class="formacion-card-date">nov. 22 a ene. 23</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">nov. 2022 - ene. 2023</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">JAVASCRIPT</span>
             <div class="overlay-coral-line"></div>
@@ -1170,12 +1172,14 @@
       <!-- Tarjeta 9: Desarrollo Web -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">DESARROLLO WEB</h3>
           <div class="formacion-card-institution">Coderhouse</div>
-          <div class="formacion-card-date">ago. 22 a oct. 22</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">ago. 2022 - oct. 2022</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">DESARROLLO WEB</span>
             <div class="overlay-coral-line"></div>
@@ -1189,12 +1193,14 @@
       <!-- Tarjeta 10: Jóvenes a Programar -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">JÓVENES A PROGRAMAR</h3>
           <div class="formacion-card-institution">Ceibal</div>
-          <div class="formacion-card-date">feb. 22 a may. 22</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">feb. 2022 - may. 2022</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">JÓVENES A PROGRAMAR</span>
             <div class="overlay-coral-line"></div>
@@ -1208,12 +1214,14 @@
       <!-- Tarjeta 11: Excel Avanzado -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">GESTIÓN & PRODUCTIVIDAD</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">GESTIÓN & PRODUCTIVIDAD</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">EXCEL AVANZADO</h3>
           <div class="formacion-card-institution">Deloitte</div>
-          <div class="formacion-card-date">nov. 21</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">nov. 2021</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">EXCEL AVANZADO</span>
             <div class="overlay-coral-line"></div>
@@ -1227,12 +1235,14 @@
       <!-- Tarjeta 12: Programación para todos -->
       <div class="formacion-card-v2 group" tabindex="0" role="button" aria-expanded="false">
         <div class="formacion-card-inner">
-          <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+          <div class="formacion-card-header-flex">
+            <span class="formacion-card-category">TECNOLOGÍA & CÓDIGO</span>
+            <span class="badge-status-formacion status-finalizado">Finalizado</span>
+          </div>
           <h3 class="formacion-card-name">PROGRAMACIÓN PARA TODOS</h3>
           <div class="formacion-card-institution">MichiganX (University of Michigan)</div>
-          <div class="formacion-card-date">jun. 21 a jul. 21</div>
-        </div>
-        <div class="formacion-card-overlay">
+          <div class="formacion-card-date">jun. 2021 - jul. 2021</div>
+        </div><div class="formacion-card-overlay">
           <div class="overlay-header">
             <span class="overlay-title">PROGRAMACIÓN PARA TODOS</span>
             <div class="overlay-coral-line"></div>
@@ -1255,12 +1265,9 @@
   <section id="contacto" class="contacto-section-v2" aria-label="Contacto">
     <div class="contacto-container-v2 max-w-6xl mx-auto w-full">
 
-      <!-- Texto Superior (Más arriba que el resto: '¡escríbeme!' debajo) -->
+      <!-- Texto Superior -->
       <div class="contacto-header-intro mb-8 text-left">
-        <h2 class="contacto-quote-coral">
-          <span>Si llegaste hasta acá,</span><br>
-          <span class="text-[#EF8354]">¡escríbeme!</span>
-        </h2>
+        <h2 class="contacto-quote-coral">Contacto</h2>
         <p class="contacto-secondary-text">
           No voy a negar que me sorprende que sigas acá y no hayas salido corriendo. ¡Pero me alegra que te haya dado curiosidad conocerme un poco más! Si querés, contactame por cualquiera de mis medios así yo también puedo conocerte a vos.
         </p>
@@ -1324,7 +1331,7 @@
           <!-- Cajita 2: Mis redes sociales -->
           <div class="contacto-box-card w-full" id="contacto-redes-card">
             <h3 class="contacto-box-title">Mis redes sociales</h3>
-            <p class="text-xs text-[#BFC0C0] mt-0.5 mb-3">Sigue mis publicaciones y contenido en redes sociales:</p>
+            <p class="text-xs text-[#BFC0C0] mt-0.5 mb-3">Seguí mis publicaciones y contenido en redes sociales:</p>
             
             <div class="grid grid-cols-4 gap-2.5">
               <!-- LinkedIn con SVG oficial -->
@@ -1412,7 +1419,7 @@
                 <!-- Fila 3: Mensaje -->
                 <div class="flex flex-col gap-1 flex-1">
                   <label for="form-message" class="text-[11px] uppercase tracking-wider font-semibold text-[#F5F2EC]/80">Mensaje</label>
-                  <textarea id="form-message" name="message" required rows="3" placeholder="Siéntete libre, estaré muy contento de leerte." class="form-field-input form-field-textarea flex-1 !py-2.5 !text-sm"></textarea>
+                  <textarea id="form-message" name="message" required rows="3" placeholder="Contame qué tenés en mente." class="form-field-input form-field-textarea flex-1 !py-2.5 !text-sm"></textarea>
                 </div>
 
                 <!-- Botón de Envío -->
@@ -1516,6 +1523,6 @@
   </div>
 
   <!-- Scripts V2 -->
-  <script src="js/v2.js?v=7.9"></script>
+  <script src="js/v2.js?v=8.0"></script>
 </body>
 </html>
