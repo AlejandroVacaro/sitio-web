@@ -1930,7 +1930,7 @@ body {
   font-size: clamp(2.3rem, 3.8vw, 3.4rem);
   line-height: 1.12;
   color: var(--coral-glow);
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .contacto-secondary-text {
